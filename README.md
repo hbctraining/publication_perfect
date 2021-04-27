@@ -34,21 +34,23 @@ Researchers interested in using R to create publication-ready figures.
 
 ## Schedule
 
-9:00 - 9:10	Introduce the instructors and scope of the workshop (lecture)
-9:10 - 9:30	Introduce the dataset (discussion)
--	Discuss how to determine appropriate plotting methods for your data
--	Describe the types of relevant plots you would like to include/create
-9:30 - 10:15 	Explore ggplot2 syntax and plots (live coding)
--	Examine the ggplot2 syntax for a basic scatter plot
--	Customize scatter plot by adding layers to the base plot 
-10:15 - 10:45	Coffee break
-10:45 - 11:45	Discuss creating consistent plots (live coding)
--	Create functions for themes to use with all figures
--	Define color palettes to keep colors consistent
-11:45 - 12:15	Introduce features of cowplot for aligning and labeling plots (live coding)
-12:15 - 13:30	Lunch
-13:30 - 14:15	Introduce features of ggpubr for adding statistical comparisons and ordering of plots (live coding)
-14:15 - 15:10	Practice by walking through re-creating published/provided figure(s) (live coding)
-15:10 - 15:50	Practice by changing code to adhere to a journal’s figure requirements (live coding)
-15:50 - 16:00	Wrap-up and exit survey (lecture)
+| Time | Topic | Instructor |
+:----------|:-------------|:----------|
+| 9:00 - 9:10	| Introduce the instructors and scope of the workshop (lecture)| 
+| 9:10 - 9:30	| Introduce the dataset (discussion)
+  -	Discuss how to determine appropriate plotting methods for your data
+  -	Describe the types of relevant plots you would like to include/create
+| 9:30 - 10:15 	| Explore ggplot2 syntax and plots (live coding)
+  -	Examine the ggplot2 syntax for a basic scatter plot
+  -	Customize scatter plot by adding layers to the base plot 
+| 10:15 - 10:45	| Coffee break
+| 10:45 - 11:45	| Discuss creating consistent plots (live coding)
+  -	Create functions for themes to use with all figures
+  -	Define color palettes to keep colors consistent
+| 11:45 - 12:15	| Introduce features of cowplot for aligning and labeling plots (live coding)
+| 2:15 - 13:30	| Lunch
+| 13:30 - 14:15	| Introduce features of ggpubr for adding statistical comparisons and ordering of plots (live coding)
+| 14:15 - 15:10	| Practice by walking through re-creating published/provided figure(s) (live coding)
+| 15:10 - 15:50	| Practice by changing code to adhere to a journal’s figure requirements (live coding)
+| 15:50 - 16:00	| Wrap-up and exit survey (lecture)
 

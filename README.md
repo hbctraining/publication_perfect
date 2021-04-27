@@ -35,7 +35,7 @@ Researchers interested in using R to create publication-ready figures.
 ## Schedule
 
 | Time | Topic | Instructor |
-:----------|:-------------|:----------|
+:-----------------------|:-------------|:----------|
 | 9:00 - 9:10	| Introduce the instructors and scope of the workshop (lecture)| 
 | 9:10 - 9:30	| Introduce the dataset (discussion) [Discuss how to determine appropriate plotting methods for your data & Describe the types of relevant plots you would like to include/create]
 | 9:30 - 10:15 	| Explore ggplot2 syntax and plots (live coding)[Examine the ggplot2 syntax for a basic scatter plot & Customize scatter plot by adding layers to the base plot]

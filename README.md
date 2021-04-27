@@ -1,5 +1,9 @@
 # Publication Perfect
 
+| Audience | Computational skills required | Duration |
+:----------|:-------------|:----------|
+| General - researchers | Intermediate R | 1-session in-person or online workshop (~ 6 hours of trainer-led time)|
+
 ## Description
 
 One of the biggest challenges in disseminating your research is visualizing the results in a way that is meaningful, easy to interpret and aesthetically pleasing. Oftentimes, the extensive time dedicated to generating experimental results can rival the creation and optimization of their figures. With a point and click environment, you can spend hours or even days tweaking the settings to get the perfect figure - only to realize that you now have to repeat this process for the remaining data. This process can be especially challenging when needing to perform customizations or when pivoting your figures to adhere to guidelines from conferences, journals or other publishing platforms.

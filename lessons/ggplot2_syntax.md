@@ -24,7 +24,7 @@ library(tidyverse)
 The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create the paper's figure below. 
 [Insert_image_of_volcano_plot]()
 
-Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's version of a data frame called a "tibble" (you can find out more about tibbles [here](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html)). To create this figure we will need the data present in our `results` data frame. We see the log2 fold changes on the x-axis and the -log10 of the p-adjusted value on the y-axis, and each dot is a gene. This plot is looking at the magnitude (log2 fold changes) and significance (p-adjusted values) of the differences in gene expression between the *Prdm16* KO and WT samples for every gene. Let's take a look at the `results` data frame.
+Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's version of a data frame called a "tibble" (you can find out more about tibbles [here](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html)). To create this figure we will need the data present in our `results` data frame. In the figure, we see the log2 fold changes on the x-axis and the -log10 of the p-adjusted value on the y-axis, and each dot is a gene. This plot is looking at the magnitude (log2 fold changes) and significance (p-adjusted values) of the differences in gene expression between the *Prdm16* KO and WT samples for every gene. Let's take a look at the `results` data frame.
 
 
 ```r

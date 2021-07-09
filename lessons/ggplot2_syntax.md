@@ -12,7 +12,7 @@ Approximate time: 60 minutes
 
 ## Data Visualization with `ggplot2`
 
-When we are working with large sets of numbers it can be useful to display that information graphically to gain more insight. In this lesson we will be plotting with the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/). Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data.
+When we are working with large datasets it can be useful to display the data graphically to gain more insight. In this lesson we will be introducing the syntax for the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/). Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data.
 
 ```r
 # Load the Tidyverse suite of packages

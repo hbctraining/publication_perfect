@@ -1,7 +1,7 @@
 ---
 title: "Plotting and data visualization in R"
 author: "Mary Piper, Meeta Mistry, Radhika Khetani"
-date: "Wednesday, December 4, 2019"
+date: "Friday, July 9th, 2021"
 ---
 
 Approximate time: 60 minutes
@@ -12,40 +12,66 @@ Approximate time: 60 minutes
 
 ## Data Visualization with `ggplot2`
 
-***
-
-For this lesson, you will need the `new_metadata` data frame. Please download it [from here](https://github.com/hbctraining/Intro-to-R-flipped/blob/master/data/new_metadata.RData?raw=true) to your project's data folder by right-clicking and "save file as" or "download file as".
-
-Once you have downloaded it, load it into your environment as follows:
+When we are working with large sets of numbers it can be useful to display that information graphically to gain more insight. In this lesson we will be plotting with the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/). Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data.
 
 ```r
-## load the new_metadata data frame into your environment from a .RData object
-load("data/new_metadata.RData")
+# Load the Tidyverse suite of packages
+library(tidyverse)
 ```
 
-Next, let's check if it was successfully loaded into the environment:
+> **_NOTE:** Don't be alarmed by any conflict statements when loading this library, these statements are just informing you of packages that are currently loaded that have functions of the same name._
+
+The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to plot the expression of a single gene among the different samples in our dataset. The gene, Pax6, is used as an identifier for radial glia cells. We will explore it's expression in radial glia cells, downstream progenitor cells (identified using expression of the Tbr2 gene) and neurons (identified by having little expression of Pax6 or Tbr2).
+
+Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's version of a data frame called a "tibble" (you can find out more about tibbles [here](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html)). Our gene expression data is stored in a data frame called `normalized_counts`. Counts are a measure of gene activity, indicating whether the gene is turned on or off (expressed) and the magnitude of its expression. We have counts for every gene for each of our samples, the higher the counts, the more turned on or expressed the gene. Let's take a look at the `normalized_counts` data frame.
 
 ```r
-# this data frame should have 12 rows and 5 columns
-View(new_metadata)
+# Inspect the normalized counts data frame
+View(normalized_counts)
 ```
 
-Great, we are now ready to move forward!
-
-***
-
-When we are working with large sets of numbers it can be useful to display that information graphically to gain more insight. In this lesson we will be plotting with the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/).
-
-> If you are interested in learning about plotting with base R functions, we have a short lesson [available here](basic_plots_in_r.md). 
-
-The `ggplot2` syntax takes some getting used to, but once you get it, you will find it's extremely powerful and flexible. We will start with drawing a simple x-y scatterplot of `samplemeans` versus `age_in_days` from the `new_metadata` data frame. Please note that `ggplot2` expects a "data frame" or "tibble" (you can find out more about tibbles in the lesson on [tidyverse](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html)) as input.
-
-Let's start by loading the `ggplot2` library:
+We see that each gene is a different row and each sample is a different column. The numbers represent the magnitude of expression for each gene in every sample. Since we are only interested in the **Pax6** gene, we need to filter our dataset to return only this gene.
 
 ```r
-library(ggplot2)
+pax6_expression <- norm_counts %>%
+  filter(geneSymbol == "Pax6")
+  
+View(pax6_expression)
 ```
 
+We see that we successfully returned counts for only the **Pax6** gene. Now, we want to visualize the expression or counts of this gene by plotting the sample on the x-axis and the normalized counts on the y-axis. It is important to note that `ggplot2` requires all data that is to be assigned to x- or y-coordinates (or any other plotting variable) are stored in a single column of the data frame. Since our samples and normalized counts values are stored in different columns, we need to 'gather' them together into a single column before we can plot them. To do this we can use a handy `tidyr` function called `pivot_longer()`.
+
+The syntax for `pivot_longer()` is:
+
+```r
+# Syntax for `pivot_longer()` function
+pivot_longer(input_data_frame,
+             cols = columns_to_gather_together,
+             names_to = "name_for_column_of_gathered_columns",
+             values_to = "name_for_column_of_gathered_values")
+```
+
+For our `normalized_counts` data frame, we want to gather all of the normalized counts into a single column (all columns except for `geneSymbol`. Therefore, our gathering of columns from a wide to long format is:
+
+```r
+### Gather values to plot into a single column
+expression_plot <- pivot_longer(pax6_expression,
+                                cols = 2:25,
+                                names_to = "samples",
+                                values_to = "normalized_counts")
+```
+
+Finally, we hope to color our plot with information about the conditions of our samples. Currently we have only the expression data. We need to merge the metadata information for each of our samples. We can use a `_join` function from the Tidyverse or `merge()` base function.
+
+```r
+### Join metadata for visualizing groups or features
+expression_plot <- left_join(x = expression_plot, 
+                             y = meta, 
+                             by = "samples")
+```
+
+
+################################
 The `ggplot()` function is used to **initialize the basic graph structure**, then we add to it. The basic idea is that you specify different parts of the plot using additional functions one after the other and combine them into a "code chunk" using the `+` operator; the functions in the resulting code chunk are called layers.
 
 Let's start: 

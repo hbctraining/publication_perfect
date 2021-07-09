@@ -19,7 +19,7 @@ When we are working with large datasets it can be useful to display the data gra
 library(tidyverse)
 ```
 
-> **_NOTE:** Don't be alarmed by any conflict statements when loading this library, these statements are just informing you of packages that are currently loaded that have functions of the same name._
+> _**NOTE:** Don't be alarmed by any conflict statements when loading this library, these statements are just informing you of packages that are currently loaded that have functions of the same name._
 
 The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create the paper's figure below. 
 [Insert_image_of_volcano_plot]()

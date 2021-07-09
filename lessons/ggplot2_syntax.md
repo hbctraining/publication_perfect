@@ -10,9 +10,9 @@ Approximate time: 60 minutes
 
 * Explain the syntax to utilize the "ggplot2" package to visualize data.
 
-## Data Visualization with `ggplot2`
+## Graphical syntax of `ggplot2`
 
-When we are working with large datasets it can be useful to display the data graphically to gain more insight. In this lesson we will be introducing the syntax for the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/). Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data.
+Whenever we are working with data, it is usually helpful to display the it graphically to gain more insight. This is especially important for large datasets, where trends or relationships can be easily obscured. In this lesson we will be introducing the syntax for the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/). Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data.
 
 ```r
 # Load the Tidyverse suite of packages
@@ -23,19 +23,94 @@ library(tidyverse)
 
 The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create our first figure from the [The Epigenetic State of PRDM16-regulated Enhancers in Radial Glia Controls Cortical Neuron Position paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6667181/). We will build the figure below using the layering approach employed by  `ggplot2`. We will highlight the purpose and utility of each layer we add, highlighting it's flexibility and customization.
 
-[Insert_image_of_volcano_plot]()
+<p align="center">
+<img src="../img/volcano_plot_glia.png" width="500">
+</p>
 
-Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's version of a data frame called a "tibble" (you can find out more about tibbles [here](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html)). To create this figure we will need the data present in our `results` data frame. In the figure, we see the log2 fold changes on the x-axis and the -log10 of the p-adjusted value on the y-axis, and each dot is a gene. This plot is looking at the magnitude (log2 fold changes) and significance (p-adjusted values) of the differences in gene expression between the *Prdm16* KO and WT samples for every gene. Let's take a look at the `results` data frame.
 
+Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's version of a data frame called a "tibble" (you can find out more about tibbles [here](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html)). To create this figure we will need the data present in our `results` data frame. This plot is examining the magnitude (log2 fold changes) and significance (p-adjusted values) of the differences in gene expression between the *Prdm16* KO and WT samples for every gene in the radial glia cells; each point is a gene in the dataset. Let's take a look at the `results` data frame.
 
 ```r
 # Inspect the results data frame
 View(results)
 ```
 
-We see that each gene is a different row and each column corresponds to statistics regarding the differences in gene expression between the KO and WT samples within the radial glia (pax6 columns), intermediate progenitors (tbr2 columns) and neurons (neg columns). 
+We see that each gene is a different row and each column corresponds to different statistics regarding the differences in gene expression between the KO and WT samples within the radial glia (`pax6` columns), intermediate progenitors (`tbr2` columns) and neurons (`neg` columns). For this plot, we are interested in the radial glia, which correspond to the `pax6` columns.
 
-Start to build volcano plot.
+## Initializing the graph structure
+
+The `ggplot()` function is used to **initialize the basic graph structure**, then we add to it. The basic idea is that you specify different parts of the plot using additional functions one after the other and combine them into a "code chunk" using the `+` operator; the functions in the resulting code chunk are called layers.
+
+Let's start: 
+
+```r
+# Initialize plot
+ggplot(results) # what happens? 
+```
+
+You get an blank plot, because you need to **specify additional layers** using the `+` operator. The `ggplot` function does not know what type of plot you want to draw or the columns in your data frame to compare visually. At the very least, we need to provide this information.
+
+The **geom (geometric) object** is the layer that specifies what kind of plot we want to draw. A plot **must have at least one `geom`**; there is no upper limit. Examples include:
+
+* points (`geom_point`, `geom_jitter` for scatter plots, dot plots, etc)
+* lines (`geom_line`, for time series, trend lines, etc)
+* boxplot (`geom_boxplot`, for, well, boxplots!)
+* [many others](https://ggplot2.tidyverse.org/reference/#section-geoms)
+
+The [RStudio cheatsheet for ggplot2]() is a bit overwhelming at first, but it can help with choosing the best geom for our data. With two continuous variables with points, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
+
+```r
+ggplot(new_metadata) +
+  geom_point() # note what happens here
+```
+
+Why do we get an error? Is the error message easy to decipher?
+
+We get an error because each type of `geom` usually has a **required set of aesthetics** to be set. "Aesthetics" are set with the aes() function and can be set either nested within `geom_point()` (applies only to that layer) or within `ggplot()` (applies to the whole plot).
+
+The `aes()` function has many different arguments, and all of those arguments take columns from the original data frame as input. It can be used to specify many plot elements including the following:
+
+* position (i.e., on the x and y axes)
+* color ("outside" color)
+* fill ("inside" color) 
+* shape (of points)
+* linetype
+* size
+
+To start, we will specify x- and y-axis since `geom_point` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the other plot elements mentioned above are optional.
+
+```r
+ggplot(new_metadata) +
+     geom_point(aes(x = age_in_days, y= samplemeans))
+```
+
+<p align="center">
+<img src="../img/ggscatter-1.png" width="500">
+</p>
+
+Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points on the plot based on the genotype column** within `aes()`. You will notice that there are a default set of colors that will be used so we do not have to specify. Note that the legend has been conveniently plotted for us.
+
+```r
+ggplot(new_metadata) +
+  geom_point(aes(x = age_in_days, y= samplemeans, color = genotype)) 
+```
+
+<p align="center">
+<img src="../img/ggscatter-2.png" width="500">
+</p>
+
+Let's try to have both **celltype and genotype represented on the plot**. To do this we can assign the `shape` argument in `aes()` the celltype column, so that each celltype is plotted with a different shaped data point. 
+
+```r
+ggplot(new_metadata) +
+  geom_point(aes(x = age_in_days, y= samplemeans, color = genotype,
+  			shape=celltype)) 
+```
+
+<p align="center">
+<img src="../img/ggscatter-3.png" width="500">
+</p>
+
 
 # Later and use full set of interesting genes
 

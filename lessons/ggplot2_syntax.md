@@ -12,7 +12,7 @@ Approximate time: 60 minutes
 
 ## Graphical syntax of `ggplot2`
 
-Whenever we are working with data, it is usually helpful to display the it graphically to gain more insight. This is especially important for large datasets, where trends or relationships can be easily obscured. In this lesson we will be introducing the syntax for the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/). Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data.
+Whenever we are working with data, it is usually helpful to display it graphically to gain more insight. This is especially important for large datasets, where trends or relationships can be easily obscured. In this lesson, we will be introducing the syntax for using the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/). Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data, among others.
 
 ```r
 # Load the Tidyverse suite of packages
@@ -21,7 +21,7 @@ library(tidyverse)
 
 > _**NOTE:** Don't be alarmed by any conflict statements when loading this library, these statements are just informing you of packages that are currently loaded that have functions of the same name._
 
-The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create our first figure from the [The Epigenetic State of PRDM16-regulated Enhancers in Radial Glia Controls Cortical Neuron Position paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6667181/). We will build the figure below using the layering approach employed by  `ggplot2`. We will highlight the purpose and utility of each layer we add, highlighting it's flexibility and customization.
+The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create our first figure from the [The Epigenetic State of PRDM16-regulated Enhancers in Radial Glia Controls Cortical Neuron Position paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6667181/). We will build the figure below using the layering approach employed by  `ggplot2`. We will highlight the purpose and utility of each layer we add, while highlighting it's flexibility and customization.
 
 <p align="center">
 <img src="../img/volcano_plot_glia.png" width="500">
@@ -35,7 +35,7 @@ Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's
 View(results)
 ```
 
-We see that each gene is a different row and each column corresponds to different statistics regarding the differences in gene expression between the KO and WT samples within the radial glia (`pax6` columns), intermediate progenitors (`tbr2` columns) and neurons (`neg` columns). For this plot, we are interested in the radial glia, which correspond to the `pax6` columns.
+We see that each gene is a different row and each column corresponds to different statistics regarding the differences in gene expression between the KO and WT samples within the radial glia (`pax6` columns), intermediate progenitors (`tbr2` columns) and neurons (`neg` columns). For this plot, we are interested in the radial glia, which correspond to the `pax6` columns. Specifically, we are interested in plotting the `Pax6` log2 fold changes (`pax_log2FoldChanges`) on the x-axis and the -log10 `Pax6` p-adjusted values (`pax6_padj`) on the y-axis.
 
 ## Initializing the graph structure
 

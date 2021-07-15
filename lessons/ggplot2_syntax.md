@@ -16,6 +16,8 @@ When working with data, it is helpful to display it graphically to gain more ins
 
 We will focus the majority of our materials on creating plots with `ggplot2` due to it's versatility and ease of customization. Once you learn the `ggplot2` syntax, you will have laid the foundation for creating a plethora of graphics.
 
+## Set up 
+
 Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data, among others.
 
 ```r

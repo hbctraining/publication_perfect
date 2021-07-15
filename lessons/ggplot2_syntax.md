@@ -219,8 +219,8 @@ ggplot(results) +
 4. Remove the legend by adding a `theme()` layer with the argument `legend.position`. 
 5. Remove the gridlines by adding another `theme()` layer with the argument `panel.grid`.
 6. Add the following new layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
-    * What does it change?
-    * How many theme() layers can be added to a ggplot code chunk, in your estimation?
+   * What does it change?
+   * How many `theme()` layers can be added to a ggplot code chunk, in your estimation?
 
 ***
 

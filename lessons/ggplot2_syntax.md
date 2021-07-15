@@ -83,6 +83,7 @@ The `aes()` function has many different arguments, and all of those arguments ta
 * shape (of points)
 * linetype
 * size
+* alpha (level of transparency)
 
 To start, we will specify x- and y-axis since `geom_point` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the other plot elements mentioned above are optional.
 
@@ -97,7 +98,9 @@ ggplot(results) +
 <img src="../img/ggscatter-1.png" width="500">
 </p>
 
-Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points on the plot based on the `pax6_threshold` column** within `aes()`, this column corresponds to the significant genes. You will notice that there are a default set of colors that will be used so we do not have to specify. Note that the legend has been conveniently plotted for us.
+## Customizing the appearance of the data points on the plot
+
+Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points on the plot based on the `pax6_threshold` column** within `aes()`, this column corresponds to the significant genes. You will notice that there are a default set of colors that will be used so we do not have to specify. We will explore later how to change the colors, as well as, incorporate pre-designed color palettes. Also, note that the legend has been plotted for us.
 
 ```r
 # Adding geom layer with additional aesthetics
@@ -112,12 +115,12 @@ ggplot(results) +
 </p>
 
 
-To modify the **size of the data points** we can use the `size` argument. 
+If we wanted to modify the **size of the data points** we can use the `size` argument. 
 
 * If we add `size` inside `aes()` we could assign a numeric column to it and the size of the data points would change according to that column. 
 * However, if we add `size` inside the `geom_point()` but outside `aes()` we can't assign a column to it, instead we have to give it a numeric value. This use of `size` will uniformly change the size of all the data points.
 
-> **Note:** This is true for several arguments, including `color`, `shape` etc. E.g. we can change all shapes to square by adding this argument to be outside the `aes()` function; if we put the argument inside the `aes()` function we could change the shape according to a (categorical) variable in our data frame or tibble.
+> **Note:** This is true for several arguments, including `color`, `shape`, `alpha`, etc. E.g. we can change all shapes to square by adding this argument to be outside the `aes()` function; if we put the argument inside the `aes()` function we could change the shape according to a (categorical) variable in our data frame or tibble.
 
 We have decided that we want to change the size of all the data point to a uniform size instead of typing it to a numeric column in the input tibble. Add in the `size` argument by specifying a number for the size of the data point:
 
@@ -132,15 +135,16 @@ ggplot(results) +
 
 > **Note:** The size of the points is personal preference, and you may need to play around with the parameter to decide which size is best. That seems a bit too big, so we can return to our default size. 
 
-As we do that, let's see how we can change the shape of the data point. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). Let's explore this parameter by changing all of the points to squares:
+## Exercise
+
+Let's explore how to change the shape of the data points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). Let's explore this parameter by changing all of the points to squares.
 
 ```r
-# Changing shape to a constant (do not change with columns in data frame)
+# Changing shape to square
 ggplot(results) +
   geom_point(aes(x = pax6_log2FoldChange, 
                  y = -log10(pax6_padj), 
                  color = pax6_threshold),
-             size = 2.0,
              shape = "square")
 ```
 
@@ -148,29 +152,20 @@ ggplot(results) +
 <img src="../img/dotplot4.png" width="700">
 </p>
 
-```r
-# Changing features that are constant (do not change with columns in data frame)
-ggplot(results) +
-  geom_point(aes(x = pax6_log2FoldChange, 
-                 y = -log10(pax6_padj), 
-                 color = pax6_threshold),
-             size = 2.00)
-```
+We aren't interested in keeping the squares, but it can be helpful to change shapes for visualizing different groups or conditions in the data, similar to the `color` argument. 
 
-<p align="center">
-<img src="../img/ggscatter-4.png" width="500">
-</p>
+## Customizing the appearance of the non-data points on the plot
 
-Let's explore a couple other 
+Now that we know how to alter and customize the look of the data points on our plot within the `geom` layer, let's explore how to change the look of the non-data plotting elements, such as the plotting grid and labels. Many of these non-data elements can be altered within a `theme()` layer. 
 
-The labels on the x- and y-axis are also quite small and hard to read. To change their size, we need to add an additional **theme layer**. The ggplot2 `theme` system handles non-data plot elements such as:
+The ggplot2 `theme` system handles non-data plot elements such as:
 
 * Axis label aesthetics
 * Plot background
 * Facet label backround
 * Legend appearance
 
-There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the background/foreground colours, by adding it as additional layer. Or we can adjust specific elements of the current default theme by adding the `theme()` layer and passing in arguments for the things we wish to change. Or we can use both.
+There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the background/foreground colors, by adding it as additional layer. A nice resource for exploring pre-set themes is [available](https://ggplot2.tidyverse.org/reference/ggtheme.html) from Tidyverse. 
 
 Let's add a layer `theme_bw()`. 
 
@@ -183,9 +178,28 @@ ggplot(results) +
   theme_bw()
 ```
 
-Do the axis labels or the tick labels get any larger by changing themes?
+We are relatively close to achieving the figure from the paper. Let's look at our plot side-by-side with the paper figure:
 
-No, they don't. But, we can add arguments using `theme()` to change the size of axis labels ourselves. Since we will be adding this layer "on top", or after `theme_bw()`, any features we change will override what is set by the `theme_bw()` layer. 
+<p align="center">
+<img src="../img/volcano_plot_glia_combined1.png" width="500">
+</p>
+
+How are these plots different? Let's create a to-do list:
+
+1. Change size of axes labels
+2. Remove gridlines
+3. Remove legend
+4. Rename axes labels
+5. Change scale of x-axis
+6. Change color of points to purple and grey
+
+We can address the first three tasks within the `theme()` layer. We do not remember the functions to perform all of these tasks, but we do look it up whenever we need to do something custom. To explore the different non-data components customizable within the `theme()` function, let's look at the [documentation](https://ggplot2.tidyverse.org/reference/theme.html).
+
+Notice the options for customizing the axes, titles, tick marks, and legends, among others. Everything is customizable, you just have to know what to customize. Using the `example()` function may be a helpful, as well as some very thorough resources for plotting with ggplot2.
+
+we can add arguments using `theme()` to change the size of axis labels ourselves. Since we will be adding this layer "on top", or after `theme_bw()`, any features we change will override what is set by the `theme_bw()` layer. 
+
+Alternatively, we can adjust specific elements of the current default theme by adding the `theme()` layer and passing in arguments for the things we wish to change. Or we can use both.
 
 Let's **increase the size of both the axes titles to be 1.5 times the default size.** When modifying the size of text the `rel()` function is commonly used to specify a change relative to the default.
 

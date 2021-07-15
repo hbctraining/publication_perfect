@@ -10,6 +10,9 @@ Approximate time: 60 minutes
 
 ## Generating a Boxplot with ggplot2
 
+We are going to use what we learned about ggplot2 syntax to create the following boxplot from the paper:
+
+
 A boxplot provides a graphical view of the distribution of data based on a five number summary: 
 * The top and bottom of the box represent the (1) first and (2) third quartiles (25th and 75th percentiles, respectively). 
 * The line inside the box represents the (3) median (50th percentile). 

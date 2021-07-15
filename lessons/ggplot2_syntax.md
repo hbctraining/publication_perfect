@@ -1,7 +1,7 @@
 ---
 title: "Plotting and data visualization in R"
 author: "Mary Piper, Meeta Mistry, Radhika Khetani"
-date: "Friday, July 9th, 2021"
+date: "Friday, July 16th, 2021"
 ---
 
 Approximate time: 60 minutes
@@ -100,7 +100,7 @@ ggplot(results) +
 
 ## Customizing the appearance of the data points on the plot
 
-Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points on the plot based on the `pax6_threshold` column** within `aes()`, this column corresponds to the significant genes. You will notice that there are a default set of colors that will be used so we do not have to specify. We will explore later how to change the colors, as well as, incorporate pre-designed color palettes. Also, note that the legend has been plotted for us.
+Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points (representing genes) on the plot based on the whether the genes are significant using the `pax6_threshold` column** by specifying it within the `aes()` function. You will notice that there are a default set of colors that will be used so we do not have to specify. We will explore later how to change the colors, as well as, incorporate pre-designed color palettes. Also, note that the legend has been plotted for us.
 
 ```r
 # Adding geom layer with additional aesthetics
@@ -135,24 +135,15 @@ ggplot(results) +
 
 > **Note:** The size of the points is personal preference, and you may need to play around with the parameter to decide which size is best. That seems a bit too big, so we can return to our default size. 
 
-## Exercise
+***
+
+**Exercise**
 
 Let's explore how to change the shape of the data points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). Let's explore this parameter by changing all of the points to squares.
 
-```r
-# Changing shape to square
-ggplot(results) +
-  geom_point(aes(x = pax6_log2FoldChange, 
-                 y = -log10(pax6_padj), 
-                 color = pax6_threshold),
-             shape = "square")
-```
+***
 
-<p align="center">
-<img src="../img/dotplot4.png" width="700">
-</p>
-
-We aren't interested in keeping the squares, but it can be helpful to change shapes for visualizing different groups or conditions in the data, similar to the `color` argument. 
+We aren't interested in keeping the points as squares, but it can be helpful to change shapes for visualizing different groups or conditions in the data, similar to the `color` argument. 
 
 ## Customizing the appearance of the non-data points on the plot
 
@@ -178,37 +169,35 @@ ggplot(results) +
   theme_bw()
 ```
 
-We are relatively close to achieving the figure from the paper. Let's look at our plot side-by-side with the paper figure:
+
+Let's look at the paper figure again:
 
 <p align="center">
-<img src="../img/volcano_plot_glia_combined1.png" width="500">
+<img src="../img/volcano_plot_glia.png" width="500">
 </p>
 
-How are these plots different? Let's create a to-do list:
+How are these plots different? 
 
-1. Change size of axes labels
-2. Remove gridlines
-3. Remove legend
-4. Rename axes labels
-5. Change scale of x-axis
-6. Change color of points to purple and grey
 
-We can address the first three tasks within the `theme()` layer. We do not remember the functions to perform all of these tasks, but we do look it up whenever we need to do something custom. To explore the different non-data components customizable within the `theme()` function, let's look at the [documentation](https://ggplot2.tidyverse.org/reference/theme.html).
+We see the colors are different, but we will explore changes those in the next lesson. All of the other changes are to the non-data elements of the plot. To explore the different non-data components customizable within the `theme()` function, let's look at the [documentation](https://ggplot2.tidyverse.org/reference/theme.html).
 
-Notice the options for customizing the axes, titles, tick marks, and legends, among others. Everything is customizable, you just have to know what to customize. Using the `example()` function may be a helpful, as well as some very thorough resources for plotting with ggplot2.
+Notice the options for customizing the axes, titles, tick marks, and legends, among others. Everything is customizable, you just have to know what to customize. The examples given in the documentation can help determine what specifications might achieve your desired changes.
 
-we can add arguments using `theme()` to change the size of axis labels ourselves. Since we will be adding this layer "on top", or after `theme_bw()`, any features we change will override what is set by the `theme_bw()` layer. 
+Let's start with changing the size of the x- and y-axis labels. Since we will be adding this layer "on top", or after `theme_bw()`, any features we change will override what is set by the `theme_bw()` layer. 
 
 Alternatively, we can adjust specific elements of the current default theme by adding the `theme()` layer and passing in arguments for the things we wish to change. Or we can use both.
 
-Let's **increase the size of both the axes titles to be 1.5 times the default size.** When modifying the size of text the `rel()` function is commonly used to specify a change relative to the default.
+Let's **increase the size of both axis titles to be 1.25 times the default size and the text labels to be 1.15 times the default.** When modifying the size of text the `rel()` function is commonly used to specify a change relative to the default.
 
 ```r
-ggplot(new_metadata) +
-  geom_point(aes(x = age_in_days, y= samplemeans, color = genotype,
-  			shape=celltype), size=2.25) +
+# Adjust theme elements - axis size
+ggplot(results) +
+  geom_point(aes(x = pax6_log2FoldChange, 
+                 y = -log10(pax6_padj), 
+                 color = pax6_threshold))  +
   theme_bw() +
-  theme(axis.title = element_text(size=rel(1.5)))			
+  theme(axis.title = element_text(size = rel(1.25)),
+        axis.text = element_text(size = rel(1.15)))	
 ```
  
 <p align="center">
@@ -224,80 +213,18 @@ ggplot(new_metadata) +
 
 **Exercise**
 
-1. The current axis label text defaults to what we gave as input to `geom_point` (i.e the column headers). We can change this by **adding additional layers** called `xlab()` and `ylab()` for the x- and y-axis, respectively. Add these layers to the current plot such that the x-axis is labeled "Age (days)" and the y-axis is labeled "Mean expression".
-2. Use the `ggtitle` layer to add a plot title of your choice. 
-3. Add the following new layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
+1. The current axis label text defaults to what we gave as input to `geom_point` (i.e the column headers). We can change this by **adding additional layers** called `xlab()` and `ylab()` for the x- and y-axis, respectively. Add these layers to the current plot such that they match the published figure.
+2. Use the `ggtitle` layer to add the plot title. 
+3. Increase the size of the plot title to be 1.5 times the default value.
+4. Remove the legend by adding a `theme()` layer with the argument `legend.position`. 
+5. Remove the gridlines by adding another `theme()` layer with the argument `panel.grid`.
+6. Add the following new layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
   * What does it change?
   * How many theme() layers can be added to a ggplot code chunk, in your estimation?
 
+***
 
-# basics not included:
-Let's try to have both **celltype and genotype represented on the plot**. To do this we can assign the `shape` argument in `aes()` the celltype column, so that each celltype is plotted with a different shaped data point. 
-
-```r
-ggplot(new_metadata) +
-  geom_point(aes(x = age_in_days, y= samplemeans, color = genotype,
-  			shape=celltype)) 
-```
-
-<p align="center">
-<img src="../img/ggscatter-3.png" width="500">
-</p>
-
-
-# Later and use full set of interesting genes
-
-plot the expression of a single gene among the different samples in our dataset. The gene, Pax6, is used as an identifier for radial glia cells. We will explore it's expression in radial glia cells, downstream progenitor cells (identified using expression of the Tbr2 gene) and neurons (identified by having little expression of Pax6 or Tbr2).
-
-Our gene expression data is stored in a data frame called `normalized_counts`. Counts are a measure of gene activity, indicating whether the gene is turned on or off (expressed) and the magnitude of its expression. We have counts for every gene for each of our samples, the higher the counts, the more turned on or expressed the gene. Let's take a look at the `normalized_counts` data frame.
-
-```r
-# Inspect the normalized counts data frame
-View(normalized_counts)
-```
-
-We see that each gene is a different row and each sample is a different column. The numbers represent the magnitude of expression for each gene in every sample. Since we are only interested in the **Pax6** gene, we need to filter our dataset to return only this gene.
-
-```r
-pax6_expression <- norm_counts %>%
-  filter(geneSymbol == "Pax6")
-  
-View(pax6_expression)
-```
-
-We see that we successfully returned counts for only the **Pax6** gene. Now, we want to visualize the expression or counts of this gene by plotting the sample on the x-axis and the normalized counts on the y-axis. It is important to note that `ggplot2` requires all data that is to be assigned to x- or y-coordinates (or any other plotting variable) are stored in a single column of the data frame. Since our samples and normalized counts values are stored in different columns, we need to 'gather' them together into a single column before we can plot them. To do this we can use a handy `tidyr` function called `pivot_longer()`.
-
-The syntax for `pivot_longer()` is:
-
-```r
-# Syntax for `pivot_longer()` function
-pivot_longer(input_data_frame,
-             cols = columns_to_gather_together,
-             names_to = "name_for_column_of_gathered_columns",
-             values_to = "name_for_column_of_gathered_values")
-```
-
-For our `normalized_counts` data frame, we want to gather all of the normalized counts into a single column (all columns except for `geneSymbol`. Therefore, our gathering of columns from a wide to long format is:
-
-```r
-### Gather values to plot into a single column
-expression_plot <- pivot_longer(pax6_expression,
-                                cols = 2:25,
-                                names_to = "samples",
-                                values_to = "normalized_counts")
-```
-
-Finally, we hope to color our plot with information about the conditions of our samples. Currently we have only the expression data. We need to merge the metadata information for each of our samples. We can use a `_join` function from the Tidyverse or `merge()` base function.
-
-```r
-### Join metadata for visualizing groups or features
-expression_plot <- left_join(x = expression_plot, 
-                             y = meta, 
-                             by = "samples")
-```
-
-
-################################
+How does the plot compare to the published figure now? It's quite close. Most noticably, the colors are different, and we will address how to change the colors in the next lesson. In addition, the x-axis scale is slightly different and the annotations on the plot are missing. We will explore how to add these in future lessons, as well.
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

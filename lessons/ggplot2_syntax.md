@@ -12,7 +12,7 @@ Approximate time: 60 minutes
 
 ## Graphical syntax of `ggplot2`
 
-Whenever we are working with data, it is usually helpful to display it graphically to gain more insight. This is especially important for large datasets, where trends or relationships can be easily obscured. In this lesson, we will be introducing the syntax for using the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/). Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data, among others.
+Whenever we are working with data, it is helpful to display it graphically to gain more insight. This is especially important for large datasets, where trends or relationships can be easily obscured. In this lesson, we will be introducing the syntax for using the popular Bioconductor package [`ggplot2`](http://docs.ggplot2.org/). Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data, among others.
 
 ```r
 # Load the Tidyverse suite of packages

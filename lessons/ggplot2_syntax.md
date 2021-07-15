@@ -139,7 +139,7 @@ ggplot(results) +
 
 **Exercise**
 
-Let's explore how to change the shape of the data points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). Let's explore this parameter by changing all of the points to squares.
+Let's explore how to change the shape of the data points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). Let's explore this parameter: change all of the points in the plot to squares.
 
 ***
 

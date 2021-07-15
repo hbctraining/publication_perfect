@@ -10,7 +10,7 @@ Approximate time: 60 minutes
 
 * Explain the syntax to utilize the "ggplot2" package to visualize data.
 
-## Graphical syntax of `ggplot2`
+# Graphical syntax of `ggplot2`
 
 When working with data, it is helpful to display it graphically to gain more insight. This is especially important for large datasets, where trends or relationships can be easily obscured. In this lesson, we will be introducing the syntax for the popular Bioconductor package for visualization, [`ggplot2`](https://ggplot2.tidyverse.org/). The `ggplot2` package approaches visualization using principles from the [Grammar of Graphics](https://www.springer.com/gp/book/9780387245447), a pivotal book describing quantitative graphics. The developers of `ggplot2` describe their approach to the Grammer of Graphics in a free, [online book](https://ggplot2-book.org/index.html), which can be a helpful resource for understanding the theory and organization of the `ggplot2` package. 
 

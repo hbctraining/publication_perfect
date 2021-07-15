@@ -224,7 +224,30 @@ ggplot(results) +
 
 ***
 
-How does the plot compare to the published figure now? It's quite close. Most noticably, the colors are different, and we will address how to change the colors in the next lesson. In addition, the x-axis scale is slightly different and the annotations on the plot are missing. We will explore how to add these in future lessons, as well.
+How does the plot compare to the published figure now? It's quite close. Most noticably, the colors are different, the x-axis scale is slightly different and the annotations on the plot are missing. We will finish this plot using the code below to add colors and alter the scale, but we will discuss these topics in much greater detail in future lessons.
+
+`scale_color_manual()`: colors the points based on groups present in `pax6_threshold` assigned to the `color` argument within the `aes()` function. 
+`xlim()`: specifies the minimum and maximum x-axis values to be displayed on the plot.
+
+```r
+# Finished plot without annotations
+ggplot(results) +
+  geom_point(aes(x = pax6_log2FoldChange, 
+                 y = -log10(pax6_padj), 
+                 color = pax6_threshold))  +
+  theme_bw() +
+  theme(axis.title = element_text(size = rel(1.25)),
+        axis.text = element_text(size = rel(1.15))) +
+  xlab("Log2 fold change") + 
+  ylab("-Log10 p-value") +
+  ggtitle("Radial glia") +
+  theme(plot.title = element_text(size = rel(1.5))) +
+  theme(legend.position = "none") +
+  theme(panel.grid = element_blank()) +
+  theme(plot.title=element_text(hjust=0.5)) +
+  scale_color_manual(values = c("grey", "purple")) +
+  xlim(c(-3,3.5))
+```
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

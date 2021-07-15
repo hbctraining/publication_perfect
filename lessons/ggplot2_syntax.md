@@ -12,7 +12,7 @@ Approximate time: 60 minutes
 
 ## Graphical syntax of `ggplot2`
 
-Whenever we are working with data, it is helpful to display it graphically to gain more insight. This is especially important for large datasets, where trends or relationships can be easily obscured. In this lesson, we will be introducing the syntax for the popular Bioconductor package for visualization  [`ggplot2`](), which approaches visualization using principles described in the [Grammar of Graphics](https://www.springer.com/gp/book/9780387245447), a pivotal book in its description of quantitative graphics. A free, online book describing `ggplot2`'s approach to the Grammer of Graphics is [available](https://ggplot2-book.org/index.html) from the package's developer. 
+Whenever we are working with data, it is helpful to display it graphically to gain more insight. This is especially important for large datasets, where trends or relationships can be easily obscured. In this lesson, we will be introducing the syntax for the popular Bioconductor package for visualization, [`ggplot2`](https://ggplot2.tidyverse.org/), which approaches visualization using principles described in the [Grammar of Graphics](https://www.springer.com/gp/book/9780387245447), a pivotal book in its description of quantitative graphics. A free, online book describing `ggplot2`'s approach to the Grammer of Graphics is [available](https://ggplot2-book.org/index.html) from the package's developer. 
 
 Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data, among others.
 
@@ -59,7 +59,7 @@ The **geom (geometric) object** is the layer that specifies what kind of plot we
 * boxplot (`geom_boxplot`, for, well, boxplots!)
 * [many others](https://ggplot2.tidyverse.org/reference/#section-geoms)
 
-The [RStudio cheatsheet for ggplot2]() is a bit overwhelming at first, but it can help with choosing the best geom for our data. With two continuous variables with points, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
+The [RStudio cheatsheet for ggplot2](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) is a bit overwhelming at first, but it can help with choosing the best geom for our data. With two continuous variables with points, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
 
 ```r
 ggplot(new_metadata) +

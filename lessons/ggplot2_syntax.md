@@ -226,8 +226,8 @@ ggplot(results) +
 
 How does the plot compare to the published figure now? It's quite close. Most noticably, the colors are different, the x-axis scale is slightly different and the annotations on the plot are missing. We will finish this plot using the code below to add colors and alter the scale, but we will discuss these topics in much greater detail in future lessons.
 
-`scale_color_manual()`: colors the points based on groups present in `pax6_threshold` assigned to the `color` argument within the `aes()` function. 
-`xlim()`: specifies the minimum and maximum x-axis values to be displayed on the plot.
+- `scale_color_manual()`: colors the points based on groups present in `pax6_threshold` assigned to the `color` argument within the `aes()` function. 
+- `xlim()`: specifies the minimum and maximum x-axis values to be displayed on the plot.
 
 ```r
 # Finished plot without annotations

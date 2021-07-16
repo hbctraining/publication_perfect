@@ -38,7 +38,7 @@ Researchers interested in using R to create publication-ready figures.
 :-----------------------|:-------------|:----------|
 | 9:00 - 9:10	| Introduce the instructors and scope of the workshop (lecture)| 
 | 9:10 - 9:30	| Introduce the dataset (discussion) [Discuss how to determine appropriate plotting methods for your data & Describe the types of relevant plots you would like to include/create]
-| 9:30 - 10:15 	| [Explore ggplot2 syntax and plot](lessons/ggplot2_syntax.md)
+| 9:30 - 10:15 	| [Explore ggplot2 syntax and how to create a basic plot](lessons/ggplot2_syntax.md)
 | 10:15 - 10:45	| Coffee break
 | 10:45 - 11:05	| [Creating consistent plots with custom themes](lessons/custom_themes.md)
 | 11:05 - 11:45	| [Creating consistent plots with defined color palettes]

@@ -10,7 +10,7 @@ Approximate time: 20 minutes
 
 * Explain how to create custom themes to facilitate consistency between plots.
 
-# Consistent formatting using custom functions
+# Consistent formatting using custom themes
 
 When publishing, it is helpful to ensure plots have consistent formatting. To do this we can create a custom function with our preferences for the theme. Remember the structure of a function is:
 

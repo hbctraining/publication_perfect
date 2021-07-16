@@ -92,13 +92,13 @@ Looks good! Let's make our boxplot!
 6. Assign plot to a variable called `boxplot_Pax6`.
 7. Perform steps 1-5 for the genes "Eomes", "Tubb3", and "Prdm16", and assign the plots to the variables `boxplot_Eomes`, `boxplot_Tubb3`, and `boxplot_Prdm16`.
 
-**After running the above code the boxplots should look something like that provided below.**
+**After running the above code the boxplots should look something like the plots below.**
 
 <p align="center">
 <img src="../img/gene_boxplots.png" width="600">
 </p>
 
-We will explore how to customize the order of samples on the x-axis and how to customize the colors for these boxplots in the next lesson.
+We will explore how to customize the order of samples on the x-axis for these boxplots in the next lesson.
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

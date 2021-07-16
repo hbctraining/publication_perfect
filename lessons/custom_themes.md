@@ -119,7 +119,7 @@ volcano_RG <- ggplot(results) +
   xlim(c(-3,3.5))
 ```
 
-We need to create two additional volcano plots that should look very similar to this plot for the 'Intermediate progenitors' and the 'Cortical neurons'. To ensure consistency between our plots, it can be helpful to create custom themes.
+We need to create two additional volcano plots that should look very similar to this plot for the **'Intermediate progenitors'** and the **'Cortical neurons'**. To ensure consistency between our plots, it can be helpful to create custom themes.
 
 ***
 

@@ -34,19 +34,19 @@ Researchers interested in using R to create publication-ready figures.
 
 ## Schedule
 
-| Time | Topic | Instructor |
-:-----------------------|:-------------|:----------|
-| 9:00 - 9:10	| Introduce the instructors and scope of the workshop (lecture)| 
-| 9:10 - 9:30	| Introduce the dataset (discussion) [Discuss how to determine appropriate plotting methods for your data & Describe the types of relevant plots you would like to include/create]
-| 9:30 - 10:15 	| [Basic ggplot2 syntax and creating a basic plot](lessons/ggplot2_syntax.md)
-| 10:15 - 10:45	| Coffee break
-| 10:45 - 11:05	| [Consistent plots with custom themes](lessons/custom_themes.md)
-| 11:05 - 11:45 | [Application of plotting basics](lessons/boxplot_application_of_basic_plotting.md)
-| 11:45 - 12:15	| [Consistent plots with defined color palettes]
-| 12:15 - 13:30	| Lunch
-| 11:45 - 12:15	| [Consistent plots with defined color palettes]
-| 11:45 - 12:15	| Introduce features of cowplot for aligning/facetting and labeling plots (live coding)
-| 13:30 - 14:15	| Introduce features of ggpubr for adding statistical comparisons and ordering of plots (live coding)
-| 15:10 - 15:50	| Practice by changing code to adhere to a journal’s figure requirements (live coding)
-| 15:50 - 16:00	| Wrap-up and exit survey (lecture)
+| Time | Topic |
+:-----------------------|:-------------|
+| 9:00 - 9:10	| Introduce the instructors and scope of the workshop (lecture) | 
+| 9:10 - 9:30	| Introduce the dataset (discussion) [Discuss how to determine appropriate plotting methods for your data & Describe the types of relevant plots you would like to include/create] | 
+| 9:30 - 10:15 	| [Basic ggplot2 syntax and creating a basic plot](lessons/ggplot2_syntax.md) | 
+| 10:15 - 10:45	| Coffee break | 
+| 10:45 - 11:05	| [Consistent plots with custom themes](lessons/custom_themes.md) | 
+| 11:05 - 11:45 | [Application of plotting basics](lessons/boxplot_application_of_basic_plotting.md) | 
+| 11:45 - 12:15	| [Consistent plots with defined color palettes] | 
+| 12:15 - 13:30	| Lunch | 
+| 11:45 - 12:15	| [Consistent plots with defined color palettes] | 
+| 11:45 - 12:15	| Introduce features of cowplot for aligning/facetting and labeling plots (live coding) | 
+| 13:30 - 14:15	| Introduce features of ggpubr for adding statistical comparisons and ordering of plots (live coding) | 
+| 15:10 - 15:50	| Practice by changing code to adhere to a journal’s figure requirements (live coding) | 
+| 15:50 - 16:00	| Wrap-up and exit survey (lecture) | 
 

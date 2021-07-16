@@ -1,7 +1,7 @@
 ---
 title: "Plotting and data visualization in R"
-author: "Mary Piper, Meeta Mistry, Radhika Khetani"
-date: "Wednesday, December 4, 2019"
+author: "Mary Piper, Meeta Mistry, Radhika Khetani, Jihe Liu"
+date: "Friday, July 16, 2021"
 ---
 
 Approximate time: 60 minutes
@@ -88,9 +88,18 @@ Looks good! Let's make our boxplot!
 2. Use the `geom_boxplot()` layer to plot the differences in normalized counts between the groups (neg:WT, Pax6:WT, Tbr2:WT).
 3. Use the `fill` *aesthetic* to look at differences between groups (neg:WT, Pax6:WT, Tbr2:WT).
 4. Add a title, y-axis title and axis labels matching the published figure.
-5. Use your personal theme to keep your plots consistent.
-6. Assign plot to a variable called `boxplot_Pax6`.
-7. Perform steps 1-5 for the genes "Eomes", "Tubb3", and "Prdm16", and assign the plots to the variables `boxplot_Eomes`, `boxplot_Tubb3`, and `boxplot_Prdm16`.
+5. Re-factor the x-axis variable 'group' to be in the same order as the paper using the following code:
+	
+	```r
+	### Re-factor the x-axis variable 'group' to be in the correct order
+	pax6_exp$group <- factor(pax6_exp$group, levels = c("Pax6:WT", "Tbr2:WT", "neg:WT"))
+	```
+	
+7. Change names of the x-axis labels to those in the figure using the `scale_x_discrete()` function (this [resource](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels) could be helpful)
+8. Change the angle of the x-axis labels to match the published figure using the `theme()` function (#7 resource above can be helpful here too)
+9. Use your personal theme to keep your plots consistent.
+10. Assign plot to a variable called `boxplot_Pax6`.
+11. Perform steps 1-5 for the genes "Eomes", "Tubb3", and "Prdm16", and assign the plots to the variables `boxplot_Eomes`, `boxplot_Tubb3`, and `boxplot_Prdm16`.
 
 **After running the above code the boxplots should look something like the plots below.**
 
@@ -98,7 +107,6 @@ Looks good! Let's make our boxplot!
 <img src="../img/gene_boxplots.png" width="600">
 </p>
 
-We will explore how to customize the order of samples on the x-axis for these boxplots in the next lesson.
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

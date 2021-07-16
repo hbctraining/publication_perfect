@@ -74,10 +74,10 @@ Looks good! Let's make our boxplot!
 
 ### 1. Boxplot!
 
-Generate a boxplot using the data in the `expression_plot` dataframe for the `Pax6` gene.
+Generate the boxplots using the data in the `expression_plot` dataframe.
 
 
-Create a ggplot2 code chunk with the following instructions:
+Create the boxplots by following the instructions below:
 
 1. Filter `expression_plot` for the `Pax6` gene to plot.
 	
@@ -87,8 +87,7 @@ Create a ggplot2 code chunk with the following instructions:
   	filter(geneSymbol == "Pax6" &
                genotype == "WT")
 	       
-	```
-	
+	```	
 2. Use the `geom_boxplot()` layer to plot the differences in sample means between the Wt and KO genotypes.
 3. Use the `fill` *aesthetic* to look at differences in sample means between the celltypes within each genotype.
 4. Add a title to your plot.

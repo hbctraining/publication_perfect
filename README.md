@@ -41,7 +41,7 @@ Researchers interested in using R to create publication-ready figures.
 | 9:30 - 10:15 	| [Basic ggplot2 syntax and creating a basic plot](lessons/ggplot2_syntax.md)
 | 10:15 - 10:45	| Coffee break
 | 10:45 - 11:05	| [Consistent plots with custom themes](lessons/custom_themes.md)
-| 11:05 - 11:45 | [Application of plotting basics]
+| 11:05 - 11:45 | [Application of plotting basics](lessons/boxplot_application_of_basic_plotting.md)
 | 11:45 - 12:15	| [Consistent plots with defined color palettes]
 | 12:15 - 13:30	| Lunch
 | 11:45 - 12:15	| [Consistent plots with defined color palettes]

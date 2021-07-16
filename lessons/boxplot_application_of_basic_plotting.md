@@ -96,7 +96,7 @@ Looks good! Let's make our boxplot!
 	```
 	
 7. Change names of the x-axis labels to those in the figure using the `scale_x_discrete()` function (this [resource](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels) could be helpful)
-8. Change the angle of the x-axis labels to match the published figure using the `theme()` function (this [resource](https://ggplot2.tidyverse.org/reference/element.html) can be helpful as well as the #7 resource above)
+8. Change the angle of the x-axis labels to match the published figure using the `theme()` function (this [resource](https://ggplot2.tidyverse.org/reference/element.html) can be helpful as well as the #6 resource above)
 9. Use your personal theme to keep your plots consistent.
 10. Assign plot to a variable called `boxplot_Pax6`.
 11. Perform steps 1-5 for the genes "Eomes", "Tubb3", and "Prdm16", and assign the plots to the variables `boxplot_Eomes`, `boxplot_Tubb3`, and `boxplot_Prdm16`.

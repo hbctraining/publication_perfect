@@ -40,8 +40,9 @@ Researchers interested in using R to create publication-ready figures.
 | 9:10 - 9:30	| Introduce the dataset (discussion) [Discuss how to determine appropriate plotting methods for your data & Describe the types of relevant plots you would like to include/create]
 | 9:30 - 10:15 	| [Explore ggplot2 syntax and plot](lessons/ggplot2_syntax.md)
 | 10:15 - 10:45	| Coffee break
-| 10:45 - 11:45	| Discuss creating consistent plots (live coding) [Create functions for themes to use with all figures &	Define color palettes to keep colors consistent]
-| 11:45 - 12:15	| Introduce features of cowplot for aligning and labeling plots (live coding)
+| 10:45 - 11:05	| [Creating consistent plots with custom themes](lessons/custom_themes.md)
+| 11:05 - 11:45	| [Creating consistent plots with defined color palettes]
+| 11:45 - 12:15	| Introduce features of cowplot for aligning/facetting and labeling plots (live coding)
 | 2:15 - 13:30	| Lunch
 | 13:30 - 14:15	| Introduce features of ggpubr for adding statistical comparisons and ordering of plots (live coding)
 | 14:15 - 15:10	| Practice by walking through re-creating published/provided figure(s) (live coding)

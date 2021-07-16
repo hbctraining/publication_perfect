@@ -1,4 +1,16 @@
-## Consistent formatting using custom functions
+---
+title: "Creating consistent plots with custom themes"
+author: "Mary Piper, Meeta Mistry, Radhika Khetani, Jihe Liu"
+date: "Friday, July 16th, 2021"
+---
+
+Approximate time: 20 minutes
+
+## Learning Objectives 
+
+* Explain how to create custom themes to facilitate consistency between plots.
+
+# Consistent formatting using custom functions
 
 When publishing, it is helpful to ensure plots have consistent formatting. To do this we can create a custom function with our preferences for the theme. Remember the structure of a function is:
 
@@ -113,7 +125,7 @@ We need to create two additional volcano plots that should look very similar to 
 
 **Exercise**
 
-Create the volcano plots for the 'Intermediate progenitors' and the 'Cortical neurons' by using the `tbr_` and `neg_` columns, respectively. Save the plots to the variables `volcano_IP` and `volcano_neu`.
+Using your `personal_theme()`, create volcano plots for the 'Intermediate progenitors' and the 'Cortical neurons' by using the `tbr_` and `neg_` columns in the `results` data frame, respectively. Save the plots to the variables `volcano_IP` and `volcano_neu`.
 
 ***
 

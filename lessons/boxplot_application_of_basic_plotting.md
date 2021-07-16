@@ -72,12 +72,9 @@ View(expression_plot)
 
 Looks good! Let's make our boxplot!
 
-### 1. Boxplot!
+## Boxplot!
 
-Generate the boxplots using the data in the `expression_plot` dataframe.
-
-
-Create the boxplots by following the instructions below:
+**Create the boxplots by following the instructions below:**
 
 1. Filter `expression_plot` for the `Pax6` gene to plot.
 	
@@ -88,40 +85,20 @@ Create the boxplots by following the instructions below:
                genotype == "WT")
 	       
 	```	
-2. Use the `geom_boxplot()` layer to plot the differences in sample means between the Wt and KO genotypes.
-3. Use the `fill` *aesthetic* to look at differences in sample means between the celltypes within each genotype.
-4. Add a title to your plot.
-5. Add labels, 'Genotype' for the x-axis and 'Mean expression' for the y-axis.
-6. Make the following `theme()` changes:
-	* Use the `theme_bw()` function to make the background white.
-	* Change the size of your axes labels to 1.25x larger than the default.
-	* Change the size of your plot title to 1.5x larger than default.
-	* Center the plot title.
+2. Use the `geom_boxplot()` layer to plot the differences in normalized counts between the groups (neg:WT, Pax6:WT, Tbr2:WT).
+3. Use the `fill` *aesthetic* to look at differences between groups (neg:WT, Pax6:WT, Tbr2:WT).
+4. Add a title, y-axis title and axis labels matching the published figure.
+5. Use your personal theme to keep your plots consistent.
+6. Assign plot to a variable called `boxplot_Pax6`.
+7. Perform steps 1-5 for the genes "Eomes", "Tubb3", and "Prdm16", and assign the plots to the variables `boxplot_Eomes`, `boxplot_Tubb3`, and `boxplot_Prdm16`.
 
-**After running the above code the boxplot should look something like that provided below.**
+**After running the above code the boxplots should look something like that provided below.**
 
 <p align="center">
-<img src="../img/ggboxplot_flip.png" width="600">
+<img src="../img/gene_boxplots.png" width="600">
 </p>
 
-### 2. Changing default colors
-
-You can color the boxplot differently by using some specific layers:
-
-1. Add a new layer `scale_color_manual(values=c("purple","orange"))`. 
-	* Do you observe a change?
-2. Replace `scale_color_manual(values=c("purple","orange"))` with `scale_fill_manual(values=c("purple","orange"))`.
-	* Do you observe a change?
-	* In the scatterplot we drew in class, add a new layer `scale_color_manual(values=c("purple","orange"))`, do you observe a difference?
-	* What do you think is the difference between `scale_color_manual()` and `scale_fill_manual()`?
-3. Back in your boxplot code, change the colors in the `scale_fill_manual()` layer to be your 2 favorite colors.
-	* Are there any colors that you tried that did not work? 
-
-You are not restricted to using colors by writing them out as character vectors. You have the choice of a lot of colors in R, and you can do so by using their *hexadecimal code*. For example, "#FF0000" would be red and "#00FF00" would be green similarly, "#FFFFFF" would be white and "#000000" would be black. [click here for more information about color palettes in R](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#hexadecimal-color-code-chart).
-
-**OPTIONAL Exercise:**
-
-* Find the hexadecimal code for your 2 favourite colors (from exercise 3 above) and replace the color names with the hexadecimal codes within the ggplot2 code chunk.
+We will explore how to customize the order of samples on the x-axis and how to customize the colors for these boxplots in the next lesson.
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

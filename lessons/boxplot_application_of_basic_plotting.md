@@ -33,7 +33,7 @@ To create this visualization, we need our `normalized_counts` data. Let's take a
 View(normalized_counts)
 ```
 
-We see that each sample is a column in the data frame and every gene is a row. We want to compare the normalized counts between samples using the boxplot, but it is important to note that `ggplot2` requires all data that is to be assigned to x- or y-coordinates (or any other plotting variable) are stored in a single column of the data frame. Since the normalized counts values of each sample is stored in a different column, we need to 'gather' these columns together into a single column before we can plot them. To do this we can use a handy `tidyr` function called `pivot_longer()`.
+We see that each sample is a column in the data frame and every gene is a row. We want to compare the **normalized counts between samples** using the boxplot, but it is important to note that `ggplot2` requires data that is to be assigned to x- or y-coordinates (or any other plotting variable) is stored as a single column in the data frame. Since the normalized counts values of each sample is stored in a different column, we need to 'gather' these columns together into a single column before we can plot them. To do this we can use a handy `tidyr` function called `pivot_longer()`.
 
 The syntax for `pivot_longer()` is:
 
@@ -41,7 +41,7 @@ The syntax for `pivot_longer()` is:
 # Syntax for `pivot_longer()` function
 pivot_longer(input_data_frame,
              cols = columns_to_gather_together,
-             names_to = "name_for_column_of_gathered_columns",
+             names_to = "name_for_column_of_gathered_column_names",
              values_to = "name_for_column_of_gathered_values")
 ```
 
@@ -49,7 +49,7 @@ For our `normalized_counts` data frame, we want to gather all of the normalized 
 
 ```r
 # Gather values to plot into a single column
-expression_plot <- pivot_longer(pax6_expression,
+expression_plot <- pivot_longer(normalized_counts,
                                 cols = 2:25,
                                 names_to = "samples",
                                 values_to = "normalized_counts")
@@ -64,7 +64,7 @@ expression_plot <- left_join(x = expression_plot,
                              by = "samples")
 ```
 
-Now we should be ready to create our boxplot. Make sure we have all information for normalized counts and cell types in a single column before we proceed:
+Now we should be ready to create our boxplot. Let's make sure we have all information for normalized counts and sample groups (`group`) in a single column before we proceed:
 
 ```r
 View(expression_plot)

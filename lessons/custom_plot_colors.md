@@ -1,6 +1,6 @@
 # Consistent formatting using custom colors
 
-When using `ggplot2`, we have observed default colors assigned whenever we use the `color` or `fill` arguments. While the default colors may be fine for some applications, they are often not sufficient to highlight the relationships of interest within our plot. There are cheatsheets available for specifying the base R colors by [name](https://greggilbertlab.sites.ucsc.edu/teaching/rtransition/) or [hexadecimal](http://www.r-graph-gallery.com/41-value-of-the-col-function/) code. We could specify other colors available or use pre-created color palettes from external R packages. 
+When using `ggplot2`, we have observed default colors assigned whenever we use the `color` or `fill` arguments. While the default colors may be fine for some applications, they are often not sufficient to highlight the relationships of interest within our plot. There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal](http://www.r-graph-gallery.com/41-value-of-the-col-function/) code. We could specify other colors available or use pre-created color palettes from external R packages. 
 
 Since the goal of this workshop is 'publication quality' plots, we should be aware of the significant portion of our population who are color-blind. To encourage use of color-blind friendly color choices, we will focus our attention to these palettes. We will identify those palettes from the packages `RColorBrewer` and `viridis`. 
 

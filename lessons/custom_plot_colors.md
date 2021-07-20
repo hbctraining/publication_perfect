@@ -32,6 +32,11 @@ The output is separated into three sections based on the suggested palettes for 
 
 Let's explore changing the colors of our boxplot (shown below), created in the previous lesson. 
 
+```r
+# Visualize the Pax6 boxplot
+boxplot_Pax6
+```
+
 <p align="center">
 <img src="../img/Pax6_boxplot.png" width="800">
 </p>
@@ -67,10 +72,21 @@ mypalette <- brewer.pal(3, "Dark2")
 mypalette
 ```
 
-Those colors look okay, so let's test them in our plot. We can add a color scale layer, and most often one of the following two scales will work:
+Those colors look okay, so let's test them in our plot. We can add a fill scale layer, and most often one of the following two scales will work:
 
 - **`scale_color_manual()`:** for categorical data or quantiles
 - **`scale_color_gradient()` family:** for continuous data. 
+
+For our categorical data, we will add the `scale_fill_manual()` layer, specifying the desired color values.
+
+> _**NOTE:** When we created our plot initially, we used the `fill` argument within the `aes()` function, therefore, to change the colors of these groups, we need to use the `scale_fill_manual()`. If we had used the `color` argument within the `aes()` function, then we would have to use the `scale_color_manual()`._
+
+```r
+boxplot_Pax6 +
+  scale_fill_manual(values = mypalette)
+```
+
+
 
 By default, `scale_color_gradient()` creates a two color gradient from low to high. Since we plan to use more colors, we will use the more flexible `scale_color_gradientn()` function. To make the legend a bit cleaner, we will also perform a -log10 transform on the p-values (higher values means more significant).
 

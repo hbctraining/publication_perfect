@@ -1,17 +1,21 @@
 # Consistent formatting using custom colors
 
-When using `ggplot2`, we have observed default colors assigned whenever we use the `color` or `fill` arguments. While the default colors may be fine for some applications, they are often not sufficient to highlight the relationships of interest within our plot. There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal](http://www.r-graph-gallery.com/41-value-of-the-col-function/) code. We could specify other colors available or use pre-created color palettes from external R packages. 
+When using `ggplot2`, we have observed default colors assigned whenever we use the `color` or `fill` arguments. While the default colors may be fine for some applications, they are often not sufficient to highlight the relationships of interest within our plot. There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal]() code. We could specify other colors available or use pre-created color palettes from external R packages. This [R Graph Gallery site](http://www.r-graph-gallery.com/ggplot2-color.html) has a nice interactive app for exploring how to find and incorporate desired colors into your code.
 
-Since the goal of this workshop is 'publication quality' plots, we should be aware of the significant portion of our population who are color-blind. To encourage use of color-blind friendly color choices, we will focus our attention to these palettes. We will identify those palettes from the packages `RColorBrewer` and `viridis`. 
+Since the goal of this workshop is 'publication quality' plots, we should be aware of the significant portion of our population who are color-blind. To encourage use of color-blind friendly color choices, we will focus our attention on these palettes. We will identify those palettes from the packages `RColorBrewer` and `viridis`. 
 
+## RColorBrewer palettes
 
-
-To make additional color palettes available for plotting, we can load the RColorBrewer library, which contains color palettes designed specifically for the different types of data being compared.
+First, we need to load the `RColorBrewer` library, which contains color palettes designed specifically for the different types of data being compared. 
 
 ```r
 # Load the RColorBrewer library
 library(RColorBrewer)
+```
 
+Let's explore the different palettes available.
+
+```r
 # Check the available color palettes
 display.brewer.all()
 ```
@@ -26,7 +30,7 @@ The output is separated into three sections based on the suggested palettes for 
 - **Qualitative palettes (middle):** For categorical data, where the color does not denote differences in magnitude or value.
 - **Diverging palettes (bottom):** For data with emphasis on mid-range values and extremes.
 
-Since our adjusted p-values are sequential, we will choose from these palettes. Let's go with the "Yellow, orange, red" palette. We can choose how many colors from the palette to include, which may take some trial and error. We can test the colors included in a palette by using the `display.brewer.pal()` function, and changing if desired:
+If our plotted values were sequential, we would choose from these palettes. Let's explore what the "Yellow, orange, red" palette looks like. We can choose how many colors from the palette to include, which may take some trial and error. We can test the colors included in a palette by using the `display.brewer.pal()` function, and changing if desired:
 
 ```r
 # Testing the palette with six colors

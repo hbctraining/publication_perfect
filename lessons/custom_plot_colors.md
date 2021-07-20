@@ -30,21 +30,38 @@ The output is separated into three sections based on the suggested palettes for 
 - **Qualitative palettes (middle):** For categorical data, where the color does not denote differences in magnitude or value.
 - **Diverging palettes (bottom):** For data with emphasis on mid-range values and extremes.
 
-If our plotted values were sequential, we would choose from these palettes. Let's explore what the "Yellow, orange, red" palette looks like. We can choose how many colors from the palette to include, which may take some trial and error. We can test the colors included in a palette by using the `display.brewer.pal()` function, and changing if desired:
+Let's explore changing the colors of our boxplot (shown below), created in the previous lesson. 
 
-```r
-# Testing the palette with six colors
-display.brewer.pal(6, "YlOrRd")
-```
+<p align="center">
+<img src="../img/Pax6_boxplot.png" width="800">
+</p>
 
-The yellow might be a bit too light, and we might not need so many different colors. Let's test with three different colors:
+The boxplot is colored by group, which is a categorical variable. Therefore, we will likely choose a **Qualitative palette**. We can choose how many colors from the palette to include, which for our data will be three colors (one for each group). Let's choose the **Dark2** palette and see how we like it. We can test the colors included in a palette by using the `display.brewer.pal()` function, and changing if desired:
 
 ```r
 # Testing the palette with three colors
-display.brewer.pal(3, "YlOrRd")
+display.brewer.pal(3, "Set1")
+```
 
+These colors do a nice job of differentiating between groups; however, they are not color-blind friendly. There is an argument within the `display.brewer.all()` function called `colorblindFriendly`. We can set this to `TRUE` to return the color-blind friendly palettes, and choose from there.
+
+```r
+# Finding color-blind friendly palettes
+display.brewer.all(colorblindFriendly = TRUE)
+```
+
+We have a much more limited set of **Qualitative palettes** to choose from for our categorical data, and we no longer see the 'Set1' as an option to choose. Let's choose the 'Dark2' color-blind friendly palette.
+
+```r
+# Testing a color-blind friendly palette with three colors
+display.brewer.pal(3, "Dark2")
+```
+
+To use this palette in our plots, we need to define it with `brewer.pal()` and save it to a variable called `mypalette`.
+
+```r
 # Define a palette
-mypalette <- brewer.pal(3, "YlOrRd")
+mypalette <- brewer.pal(3, "Dark2")
 
 # how are the colors represented in the mypalette vector?
 mypalette

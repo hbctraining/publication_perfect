@@ -1,6 +1,44 @@
 # Consistent formatting using custom colors
 
-When using `ggplot2`, we have observed default colors assigned whenever we use the `color` or `fill` arguments. While the default colors may be fine for some applications, they are often not sufficient to highlight the relationships of interest within our plot or are not optimal for the intended audience/publication. There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal]() code. We can also use pre-created color palettes from external R packages. This [R Graph Gallery site](http://www.r-graph-gallery.com/ggplot2-color.html) has a nice interactive app for exploring how to find and incorporate desired colors into your plots.
+When using `ggplot2`, we have observed default values for our aesthetic mappings. For example, in our boxplot, the x- and y-axis labels and fill colors correspond to default values. By default, the column values in our data frame become the x- and y-axis labels and the colors assigned are a standard set. 
+
+While the defaults generally look okay, we often desire customization of these values.
+
+## Scales
+
+While the default colors may be fine for many applications, they are often not sufficient to highlight the relationships of interest within our plot or are not optimal for the intended audience/publication. There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal]() code. We could individually specify the colors by providing them with a scale layer.
+
+
+
+
+We can add a fill scale layer, and most often one of the following two scales will work:
+
+- **`scale_fill_manual()`:** for categorical data or quantiles
+- **`scale_fill_gradient()` family:** for continuous data. 
+
+For our categorical data, we will add the `scale_fill_manual()` layer, specifying the desired color values. 
+
+
+`scale_fill_manual()` layer.
+
+```r
+# Visualize the Pax6 boxplot with custom colors
+ggplot(pax6_exp) +
+  geom_boxplot(aes(x=group, y=normalized_counts, fill=group)) +
+  theme_bw() +
+  ylab('Normalized counts') +
+  xlab('') +
+  ggtitle("Pax6") +
+  personal_theme() +
+  scale_x_discrete(labels=c("Pax6:WT" = "Radial glia", "neg:WT" = "Neurons", "Tbr2:WT" = "Progenitors")) + 
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1)) +
+  scale_fill_manual(values = c("firebrick4", "lightbluesteel", "yellow2")
+```
+
+ 
+We can also use pre-created color palettes from external R packages. This [R Graph Gallery site](http://www.r-graph-gallery.com/ggplot2-color.html) has a nice interactive app for exploring how to find and incorporate desired colors into your plots.
 
 Since the goal of this workshop is 'publication quality' plots, we should be aware of the significant portion of our population who are color-blind. To encourage the use of color-blind friendly selections, we will focus our attention on these palettes. We will identify those palettes from the packages `RColorBrewer` and `viridis`. 
 
@@ -82,12 +120,7 @@ mypalette <- brewer.pal(3, "Dark2")
 mypalette
 ```
 
-Those colors look okay, so let's test them in our plot. We can add a fill scale layer, and most often one of the following two scales will work:
-
-- **`scale_fill_manual()`:** for categorical data or quantiles
-- **`scale_fill_gradient()` family:** for continuous data. 
-
-For our categorical data, we will add the `scale_fill_manual()` layer, specifying the desired color values. 
+Those colors look okay, so let's test them in our plot.
 
 ```r
 # Visualize the Pax6 boxplot with RColorBrewer palette

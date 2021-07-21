@@ -1,19 +1,19 @@
 # Consistent formatting using custom colors
 
-When using `ggplot2`, we have observed default colors assigned whenever we use the `color` or `fill` arguments. While the default colors may be fine for some applications, they are often not sufficient to highlight the relationships of interest within our plot. There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal]() code. We could specify other colors available or use pre-created color palettes from external R packages. This [R Graph Gallery site](http://www.r-graph-gallery.com/ggplot2-color.html) has a nice interactive app for exploring how to find and incorporate desired colors into your code.
+When using `ggplot2`, we have observed default colors assigned whenever we use the `color` or `fill` arguments. While the default colors may be fine for some applications, they are often not sufficient to highlight the relationships of interest within our plot or are not optimal for the intended audience/publication. There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal]() code. We can also use pre-created color palettes from external R packages. This [R Graph Gallery site](http://www.r-graph-gallery.com/ggplot2-color.html) has a nice interactive app for exploring how to find and incorporate desired colors into your plots.
 
-Since the goal of this workshop is 'publication quality' plots, we should be aware of the significant portion of our population who are color-blind. To encourage use of color-blind friendly color choices, we will focus our attention on these palettes. We will identify those palettes from the packages `RColorBrewer` and `viridis`. 
+Since the goal of this workshop is 'publication quality' plots, we should be aware of the significant portion of our population who are color-blind. To encourage the use of color-blind friendly selections, we will focus our attention on these palettes. We will identify those palettes from the packages `RColorBrewer` and `viridis`. 
 
 ## RColorBrewer palettes
 
-First, we need to load the `RColorBrewer` library, which contains color palettes designed specifically for the different types of data being compared. 
+We will start by exploring the `RColorBrewer` library, which contains color palettes designed specifically for the different types of data being compared, with palettes specifically highlighting sequential, qualitative, and diverging data. 
 
 ```r
 # Load the RColorBrewer library
 library(RColorBrewer)
 ```
 
-Let's explore the different palettes available.
+The available palettes can be viewed using the `display.brewer.all()` function:
 
 ```r
 # Check the available color palettes
@@ -24,27 +24,37 @@ display.brewer.all()
 <img src="../img/Rcolorbrewer_palettes.png" width="800">
 </p>
 
-The output is separated into three sections based on the suggested palettes for sequential, qualitative, and diverging data. 
+The palettes are separated into three sections based on the type of data: 
 
 - **Sequential palettes (top):** For sequential data, with lighter colors for low values and darker colors for high values.
 - **Qualitative palettes (middle):** For categorical data, where the color does not denote differences in magnitude or value.
 - **Diverging palettes (bottom):** For data with emphasis on mid-range values and extremes.
 
-Let's explore changing the colors of our boxplot (shown below), created in the previous lesson. 
+Let's explore changing the colors of our boxplot (shown below), created in the previous lesson using default colors. 
 
 ```r
 # Visualize the Pax6 boxplot
-boxplot_Pax6
+ggplot(pax6_exp) +
+  geom_boxplot(aes(x=group, y=normalized_counts, fill=group)) +
+  theme_bw() +
+  ylab('Normalized counts') +
+  xlab('') +
+  ggtitle("Pax6") +
+  personal_theme() +
+  scale_x_discrete(labels=c("Pax6:WT" = "Radial glia", "neg:WT" = "Neurons", "Tbr2:WT" = "Progenitors")) + 
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1))
 ```
 
 <p align="center">
 <img src="../img/Pax6_boxplot.png" width="800">
 </p>
 
-The boxplot is colored by group, which is a categorical variable. Therefore, we will likely choose a **Qualitative palette**. We can choose how many colors from the palette to include, which for our data will be three colors (one for each group). Let's choose the **Dark2** palette and see how we like it. We can test the colors included in a palette by using the `display.brewer.pal()` function, and changing if desired:
+The boxplot is colored by `group`, which is a categorical variable. Therefore, we will choose a **Qualitative palette** to assign contrasting colors to the groups. We can choose how many colors from the palette to include, which for our data will be three colors (one for each group). Let's choose the **Set1** palette and see how we like it. We can test the colors included in a palette by using the `display.brewer.pal()` function:
 
 ```r
-# Testing the palette with three colors
+# Testing the Set1 palette with three colors
 display.brewer.pal(3, "Set1")
 ```
 
@@ -62,7 +72,7 @@ We have a much more limited set of **Qualitative palettes** to choose from for o
 display.brewer.pal(3, "Dark2")
 ```
 
-To use this palette in our plots, we need to define it with `brewer.pal()` and save it to a variable called `mypalette`.
+To use this palette in our plots, we need to define it with `brewer.pal()` and we'll save it to a variable called `mypalette`.
 
 ```r
 # Define a palette
@@ -74,12 +84,31 @@ mypalette
 
 Those colors look okay, so let's test them in our plot. We can add a fill scale layer, and most often one of the following two scales will work:
 
-- **`scale_color_manual()`:** for categorical data or quantiles
-- **`scale_color_gradient()` family:** for continuous data. 
+- **`scale_fill_manual()`:** for categorical data or quantiles
+- **`scale_fill_gradient()` family:** for continuous data. 
 
 For our categorical data, we will add the `scale_fill_manual()` layer, specifying the desired color values.
 
-> _**NOTE:** When we created our plot initially, we used the `fill` argument within the `aes()` function, therefore, to change the colors of these groups, we need to use the `scale_fill_manual()`. If we had used the `color` argument within the `aes()` function, then we would have to use the `scale_color_manual()`._
+> _**NOTE:** When we created our plot, we used the `fill` argument within the `aes()` function, therefore, to change the colors of these groups, we need to use the `scale_fill_manual()`. If we had used the `color` argument within the `aes()` function, then we would have to use the `scale_color_manual()`._
+> See how it would change our plot if we had used the `color` argument instead:
+> ```r
+> # Visualize the Pax6 boxplot
+> ggplot(pax6_exp) +
+>   geom_boxplot(aes(x=group, y=normalized_counts, **color=group**)) +
+>   theme_bw() +
+>   ylab('Normalized counts') +
+>   xlab('') +
+>   ggtitle("Pax6") +
+>   personal_theme() +
+>   scale_x_discrete(labels=c("Pax6:WT" = "Radial glia", "neg:WT" = "Neurons", "Tbr2:WT" = "Progenitors")) + 
+>   theme(axis.text.x = element_text(angle = 45, 
+>                                    vjust = 1, 
+>                                    hjust = 1)) +
+>   **scale_color_manual**(values = mypalette)
+> ```
+>
+> The same 'scale_manual' syntax can be used to change the features of other mappings within the aesthetics, such as size, shape, line type or alpha. More information can be found using `?scale_manual`.
+
 
 ```r
 boxplot_Pax6 +

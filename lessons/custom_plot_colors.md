@@ -87,14 +87,35 @@ Those colors look okay, so let's test them in our plot. We can add a fill scale 
 - **`scale_fill_manual()`:** for categorical data or quantiles
 - **`scale_fill_gradient()` family:** for continuous data. 
 
-For our categorical data, we will add the `scale_fill_manual()` layer, specifying the desired color values.
+For our categorical data, we will add the `scale_fill_manual()` layer, specifying the desired color values. 
 
-> _**NOTE:** When we created our plot, we used the `fill` argument within the `aes()` function, therefore, to change the colors of these groups, we need to use the `scale_fill_manual()`. If we had used the `color` argument within the `aes()` function, then we would have to use the `scale_color_manual()`._
-> See how it would change our plot if we had used the `color` argument instead:
+```r
+# Visualize the Pax6 boxplot with RColorBrewer palette
+ggplot(pax6_exp) +
+  geom_boxplot(aes(x=group, y=normalized_counts, fill=group)) +
+  theme_bw() +
+  ylab('Normalized counts') +
+  xlab('') +
+  ggtitle("Pax6") +
+  personal_theme() +
+  scale_x_discrete(labels=c("Pax6:WT" = "Radial glia", "neg:WT" = "Neurons", "Tbr2:WT" = "Progenitors")) + 
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1)) +
+  scale_fill_manual(values = mypalette)
+```
+
+
+Note that the same 'scale_manual' and 'scale_gradient' syntax can be used to change the features of other mappings within the aesthetics, such as `color`, `size`, `shape`, `linetype`, or `alpha`. More information can be found using `?scale_manual`. In addition, the [ggplot2 book](https://ggplot2-book.org/scales-guides.html) discusses scales in great detail and how they can be used to alter the mapping aesthetics.
+
+> _**NOTE:** When we created our plot, we used the `fill` argument within the `aes()` function; therefore, to change the colors of these groups, we need to use the `scale_fill_manual()`. If we had used the `color` argument within the `aes()` function, we would use the `scale_color_manual()`._
+> 
+> Let's see how it would change our plot if we had used the `color` argument instead:
+> 
 > ```r
 > # Visualize the Pax6 boxplot
 > ggplot(pax6_exp) +
->   geom_boxplot(aes(x=group, y=normalized_counts, **color=group**)) +
+>   geom_boxplot(aes(x=group, y=normalized_counts, color=group)) +
 >   theme_bw() +
 >   ylab('Normalized counts') +
 >   xlab('') +
@@ -104,16 +125,15 @@ For our categorical data, we will add the `scale_fill_manual()` layer, specifyin
 >   theme(axis.text.x = element_text(angle = 45, 
 >                                    vjust = 1, 
 >                                    hjust = 1)) +
->   **scale_color_manual**(values = mypalette)
+>   scale_color_manual(values = mypalette)
 > ```
->
-> The same 'scale_manual' syntax can be used to change the features of other mappings within the aesthetics, such as size, shape, line type or alpha. More information can be found using `?scale_manual`.
 
+These colors look nice and are color-blind friendly, so would be great for publication and presentations; however, often readers will print out our articles in black and white. The chosen palette is unlikely to show much difference in color for black-and-white publication. 
 
-```r
-boxplot_Pax6 +
-  scale_fill_manual(values = mypalette)
-```
+## Viridis palettes
+
+The viridis palettes represent good choices for color-blind friendly palettes and printing in black-and-white.
+
 
 
 

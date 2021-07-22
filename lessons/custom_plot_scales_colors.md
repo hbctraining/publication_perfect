@@ -8,6 +8,8 @@ While the defaults tend to look okay, we often desire customization of these val
 
 In `ggplot2`, scales control how the data is visualized on the plot, including how the data points look (size, shape, transparency, color, fill, etc), as well as, the appearance of the axes and legends. The ggplot2 book devotes an [entire section](https://ggplot2-book.org/scales.html) of chapters to scales, and understanding them will help make the ggplot2 syntax more intuitive.
 
+### Position and axes
+
 The first set of scales correspond to position and axes. For x- and y-axis scales, we can use the scale specific to our data to alter limits, breaks and tick mark labels. The most common scales are for discrete and continuous axis data:
 
 * `scale_x_continuous()`: for continuous x-axis values
@@ -22,8 +24,66 @@ There are also a few scales for common transformations and modifications often u
 * `scale_x_sqrt()`
 * `scale_x_binned()`
 
-Using these position or axis scales, we often desire to alter the axis limits (`limits`), axis breaks (`breaks`), and tick labels (`labels`).
+Using these position or axis scales, we often desire to alter the axis limits (`limits`), axis breaks where the ticks are labeled (`breaks`), and tick labels (`labels`). Using the `scale_` functions, we can alter the **content** of the axes and ticks; however, it is worth noting that the **look and style** of the axes and labels are still altered within the `theme()` function.
 
+Let's change the names of the x-axis labels to match the figure in the paper shown below.
+
+<p align="center">
+<img src="../img/published_Pax6_boxplot.png" width="800">
+</p>
+
+We'll remind ourselves what our current boxplot looks like:
+
+```r
+ggplot(pax6_exp) +
+  geom_boxplot(aes(x=group, 
+                   y=normalized_counts, 
+                   fill=group)) +
+  theme_bw() +
+  ylab('Normalized counts') +
+  xlab('') +
+  ggtitle("Pax6") +
+  personal_theme() +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1))
+```
+
+Let's add a layer to our ggplot code to rename the labels on the x-axis. What scale function do you think we should use?
+
+```r
+# Boxplot with renamed x-axis values
+ggplot(pax6_exp) +
+  geom_boxplot(aes(x=group, 
+                   y=normalized_counts, 
+                   fill=group)) +
+  theme_bw() +
+  ylab('Normalized counts') +
+  xlab('') +
+  ggtitle("Pax6") +
+  personal_theme() +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1)) +
+  scale_x_discrete(labels=c("Pax6:WT" = "Radial glia",
+                            "neg:WT" = "Neurons", 
+                            "Tbr2:WT" = "Progenitors"))
+```
+
+***
+
+**Exercises**
+
+Let's explore the other graphical elements using the position scales.
+
+1. Change the limits of the **y-axis** to range from 0 to 100 and have breaks (where the ticks are labeled) to be every 20 instead of every 10.
+2. Use a log10 scale for the **y-axis** using a `scale_` function.
+3. Reverse the order of the **y-axis** using a `scale_` function.
+
+***
+
+
+###
 
 While the default colors may be fine for many applications, they are often not sufficient to highlight the relationships of interest within our plot or are not optimal for the intended audience/publication. There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal]() code. We could individually specify the colors by providing them with a scale layer.
 

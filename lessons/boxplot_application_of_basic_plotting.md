@@ -64,10 +64,31 @@ expression_plot <- left_join(x = expression_plot,
                              by = "samples")
 ```
 
-Now we should be ready to create our boxplot. Let's make sure we have all information for normalized counts and sample groups (`group`) in a single column before we proceed:
+Lastly, we need to filter `expression_plot` for the genes of interest: `Pax6`, `Eomes`, `Tubb3` and `Prdm16`, to create separate plots for each gene. We will start to create the boxplot for the Pax6 gene in this lesson, then finish the Pax6 boxplot in subsequent lessons, followed with boxplots for the other genes.
+	
+	```r
+	### Extract normalized counts for specific genes to plot
+	pax6_exp <- expression_plot %>%
+  	filter(geneSymbol == "Pax6" &
+               genotype == "WT")
+	       
+	eomes_exp <- expression_plot %>%
+  	filter(geneSymbol == "Eomes" &
+               genotype == "WT")
+	
+	tubb3_exp <- expression_plot %>%
+  	filter(geneSymbol == "Tubb3" &
+               genotype == "WT")
+	
+	prdm16_exp <- expression_plot %>%
+  	filter(geneSymbol == "Prdm16" &
+               genotype == "WT")       
+	```
+	
+Now we should be ready to create our Pax6 boxplot. Let's make sure we have all information for normalized counts and sample groups (`group`) in a single column before we proceed:
 
 ```r
-View(expression_plot)
+View(pax6_exp)
 ```
 
 Looks good! Let's make our boxplot!
@@ -76,30 +97,18 @@ Looks good! Let's make our boxplot!
 
 **Create the boxplots by following the instructions below:**
 
-1. Filter `expression_plot` for the `Pax6` gene to plot.
-	
-	```r
-	### Extract normalized counts for specific gene to plot
-	pax6_exp <- expression_plot %>%
-  	filter(geneSymbol == "Pax6" &
-               genotype == "WT")
-	       
-	```	
-2. Use the `geom_boxplot()` layer to plot the differences in normalized counts between the groups (neg:WT, Pax6:WT, Tbr2:WT).
-3. Use the `fill` *aesthetic* to look at differences between groups (neg:WT, Pax6:WT, Tbr2:WT).
-4. Add a title, y-axis title and axis labels matching the published figure.
-5. Re-factor the x-axis variable 'group' to be in the same order as the paper using the following code:
+1. Create a boxplot using the `geom_boxplot()` layer to plot the normalized counts of the different groups (neg:WT, Pax6:WT, Tbr2:WT).
+2. Use the `fill` *aesthetic* to look at differences between groups (neg:WT, Pax6:WT, Tbr2:WT).
+3. Add a title, y-axis title and axis labels matching the published figure.
+4. Re-factor the x-axis variable 'group' to be in the same order as the paper using the following code:
 	
 	```r
 	### Re-factor the x-axis variable 'group' to be in the correct order
 	pax6_exp$group <- factor(pax6_exp$group, levels = c("Pax6:WT", "Tbr2:WT", "neg:WT"))
 	```
 	
-7. Change names of the x-axis labels to those in the figure using the `scale_x_discrete()` function (this [resource](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels) could be helpful)
-8. Change the angle of the x-axis labels to match the published figure using the `theme()` function (this [resource](https://ggplot2.tidyverse.org/reference/element.html) can be helpful as well as the #6 resource above)
-9. Use your personal theme to keep your plots consistent.
-10. Assign plot to a variable called `boxplot_Pax6`.
-11. Perform steps 1-5 for the genes "Eomes", "Tubb3", and "Prdm16", and assign the plots to the variables `boxplot_Eomes`, `boxplot_Tubb3`, and `boxplot_Prdm16`.
+5. Change the angle of the x-axis labels to match the published figure using the `theme()` function (this [resource](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels) can be helpful). The `angle`, `hjust` and `vjust` arguments can help your plot look more appealing.
+69. Use your personal theme to keep your plots consistent.
 
 **After running the above code the boxplots should look something like the plots below.**
 

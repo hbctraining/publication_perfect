@@ -1,10 +1,29 @@
 # Consistent formatting using custom scales and colors
 
-When using `ggplot2`, we have observed default values for our aesthetic mappings. For example, in our boxplot, the x- and y-axis labels and fill colors correspond to default values. By default, the column values in our data frame become the x- and y-axis labels and the colors assigned are a standard set. 
+When using `ggplot2`, we have observed default values incorporated for our aesthetic mappings. For example, in our boxplot, the x- and y-axis labels and fill colors correspond to default values. By default, the column values in our data frame become the x- and y-axis labels and the colors assigned default to a standard set. 
 
-While the defaults generally look okay, we often desire customization of these values.
+While the defaults tend to look okay, we often desire customization of these values. To customize the aesthetic mappings (specifications made within the `aes()` function), **scales** are available for every mapping and data type.
 
 ## Scales
+
+In `ggplot2`, scales control how the data is visualized on the plot, including how the data points look (size, shape, transparency, color, fill, etc), as well as, the appearance of the axes and legends. The ggplot2 book devotes an [entire section](https://ggplot2-book.org/scales.html) of chapters to scales, and understanding them will help make the ggplot2 syntax more intuitive.
+
+The first set of scales correspond to position and axes. For x- and y-axis scales, we can use the scale specific to our data to alter limits, breaks and tick mark labels. The most common scales are for discrete and continuous axis data:
+
+* `scale_x_continuous()`: for continuous x-axis values
+* `scale_y_continuous()`: for continuous y-axis values
+* `scale_x_discrete()`: for categorical or qualitative x-axis values
+* `scale_y_discrete()`: for categorical or qualitative y-axis values
+
+There are also a few scales for common transformations and modifications often used when visualizing data, including (for the x-axis):
+
+* `scale_x_log10()`
+* `scale_x_reverse()`
+* `scale_x_sqrt()`
+* `scale_x_binned()`
+
+Using these position or axis scales, we often desire to alter the axis limits (`limits`), axis breaks (`breaks`), and tick labels (`labels`).
+
 
 While the default colors may be fine for many applications, they are often not sufficient to highlight the relationships of interest within our plot or are not optimal for the intended audience/publication. There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal]() code. We could individually specify the colors by providing them with a scale layer.
 

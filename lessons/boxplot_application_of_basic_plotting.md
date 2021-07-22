@@ -95,7 +95,7 @@ Looks good! Let's make our boxplot!
 
 ## Boxplot!
 
-**Create the boxplots by following the instructions below:**
+**Create the Pax6 boxplot by following the instructions below:**
 
 1. Create a boxplot using the `geom_boxplot()` layer to plot the normalized counts of the different groups (neg:WT, Pax6:WT, Tbr2:WT).
 2. Use the `fill` *aesthetic* to look at differences between groups (neg:WT, Pax6:WT, Tbr2:WT).

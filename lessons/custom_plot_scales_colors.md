@@ -1,4 +1,4 @@
-# Consistent formatting using custom colors
+# Consistent formatting using custom scales and colors
 
 When using `ggplot2`, we have observed default values for our aesthetic mappings. For example, in our boxplot, the x- and y-axis labels and fill colors correspond to default values. By default, the column values in our data frame become the x- and y-axis labels and the colors assigned are a standard set. 
 

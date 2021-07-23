@@ -264,7 +264,7 @@ ggplot(pax6_exp) +
 ```
 
 
-Note that the same 'scale_manual' and 'scale_gradient' syntax can be used to change the features of other mappings within the aesthetics, such as `color`, `size`, `shape`, `linetype`, or `alpha`. More information can be found using `?scale_manual`. In addition, the [ggplot2 book](https://ggplot2-book.org/scales-guides.html) discusses scales in great detail and how they can be used to alter the mapping aesthetics.
+These colors look nice and are color-blind friendly, so would be great for publication and presentations; however, often readers will print out our articles in black and white. The chosen palette is unlikely to show much difference in color for black-and-white publication. 
 
 > _**NOTE:** When we created our plot, we used the `fill` argument within the `aes()` function; therefore, to change the colors of these groups, we need to use the `scale_fill_manual()`. If we had used the `color` argument within the `aes()` function, we would use the `scale_color_manual()`._
 > 
@@ -286,13 +286,75 @@ Note that the same 'scale_manual' and 'scale_gradient' syntax can be used to cha
 >   scale_color_manual(values = mypalette)
 > ```
 
-These colors look nice and are color-blind friendly, so would be great for publication and presentations; however, often readers will print out our articles in black and white. The chosen palette is unlikely to show much difference in color for black-and-white publication. 
 
 ## Viridis palettes
 
-The viridis palettes represent good choices for color-blind friendly palettes and printing in black-and-white.
+The viridis R package contain palettes that represent good choices for color-blind friendly palettes and printing in gray scale. The developers provide [additional information](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) about each of the eight color palettes available, including how it is visualized with different types of color-blindness and in gray scale.
 
+Usage of the `viridis` palettes is straight-forward, and the package provides ggplot2 scale functions to easily switch to these palettes. Let's use the default color palette, viridis.
 
+```r
+# Visualize the Pax6 boxplot with the viridis palette
+ggplot(pax6_exp) +
+  geom_boxplot(aes(x=group, 
+                   y=normalized_counts, 
+                   fill=group)) +
+  ggtitle("Pax6") +
+  personal_theme() +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1)) +
+  scale_x_discrete(name = "",
+                   labels=c("Pax6:WT" = "Radial glia",
+                            "neg:WT" = "Neurons", 
+                            "Tbr2:WT" = "Progenitors")) +
+  scale_y_continuous(name = "Normalized counts") +
+  scale_fill_viridis()
+```
+
+Did that work? The `viridis` scale function has different options available than ggplot2's scale functions. Let's check them out:
+
+```r
+# Check out arguments for the viridis color scale
+?scale_fill_viridis
+```
+
+We find quite a few useful options, including the argument `discrete`. By default, `viridis` assumes the data is continuous, so for discrete or categorical data, we need to specify `discrete = TRUE`.  Other arguments that might be helpful include the `option` argument where you can specify the palette and the `beginning` and `end` arguments, which can narrow the range of colors from any of the palettes. Let's try again, only this time with the `discrete = TRUE` option.
+
+```r
+# Visualize the Pax6 boxplot with the viridis palette specifying discrete data
+ggplot(pax6_exp) +
+  geom_boxplot(aes(x=group, 
+                   y=normalized_counts, 
+                   fill=group)) +
+  ggtitle("Pax6") +
+  personal_theme() +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1)) +
+  scale_x_discrete(name = "",
+                   labels=c("Pax6:WT" = "Radial glia",
+                            "neg:WT" = "Neurons", 
+                            "Tbr2:WT" = "Progenitors")) +
+  scale_y_continuous(name = "Normalized counts") +
+  scale_fill_viridis(discrete = TRUE)
+```
+
+Overall, the plot looks nice, and it is color-blind friendly and distinguishable on a gray scale. We could specify the palette manually using the hexadecimal code. The hexadecimal codes for each color can be identified using the `viridis_pal()` and `show_col()` functions from the `scales` package.
+
+```
+# Get hexadecimal codes for viridis palette
+show_col(viridis_pal(option = "viridis")(30))
+```
+
+***
+
+**Exercises**
+
+1. Adjust the `scale_fill_viridis()` function to make the first box a bit lighter in color.
+2. Try out another palette of your choice.
+
+***
 
 
 By default, `scale_color_gradient()` creates a two color gradient from low to high. Since we plan to use more colors, we will use the more flexible `scale_color_gradientn()` function. To make the legend a bit cleaner, we will also perform a -log10 transform on the p-values (higher values means more significant).

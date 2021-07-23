@@ -388,5 +388,10 @@ ggplot(pax6_exp) +
 
 > _**NOTE:** For continuous data, the `scale_color_gradient()` and `scale_fill_gradient()` family of functions are used, which create two color gradients from low to high. The `scale_color_gradient2()` creates a diverging color gradient with a midpoint color, while `scale_color_gradientn()` creates an n-color gradient. You can specify your palette of colors similar to the discrete color scales (e.g. `scale_fill_gradient2(colors = mypalette)`)._
 
+We have limited our exploration of palettes to a couple of the most popular packages, but there are many others that are worth exploring, including [colorspace](http://colorspace.r-forge.r-project.org/articles/colorspace.html#palette-visualization-and-assessment-1). Extensive documentation is also available regarding color specifications in `ggplot2`, and we have listed some favorite resources below:
+
+- [**ggplot2 book chapter on color mappings:**](https://ggplot2-book.org/scale-colour.html#scale-colour)
+- [**R Graph Galley - ggplot2 color**](https://www.r-graph-gallery.com/ggplot2-color.html)
+- [**HCL wizard**](https://hclwizard.org)
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

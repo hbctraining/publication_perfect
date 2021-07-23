@@ -386,7 +386,7 @@ ggplot(pax6_exp) +
                      begin = 0.2 )
 ```
 
-> **NOTE:** For continuous data, the `scale_color_gradient()` and `scale_fill_gradient()` family of functions are used, which create two color gradients from low to high. The `scale_color_gradient2()` creates a diverging color gradient with a midpoint color, while `scale_color_gradientn()` creates an n-color gradient. You can specify your palette of colors similar to the discrete color scales (e.g. `scale_fill_gradient2(colors = mypalette)`).
+> _**NOTE:** For continuous data, the `scale_color_gradient()` and `scale_fill_gradient()` family of functions are used, which create two color gradients from low to high. The `scale_color_gradient2()` creates a diverging color gradient with a midpoint color, while `scale_color_gradientn()` creates an n-color gradient. You can specify your palette of colors similar to the discrete color scales (e.g. `scale_fill_gradient2(colors = mypalette)`)._
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

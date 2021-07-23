@@ -30,7 +30,7 @@ library(tidyverse)
 The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create our first figure from the [The Epigenetic State of PRDM16-regulated Enhancers in Radial Glia Controls Cortical Neuron Position paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6667181/). We will build the figure below using the layering approach employed by  `ggplot2`. We will highlight the purpose and utility of each layer we add, while highlighting it's flexibility and customization.
 
 <p align="center">
-<img src="../img/volcano_plot_glia.png" width="500">
+<img src="../img/https://ggplot2.tidyverse.org/reference/index.html#section-scales" width="400">
 </p>
 
 

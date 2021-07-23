@@ -42,9 +42,9 @@ Researchers interested in using R to create publication-ready figures.
 | 10:15 - 10:45	| Coffee break | 
 | 10:45 - 11:05	| [Consistent plots with custom themes](lessons/custom_themes.md) | 
 | 11:05 - 11:45 | [Application of plotting basics](lessons/boxplot_application_of_basic_plotting.md) | 
-| 11:45 - 12:15	| [Consistent plots with defined color palettes] | 
+| 11:45 - 12:15	| [Customization of scales and color palettes](lessons/custom_plot_scales_colors.md) | 
 | 12:15 - 13:30	| Lunch | 
-| 11:45 - 12:15	| [Consistent plots with defined color palettes] | 
+| 11:45 - 12:15	| [Customization of scales and color palettes](lessons/custom_plot_scales_colors.md) | 
 | 11:45 - 12:15	| Introduce features of cowplot for aligning/facetting and labeling plots (live coding) | 
 | 13:30 - 14:15	| Introduce features of ggpubr for adding statistical comparisons and ordering of plots (live coding) | 
 | 15:10 - 15:50	| Practice by changing code to adhere to a journal’s figure requirements (live coding) | 

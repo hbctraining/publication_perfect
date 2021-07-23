@@ -145,7 +145,7 @@ For our boxplot, the default colors look great; however, they are not optimal fo
 - **Chroma:** colorfulness ranging from gray (no color) to full color
 - **Luminance:** brightness
 
-There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal](http://www.sthda.com/english/wiki/color-chart-hexadecimal) code, and there is a [website](https://hclwizard.org) for picking colors or palettes of interest and returning the hexadecimal code(s). To apply any of these colors to our plot, we can individually specify the colors by providing them within a `scale_` layer.
+There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal](http://www.sthda.com/english/wiki/color-chart-hexadecimal) code, and there are these websites [here](https://hclwizard.org) and [here](http://tristen.ca/hcl-picker/#/hlc/6/1.05/113840/D4E966) for picking colors or palettes of interest and returning the hexadecimal code(s). To apply any of these colors to our plot, we can individually specify the colors by providing them within a `scale_` layer.
 
 To alter the colors in our plot that map to our data, we use the `color` or `fill` options within the `aes()` function. We used the `fill` argument to color our boxplot by `group`. To change the color of our `fill`, we can add a fill scale layer, and most often one of the following two scales will work:
 

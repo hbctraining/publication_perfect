@@ -39,7 +39,7 @@ ggplot(results) +
   theme(panel.grid = element_blank()) +
   theme(plot.title=element_text(hjust=0.5)) +
   scale_color_manual(values = c("grey", "purple")) +
-  xlim(c(-3,3.5))
+  scale_x_continuous(limits = c(-3, 3.5))
 ```
 
 
@@ -116,7 +116,7 @@ volcano_RG <- ggplot(results) +
   theme(panel.grid = element_blank()) +
   theme(plot.title=element_text(hjust=0.5)) +
   scale_color_manual(values = c("grey", "purple")) +
-  xlim(c(-3,3.5))
+  scale_x_continuous(limits = c(-3, 3.5))
 ```
 
 ***

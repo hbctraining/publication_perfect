@@ -216,12 +216,12 @@ ggplot(results) +
 
 **Exercise**
 
-1. The current axis label text defaults to what we gave as input to `geom_point` (i.e the column headers). We can change this by **adding additional layers** called `xlab()` and `ylab()` for the x- and y-axis, respectively. Add these layers to the current plot such that they match the published figure.
-2. Use the `ggtitle` layer to add the plot title. 
-3. Increase the size of the plot title to be 1.5 times the default value.
-4. Remove the legend by adding a `theme()` layer with the argument `legend.position`. 
-5. Remove the gridlines by adding another `theme()` layer with the argument `panel.grid`.
-6. Add the following new layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
+
+1. Use the `ggtitle` layer to add the plot title. 
+2. Increase the size of the plot title to be 1.5 times the default value.
+3. Remove the legend by adding a `theme()` layer with the argument `legend.position`. 
+4. Remove the gridlines by adding another `theme()` layer with the argument `panel.grid`.
+5. Add the following new layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
   * What does it change?
   * How many `theme()` layers can be added to a ggplot code chunk, in your estimation?
 
@@ -230,7 +230,7 @@ ggplot(results) +
 How does the plot compare to the published figure now? It's quite close. Most noticably, the colors are different, the x-axis scale is slightly different and the annotations on the plot are missing. We will finish this plot using the code below to add colors and alter the scale, but we will discuss these topics in much greater detail in future lessons.
 
 - `scale_color_manual()`: colors the points based on groups present in `pax6_threshold` assigned to the `color` argument within the `aes()` function. 
-- `scale_x_continuous()`: allows specification of the minimum and maximum x-axis values to be displayed on the plot.
+- `scale_x_continuous()` and `scale_y_continuous()`: allows specification of the axis names and minimum and maximum axis values to be displayed on the plot.
 
 ```r
 # Finished plot without annotations
@@ -238,18 +238,18 @@ ggplot(results) +
   geom_point(aes(x = pax6_log2FoldChange, 
                  y = -log10(pax6_padj), 
                  color = pax6_threshold))  +
+  ggtitle("Radial glia") +
   theme_bw() +
   theme(axis.title = element_text(size = rel(1.25)),
         axis.text = element_text(size = rel(1.15))) +
-  xlab("Log2 fold change") + 
-  ylab("-Log10 p-value") +
-  ggtitle("Radial glia") +
   theme(plot.title = element_text(size = rel(1.5))) +
   theme(legend.position = "none") +
   theme(panel.grid = element_blank()) +
   theme(plot.title=element_text(hjust=0.5)) +
   scale_color_manual(values = c("grey", "purple")) +
-  scale_x_continuous(limits = c(-3, 3.5))
+  scale_x_continuous(name = "Log2 fold change", 
+                     limits = c(-3, 3.5)) +
+  scale_y_continuous(name = "-Log10 p-value")
 ```
 
 

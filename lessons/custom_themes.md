@@ -28,20 +28,19 @@ ggplot(results) +
   geom_point(aes(x = pax6_log2FoldChange, 
                  y = -log10(pax6_padj), 
                  color = pax6_threshold))  +
+  ggtitle("Radial glia") +
   theme_bw() +
   theme(axis.title = element_text(size = rel(1.25)),
         axis.text = element_text(size = rel(1.15))) +
-  xlab("Log2 fold change") + 
-  ylab("-Log10 p-value") +
-  ggtitle("Radial glia") +
   theme(plot.title = element_text(size = rel(1.5))) +
   theme(legend.position = "none") +
   theme(panel.grid = element_blank()) +
   theme(plot.title=element_text(hjust=0.5)) +
   scale_color_manual(values = c("grey", "purple")) +
-  scale_x_continuous(limits = c(-3, 3.5))
+  scale_x_continuous(name = "Log2 fold change", 
+                     limits = c(-3, 3.5)) +
+  scale_y_continuous(name = "-Log10 p-value")
 ```
-
 
 To ensure consistency between our volcano plots, we want our volcano plot themes to be consistent between all plots:
 
@@ -49,8 +48,6 @@ To ensure consistency between our volcano plots, we want our volcano plot themes
 theme_bw() +
   theme(axis.title = element_text(size = rel(1.25)),
         axis.text = element_text(size = rel(1.15))) +
-  xlab("Log2 fold change") + 
-  ylab("-Log10 p-value") +
   theme(plot.title = element_text(size = rel(1.5))) +
   theme(legend.position = "none") +
   theme(panel.grid = element_blank()) +
@@ -91,11 +88,11 @@ ggplot(results) +
                  y = -log10(pax6_padj), 
                  color = pax6_threshold)) +
   personal_theme() +
-  ggtitle("Radial glia")  +
-  xlab("Log2 fold change") + 
-  ylab("-Log10 p-value") +
+  ggtitle("Radial glia") +
   scale_color_manual(values = c("grey", "purple")) +
-  xlim(c(-3,3.5))
+  scale_x_continuous(name = "Log2 fold change", 
+                     limits = c(-3, 3.5)) +
+  scale_y_continuous(name = "-Log10 p-value")
 ```
 
 Now that we have the final volcano plot, let's save it to a variable, which we can use downstream to add our annotations.
@@ -104,19 +101,13 @@ Now that we have the final volcano plot, let's save it to a variable, which we c
 volcano_RG <- ggplot(results) +
   geom_point(aes(x = pax6_log2FoldChange, 
                  y = -log10(pax6_padj), 
-                 color = pax6_threshold))  +
-  theme_bw() +
-  theme(axis.title = element_text(size = rel(1.25)),
-        axis.text = element_text(size = rel(1.15))) +
-  xlab("Log2 fold change") + 
-  ylab("-Log10 p-value") +
+                 color = pax6_threshold)) +
+  personal_theme() +
   ggtitle("Radial glia") +
-  theme(plot.title = element_text(size = rel(1.5))) +
-  theme(legend.position = "none") +
-  theme(panel.grid = element_blank()) +
-  theme(plot.title=element_text(hjust=0.5)) +
   scale_color_manual(values = c("grey", "purple")) +
-  scale_x_continuous(limits = c(-3, 3.5))
+  scale_x_continuous(name = "Log2 fold change", 
+                     limits = c(-3, 3.5)) +
+  scale_y_continuous(name = "-Log10 p-value")
 ```
 
 ***

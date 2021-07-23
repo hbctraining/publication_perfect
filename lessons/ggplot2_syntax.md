@@ -139,11 +139,14 @@ ggplot(results) +
 
 **Exercise**
 
-Let's explore how to change the shape of the data points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). Let's explore this parameter: change all of the points in the plot to squares.
+Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). 
+
+1. Change all of the points in the plot to squares.
+2. Change the transparency of the points (`alpha`) to change with the base mean of Pax6.
 
 ***
 
-We aren't interested in keeping the points as squares, but it can be helpful to change shapes for visualizing different groups or conditions in the data, similar to the `color` argument. 
+We aren't interested in keeping the points as squares or altering their transparency, but it can be helpful to change shapes, size, transparency, etc. when visualizing different groups or conditions, similar to using the `color` argument. 
 
 ## Customizing the appearance of the non-data points on the plot
 

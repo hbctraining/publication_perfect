@@ -1,30 +1,43 @@
-# Consistent formatting using custom scales and colors
+# Customizing plots using scales and colors
 
-When using `ggplot2`, we have observed default values incorporated for our aesthetic mappings. For example, in our boxplot, the x- and y-axis labels and fill colors correspond to default values. By default, the column values in our data frame become the x- and y-axis labels and the colors assigned default to a standard set. 
+Thus far, when plotting with `ggplot2`, we have observed default values incorporated in the aesthetic mappings. For example, by default in our boxplot,  the column values in our data frame become the x- and y-axis labels and the colors assigned default to a standard set used by `ggplot2`. 
 
-While the defaults tend to look okay, we often desire customization of these values. To customize the aesthetic mappings (specifications made within the `aes()` function), **scales** are available for every mapping and data type.
+```r
+ggplot(pax6_exp) +
+  geom_boxplot(aes(x=group, 
+                   y=normalized_counts, 
+                   fill=group)) +
+  ggtitle("Pax6") +
+  personal_theme() +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1))
+
+```
+
+While the defaults tend to look okay, we often desire to customize these values. To customize the aesthetic mappings (specifications made within the `aes()` function), we can use **scales**, which are available for every mapping and data type.
 
 ## Scales
 
-In `ggplot2`, **scales control the content that is displayed on the plot**, including how the data points look (size, shape, transparency, color, fill, etc), as well as, the content of the axes and legends. While the scales control what content is added to the plot, themes are used for styling that content. The ggplot2 book devotes an [entire section](https://ggplot2-book.org/scales.html) to scales and understanding them will help make the ggplot2 syntax more intuitive.
+In `ggplot2`, **scales control the content that is displayed on the plot**, including how the data points look (size, shape, transparency, color, fill, etc), as well as, the values of the axes and legends. The ggplot2 book devotes an [entire section](https://ggplot2-book.org/scales.html) to scales and understanding them will help make the ggplot2 syntax more intuitive.
 
 ### Position and axes
 
-The first set of scales correspond to position and axes. For x- and y-axis scales, we can use the scale specific to our data to alter the axis titles, limits, breaks (at which values the ticks are labeled ), and tick mark labels. The most common scales delineate between discrete and continuous axis data:
+The first set of scales we will discuss correspond to plot position and axes. The x- and y-axis scales allow us to alter the axis titles, limits, breaks (at which values the ticks are labeled), and tick mark labels. The most common scales are for discrete and continuous data:
 
 * `scale_x_continuous()`: for continuous x-axis values
 * `scale_y_continuous()`: for continuous y-axis values
 * `scale_x_discrete()`: for categorical or qualitative x-axis values
 * `scale_y_discrete()`: for categorical or qualitative y-axis values
 
-There are also a few scales for common transformations and modifications often used when visualizing data, including (for the x-axis):
+There are also scales for common transformations and modifications often used when visualizing data, including the following x-axis scales (also available for the y-axis):
 
 * `scale_x_log10()`
 * `scale_x_reverse()`
 * `scale_x_sqrt()`
 * `scale_x_binned()`
 
-Using these position or axis scales, we often desire to alter the axis titles (`name`), axis limits (`limits`), axis breaks (`breaks`), and tick labels (`labels`). Using the `scale_` functions, we can alter the **content** of the axes and ticks; however, it is worth noting that the **look and style** of the axes and labels are still altered within the `theme()` function.
+Using these position or axis scales, we can customize the axis titles (`name`), axis limits (`limits`), axis breaks (`breaks`), and tick labels (`labels`). Using these `scale_` functions, we can alter the **values** of the axes and ticks; however, it is worth noting that the **look and style (e.g. size, thickness, style, angle, justification, etc.)** of the axes and labels are still altered within the `theme()` function.
 
 Let's change the names of the x-axis labels to match the figure in the paper shown below.
 
@@ -32,43 +45,32 @@ Let's change the names of the x-axis labels to match the figure in the paper sho
 <img src="../img/published_Pax6_boxplot.png" width="800">
 </p>
 
-We'll remind ourselves what our current boxplot looks like:
+
+Let's add a layer to our ggplot code to remove the title and rename the tick labels on the x-axis. What `scale_` function do you think we should use?
 
 ```r
-ggplot(pax6_exp) +
-  geom_boxplot(aes(x=group, 
-                   y=normalized_counts, 
-                   fill=group)) +
-  theme_bw() +
-  ylab('Normalized counts') +
-  xlab('') +
-  ggtitle("Pax6") +
-  personal_theme() +
-  theme(axis.text.x = element_text(angle = 45, 
-                                   vjust = 1, 
-                                   hjust = 1))
-```
+# Check the scale_ function arguments using the ?
+?scale_<tab>
 
-Let's add a layer to our ggplot code to rename the labels on the x-axis. What scale function do you think we should use?
-
-```r
 # Boxplot with renamed x-axis values
 ggplot(pax6_exp) +
   geom_boxplot(aes(x=group, 
                    y=normalized_counts, 
                    fill=group)) +
-  theme_bw() +
-  ylab('Normalized counts') +
-  xlab('') +
   ggtitle("Pax6") +
   personal_theme() +
   theme(axis.text.x = element_text(angle = 45, 
                                    vjust = 1, 
                                    hjust = 1)) +
-  scale_x_discrete(labels=c("Pax6:WT" = "Radial glia",
+  scale_x_discrete(name = "",
+                   labels=c("Pax6:WT" = "Radial glia",
                             "neg:WT" = "Neurons", 
                             "Tbr2:WT" = "Progenitors"))
 ```
+
+When providing tick labels, we can either provide a vector of names, which are applied based on factor levels, or we can provide the names using the format above (e.g. "current label" = "new label") to ensure proper labeling.
+
+Now let's rename the y-axis title to be "Normalized counts" as in the publication. What `scale_` function do you think we should use? Our plot should now resemble closely the published figure. The only differences are some of the text on the image that we will learn about in later lessons.
 
 ***
 
@@ -78,7 +80,6 @@ Let's explore the other graphical elements using the position scales.
 
 1. Change the limits of the **y-axis** to range from 0 to 100 and have breaks (where the ticks are labeled) to be every 20 instead of every 10.
 2. Use a log10 scale for the **y-axis** using a `scale_` function.
-4. Add an x-axis title: "Wildtype expression".
 
 ***
 
@@ -87,7 +88,7 @@ Let's explore the other graphical elements using the position scales.
 
 Aside from the axis data, the other data included in our aesthetic mappings (within the `aes()` function) correspond to variables from which we want to observe differences using visible output, such as color, fill, shape, size, line type, transparency, etc. Each of these mappings has an associated scale in which you can customize the output. 
 
-For example, when we ran the code below, additional layers were added under the hood.
+For example, when we run the code below, additional layers are added under the hood.
 
 ```r
 ggplot(pax6_exp) +
@@ -110,7 +111,7 @@ ggplot(pax6_exp) +
 
 All defaults for these additional layers were used, so we do not notice that they are added. However, it is important to know that for every argument in our `aes()` function, a corresponding scale is created and run along with our input code.
 
-For example, if we wanted to alter the linetype based on group, we could add another layer using the `linetype` argument. We know that a `scale_linetype_discrete()` layer is added when we run the code. 
+For example, if we wanted to alter the linetype based on group, we could add another layer using the `linetype` argument. We know that a `scale_linetype_discrete()` layer is added when we run the code below. 
 
 ```r
 ggplot(pax6_exp) +
@@ -120,7 +121,7 @@ ggplot(pax6_exp) +
 		   linetype = group))
 ```
 
-The fill and linetype arguments are mapped to the same variable, `group`; by default, the legends for these two mappings are combined into a single legend called 'group'. If we alter the the name of the color or linetype scales, we will see the legend split. Let's test it out by customizing the `scale_linetype_discrete()` layer.
+Since the `fill` and `linetype` arguments are mapped to the same variable, `group`, by default, the legends for these two mappings are combined into a single legend called 'group'. If we alter the name or labels of the `fill` or `linetype` scales, we will see the legend split. Let's test it out by customizing the `scale_linetype_discrete()` layer.
 
 ```r
 ggplot(pax6_exp) +
@@ -132,19 +133,26 @@ ggplot(pax6_exp) +
                           labels = c("Pax6 wildtype", "Intermediate wildtype", "Neurons wildtype"))
 ```
 
-Using these `scale_` layers with our differential aesthetics allow us to easily change the titles, text, and display within the legends. For additional customization of the style or position of the legends can use the `theme()` function. A quick way to alter appearance of axes, labels and legends is using the `guides()` function. More details can be found [here](https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/)
+Using these `scale_` layers with our differential aesthetics allow us to easily change the titles, text, and display within the legends. For additional customization of the style or position of the legends, we can use the `theme()` function. In addition, `ggplot2` offers an additional quick way to alter the appearance of legends by using the helper function, `guides()`. We aren't going to go into depth into this function, but more details can be found [here](https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/)
 
-While the default colors may be fine for many applications, they are often not sufficient to highlight the relationships of interest within our plot or are not optimal for the intended audience/publication. There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal]() code. We could individually specify the colors by providing them with a scale layer.
+### Color scales
 
+While the default colors may be fine for many applications, they are often not sufficient to highlight the relationships of interest or are not optimal for the intended audience/publication. 
 
+For our boxplot, the default colors look great; however, they are not optimal for color-blind viewers. Since we are preparing for publication, we would like our figures to be interpretable for all readers. To determine palatable palettes, we should consider features of the colors that affect human perception, specifically:
 
+- **Hue:** type of color (e.g. pink, red, blue)
+- **Chroma:** colorfulness ranging from gray (no color) to full color
+- **Luminance:** brightness
 
-We can add a fill scale layer, and most often one of the following two scales will work:
+There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal]() code, and there is a [website](https://hclwizard.org) for picking colors or palettes of interest and returning the hexadecimal code(s). To apply these colors to our plot, we can individually specify the colors by providing them within a `scale_` layer.
+
+To alter the colors in our plot that map to our data, we can use the `color` or `fill` options. We used the `fill` argument in the `aes()` function to color our boxplot by `group`. To change the color of our `fill`, we can add a fill scale layer, and most often one of the following two scales will work:
 
 - **`scale_fill_manual()`:** for categorical data or quantiles
 - **`scale_fill_gradient()` family:** for continuous data. 
 
-For our categorical data, we will add the `scale_fill_manual()` layer, specifying the desired color values. 
+For our categorical `group` data, we will add the `scale_fill_manual()` layer, specifying the desired color values. 
 
 
 `scale_fill_manual()` layer.
@@ -152,16 +160,19 @@ For our categorical data, we will add the `scale_fill_manual()` layer, specifyin
 ```r
 # Visualize the Pax6 boxplot with custom colors
 ggplot(pax6_exp) +
-  geom_boxplot(aes(x=group, y=normalized_counts, fill=group)) +
-  theme_bw() +
-  ylab('Normalized counts') +
-  xlab('') +
+  geom_boxplot(aes(x=group, 
+                   y=normalized_counts, 
+                   fill=group)) +
   ggtitle("Pax6") +
   personal_theme() +
-  scale_x_discrete(labels=c("Pax6:WT" = "Radial glia", "neg:WT" = "Neurons", "Tbr2:WT" = "Progenitors")) + 
   theme(axis.text.x = element_text(angle = 45, 
                                    vjust = 1, 
                                    hjust = 1)) +
+  scale_x_discrete(name = "",
+                   labels=c("Pax6:WT" = "Radial glia",
+                            "neg:WT" = "Neurons", 
+                            "Tbr2:WT" = "Progenitors")) +
+  scale_y_continuous(name = "Normalized counts") +
   scale_fill_manual(values = c("firebrick4", "lightbluesteel", "yellow2")
 ```
 

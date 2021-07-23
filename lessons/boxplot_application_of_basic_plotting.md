@@ -99,7 +99,7 @@ Looks good! Let's make our boxplot!
 
 1. Create a boxplot using the `geom_boxplot()` layer to plot the normalized counts of the different groups (neg:WT, Pax6:WT, Tbr2:WT).
 2. Use the `fill` *aesthetic* to look at differences between groups (neg:WT, Pax6:WT, Tbr2:WT).
-3. Add a title, y-axis title and axis labels matching the published figure.
+3. Add a title matching the published figure.
 4. Re-factor the x-axis variable 'group' to be in the same order as the paper using the following code:
 	
 	```r
@@ -107,7 +107,7 @@ Looks good! Let's make our boxplot!
 	pax6_exp$group <- factor(pax6_exp$group, levels = c("Pax6:WT", "Tbr2:WT", "neg:WT"))
 	```
 	
-5. Change the angle of the x-axis labels to match the published figure using the `theme()` function (this [resource](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels) can be helpful). The `angle`, `hjust` and `vjust` arguments can help your plot look more appealing.
+5. Change the angle of the x-axis labels to match the published figure using the `theme()` function (this [resource](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels) can be helpful). The `hjust` and `vjust` arguments can help your plot look more appealing.
 69. Use your personal theme to keep your plots consistent.
 
 **After running the above code the boxplots should look something like the plots below.**

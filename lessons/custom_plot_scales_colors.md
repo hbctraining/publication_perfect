@@ -145,17 +145,15 @@ For our boxplot, the default colors look great; however, they are not optimal fo
 - **Chroma:** colorfulness ranging from gray (no color) to full color
 - **Luminance:** brightness
 
-There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal]() code, and there is a [website](https://hclwizard.org) for picking colors or palettes of interest and returning the hexadecimal code(s). To apply these colors to our plot, we can individually specify the colors by providing them within a `scale_` layer.
+There are cheatsheets available for specifying the base R colors by [name](https://cpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/d/276/files/2015/10/colorbynames.png) or [hexadecimal](http://www.sthda.com/english/wiki/color-chart-hexadecimal) code, and there is a [website](https://hclwizard.org) for picking colors or palettes of interest and returning the hexadecimal code(s). To apply any of these colors to our plot, we can individually specify the colors by providing them within a `scale_` layer.
 
-To alter the colors in our plot that map to our data, we can use the `color` or `fill` options. We used the `fill` argument in the `aes()` function to color our boxplot by `group`. To change the color of our `fill`, we can add a fill scale layer, and most often one of the following two scales will work:
+To alter the colors in our plot that map to our data, we use the `color` or `fill` options within the `aes()` function. We used the `fill` argument to color our boxplot by `group`. To change the color of our `fill`, we can add a fill scale layer, and most often one of the following two scales will work:
 
 - **`scale_fill_manual()`:** for categorical data or quantiles
 - **`scale_fill_gradient()` family:** for continuous data. 
 
-For our categorical `group` data, we will add the `scale_fill_manual()` layer, specifying the desired color values. 
+For our categorical `group` data, we will add the `scale_fill_manual()` layer, specifying the desired color values. Pick whichever colors you like.
 
-
-`scale_fill_manual()` layer.
 
 ```r
 # Visualize the Pax6 boxplot with custom colors
@@ -173,7 +171,7 @@ ggplot(pax6_exp) +
                             "neg:WT" = "Neurons", 
                             "Tbr2:WT" = "Progenitors")) +
   scale_y_continuous(name = "Normalized counts") +
-  scale_fill_manual(values = c("firebrick4", "lightbluesteel", "yellow2")
+  scale_fill_manual(values = c("firebrick4", "lightsteelblue", "yellow2"))
 ```
 
  
@@ -209,29 +207,14 @@ The palettes are separated into three sections based on the type of data:
 
 Let's explore changing the colors of our boxplot (shown below), created in the previous lesson using default colors. 
 
-```r
-# Visualize the Pax6 boxplot
-ggplot(pax6_exp) +
-  geom_boxplot(aes(x=group, y=normalized_counts, fill=group)) +
-  theme_bw() +
-  ylab('Normalized counts') +
-  xlab('') +
-  ggtitle("Pax6") +
-  personal_theme() +
-  scale_x_discrete(labels=c("Pax6:WT" = "Radial glia", "neg:WT" = "Neurons", "Tbr2:WT" = "Progenitors")) + 
-  theme(axis.text.x = element_text(angle = 45, 
-                                   vjust = 1, 
-                                   hjust = 1))
-```
-
 <p align="center">
 <img src="../img/Pax6_boxplot.png" width="800">
 </p>
 
-The boxplot is colored by `group`, which is a categorical variable. Therefore, we will choose a **Qualitative palette** to assign contrasting colors to the groups. We can choose how many colors from the palette to include, which for our data will be three colors (one for each group). Let's choose the **Set1** palette and see how we like it. We can test the colors included in a palette by using the `display.brewer.pal()` function:
+The boxplot is colored by `group`, which is a categorical variable. Therefore, we will choose a **Qualitative palette** to assign contrasting colors to the groups. We can choose how many colors from the palette to include, which for our data will be three colors (one for each group). Let's choose the **Set1** palette and see how we like it. We can view the colors included in a palette by using the `display.brewer.pal()` function:
 
 ```r
-# Testing the Set1 palette with three colors
+# Viewing the Set1 palette with three colors
 display.brewer.pal(3, "Set1")
 ```
 
@@ -245,7 +228,7 @@ display.brewer.all(colorblindFriendly = TRUE)
 We have a much more limited set of **Qualitative palettes** to choose from for our categorical data, and we no longer see the 'Set1' as an option to choose. Let's choose the 'Dark2' color-blind friendly palette.
 
 ```r
-# Testing a color-blind friendly palette with three colors
+# Viewing a color-blind friendly palette with three colors
 display.brewer.pal(3, "Dark2")
 ```
 
@@ -264,16 +247,19 @@ Those colors look okay, so let's test them in our plot.
 ```r
 # Visualize the Pax6 boxplot with RColorBrewer palette
 ggplot(pax6_exp) +
-  geom_boxplot(aes(x=group, y=normalized_counts, fill=group)) +
-  theme_bw() +
-  ylab('Normalized counts') +
-  xlab('') +
+  geom_boxplot(aes(x=group, 
+                   y=normalized_counts, 
+                   fill=group)) +
   ggtitle("Pax6") +
   personal_theme() +
-  scale_x_discrete(labels=c("Pax6:WT" = "Radial glia", "neg:WT" = "Neurons", "Tbr2:WT" = "Progenitors")) + 
   theme(axis.text.x = element_text(angle = 45, 
                                    vjust = 1, 
                                    hjust = 1)) +
+  scale_x_discrete(name = "",
+                   labels=c("Pax6:WT" = "Radial glia",
+                            "neg:WT" = "Neurons", 
+                            "Tbr2:WT" = "Progenitors")) +
+  scale_y_continuous(name = "Normalized counts") +
   scale_fill_manual(values = mypalette)
 ```
 

@@ -98,6 +98,8 @@ ggplot(results) +
 <img src="../img/ggscatter-1.png" width="500">
 </p>
 
+> _**NOTE:** There are several 'helper' functions to make editing the axis labels and limits a bit easier, including `xlab()`, `ylab()`, `xlim()`, and `ylim()`._
+
 ## Customizing the appearance of the data points on the plot
 
 Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points (representing genes) on the plot based on the whether the genes are significant using the `pax6_threshold` column** by specifying it within the `aes()` function. You will notice that there are a default set of colors that will be used so we do not have to specify. We will explore later how to change the colors, as well as, incorporate pre-designed color palettes. Also, note that the legend has been plotted for us.

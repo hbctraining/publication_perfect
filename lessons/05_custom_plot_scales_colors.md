@@ -42,7 +42,7 @@ Using these position or axis scales, we can customize the axis titles (`name`), 
 Let's change the names of the x-axis labels to match the figure in the paper shown below.
 
 <p align="center">
-<img src="../img/published_Pax6_boxplot.png" width="800">
+<img src="../img/published_Pax6_boxplot.jpeg" width="300">
 </p>
 
 

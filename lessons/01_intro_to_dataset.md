@@ -11,7 +11,7 @@ Approximate time: 20 minutes
 
 # Introduction to the dataset
 
-For this workshop we will be working with RNA-seq data from a recent publication in Neuron by Baizabal et al. (2018). We will learn about how to use the ggplot2 package and other related packages to recreate a figure from this publication. In the second half of this workshop we will learn how to modify the  figure to fit the submission criteria of a different journal. 
+For this workshop we will be working with RNA-seq data from a recent publication in Neuron by Baizabal et al. (2018). We will learn about how to use the ggplot2 package and other related packages to recreate a figure from this publication. In addition, we will also learn how to modify the figure to fit the submission criteria of a different journal. 
 
 ## The publication
 
@@ -36,17 +36,28 @@ In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cd
 </p>
 
 The different types of plots here are 
-* box plots to show expression of 4 genes in the three different cell populations isolated by FACS, and their gene expression was assessed by bulk RNA-seq
-* a heatmap with the significantly up- and down- regulated genes when comparing the **Radial Glia cells** in WT versus the PRDM16 knock out samples
-* a volcano plots (essentially a scatter plot) to demonstrate the impact of knocking out PRDM16 on the 3 different cell types
-* Venn diagrams
-* Bar plots with functional analysis categories 
+* **Box plots** to show expression of 4 genes in the three different cell populations isolated by FACS, and their gene expression was assessed by bulk RNA-seq. Each gene represents a cell populations sorted by FACS.
+* **A Heatmap** with the significantly up- and down- regulated genes when comparing the WT *Radial Glia* (PAX6 + cells) versus the *Radial Glia* from the PRDM conditional knock out
+* **A Volcano plots** (essentially a scatter plot) to demonstrate the impact of knocking out PRDM16 on the 3 different cell types
+* **Venn diagrams** to demonstrate the overlap in the list of differentially expressed genes in 2 different cell populations (Radial Glia and Intermediate progenitors)
+* **Bar plots** showing the number of genes associated with specific Gene Ontology categories. In each case the number of significantly up- or down- regulated genes are listed in the middle.
  
-In addition to these plots, there is a schematic, the FACS output and an immunofluorescent image.
+In addition to the plots listed above, there is (a) a very helpful schematic of the experiment, (b) the FACS output and (c) an immunofluorescence image to show the how well the cell populations were separated from each other.
 
 ## Reading in the data
 
+In the first half of this workshop, we will be focusing on creating those plots that use the ggplot2 package. In the second half of this workshop, we will (1) use packages not associated with ggplot2 to create the heatmap and the Venn diagrams, (2) we will also discuss creating the layout and labelling similar to the one in the paper working with some ggplot2 extensions, and finally, (3) we will show you how to change the layout for a different journal.
+
+First though we need to read in the data!
+
+```r
+
+```
+
 ## Making figures for a publication: Art or Science?
+
+A few
+
 
 ## References:
 

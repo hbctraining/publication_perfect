@@ -200,7 +200,7 @@ display.brewer.all()
 ```
 
 <p align="center">
-<img src="../img/Rcolorbrewer_palettes.png" width="800">
+<img src="../img/Rcolorbrewer_palettes.png" width="400">
 </p>
 
 The palettes are separated into three sections based on the type of data: 
@@ -209,10 +209,10 @@ The palettes are separated into three sections based on the type of data:
 - **Qualitative palettes (middle):** For categorical data, where the color does not denote differences in magnitude or value.
 - **Diverging palettes (bottom):** For data with emphasis on mid-range values and extremes.
 
-Let's explore changing the colors of our boxplot (shown below), created in the previous lesson using default colors. 
+Let's explore changing the colors of our boxplot (shown below), created earlier using default colors. 
 
 <p align="center">
-<img src="../img/Pax6_boxplot.png" width="800">
+<img src="../img/pax6_boxplot_2.png" width="300">
 </p>
 
 The boxplot is colored by `group`, which is a categorical variable. Therefore, we will choose a **Qualitative palette** to assign contrasting colors to the groups. We can choose how many colors from the palette to include, which for our data will be three colors (one for each group). Let's choose the **Set1** palette and see how we like it. We can view the colors included in a palette by using the `display.brewer.pal()` function:
@@ -228,6 +228,10 @@ These colors do a nice job of differentiating between groups; however, they are 
 # Finding color-blind friendly palettes
 display.brewer.all(colorblindFriendly = TRUE)
 ```
+
+<p align="center">
+<img src="../img/Rcolorbrewer_palettes_cb.png" width="300">
+</p>
 
 We have a much more limited set of **Qualitative palettes** to choose from for our categorical data, and we no longer see the 'Set1' as an option to choose. Let's choose the 'Dark2' color-blind friendly palette.
 
@@ -266,7 +270,9 @@ ggplot(pax6_exp) +
   scale_y_continuous(name = "Normalized counts") +
   scale_fill_manual(values = mypalette)
 ```
-
+<p align="center">
+<img src="../img/pax6_boxplot_3.png" width="300">
+</p>
 
 These colors look nice and are color-blind friendly, so would be great for publication and presentations; however, often readers will print out our articles in black and white. The chosen palette is unlikely to show much difference in color for black-and-white publication. 
 

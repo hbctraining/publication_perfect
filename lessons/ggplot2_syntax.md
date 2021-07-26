@@ -95,7 +95,7 @@ ggplot(results) +
 ```
 
 <p align="center">
-<img src="../img/ggscatter-1.png" height="500">
+<img src="../img/ggscatter-1.png" height="300">
 </p>
 
 > _**NOTE:** There are several 'helper' functions to make editing the axis labels and limits a bit easier, including `xlab()`, `ylab()`, `xlim()`, and `ylim()`._
@@ -113,7 +113,7 @@ ggplot(results) +
 ```
 
 <p align="center">
-<img src="../img/ggscatter-2.png" height="500">
+<img src="../img/ggscatter-2.png" height="300">
 </p>
 
 You will notice that there are a default set of colors that will be used so we do not have to specify. We will explore later how to change the colors, as well as, incorporate pre-designed color palettes. Also, note that the legend has been plotted for us.
@@ -208,7 +208,7 @@ ggplot(results) +
 ```
  
 <p align="center">
-<img src="../img/ggscatter-5.png" height="500">
+<img src="../img/ggscatter-5.png" height="300">
 </p> 
 
 > *NOTE:* You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 

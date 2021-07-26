@@ -25,7 +25,7 @@ The authors use various techniques to identify and validate the targets and acti
 
 ## The figure
 
-In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg). This figure demonstrates how PRDM16 impacts  on gene expression in three different cell populations as well as in the brains of mice where PRDM16 is knocked out.
+In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg). This figure demonstrates how knocking out PRDM16 impacts gene expression in three different cell populations in the developing brains of mouse enbryos.
 
 <p align="center">
 <img src="../img/figure_to_create.jpg" width="600">
@@ -36,9 +36,9 @@ In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cd
 </p>
 
 The different types of plots here are 
-* box plots to show expression of 4 genes in the three different cell populations isolated by FACS, and whose gene expression was assessed by bulk RNA-seq
-* a heatmap with the up- and down- regulated genes identified when comparing the expression of genes in Radial Glia in WT or when PRDM16 is knocked out
-* volcano plots (essentially a scatter plot)
+* box plots to show expression of 4 genes in the three different cell populations isolated by FACS, and their gene expression was assessed by bulk RNA-seq
+* a heatmap with the significantly up- and down- regulated genes when comparing the **Radial Glia cells** in WT versus the PRDM16 knock out samples
+* a volcano plots (essentially a scatter plot) to demonstrate the impact of knocking out PRDM16 on the 3 different cell types
 * Venn diagrams
 * Bar plots with functional analysis categories 
  

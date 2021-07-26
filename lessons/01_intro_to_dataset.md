@@ -21,11 +21,11 @@ The authors in this paper discover an epigenetic mechanism that controls the num
 <img src="../img/graphical_abstract.png" width="500">
 </p>
 
-The authors use various techniques to identify and validate the targets and activities of PRDM16, including ChIP-seq, bulk RNA-seq, FACS, insitu hybridization and immunofluorescent microscopy on brain samples from embryonic mice. Majority of the figures in this publication are a combination of the evidence gathered from one or more of these techniques.
+The authors use various techniques to identify and validate the targets and activities of PRDM16, including ChIP-seq, bulk RNA-seq, FACS, insitu hybridization and immunofluorescent microscopy on brain samples from embryonic mice, generation of conditional knockout mice, etc. Majority of the figures in this publication are a combination of the evidence gathered from several of these techniques.
 
 ## The figure
 
-In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg).
+In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg). This figure demonstrates how PRDM16 impacts  on gene expression in three different cell populations as well as in the mouse brain. 
 
 <p align="center">
 <img src="../img/figure_to_create.jpg" width="600">

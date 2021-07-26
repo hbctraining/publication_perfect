@@ -121,7 +121,7 @@ pax6_exp$group <- factor(pax6_exp$group, levels = c("Pax6:WT", "Tbr2:WT", "neg:W
 **After running the above code the boxplots should look something like the plots below.**
 
 <p align="center">
-<img src="../img/pax6_boxplots.png" width="600">
+<img src="../img/pax6_boxplots.png" width="300">
 </p>
 
 ---

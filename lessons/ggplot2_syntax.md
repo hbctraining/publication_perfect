@@ -30,7 +30,7 @@ library(tidyverse)
 The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create our first figure from the [The Epigenetic State of PRDM16-regulated Enhancers in Radial Glia Controls Cortical Neuron Position paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6667181/). We will build the figure below using the layering approach employed by  `ggplot2`. We will highlight the purpose and utility of each layer we add, while highlighting it's flexibility and customization.
 
 <p align="center">
-<img src="../img/radial_glia.jpeg" width="200">
+<img src="../img/radial_glia.jpeg" width="300">
 </p>
 
 
@@ -95,14 +95,14 @@ ggplot(results) +
 ```
 
 <p align="center">
-<img src="../img/ggscatter-1.png" width="500">
+<img src="../img/ggscatter-1.png" height="500">
 </p>
 
 > _**NOTE:** There are several 'helper' functions to make editing the axis labels and limits a bit easier, including `xlab()`, `ylab()`, `xlim()`, and `ylim()`._
 
 ## Customizing the appearance of the data points on the plot
 
-Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points (representing genes) on the plot based on the whether the genes are significant using the `pax6_threshold` column** by specifying it within the `aes()` function. You will notice that there are a default set of colors that will be used so we do not have to specify. We will explore later how to change the colors, as well as, incorporate pre-designed color palettes. Also, note that the legend has been plotted for us.
+Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points (representing genes) on the plot based on the whether the genes are significant using the `pax6_threshold` column** by specifying it within the `aes()` function. 
 
 ```r
 # Adding geom layer with additional aesthetics
@@ -113,9 +113,12 @@ ggplot(results) +
 ```
 
 <p align="center">
-<img src="../img/ggscatter-2.png" width="500">
+<img src="../img/ggscatter-2.png" height="500">
 </p>
 
+You will notice that there are a default set of colors that will be used so we do not have to specify. We will explore later how to change the colors, as well as, incorporate pre-designed color palettes. Also, note that the legend has been plotted for us.
+
+> _**NOTE:** The legend has 3 values because the `pax6_threshold` column is a logical vector with 3 values `TRUE`, `FALSE` and `NA`. The `NA` values represent those genes that were filtered out of the dataset prior to performing the statistical analysis due to low counts or severe inconsistency among replicates._
 
 If we wanted to modify the **size of the data points** we can use the `size` argument. 
 
@@ -174,17 +177,16 @@ ggplot(results) +
   theme_bw()
 ```
 
-
 Let's look at the paper figure again:
 
 <p align="center">
-<img src="../img/volcano_plot_glia.png" width="500">
+<img src="../img/radial_glia.jpeg" width="300">
 </p>
 
 How are these plots different? 
 
 
-We see the colors are different, but we will explore changes those in the next lesson. All of the other changes are to the non-data elements of the plot. To explore the different non-data components customizable within the `theme()` function, let's look at the [documentation](https://ggplot2.tidyverse.org/reference/theme.html).
+We see the colors are different, but we will explore changes those in the next lesson. All of the other changes are to the non-data elements of the plot, like legend and size of the axis titles. To explore the different non-data components customizable within the `theme()` function, let's look at the [documentation](https://ggplot2.tidyverse.org/reference/theme.html).
 
 Notice the options for customizing the axes, titles, tick marks, and legends, among others. Everything is customizable, you just have to know what to customize. The examples given in the documentation can help determine what specifications might achieve your desired changes.
 
@@ -206,7 +208,7 @@ ggplot(results) +
 ```
  
 <p align="center">
-<img src="../img/ggscatter-5.png" width="500">
+<img src="../img/ggscatter-5.png" height="500">
 </p> 
 
 > *NOTE:* You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 
@@ -254,6 +256,9 @@ ggplot(results) +
   scale_y_continuous(name = "-Log10 p-value")
 ```
 
+<p align="center">
+<img src="../img/ggscatter-6.png" height="500">
+</p> 
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

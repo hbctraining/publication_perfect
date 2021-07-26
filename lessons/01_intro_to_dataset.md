@@ -25,7 +25,7 @@ The authors use various techniques to identify and validate the targets and acti
 
 ## The figure
 
-In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg). This figure demonstrates how PRDM16 impacts  on gene expression in three different cell populations as well as in the mouse brain. 
+In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg). This figure demonstrates how PRDM16 impacts  on gene expression in three different cell populations as well as in the brains of mice where PRDM16 is knocked out.
 
 <p align="center">
 <img src="../img/figure_to_create.jpg" width="600">
@@ -35,6 +35,14 @@ In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cd
 <img src="../img/figure4_legend.png" width="800">
 </p>
 
+The different types of plots here are 
+* box plots to show expression of 4 genes in the three different cell populations isolated by FACS, and whose gene expression was assessed by bulk RNA-seq
+* a heatmap with the up- and down- regulated genes identified when comparing the expression of genes in Radial Glia in WT or when PRDM16 is knocked out
+* volcano plots (essentially a scatter plot)
+* Venn diagrams
+* Bar plots with functional analysis categories 
+ 
+In addition to these plots, there is a schematic, the FACS output and an immunofluorescent image.
 
 ## Reading in the data
 

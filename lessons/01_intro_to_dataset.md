@@ -95,14 +95,13 @@ The data we have downloaded and read into R above represents the following 3 fil
 
 Each comparison has 7 columns associated with it and there is one gene name column, so there should be a total of 22 columns in the `results` data frame. The 7 columns for each comparison are as follows:
 
-1. `_baseMean` - 
-1. `_log2FoldChange` -
-1. `_lfcSE` -
+1. `_baseMean` - Mean of the normalized counts for all samples in the comparison, for a given gene.
+1. `_log2FoldChange` - log2 fold change between WT and PRDM16 KO
+1. `_lfcSE` - log2 standard error
 1. `_stat` -
-1. `_pvalue` -
-1. `_padj` -
-1. `_threshold` -
-
+1. `_pvalue` - Wald test *P* value
+1. `_padj` - Benjamini-Hochberg adjusted Wald test *P* value (multiple test corrected P-value)
+1. `_threshold` - Logical vector with TRUE values for significantly differentially expressed (DE) genes, FALSE for not DE genes, NA for untested genes
 
 ## Making figures for a publication: Art or Science?
 

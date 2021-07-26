@@ -89,13 +89,13 @@ The data we have downloaded and read into R above represents the following 3 fil
 
 This data frame has 25 columns - in addition to the gene name column, there is a column for each sample.
 
-* **pp_all_results.csv** - The results from DESeq2 for the comparisons between WT and PRDM16 knockout for the 3 cell types. We have combined the results from 3 separate comparisons into a single file to make it easier to create the Volcano plots. An excerpt is displayed below:
+* **pp_all_results.csv** - The results from DESeq2 for the comparisons between WT and PRDM16 knockout for the 3 cell types. We have combined the results from 3 separate comparisons into a single file to make it easier to create the Volcano plots. An excerpt is displayed below with the Pax6 results columns circled in green and the Tbr2 results columns circled in blue.
 
 <p align="center">
 <img src="../img/results.png" height="200">
 </p>
 
-This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results . Each of the 5 columns are described below. An excerpt is displayed below with the Pax6 results columns circled in green and the Tbr2 results columns circled in blue.
+This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results . Each of the 5 columns are described below.
 
 1. `_baseMean` - Mean of the normalized counts for all samples in the comparison, for a given gene
 1. `_log2FoldChange` - log2 fold change between WT and PRDM16 KO

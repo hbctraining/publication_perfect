@@ -257,7 +257,7 @@ ggplot(results) +
 ```
 
 <p align="center">
-<img src="../img/ggscatter-6.png" height="500">
+<img src="../img/ggscatter-6_alt.png" height="300">
 </p> 
 
 ---

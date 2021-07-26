@@ -52,7 +52,7 @@ First though we need to bring the data into R!
 
 1. We will start by downloading a basic project folder with the data by right-clicking on [this link](https://www.dropbox.com/s/ig52a8501ur2eka/publication_perfect.zip?dl=1). We recommend that you place this zipped folder on your Desktop for the duration of the workshop. 
 1. Unzip the folder.
-1. Run the following code to read in the data.
+1. Run the following code to read in the data and create three data frames.
 
 ```r
 # read in the metadata file
@@ -69,16 +69,14 @@ results <- read.csv("data/pp_all_results.csv", row.names=1)
 
 The data we have downloaded and read into R above represents the following 3 files from the larger analysis described in the paper:
 
-* **pp_all_meta.csv** - The metadata for the experiment. This experiment has 24 samples:
+* **pp_all_meta.csv** - The metadata for the experiment. This experiment has **24 samples**:
   * 4 replicates for each sample group
-  * 6 sample groups - `"Pax6:WT", "Pax6:KO", "neg:WT", "neg:KO", "Tbr2:WT", "Tbr2:KO"`
-  * The `Pax6` samples correspond to Radial Glia
-  * The `Tbr2` samples correspond to Intermediate Progenitors
-  * The `neg` (negative for Pax6 and Tbr2) samples correspond to Neurons
-
-* **pp_all_normalized_counts.csv** - The normalized counts for all the samples
-* **pp_all_results.csv**
-
+  * 6 sample groups (3 pairs) - `"Pax6:WT", "Pax6:KO"`, `"Tbr2:WT", "Tbr2:KO"`, `"neg:WT", "neg:KO"`
+  * The *Pax6+* samples correspond to **Radial Glia**
+  * The *Tbr2+* samples correspond to **Intermediate Progenitors**
+  * The *neg (Pax6- Tbr2-)* samples correspond to **post-mitotic neurons**
+* **pp_all_normalized_counts.csv** - The normalized counts for all the samples (normalized in DESeq2 using "Median of Ratios" method).
+* **pp_all_results.csv** - The results from DESeq2 for the comparisons between WT and PRDM16 knockout for the 3 cell types.
 
 ## Making figures for a publication: Art or Science?
 

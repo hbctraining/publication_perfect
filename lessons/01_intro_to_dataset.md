@@ -7,7 +7,8 @@ date: "Friday, July 16, 2021"
 Approximate time: 20 minutes
 
 ## Learning objectives
-* 
+* Explain the goals of this workshop
+* Understand the dataset being used for the workshop
 
 # Introduction to the dataset
 
@@ -75,8 +76,33 @@ The data we have downloaded and read into R above represents the following 3 fil
   * The *Pax6+* samples correspond to **Radial Glia**
   * The *Tbr2+* samples correspond to **Intermediate Progenitors**
   * The *neg (Pax6- Tbr2-)* samples correspond to **post-mitotic neurons**
-* **pp_all_normalized_counts.csv** - The normalized counts for all the samples (normalized in DESeq2 using "Median of Ratios" method).
-* **pp_all_results.csv** - The results from DESeq2 for the comparisons between WT and PRDM16 knockout for the 3 cell types.
+
+<p align="center">
+<img src="../img/metadata.png" width="370">
+</p>
+
+* **pp_all_normalized_counts.csv** - The normalized counts for all the samples (normalized in DESeq2 using "Median of Ratios" normalization).
+
+<p align="center">
+<img src="../img/norm_counts.png" height="200">
+</p>
+
+* **pp_all_results.csv** - The results from DESeq2 for the comparisons between WT and PRDM16 knockout for the 3 cell types. We have combined the results from 3 separate comparisons into a single file to make it easier to create the Volcano plots.
+
+<p align="center">
+<img src="../img/results.png" height="200">
+</p>
+
+Each comparison has 7 columns associated with it and there is one gene name column, so there should be a total of 22 columns in the `results` data frame. The 7 columns for each comparison are as follows:
+
+1. `_baseMean` - 
+1. `_log2FoldChange` -
+1. `_lfcSE` -
+1. `_stat` -
+1. `_pvalue` -
+1. `_padj` -
+1. `_threshold` -
+
 
 ## Making figures for a publication: Art or Science?
 

@@ -95,7 +95,7 @@ This data frame has 25 columns - in addition to the gene name column, there is a
 <img src="../img/results.png" height="200">
 </p>
 
-This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results (described below).
+This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results (circled in green for Pax6 and blue for Tbr2. Each of the 5 columns are described below.
 
 1. `_baseMean` - Mean of the normalized counts for all samples in the comparison, for a given gene.
 1. `_log2FoldChange` - log2 fold change between WT and PRDM16 KO

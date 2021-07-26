@@ -63,7 +63,7 @@ ggplot(pax6_exp) +
                                    vjust = 1, 
                                    hjust = 1)) +
   scale_x_discrete(name = "",
-                   labels=c("Pax6:WT" = "Radial glia",
+                   labels=c("Pax6:WT" = "Radial Glia",
                             "neg:WT" = "Neurons", 
                             "Tbr2:WT" = "Progenitors"))
 ```
@@ -71,6 +71,10 @@ ggplot(pax6_exp) +
 When providing tick labels, we can either provide a vector of names, which are applied based on factor levels, or we can provide the names using the format above (e.g. "current label" = "new label") to ensure proper labeling.
 
 Now let's rename the y-axis title to be "Normalized counts" as in the publication. What `scale_` function do you think we should use? Our plot should now resemble closely the published figure. The only differences are some of the text on the image that we will learn about in later lessons.
+
+<p align="center">
+<img src="../img/pax6_boxplot_2.png" width="300">
+</p>
 
 ***
 

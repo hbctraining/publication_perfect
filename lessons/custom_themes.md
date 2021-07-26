@@ -42,9 +42,10 @@ ggplot(results) +
   scale_y_continuous(name = "-Log10 p-value")
 ```
 
-To ensure consistency between our volcano plots, we want our volcano plot themes to be consistent between all plots:
+To ensure consistency between our volcano plots, we want our volcano plot themes to be consistent between all 3 plots:
 
 ```r
+# DO NOT RUN
 theme_bw() +
   theme(axis.title = element_text(size = rel(1.25)),
         axis.text = element_text(size = rel(1.15))) +
@@ -57,6 +58,7 @@ theme_bw() +
 > You can also combine multiple arguments within the same `theme()` function:
 >
 > ```
+> # DO NOT RUN
 > theme_bw() +
 >   theme(axis.title = element_text(size = rel(1.25)),
 >         axis.text = element_text(size = rel(1.15)),
@@ -66,7 +68,7 @@ theme_bw() +
 >         legend.position = "none")
 > ```
 
-If there is nothing that we want to change when we run this, then we do not need to specify any arguments. Creating the function is simple; we can just put the code inside the `{}`:
+Creating a function that represents these thematic changes is simple; we can just put the above code inside the `{}`:
 
 ```r
 personal_theme <- function(){ 
@@ -80,7 +82,7 @@ personal_theme <- function(){
 }
 ```
 
-Now to run our personal theme with any plot, we can use this function in place of the lines of `theme()` code:
+Now to run our personal theme with any plot, we can use this function in place of all of the lines of code associated with `theme()` layers:
 
 ```r
 ggplot(results) +
@@ -114,7 +116,7 @@ volcano_RG <- ggplot(results) +
 
 **Exercise**
 
-Using your `personal_theme()`, create volcano plots for the **'Intermediate progenitors'** and the **'Cortical neurons'** by using the `tbr_` and `neg_` columns in the `results` data frame, respectively. Save the plots to the variables `volcano_IP` and `volcano_neu`.
+Using your `personal_theme()`, create volcano plots for the **'Intermediate progenitors'** and the **'Cortical neurons'** by using the `tbr_` and `neg_` columns from the `results` data frame, respectively. Save the plots to the variables `volcano_IP` and `volcano_neu`.
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

@@ -51,7 +51,7 @@ In the first half of this workshop, we will be focusing on creating those plots 
 
 First though we need to bring the data into R!
 
-1. We will start by downloading a basic project folder with the data by right-clicking on [this link](https://www.dropbox.com/s/ig52a8501ur2eka/publication_perfect.zip?dl=1). We recommend that you place this zipped folder on your Desktop for the duration of the workshop. 
+1. We will start by downloading a basic project folder with the data by right-clicking on [this link](https://www.dropbox.com/s/hu5i8ueziuhmwg6/publication_perfect.zip?dl=1). We recommend that you place this zipped folder on your Desktop for the duration of the workshop. 
 1. Unzip the folder.
 1. Run the following code to read in the data and create three data frames.
 
@@ -87,20 +87,20 @@ The data we have downloaded and read into R above represents the following 3 fil
 <img src="../img/norm_counts.png" height="200">
 </p>
 
+This data frame has 25 columns - in addition to the gene name column, there is a column for each sample.
+
 * **pp_all_results.csv** - The results from DESeq2 for the comparisons between WT and PRDM16 knockout for the 3 cell types. We have combined the results from 3 separate comparisons into a single file to make it easier to create the Volcano plots.
 
 <p align="center">
 <img src="../img/results.png" height="200">
 </p>
 
-Each comparison has 7 columns associated with it and there is one gene name column, so there should be a total of 22 columns in the `results` data frame. The 7 columns for each comparison are as follows:
+This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results (described below).
 
 1. `_baseMean` - Mean of the normalized counts for all samples in the comparison, for a given gene.
 1. `_log2FoldChange` - log2 fold change between WT and PRDM16 KO
-1. `_lfcSE` - log2 standard error
-1. `_stat` -
 1. `_pvalue` - Wald test *P* value
-1. `_padj` - Benjamini-Hochberg adjusted Wald test *P* value (multiple test corrected P-value)
+1. `_padj` - Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction)
 1. `_threshold` - Logical vector with TRUE values for significantly differentially expressed (DE) genes, FALSE for not DE genes, NA for untested genes
 
 ## Making figures for a publication: Art or Science?

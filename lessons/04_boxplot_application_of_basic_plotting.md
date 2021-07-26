@@ -11,10 +11,10 @@ Approximate time: 60 minutes
 We are going to use what we learned about `ggplot2` syntax and consistent themes to create the following boxplots from the paper:
 
 <p align="center">
-<img src="../img/4DE_boxplots.png" width="800">
+<img src="../img/boxplots.jpeg" width="800">
 </p>
 
-We want to look at the distribution in the normalized counts (y-axis) between our replicates for each cell type (radial glia (Pax6), intermediate progenitors (Tbr2/Eomes), and the cortical neurons (neg)) for only the wild type (WT) groups. 
+We want to look at the distribution in the normalized counts (y-axis) between our replicates for each cell type (radial glia (Pax6), intermediate progenitors (Tbr2/Eomes), and the cortical neurons (neg)) for **only the wild type (WT) groups**. 
 
 A boxplot provides a graphical view of the distribution of data based on a five number summary: 
 * The top and bottom of the box represent the (1) first and (2) third quartiles (25th and 75th percentiles, respectively). 
@@ -38,6 +38,7 @@ We see that each sample is a column in the data frame and every gene is a row. W
 The syntax for `pivot_longer()` is:
 
 ```r
+# DO NOT RUN
 # Syntax for `pivot_longer()` function
 pivot_longer(input_data_frame,
              cols = columns_to_gather_together,
@@ -62,30 +63,37 @@ Finally, we want to color our plot with information about the cell types/groups 
 expression_plot <- left_join(x = expression_plot, 
                              y = meta, 
                              by = "samples")
+			   
+# Examine the contents of the expression_plot data frame
+View(expression_plot)			   
 ```
+
+<p align="center">
+<img src="../img/exp_plot.png" width="500">
+</p>
 
 Lastly, we need to filter `expression_plot` for the genes of interest: `Pax6`, `Eomes`, `Tubb3` and `Prdm16`, to create separate plots for each gene. We will start to create the boxplot for the Pax6 gene in this lesson, then finish the Pax6 boxplot in subsequent lessons, followed with boxplots for the other genes.
 	
-	```r
-	### Extract normalized counts for specific genes to plot
-	pax6_exp <- expression_plot %>%
-  	filter(geneSymbol == "Pax6" &
-               genotype == "WT")
-	       
-	eomes_exp <- expression_plot %>%
-  	filter(geneSymbol == "Eomes" &
-               genotype == "WT")
+```r
+### Extract normalized counts for specific genes to plot
+pax6_exp <- expression_plot %>%
+filter(geneSymbol == "Pax6" &
+       genotype == "WT")
+       
+eomes_exp <- expression_plot %>%
+filter(geneSymbol == "Eomes" &
+       genotype == "WT")
+
+tubb3_exp <- expression_plot %>%
+filter(geneSymbol == "Tubb3" &
+       genotype == "WT")
+
+prdm16_exp <- expression_plot %>%
+filter(geneSymbol == "Prdm16" &
+       genotype == "WT")       
+```
 	
-	tubb3_exp <- expression_plot %>%
-  	filter(geneSymbol == "Tubb3" &
-               genotype == "WT")
-	
-	prdm16_exp <- expression_plot %>%
-  	filter(geneSymbol == "Prdm16" &
-               genotype == "WT")       
-	```
-	
-Now we should be ready to create our Pax6 boxplot. Let's make sure we have all information for normalized counts and sample groups (`group`) in a single column before we proceed:
+Now we should be ready to create our `Pax6` boxplot. Let's make sure we have all information for normalized counts and sample groups (`group`) in a single column before we proceed:
 
 ```r
 View(pax6_exp)
@@ -102,20 +110,20 @@ Looks good! Let's make our boxplot!
 3. Add a title matching the published figure.
 4. Re-factor the x-axis variable 'group' to be in the same order as the paper using the following code:
 	
-	```r
-	### Re-factor the x-axis variable 'group' to be in the correct order
-	pax6_exp$group <- factor(pax6_exp$group, levels = c("Pax6:WT", "Tbr2:WT", "neg:WT"))
-	```
+```r
+### Re-factor the x-axis variable 'group' to be in the correct order
+pax6_exp$group <- factor(pax6_exp$group, levels = c("Pax6:WT", "Tbr2:WT", "neg:WT"))
+```
 	
-5. Change the angle of the x-axis labels to match the published figure using the `theme()` function (this [resource](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels) can be helpful). The `hjust` and `vjust` arguments can help your plot look more appealing.
-69. Use your personal theme to keep your plots consistent.
+5. Change the angle of the x-axis labels to match the published figure using the `theme()` function (this [resource](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels) can be helpful). 
+6. Center the plot title: the `hjust` and `vjust` arguments can help your plot look more appealing.
+7. Use your personal theme to keep your plots consistent.
 
 **After running the above code the boxplots should look something like the plots below.**
 
 <p align="center">
-<img src="../img/gene_boxplots.png" width="600">
+<img src="../img/pax6_boxplots.png" width="600">
 </p>
-
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

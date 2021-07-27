@@ -42,7 +42,7 @@ ggplot(results) +
   scale_y_continuous(name = "-Log10 p-value")
 ```
 
-To ensure consistency between our volcano plots, we want our volcano plot themes to be consistent between all 3 plots:
+To ensure consistency between our volcano plots, we want our volcano plot themes to be consistent between all 3 plots. We can do this by extracting the `theme()` layers (shown below) and applying them to every plot:
 
 ```r
 # DO NOT RUN

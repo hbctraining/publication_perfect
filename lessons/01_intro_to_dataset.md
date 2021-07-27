@@ -123,7 +123,7 @@ For the purposes of this workshop, we are focusing on reproducing a well-made, e
 
 Having said that, with specific types of biological datasets many good data visualization methods already exist. And it should be realtively simple to emulate a visualization with your dataset. However, you will also encounter datasets that are unique, or you may want to visualize an aspect of the data that is not commonly displayed. In those scenarios, we recommend testing a few visualizations, including different color palettes before settling on the best one. The [data-to-viz.com](https://www.data-to-viz.com/) website offers an interactive decision tree to help you identify the best way to display certain dataset formats. 
 
-There have been many books written over the years, many papers published, and there is an endless supply of online information about data visualization. In this workshop we are looking to highlight that creating visualization can often take careful consideration of the input data and the final conclusion you want the viewer to reach (quickly).
+There have been many books written over the years, many papers published, and there is an endless supply of online information about data visualization. In this workshop we are looking to highlight that creating visualization can often take careful consideration of the input data and the final conclusion you want the viewer to reach (quickly). This is, of course, in addition to discussin various R packages that you can use to create a publication-ready figure.
 
 
 ## References:

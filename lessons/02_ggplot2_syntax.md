@@ -188,9 +188,7 @@ We see the colors are different, but we will explore customizing those in the ne
 
 Notice the options for customizing the axes, titles, tick marks, and legends, among others. Everything is customizable, you just have to know what to customize. The examples given in the documentation can help determine what specifications might achieve your desired changes.
 
-Let's start with changing the size of the x- and y-axis labels. Since we will be adding this layer "on top", or after `theme_bw()`, any features we change will override what is set by the `theme_bw()` layer. 
-
-Alternatively, we can adjust specific elements of the current default theme by adding the `theme()` layer and passing in arguments for the things we wish to change. Or we can use both.
+We can adjust specific elements of the current default theme by adding the `theme()` layer and passing in arguments for the things we wish to change. Since we will be adding this layer "on top", or after `theme_bw()`, any features we change will override what is set by the `theme_bw()` layer. 
 
 Let's **increase the size of both axis titles to be 1.25 times the default size and the text labels to be 1.15 times the default.** When modifying the size of text the `rel()` function is commonly used to specify a change relative to the default.
 

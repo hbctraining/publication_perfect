@@ -41,8 +41,8 @@ The different types of plots here are:
   - _Radial glia_: should exhibit high _Pax6_ counts
   - _Intermediate progenitors_: should exhibit high _Tbr2_/_Eomes_ counts
   - _Cortical neurons_: should exhibit high _Tubb3_ counts
-* **A Heatmap** to show the relative expression of all significantly up- and down-regulated genes, comparing the WT *Radial Glia* (PAX6 + cells) versus the *Radial Glia* from the PRDM conditional knock out
-* **A Volcano plots** (essentially a scatter plot) to show the significance and how different the expression is between the genes in the WT samples versus the PRDM16 knock-out samples in 3 different cell types. This plot demonstrates the impact of knocking out PRDM16.
+* **A Heatmap** to show the expression of the significantly up- and down-regulated genes in the PRDM knock-out (KO) *Radial Glia* versus the wildtype (WT) *Radial Glia*
+* **A Volcano plots** (essentially a scatter plot) to show the significance and how different the expression is between the genes in the WT samples versus the PRDM16 KO samples in 3 different cell types. This plot demonstrates the impact of knocking out the PRDM16 gene.
 * **Venn diagrams** to demonstrate the overlap in the list of differentially expressed genes in 2 different cell populations (Radial Glia and Intermediate progenitors)
 * **Bar plots** to show the number of genes associated with specific biological pathways/processes. In each case the number of significantly up- or down- regulated genes are listed in the middle.
  
@@ -50,7 +50,7 @@ In addition to the plots listed above, there is (a) a very helpful **schematic o
 
 ## Reading in the data
 
-In the first half of this workshop, we will be focusing on creating those plots that use the ggplot2 package. In the second half of this workshop, we will (1) use packages not associated with ggplot2 to create the heatmap and the Venn diagrams, (2) we will also add the schematics and create a figure with the same layout as in the Neuron paper, and finally, (3) we will show you how to change the layout for a different journal.
+In the first half of this workshop, we will be focusing on creating those plots that use the ggplot2 package. In the second half of this workshop, we will (1) explore ggplot2 extensions and external packages to complete the plots in the figure, (2) we will also add the schematics and create a figure with the same layout as in the Neuron paper, and finally, (3) we will show you how to change the layout for a different journal.
 
 First though we need to bring the data into R!
 

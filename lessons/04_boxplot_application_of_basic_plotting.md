@@ -33,7 +33,7 @@ To create this visualization, we need our `normalized_counts` data. Let's take a
 View(normalized_counts)
 ```
 
-We see that each sample is a column in the data frame and every gene is a row. We want to compare the **normalized counts between samples** using the boxplot, but it is important to note that `ggplot2` requires data that is to be assigned to x- or y-coordinates (or any other plotting variable) is stored as a single column in the data frame. Since the normalized counts values of each sample is stored in a different column, we need to 'gather' these columns together into a single column before we can plot them. To do this we can use a handy `tidyr` function called `pivot_longer()`.
+We see that each sample is a column in the data frame and every gene is a row. We want to compare the **normalized counts between samples** using the boxplot, but it is important to note that `ggplot2` requires **data assigned to x- or y-coordinates (or any other plotting variable) is stored as a single column** in the data frame. Since the normalized counts values of each sample is stored in a different column, we need to 'gather' these columns together into a single column before we can plot them. To do this we can use a handy `tidyr` function called `pivot_longer()`.
 
 The syntax for `pivot_longer()` is:
 

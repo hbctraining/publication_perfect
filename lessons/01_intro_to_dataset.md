@@ -41,8 +41,8 @@ The different types of plots here are:
   - _Radial glia_: should exhibit high _Pax6_ counts
   - _Intermediate progenitors_: should exhibit high _Tbr2_/_Eomes_ counts
   - _Cortical neurons_: should exhibit high _Tubb3_ counts
-* **A Heatmap** to show the expression of the significantly up- and down-regulated genes in the PRDM knock-out (KO) *Radial Glia* versus the wildtype (WT) *Radial Glia*
-* **A Volcano plots** (essentially a scatter plot) to show the significance and how different the expression is between the significant genes in the WT samples versus the PRDM16 KO samples in 3 different cell types. This plot demonstrates the impact of knocking out the PRDM16 gene.
+* **Heatmap** to show the expression of the significantly up- and down-regulated genes in the PRDM knock-out (KO) *Radial Glia* versus the wildtype (WT) *Radial Glia*
+* **Volcano plots** (essentially a scatter plot) to show the significance (adjusted p-value) and magnitude (log2FoldChange) of expression change between the WT samples versus the PRDM16 KO samples in 3 different cell types. This plot demonstrates the impact of knocking out the PRDM16 gene.
 * **Venn diagrams** to demonstrate the overlap in the list of differentially expressed genes in 2 different cell populations (Radial Glia and Intermediate progenitors)
 * **Bar plots** to show the number of genes associated with specific biological pathways/processes. In each case the number of significantly up- or down- regulated genes are listed in the middle.
  
@@ -57,8 +57,9 @@ First though we need to bring the data into R!
 > [Here is the link](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE111660) to the GEO submission for these data.
 
 1. We will start by downloading a basic project folder with the data by right-clicking on [this link](https://www.dropbox.com/s/hu5i8ueziuhmwg6/publication_perfect.zip?dl=1). We recommend that you place this zipped folder on your Desktop for the duration of the workshop. 
-1. Unzip the folder.
-1. Run the following code to read in the data and create three data frames.
+1. Unzip the folder, and navigate into the `publication_perfect` folder. Inside this folder you will find a .Rproj file. **Double-click on this to open the project in RStudio.**
+1. From the menu bar select 'File' --> 'New File' --> 'Rscript'. This will open up the script editor, so you have aplace to write and save your code. 
+1. Copy and paste the following code into your script. Run the code in the console to read in the data and create three data frames.
 
 ```r
 # read in the metadata file

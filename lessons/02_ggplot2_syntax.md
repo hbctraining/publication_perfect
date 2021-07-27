@@ -100,7 +100,7 @@ ggplot(results) +
 
 ## Customizing the appearance of the data points on the plot
 
-Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points (representing genes) on the plot based on the whether the genes are significant using the `pax6_threshold` column** by specifying it within the `aes()` function. 
+Now that we have the required aesthetics, let's add some extras like color to the plot. We can **`color` the points (representing genes)** on the plot based on the whether the genes are significant using the **`pax6_threshold` column** and specifying it within the `aes()` function. 
 
 ```r
 # Adding geom layer with additional aesthetics

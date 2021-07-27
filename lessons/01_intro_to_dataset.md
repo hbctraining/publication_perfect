@@ -54,6 +54,8 @@ In the first half of this workshop, we will be focusing on creating those plots 
 
 First though we need to bring the data into R!
 
+> [Here is the link](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE111660) to the GEO submission for these data.
+
 1. We will start by downloading a basic project folder with the data by right-clicking on [this link](https://www.dropbox.com/s/hu5i8ueziuhmwg6/publication_perfect.zip?dl=1). We recommend that you place this zipped folder on your Desktop for the duration of the workshop. 
 1. Unzip the folder.
 1. Run the following code to read in the data and create three data frames.
@@ -84,7 +86,7 @@ The data we have downloaded and read into R above represents the following 3 fil
 <img src="../img/metadata.png" width="370">
 </p>
 
-* **pp_all_normalized_counts.csv** - The normalized counts for all the samples (normalized in DESeq2 using "Median of Ratios" normalization).
+* **pp_all_normalized_counts.csv** - The normalized counts for all the samples.
 
 <p align="center">
 <img src="../img/norm_counts.png" height="200">

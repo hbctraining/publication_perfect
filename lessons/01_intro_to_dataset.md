@@ -38,9 +38,9 @@ In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cd
 
 The different types of plots here are:
 * **Box plots** to show expression (normalized counts) of the Pdrm16 gene, which is the gene of interest, and 3 genes that help identify the different cell types: 
-  - _Radial glia_: high _Pax6_ counts
-  - _Intermediate progenitors_: high _Tbr2_/_Eomes_ counts
-  - _Cortical neurons_: low _Pax6_ and low _Tbr2_/_Eomes_ counts
+  - _Radial glia_: should exhibit high _Pax6_ counts
+  - _Intermediate progenitors_: should exhibit high _Tbr2_/_Eomes_ counts
+  - _Cortical neurons_: should exhibit low _Pax6_ and low _Tbr2_/_Eomes_ counts
 * **A Heatmap** to show the relative expression of all significantly up- and down-regulated genes, comparing the WT *Radial Glia* (PAX6 + cells) versus the *Radial Glia* from the PRDM conditional knock out
 * **A Volcano plots** (essentially a scatter plot) to show the significance and how different the expression is between the genes in the WT samples versus the PRDM16 knock-out samples in 3 different cell types. This plot demonstrates the impact of knocking out PRDM16.
 * **Venn diagrams** to demonstrate the overlap in the list of differentially expressed genes in 2 different cell populations (Radial Glia and Intermediate progenitors)

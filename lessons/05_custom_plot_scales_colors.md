@@ -76,6 +76,8 @@ Now let's rename the y-axis title to be "Normalized counts" as in the publicatio
 <img src="../img/pax6_boxplot_2.png" width="300">
 </p>
 
+> _**NOTE:** There are several 'helper' functions to make editing the axis labels and limits a bit easier, including `xlab()`, `ylab()`, `xlim()`, and `ylim()`._
+
 ***
 
 **Exercises**
@@ -86,8 +88,6 @@ Let's explore the other graphical elements using the position scales.
 2. Use a log10 scale for the **y-axis** using a `scale_` function.
 
 ***
-
-> _**NOTE:** There are several 'helper' functions to make editing the axis labels and limits a bit easier, including `xlab()`, `ylab()`, `xlim()`, and `ylim()`._
 
 ## Differential mapping scales
 

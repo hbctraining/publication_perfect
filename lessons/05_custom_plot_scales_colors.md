@@ -134,6 +134,11 @@ ggplot(pax6_exp) +
 		   linetype = group))
 ```
 
+
+<p align="center">
+<img src="../img/pax6_boxplot_1aa.png" width="380">
+</p>
+
 Since the `fill` and `linetype` arguments are mapped to the same variable, `group`, by default, the legends for these two mappings are combined into a single legend called 'group'. If we alter the name or labels of the `fill` or `linetype` scales, we will see the legend split. Let's test it out by customizing the `scale_linetype_discrete()` layer.
 
 ```r

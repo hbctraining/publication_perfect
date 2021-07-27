@@ -147,6 +147,10 @@ ggplot(pax6_exp) +
                           labels = c("Pax6 wildtype", "Intermediate wildtype", "Neurons wildtype"))
 ```
 
+<p align="center">
+<img src="../img/pax6_boxplot_1a.png" width="450">
+</p>
+
 Using these `scale_` layers with our differential aesthetics allow us to easily change the titles, text, and display within the legends. For additional customization of the style or position of the legends, we can use the `theme()` function. In addition, `ggplot2` offers an additional quick way to alter the appearance of legends by using the helper function, `guides()`. We aren't going to go into depth into this function, but more details can be found [here](https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/).
 
 ## Color scales
@@ -188,6 +192,9 @@ ggplot(pax6_exp) +
   scale_fill_manual(values = c("firebrick4", "lightsteelblue", "yellow2"))
 ```
 
+<p align="center">
+<img src="../img/pax6_boxplot_1b.png" width="300">
+</p>
  
 We can also use pre-created color palettes from external R packages. This [R Graph Gallery site](http://www.r-graph-gallery.com/ggplot2-color.html) has a nice interactive app for exploring how to find and incorporate desired colors into your plots.
 

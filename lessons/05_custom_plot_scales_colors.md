@@ -37,7 +37,7 @@ There are also scales for common transformations and modifications often used wh
 * `scale_x_sqrt()`
 * `scale_x_binned()`
 
-Using these position or axis scales, we can customize the axis titles (`name`), axis limits (`limits`), axis breaks (`breaks`), and tick labels (`labels`). Using these `scale_` functions, we can alter the **values** of the axes and ticks; however, it is worth noting that the **look and style (e.g. size, thickness, face, angle, justification, etc.)** of the axes and labels are still altered within the `theme()` function.
+Using these position or axis scales, we can customize the axis titles (`name`), axis limits (`limits`), axis breaks (`breaks`), and tick labels (`labels`). Using these `scale_` functions, we can alter the **values** of the axes and ticks; however, it is worth noting that the **look and style (e.g. size, thickness, font, text style, angle, justification, etc.)** of the axes and labels are still altered within the `theme()` function.
 
 Let's change the names of the x-axis labels to match the figure in the paper shown below.
 

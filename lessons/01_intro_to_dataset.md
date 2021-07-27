@@ -119,7 +119,7 @@ In the following figure from O'Donoghue et al. (2018) [[2]](https://www.annualre
 <img src="../img/bd10275.f2.jpg" height="500">
 </p>
 
-For the purposes of this workshop, we are focusing on reproducing a well-made, existing figure; but, as we go through both parts of this workshop, we will be highlighting considerations as we encounter the various types of data representations. 
+For the purposes of this workshop, we are focusing on reproducing a well-made, existing figure; but, as we go through both parts of this workshop, we will be highlighting considerations as we encounter various types of data representations. 
 
 Having said that, with specific types of biological datasets many good data visualization methods already exist. And it should be realtively simple to emulate a visualization with your dataset. However, you will also encounter datasets that are unique, or you may want to visualize an aspect of the data that is not commonly displayed. In those scenarios, we recommend testing a few visualizations, including different color palettes before settling on the best one. The [data-to-viz.com](https://www.data-to-viz.com/) website offers an interactive decision tree to help you identify the best way to display certain dataset formats. 
 

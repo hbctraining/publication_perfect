@@ -316,6 +316,9 @@ The viridis R package contain palettes that represent good choices for color-bli
 Usage of the `viridis` palettes is straight-forward, and the package provides ggplot2 scale functions to easily switch to these palettes. Let's use the default color palette, viridis.
 
 ```r
+# Load the viridis library
+library(viridis)
+
 # Visualize the Pax6 boxplot with the viridis palette
 ggplot(pax6_exp) +
   geom_boxplot(aes(x=group, 
@@ -364,7 +367,10 @@ ggplot(pax6_exp) +
 
 Overall, the plot looks nice, and it is color-blind friendly and distinguishable on a gray scale. We could specify the palette manually using the hexadecimal code. The hexadecimal codes for each color can be identified using the `viridis_pal()` and `show_col()` functions from the `scales` package.
 
-```
+```r
+# Load scales library
+library(scales)
+
 # Get hexadecimal codes for viridis palette
 show_col(viridis_pal(option = "viridis")(30))
 ```
@@ -373,7 +379,7 @@ show_col(viridis_pal(option = "viridis")(30))
 
 **Exercises**
 
-1. Adjust the `scale_fill_viridis()` function to make the first box a bit lighter in color.
+1. Adjust the `scale_fill_viridis()` function to make begin the palette at a bit lighter in color.
 2. Try out another `viridis` palette of your choice.
 
 ***

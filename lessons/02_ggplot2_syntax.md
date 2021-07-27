@@ -63,7 +63,7 @@ The **geom (geometric) object** is the layer that specifies what kind of plot we
 * boxplot (`geom_boxplot`, for, well, boxplots!)
 * [many others](https://ggplot2.tidyverse.org/reference/#section-geoms)
 
-The [RStudio cheatsheet for ggplot2](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) is a bit overwhelming at first, but it can help with choosing the best 'geom' for our data. With two continuous variables with points, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
+The [RStudio cheatsheet for ggplot2](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) is a bit overwhelming at first, but it can help with choosing the best 'geom' for our data. With two continuous variables as points, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
 
 ```r
 # Initializing plot

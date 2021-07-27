@@ -370,6 +370,10 @@ ggplot(pax6_exp) +
   scale_fill_viridis(discrete = TRUE)
 ```
 
+<p align="center">
+<img src="../img/pax6_boxplot_4.png" width="300">
+</p>
+
 Overall, the plot looks nice, and it is color-blind friendly and distinguishable on a gray scale. We could specify the palette manually using the hexadecimal code. The hexadecimal codes for each color can be identified using the `viridis_pal()` and `show_col()` functions from the `scales` package.
 
 ```r
@@ -411,6 +415,12 @@ ggplot(pax6_exp) +
                      option = "viridis",
                      begin = 0.2 )
 ```
+
+
+<p align="center">
+<img src="../img/pax6_boxplot_5.png" width="300">
+</p>
+
 
 > _**NOTE:** For continuous data, the `scale_color_gradient()` and `scale_fill_gradient()` family of functions are used, which create two color gradients from low to high. The `scale_color_gradient2()` creates a diverging color gradient with a midpoint color, while `scale_color_gradientn()` creates an n-color gradient. You can specify your palette of colors similar to the discrete color scales (e.g. `scale_fill_gradient2(colors = mypalette)`)._
 

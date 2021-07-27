@@ -125,7 +125,7 @@ If we wanted to modify the **size of the data points** we can use the `size` arg
 
 > **Note:** This is true for several arguments, including `color`, `shape`, `alpha`, etc. For example, we can change all shapes to square by adding this argument to be outside the `aes()` function; if we put the argument inside the `aes()` function we could change the shape according to a (categorical) variable in our data frame or tibble.
 
-We have decided that we want to change the size of all the data point to a uniform size instead of typing it to a numeric column in the input tibble. Add in the `size` argument by specifying a number for the size of the data point:
+We have decided that we want to change the size of all the data point to a uniform size instead of mapping it to a numeric column in the input tibble. Add in the `size` argument by specifying a number for the size of the data point:
 
 ```
 # Changing size to a constant (do not change with columns in data frame)

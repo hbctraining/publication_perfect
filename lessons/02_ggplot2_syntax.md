@@ -41,7 +41,7 @@ Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's
 View(results)
 ```
 
-We see that each gene is a different row and each column corresponds to different statistics regarding the differences in gene expression between the KO and WT samples within the radial glia (`pax6` columns), intermediate progenitors (`tbr2` columns) and neurons (`neg` columns). For this plot, we are interested in the radial glia, which correspond to the `pax6` columns. Specifically, we are interested in plotting the `Pax6` log2 fold changes (`pax_log2FoldChanges`) on the x-axis and the -log10 `Pax6` p-adjusted values (`pax6_padj`) on the y-axis.
+We see that each gene is a different row and each column corresponds to different statistics regarding the differences in gene expression between the KO and WT samples within the radial glia (`pax6` columns), intermediate progenitors (`tbr2` columns) and neurons (`neg` columns). For this plot, we are interested in the radial glia, which correspond to the `pax6` columns. Specifically, we are interested in plotting the `Pax6` log2 fold changes (`pax6_log2FoldChanges`) on the x-axis and the -log10 `Pax6` p-adjusted values (`pax6_padj`) on the y-axis.
 
 ## Creating a basic plot
 

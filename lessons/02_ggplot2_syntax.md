@@ -222,12 +222,18 @@ ggplot(results) +
 3. Remove the legend by adding a `theme()` layer with the argument `legend.position`. 
 4. Remove the gridlines by adding another `theme()` layer with the argument `panel.grid`.
 5. Add the following new layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
-  * What does it change?
-  * How many `theme()` layers can be added to a ggplot code chunk, in your estimation?
+    * What does it change?
+    * How many `theme()` layers can be added to a ggplot code chunk, in your estimation?
 
 ***
 
-How does the plot compare to the published figure now? It's quite close. Most noticably, the colors are different, the axes need proper titles, the x-axis scale is slightly different and the annotations on the plot are missing. We will finish this plot using the code below to add colors and alter the axes, but we will discuss these topics in much greater detail in future lessons.
+How does the plot compare to the published figure now? 
+
+<p align="center">
+<img src="../img/ggscatter-4.png" height="300">
+</p>
+
+It's quite close. Most noticably, the colors are different, the axes need proper titles, the x-axis scale is slightly different and the annotations on the plot are missing. We will finish this plot using the code below to add colors and alter the axes, but we will discuss these topics in much greater detail in future lessons.
 
 - `scale_color_manual()`: colors the points based on groups present in `pax6_threshold` assigned to the `color` argument within the `aes()` function. 
 - `scale_x_continuous()` and `scale_y_continuous()`: allows specification of the axis names and minimum and maximum axis values to be displayed on the plot.

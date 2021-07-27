@@ -139,6 +139,8 @@ ggplot(pax6_exp) +
 
 Using these `scale_` layers with our differential aesthetics allow us to easily change the titles, text, and display within the legends. For additional customization of the style or position of the legends, we can use the `theme()` function. In addition, `ggplot2` offers an additional quick way to alter the appearance of legends by using the helper function, `guides()`. We aren't going to go into depth into this function, but more details can be found [here](https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/).
 
+> _**NOTE:** There are several 'helper' functions to make editing the axis labels and limits a bit easier, including `xlab()`, `ylab()`, `xlim()`, and `ylim()`._
+
 ## Color scales
 
 While the default colors may be fine for many applications, they are often not sufficient to highlight the relationships of interest or are not optimal for the intended audience/publication. 

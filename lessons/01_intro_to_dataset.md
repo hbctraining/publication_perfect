@@ -37,11 +37,14 @@ In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cd
 </p>
 
 The different types of plots here are:
-* **Box plots** to show expression of 4 genes in the three different cell populations isolated by FACS, and their gene expression was assessed by bulk RNA-seq. Each gene represents a cell populations sorted by FACS.
-* **A Heatmap** with the significantly up- and down- regulated genes when comparing the WT *Radial Glia* (PAX6 + cells) versus the *Radial Glia* from the PRDM conditional knock out
-* **A Volcano plots** (essentially a scatter plot) to demonstrate the impact of knocking out PRDM16 on the 3 different cell types
+* **Box plots** to show expression (normalized counts) of the Pdrm16 gene, which is the gene of interest, and 3 genes that help identify the different cell types: 
+  - _Radial glia_: high Pax6 counts
+  - _Intermediate progenitors_: high Tbr2/Eomes counts
+  - _Cortical neurons_: low Pax6 and Tbr2/Eomes counts
+* **A Heatmap** to show the relative expression of all significantly up- and down-regulated genes, comparing the WT *Radial Glia* (PAX6 + cells) versus the *Radial Glia* from the PRDM conditional knock out
+* **A Volcano plots** (essentially a scatter plot) to show the significance and how different the expression is between the genes in the WT samples versus the PRDM16 knock-out samples in 3 different cell types. This plot demonstrates the impact of knocking out PRDM16.
 * **Venn diagrams** to demonstrate the overlap in the list of differentially expressed genes in 2 different cell populations (Radial Glia and Intermediate progenitors)
-* **Bar plots** showing the number of genes associated with specific Gene Ontology categories. In each case the number of significantly up- or down- regulated genes are listed in the middle.
+* **Bar plots** to show the number of genes associated with specific biological pathways/processes. In each case the number of significantly up- or down- regulated genes are listed in the middle.
  
 In addition to the plots listed above, there is (a) a very helpful **schematic of the experiment**, (b) the **FACS output** and (c) **an immunofluorescence image** to show the how well the cell populations were separated from each other.
 

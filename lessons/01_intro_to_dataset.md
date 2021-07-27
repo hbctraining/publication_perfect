@@ -12,7 +12,7 @@ Approximate time: 20 minutes
 
 # Introduction to the dataset
 
-For this workshop we will be working with RNA-seq data from a recent publication in Neuron by Baizabal et al. (2018) [1](https://doi.org/10.1016/j.neuron.2018.04.033). We will learn about how to use the ggplot2 package and other related packages to recreate a figure from this publication. In addition, we will also learn how to modify the figure to fit the submission criteria of a different journal. 
+For this workshop we will be working with RNA-seq data from a recent publication in Neuron by Baizabal et al. (2018) [[1]](https://doi.org/10.1016/j.neuron.2018.04.033). We will learn about how to use the ggplot2 package and other related packages to recreate a figure from this publication. In addition, we will also learn how to modify the figure to fit the submission criteria of a different journal. 
 
 ## The publication
 
@@ -111,9 +111,9 @@ This data frame has 16 columns - in addition to the gene name column, each of th
 
 ## Making figures for a publication: Art or Science?
 
-Creating plots and figures that convey complex information accurately and in an accessible manner is not easy. Data visualization for biomedical data takes a lot more thinking and planning that we usually set aside time for. A recent paper by O'Donoghue et al. (2018) [2](https://www.annualreviews.org/doi/10.1146/annurev-biodatasci-080917-013424) is a good reference for do's and dont's when thinking about displaying information from various types of biomedical experiments. They highlight common practices that create misinterpretation of data, often caused by the human brain's inability to catch information and process it as we are viewing something. 
+Creating plots and figures that convey complex information accurately and in an accessible manner is not easy. Data visualization for biomedical data takes a lot more thinking and planning that we usually set aside time for. A recent paper by O'Donoghue et al. (2018) [[2]](https://www.annualreviews.org/doi/10.1146/annurev-biodatasci-080917-013424) is a good reference for do's and dont's when thinking about displaying information from various types of biomedical experiments. They highlight common practices that create misinterpretation of data, often caused by the human brain's inability to catch information and process it as we are viewing something. 
 
-In the following figure from O'Donoghue et al. (2018) [2](https://www.annualreviews.org/doi/10.1146/annurev-biodatasci-080917-013424) they highlight the shapes and colors that are most effective when plotting.
+In the following figure from O'Donoghue et al. (2018) [[2]](https://www.annualreviews.org/doi/10.1146/annurev-biodatasci-080917-013424) they highlight the shapes and colors that are most effective when plotting.
 
 <p align="center">
 <img src="../img/bd10275.f2.jpg" height="500">
@@ -122,6 +122,8 @@ In the following figure from O'Donoghue et al. (2018) [2](https://www.annualrevi
 For the purposes of this workshop, we are focusing on reproducing a well-made, existing figure; but, as we go through both parts of this workshop, we will be highlighting considerations as we encounter the various types of data representations. 
 
 Having said that, with specific types of biological datasets many good data visualization methods already exist. And it should be realtively simple to emulate a visualization with your dataset. However, you will also encounter datasets that are unique, or you may want to visualize an aspect of the data that is not commonly displayed. In those scenarios, we recommend testing a few visualizations, including different color palettes before settling on the best one. The [data-to-viz.com](https://www.data-to-viz.com/) website offers an interactive decision tree to help you identify the best way to display certain dataset formats. 
+
+There have been many books written over the years, many papers published, and there is an endless supply of online information about data visualization. In this workshop we are looking to highlight that creating visualization can often take careful consideration of the input data and the final conclusion you want the viewer to reach (quickly).
 
 
 ## References:

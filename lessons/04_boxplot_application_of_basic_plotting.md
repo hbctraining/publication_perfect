@@ -93,7 +93,7 @@ filter(geneSymbol == "Prdm16" &
        genotype == "WT")       
 ```
 	
-Now we should be ready to create our `Pax6` boxplot. Let's make sure we have all information for normalized counts and sample groups (`group`) in a single column before we proceed:
+Now we should be ready to create our `Pax6` boxplot. Let's make sure we have all information for normalized counts and sample groups (`group`) each in a single column before we proceed:
 
 ```r
 View(pax6_exp)

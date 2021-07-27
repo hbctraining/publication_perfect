@@ -3,6 +3,7 @@
 Thus far, when plotting with `ggplot2`, we have observed default values incorporated in the aesthetic mappings. For example, by default in our boxplot,  the column values in our data frame become the x- and y-axis labels and the colors assigned default to a standard set used by `ggplot2`. 
 
 ```r
+# Our current plot
 ggplot(pax6_exp) +
   geom_boxplot(aes(x=group, 
                    y=normalized_counts, 
@@ -100,6 +101,7 @@ Aside from the axis data, the other data included in our aesthetic mappings (wit
 For example, when we run the code below, additional layers are added under the hood.
 
 ```r
+# Example plot code
 ggplot(pax6_exp) +
   geom_boxplot(aes(x=group, 
                    y=normalized_counts, 
@@ -109,6 +111,7 @@ ggplot(pax6_exp) +
 The additional layers in the code below were automatically added to our code to create the plot:
 
 ```r
+# Example plot code showing all scales run under the hood
 ggplot(pax6_exp) +
   geom_boxplot(aes(x = group, 
                    y = normalized_counts, 
@@ -123,6 +126,7 @@ All defaults for these additional layers were used, so we do not notice that the
 For example, if we wanted to alter the linetype based on group, we could add another layer using the `linetype` argument. We know that a `scale_linetype_discrete()` layer is added when we run the code below. 
 
 ```r
+# Adding an aes() for linetype
 ggplot(pax6_exp) +
   geom_boxplot(aes(x = group, 
                    y = normalized_counts, 
@@ -133,6 +137,7 @@ ggplot(pax6_exp) +
 Since the `fill` and `linetype` arguments are mapped to the same variable, `group`, by default, the legends for these two mappings are combined into a single legend called 'group'. If we alter the name or labels of the `fill` or `linetype` scales, we will see the legend split. Let's test it out by customizing the `scale_linetype_discrete()` layer.
 
 ```r
+# Adjusting scale for linetype
 ggplot(pax6_exp) +
   geom_boxplot(aes(x = group, 
                    y = normalized_counts, 

@@ -42,7 +42,7 @@ The different types of plots here are:
   - _Intermediate progenitors_: should exhibit high _Tbr2_/_Eomes_ counts
   - _Cortical neurons_: should exhibit high _Tubb3_ counts
 * **A Heatmap** to show the expression of the significantly up- and down-regulated genes in the PRDM knock-out (KO) *Radial Glia* versus the wildtype (WT) *Radial Glia*
-* **A Volcano plots** (essentially a scatter plot) to show the significance and how different the expression is between the genes in the WT samples versus the PRDM16 KO samples in 3 different cell types. This plot demonstrates the impact of knocking out the PRDM16 gene.
+* **A Volcano plots** (essentially a scatter plot) to show the significance and how different the expression is between the significant genes in the WT samples versus the PRDM16 KO samples in 3 different cell types. This plot demonstrates the impact of knocking out the PRDM16 gene.
 * **Venn diagrams** to demonstrate the overlap in the list of differentially expressed genes in 2 different cell populations (Radial Glia and Intermediate progenitors)
 * **Bar plots** to show the number of genes associated with specific biological pathways/processes. In each case the number of significantly up- or down- regulated genes are listed in the middle.
  

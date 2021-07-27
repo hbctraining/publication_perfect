@@ -46,7 +46,7 @@ Let's change the names of the x-axis labels to match the figure in the paper sho
 </p>
 
 
-Let's add a layer to our ggplot code to remove the title and rename the tick labels on the x-axis. What `scale_` function do you think we should use?
+Let's add a layer to our ggplot code to remove the x-axis title and rename the x-axis tick labels. What `scale_` function do you think we should use?
 
 ```r
 # Check the scale_ function arguments using the ?

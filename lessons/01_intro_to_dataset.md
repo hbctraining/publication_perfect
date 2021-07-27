@@ -12,7 +12,7 @@ Approximate time: 20 minutes
 
 # Introduction to the dataset
 
-For this workshop we will be working with RNA-seq data from a recent publication in Neuron by Baizabal et al. (2018). We will learn about how to use the ggplot2 package and other related packages to recreate a figure from this publication. In addition, we will also learn how to modify the figure to fit the submission criteria of a different journal. 
+For this workshop we will be working with RNA-seq data from a recent publication in Neuron by Baizabal et al. (2018) [1]. We will learn about how to use the ggplot2 package and other related packages to recreate a figure from this publication. In addition, we will also learn how to modify the figure to fit the submission criteria of a different journal. 
 
 ## The publication
 
@@ -111,11 +111,24 @@ This data frame has 16 columns - in addition to the gene name column, each of th
 
 ## Making figures for a publication: Art or Science?
 
+Creating plots and figures that convey complex information accurately and in an accessible manner is not easy. Data visualization for biomedical data takes a lot more thinking and planning that we usually set aside time for. A recent paper by O'Donoghue et al, 2018 [2] is a good reference for do's and dont's when thinking about displaying information from various types of biomedical experiments. They highlight common practices that create misinterpretation of data, often caused by the human brain's inability to catch information and process it as we are viewing something. 
+
+In the following figure from O'Donoghue et al [2] they highlight the shapes and colors that are most effective when plotting.
+
+<p align="center">
+<img src="../img/bd10275.f2.jpg" height="500">
+</p>
+
+For the purposes of this workshop, we are focusing on reproducing a well-made, existing figure; but, as we go through both parts of this workshop, we will be highlighting considerations as we encounter the various types of data representations. 
+
+Having said that, with specific types of biological datasets many good data visualization methods already exist. And it should be realtively simple to emulate a visualization with your dataset. However, you will also encounter datasets that are unique, or you may want to visualize an aspect of the data that is not commonly displayed. In those scenarios, we recommend testing a few visualizations, including different color palettes before settling on the best one. The [data-to-viz.com](https://www.data-to-viz.com/) website offers an interactive decision tree to help you identify the best way to display certain dataset formats. 
 
 
 ## References:
 
-1. [Baizabal et al., 2018, Neuron 98, 945–962 - *The Epigenetic State of PRDM16-Regulated Enhancers in Radial Glia Controls Cortical Neuron Position*](https://doi.org/10.1016/j.neuron.2018.04.033)
+1. *The Epigenetic State of PRDM16-Regulated Enhancers in Radial Glia Controls Cortical Neuron Position*. [Baizabal et al., 2018, Neuron 98, 945–962](https://doi.org/10.1016/j.neuron.2018.04.033)
+2. *Visualization of Biomedical Data*. [O'Donoghue et al, 2018, Annual Review of Biomedical Data Science 1:1, 275-304](https://www.annualreviews.org/doi/10.1146/annurev-biodatasci-080917-013424)
+3. *Why scientists need to be better at data visualization*. [Betsy Mason, Knowable Magazine 2019](https://knowablemagazine.org/article/mind/2019/science-data-visualization)
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

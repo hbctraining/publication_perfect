@@ -15,6 +15,10 @@ ggplot(pax6_exp) +
 
 ```
 
+<p align="center">
+<img src="../img/pax6_boxplots.png" width="300">
+</p>
+
 While the defaults tend to look okay, we often desire to customize these values. To customize the aesthetic mappings (specifications made within the `aes()` function), we can use **scales**, which are available for every mapping and data type.
 
 ## Scales

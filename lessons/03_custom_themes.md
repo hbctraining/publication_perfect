@@ -71,6 +71,7 @@ theme_bw() +
 Creating a function that represents these thematic changes is simple; we can just put the above code inside the `{}`:
 
 ```r
+# Creating function for personal theme to apply to all plots
 personal_theme <- function(){ 
   theme_bw() +
   theme(axis.title = element_text(size = rel(1.25)),
@@ -85,6 +86,7 @@ personal_theme <- function(){
 Now to run our personal theme with any plot, we can use this function in place of all of the lines of code associated with `theme()` layers:
 
 ```r
+# Creating volcano plot using the 'personal_theme()` function
 ggplot(results) +
   geom_point(aes(x = pax6_log2FoldChange, 
                  y = -log10(pax6_padj), 
@@ -100,6 +102,7 @@ ggplot(results) +
 Now that we have the final volcano plot, let's save it to a variable, which we can use downstream to add our annotations.
 
 ```r
+# Save volcano plot to a variable
 volcano_RG <- ggplot(results) +
   geom_point(aes(x = pax6_log2FoldChange, 
                  y = -log10(pax6_padj), 

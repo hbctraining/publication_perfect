@@ -14,34 +14,33 @@ Approximate time: 60 minutes
 
 In this lesson, we will be introducing the syntax for the popular package for visualization, [`ggplot2`](https://ggplot2.tidyverse.org/). The `ggplot2` package approaches visualization using principles from the [Grammar of Graphics](https://www.springer.com/gp/book/9780387245447), a pivotal book describing quantitative graphics. The developers of `ggplot2` describe their approach to the Grammer of Graphics in a free, [online book](https://ggplot2-book.org/index.html), which can be a helpful resource for understanding the theory and organization of the `ggplot2` package. 
 
-We will focus the majority of our materials on creating plots with `ggplot2` due to it's versatility and ease of customization. Once you learn the `ggplot2` syntax, you will have laid the foundation for creating a plethora of graphics.
+We will focus the majority of our this portion of the workshop on creating plots with `ggplot2` due to it's versatility and ease of customization. Once you learn the `ggplot2` syntax, you will have laid the foundation for creating a plethora of graphics.
 
 ## Set up 
 
-Let's load the library for `tidyverse`, which is a suite of packages that include `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data, among others.
+Let's load the library for `tidyverse`, which is a suite of packages that includes `ggplot2` for visualization, as well as some useful packages for wrangling (`dplyr`), parsing (`stringr`) and tidying (`tidyr`) data, among others.
 
 ```r
 # Load the Tidyverse suite of packages
 library(tidyverse)
 ```
 
-> _**NOTE:** Don't be alarmed by any conflict statements when loading this library, these statements are just informing you of packages that are currently loaded that have functions of the same name._
+> _**NOTE:** Don't be alarmed by any conflict statements when loading this library, these statements are just informing you of packages that are currently loaded that have functions with the same name._
 
-The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create our first figure from the [The Epigenetic State of PRDM16-regulated Enhancers in Radial Glia Controls Cortical Neuron Position paper](https://doi.org/10.1016/j.neuron.2018.04.033). We will build the figure below using the layering approach employed by  `ggplot2`. We will highlight the purpose and utility of each layer we add, while highlighting it's flexibility and customization.
+The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create figure 4 from the Baizabal et al. (2018) paper. We will build the figure below using the layering approach employed by `ggplot2`. We will highlight the purpose and utility of each layer we add, while highlighting it's flexibility and customization options.
 
 <p align="center">
 <img src="../img/radial_glia.jpeg" width="300">
 </p>
 
-
-Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's version of a data frame called a "tibble" (you can find out more about tibbles [here](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html)). To create this figure we will need the data present in our `results` data frame. This plot examines the magnitude (log2 fold changes) and significance (p-adjusted values) of the differences in gene expression between the *Prdm16* KO and WT samples for every gene in radial glia cells; each point is a gene. Let's take a look at the `results` data frame.
+Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's version of a data frame called a "tibble" (you can find out more about tibbles [here](https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/intro_tidyverse.html)). To create this figure we will need the data present in our `results` data frame. This plot examines the magnitude (log2 fold changes) and significance (p-adjusted values) of the differences in gene expression between the *Prdm16* KO and WT samples for every gene in radial glia cells (*Pax6*+ cells). This plot is called a "volcano plot", but it is essentially a simple X-Y scatterplot with each data point representing a gene. Let's take a look at the `results` data frame and look for the columns we are interest in.
 
 ```r
 # Inspect the results data frame
 View(results)
 ```
 
-We see that each gene is a different row and each column corresponds to different statistics regarding the differences in gene expression between the KO and WT samples within the radial glia (`pax6` columns), intermediate progenitors (`tbr2` columns) and neurons (`neg` columns). For this plot, we are interested in the radial glia, which correspond to the `pax6` columns. Specifically, we are interested in plotting the `Pax6` log2 fold changes (`pax6_log2FoldChanges`) on the x-axis and the -log10 `Pax6` p-adjusted values (`pax6_padj`) on the y-axis.
+We see that each gene is a different row and each column corresponds to different statistics regarding the differences in gene expression between the KO and WT samples within the radial glia (`pax6_` columns), intermediate progenitors (`tbr2_` columns) and neurons (`neg_` columns). For this plot, we are interested in the radial glia, which correspond to the `pax6` columns. Specifically, we are interested in plotting the `Pax6` log2 fold changes (`pax6_log2FoldChanges`) on the x-axis and the -log10 `Pax6` p-adjusted values (`pax6_padj`) on the y-axis.
 
 ## Creating a basic plot
 
@@ -145,7 +144,7 @@ ggplot(results) +
 Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). 
 
 1. Change all of the points in the plot to squares.
-2. Change the transparency of the points (`alpha`) to change with the base mean of Pax6.
+2. Change the transparency of the points (`alpha`) to change with the base mean of `Pax6`.
 
 ***
 

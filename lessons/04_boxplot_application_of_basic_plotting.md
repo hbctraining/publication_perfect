@@ -110,10 +110,10 @@ Looks good! Let's make our boxplot!
 3. Add a title matching the published figure.
 4. Re-factor the x-axis variable 'group' to be in the same order as the paper using the following code:
 	
-```r
-### Re-factor the x-axis variable 'group' to be in the correct order
-pax6_exp$group <- factor(pax6_exp$group, levels = c("Pax6:WT", "Tbr2:WT", "neg:WT"))
-```
+	```r
+	### Re-factor the x-axis variable 'group' to be in the correct order
+	pax6_exp$group <- factor(pax6_exp$group, levels = c("Pax6:WT", "Tbr2:WT", "neg:WT"))
+	```
 	
 5. Change the angle of the x-axis labels to match the figure below using the `theme()` function (this [resource](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels) can be helpful): the `hjust` and `vjust` arguments can help your plot look more appealing.
 6. Use your personal theme to keep your plots consistent.

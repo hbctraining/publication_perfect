@@ -148,6 +148,10 @@ Let's explore how to change the aesthetics of the data points. Different shapes 
 
 ***
 
+<p align="center">
+<img src="../img/ggscatter-1alt.png" height="300">
+</p>
+
 We aren't interested in keeping the points as squares or altering their transparency, but it can be helpful to change shapes, size, transparency, etc. when visualizing different groups or conditions, similar to using the `color` argument. 
 
 ## Customizing the appearance of the non-data points on the plot

@@ -57,6 +57,11 @@ Let's add a layer to our ggplot code to remove the x-axis title and rename the x
 # Check the scale_ function arguments using the ?
 ?scale_<tab>
 
+```
+
+When providing tick labels, we can either provide a vector of names, which are applied based on factor levels, or we can provide the names using the format shown below (e.g. "current label" = "new label") to ensure proper labeling.
+
+```r
 # Boxplot with renamed x-axis values
 ggplot(pax6_exp) +
   geom_boxplot(aes(x=group, 
@@ -73,9 +78,10 @@ ggplot(pax6_exp) +
                             "Tbr2:WT" = "Progenitors"))
 ```
 
-When providing tick labels, we can either provide a vector of names, which are applied based on factor levels, or we can provide the names using the format above (e.g. "current label" = "new label") to ensure proper labeling.
 
-Now let's rename the y-axis title to be "Normalized counts" as in the publication. What `scale_` function do you think we should use? Our plot should now resemble closely the published figure. The only differences are some of the text on the image that we will learn about in later lessons.
+Now, let's also _rename the y-axis title to be "Normalized counts"_ as in the publication. _What `scale_` function do you think we should use?_ 
+
+Our plot should now resemble closely the published figure. The only differences are some of the text on the image that we will learn about in later lessons.
 
 <p align="center">
 <img src="../img/pax6_boxplot_2.png" width="300">
@@ -85,7 +91,7 @@ Now let's rename the y-axis title to be "Normalized counts" as in the publicatio
 
 ***
 
-**Exercises**
+[**Exercises**](../answer_keys/custom_plot_scales_Q1.md)
 
 Let's explore the other graphical elements using the position scales.
 
@@ -292,6 +298,7 @@ ggplot(pax6_exp) +
   scale_y_continuous(name = "Normalized counts") +
   scale_fill_manual(values = mypalette)
 ```
+
 <p align="center">
 <img src="../img/pax6_boxplot_3.png" width="300">
 </p>

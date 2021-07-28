@@ -52,6 +52,7 @@ ggplot(pax6_exp) +
 ggplot(pax6_exp) +
   geom_boxplot(aes(x=group, y=normalized_counts, fill = group)) +
   ggtitle("Pax6") + 
+  personal_theme() +
   theme(axis.text.x = element_text(angle=45, vjust = 1, hjust =1)) +
-  personal_theme() 
+
 ```

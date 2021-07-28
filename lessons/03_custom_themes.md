@@ -117,7 +117,7 @@ volcano_RG <- ggplot(results) +
 
 ***
 
-**Exercise**
+[**Exercise**](../answer_keys/custom_themes_Q1.md)
 
 Using your `personal_theme()`, create volcano plots for the **'Intermediate progenitors'** and the **'Cortical neurons'** by using the `tbr_` and `neg_` columns from the `results` data frame, respectively. Save the plots to the variables `volcano_IP` and `volcano_neu`.
 

@@ -140,7 +140,7 @@ ggplot(results) +
 
 ***
 
-**Exercise**
+[**Exercise**](../answer_keys/ggplot2_syntax_Q1.md)
 
 Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). 
 
@@ -214,7 +214,7 @@ ggplot(results) +
 
 ***
 
-**Exercise**
+[**Exercise**](../answer_keys/ggplot2_syntax_Q2.md)
 
 
 1. Use the `ggtitle` layer to add the plot title. 

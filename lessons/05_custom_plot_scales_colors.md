@@ -407,7 +407,7 @@ show_col(viridis_pal(option = "viridis")(30))
 
 **Exercises**
 
-1. Adjust the `scale_fill_viridis()` function to make begin the palette at a bit lighter in color.
+1. Adjust the `scale_fill_viridis()` function to make begin the palette at a bit lighter color.
 2. Try out another `viridis` palette of your choice.
 
 ***

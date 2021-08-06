@@ -36,7 +36,7 @@ Researchers interested in using R to create publication-ready figures.
 
 | Time | Topic |
 :-----------------------|:-------------|
-| 09:00 - 09:10	| Introduce the instructors and scope of the workshop (lecture) | 
+| 09:00 - 09:10	| Introduce the instructors and scope of the workshop | 
 | 09:10 - 09:30	| [Introduction to the dataset and plotting options](lessons/01_intro_to_dataset.md) | 
 | 09:30 - 10:15 	| [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | 
 | 10:15 - 10:45	| Coffee break | 
@@ -45,8 +45,9 @@ Researchers interested in using R to create publication-ready figures.
 | 11:45 - 12:15	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | 
 | 12:15 - 13:30	| Lunch | 
 | 11:45 - 12:15	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | 
-| 11:45 - 12:15	| Introduce features of cowplot for aligning/facetting and labeling plots (live coding) | 
-| 13:30 - 14:15	| Introduce features of ggpubr for adding statistical comparisons and ordering of plots (live coding) | 
-| 15:10 - 15:50	| Practice by changing code to adhere to a journal’s figure requirements (live coding) | 
+| 11:45 - 12:15	| Introduce features of ggpubr for adding statistical comparisons and ordering of plots | 
+| 13:30 - 14:15	| Introduce features of cowplot for aligning/facetting and labeling plots |
+|               | Incorporate external packages to extend plotting functionality |
+| 15:10 - 15:50	| Change code to adhere to a journal’s figure requirements | 
 | 15:50 - 16:00	| Wrap-up and exit survey (lecture) | 
 

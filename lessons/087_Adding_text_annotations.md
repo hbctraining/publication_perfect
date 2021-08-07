@@ -215,6 +215,91 @@ volcano_grid <- plot_grid(volcano_panel1,
                           volcano_panel3,
                           ncol = 3)
 
+# Save as image
+png(file = "results/volcano_figure.png",
+    width = 1200,
+    height = 290)
+volcano_grid
+dev.off()
 ```
 
-We will explore adding statistical comparison results in the next lesson.
+## Adding statistical comparisons
+
+We could add statistical comparisons similar to annotating custom text as above. Let's take our Pax6 boxplot (`boxplot_pax6`) as an example. We could add statistical annotations by using the `ggdraw()` and `draw_label()` functions:
+
+```r
+# Drawing significance on plots
+ggdraw(boxplot_pax6) +
+  draw_label("***",
+             x = 0.82,
+             y = 0.44) +
+  draw_label("*",
+             x = 0.56,
+             y = 0.62)
+```
+
+This achieves our purpose, but the `ggpubr` package can allow a quicker and easier method to add our statistical annotations to a plot. The `ggpubr` package extends ggplot2's functionality by providing easy-to-use functions to create ggplot2-based plots, while providing statistical comparisons between groups and customizable annotations.
+
+Let's explore how we could use `ggpubr` to add signficance to our boxplot. The main function we will be utilizing from `ggpubr` is `stat_pvalue_manual()` to add pre-computed statistical information to our plot. The `stat_pvalue_manual()` function can be added to a ggplot2 figure as a layer. However, this function requires the aesthetics (`aes()`) to be specified in the `ggplot()` layer, which applies the aesthetics to all mappings in the plot. Therefore, we will move our `aes()` function from our `geom_boxplot()` layer to the `ggplot()` layer.
+
+First let's create the 'stats' to add to the figure. The table needs the columns `group1`, `group2`, and `p.adj` at the minimum. [This resource](https://www.datanovia.com/en/blog/ggpubr-how-to-add-p-values-generated-elsewhere-to-a-ggplot/) has additional information about other columns that can be added.
+
+**I am following this [tutorial](https://www.datanovia.com/en/blog/ggpubr-how-to-add-p-values-generated-elsewhere-to-a-ggplot/), but it is not working for me. I need someone else to troubleshoot this and I will work on the other lessons.
+**
+
+
+```r
+# Create ggpubr stat table
+stat.test <- tibble::tribble(
+  ~group1, ~group2,   ~p.adj,    
+  "Pax6:WT",     "Tbr2:WT", 0.003,
+  "Pax6:WT",     "neg:WT", 0.0007,
+  "Tbr2:WT",     "neg:WT", 0.01)
+
+```
+
+Now we can add the statistical annotations to the plot by adding the `stat_pvalue_manual()` function as a layer, and specifying the stats table as the input. We also need to denote the name of the column to use as the source of annotations.
+
+```r
+# DON'T KNOW WHY THIS WHOLE CHUNK DOESN'T WORK
+# Add stats to plot
+ggplot(pax6_exp, 
+       aes(x=group,
+           y=normalized_counts,
+           fill=group)) +
+  geom_boxplot() +
+  ggtitle("Pax6") +
+  personal_theme() +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1)) +
+  scale_x_discrete(name = "",
+                   labels=c("Pax6:WT" = "Radial glia",
+                            "neg:WT" = "Neurons", 
+                            "Tbr2:WT" = "Progenitors")) +
+  scale_y_continuous(name = "Normalized counts") +
+  scale_fill_viridis(discrete = TRUE,
+                     option = "viridis",
+                     begin = 0.2 ) +
+  stat_pvalue_manual(
+    stat.test,
+    label = "p.adj",
+    y.position = c(60, 30, 70))
+
+
+ 
+# Add p-values comparing groups
+
+
+p_labeling <- list(cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
+                   symbols = c("****", "***", "**", "*", "ns"))
+
+It would be nice to show some additional ways of showing the statistics: 
+
+```r
+# Such as:
+p_labeling <- list(cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
+                   symbols = c("****", "***", "**", "*", "ns"))
+```                   
+
+This can be a short lesson - should have a shout out to additional functionality of ggpubr, especially the ease of creating ggplot plots with a bit more intuitive framework: https://jtr13.github.io/cc20/brief-introduction-and-tutorial-of-ggpubr-package.html and https://cran.r-project.org/web/packages/ggpubr/readme/README.html.

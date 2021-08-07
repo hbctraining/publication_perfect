@@ -194,3 +194,6 @@ heatmap_figure
 dev.off()
 
 ```
+
+Add the rest of the figure (bar plots) and complete the full figure after aligning with cowplot. If adding bar plots as images, then we could do this here.
+

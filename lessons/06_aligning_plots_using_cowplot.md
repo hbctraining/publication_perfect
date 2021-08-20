@@ -104,7 +104,7 @@ image boxplot grid
 
 We completed our first figure. Now how do we save it to file?
 
-<Add material from our 'Exporting images' lesson.>
+<Add material from our 'Exporting images' lesson. Should add `ggsave()` information - nice that you can specify figure output type and resolution in single function [https://ggplot2.tidyverse.org/reference/ggsave.html](https://ggplot2.tidyverse.org/reference/ggsave.html) >
 
 ```r
 # # Export to size width = 1200, height = 290

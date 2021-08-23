@@ -118,11 +118,14 @@ We completed our first figure. Now how do we save it to file?
 Now that we have the figures for 4D and 4E, we can use cowplot to bring in the outside images to re-create the entire top half of the image displayed below. We can use the `png` package to read in png images (there are corresponding packages for tiff, pdf, and svg, eps?), then utilize a couple of additional cowplot functions to add the image as part of a larger image, while allowing for extensive customization. 
 
 ```r
+#### REMOVE CODE
+
 # Reading in png images from outside analyses (e.g. microscopy, FACS, cartoons)
 fig4a <- readPNG("data/PP_fig4A.png")
 fig4b <- readPNG("data/PP_fig4B.png")
 fig4c <- readPNG("data/PP_fig4C.png")
 ```
+***PLEASE READ*** *** draw_image is working without having to read in figure ****
 
 Now that we have the images read into R, we can render them properly using the cowplot functions `ggdraw()` and `draw_image()`. The `ggdraw()` function creates a canvas to 'draw' on, while the `draw_image()` function draws the image onto some location on the canvas. 
 
@@ -131,13 +134,13 @@ Now that we have the images read into R, we can render them properly using the c
 ```r
 # Generate image variables for each of the image files
 fig4a <- ggdraw() +
-  draw_image(fig4a)
+  draw_image("data/PP_fig4A.png")
 
 fig4b <- ggdraw() +
-  draw_image(fig4b)
+  draw_image("data/PP_fig4B.png")
 
 fig4c <- ggdraw() +
-  draw_image(fig4c)
+  draw_image("data/PP_fig4C.png")
 ```
 
 We can see that reading in the image allowed proper rendering:

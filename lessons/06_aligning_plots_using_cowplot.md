@@ -1,7 +1,7 @@
 In this lesson we will introduce the cowplot package, which is very useful for aligning and arranging images into publication-quality figures. It's a versatile package with a lot of functionality to ease in the assembly of figures. Our goal in this lesson is to create the boxplot figures (4D & 4E) as they appear in the publication.
 
 <p align="center">
-<img src="../img/Fig4d_E.jpeg" height="300">
+<img src="../img/fig4D_E.jpeg">
 </p>
 
 

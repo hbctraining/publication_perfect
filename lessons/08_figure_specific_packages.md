@@ -141,7 +141,7 @@ venn.diagram(x = down,
 ***
 
 
-We will explore some additional graphing packages to create the heatmap (Fig4F) and the Venn diagram (Fig4H). While ggplot2 can easily create a heatmap with `geom_tile()`, it cannot easily provide the heirarchical clustering. We can use two packages that specialize in these plots to create these graphics, `pheatmap` and `VennDiagram`. Let's start wth the Venn diagram.Now we can explore `pheatmap` for our heatmap figure.
+The creation of the hierarchical heatmap figure in the publication also benefits from specialized packages to incorporate statistical information providing the dendrograms and clustering of rows and/or columns. While ggplot2 can easily create a heatmap with `geom_tile()`, it cannot easily provide the hierarchical clustering allowed by these more customized packages. There are a few popular packages specializing in the generation of hierarchical heatmaps, including `pheatmap`, `d3heatmap`, and `ComplexHeatmap`, among others. We will explore the `pheatmap` package for our hierarchical clustering figure.
 
 ```r
 # Get Pax6 sig genes

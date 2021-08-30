@@ -76,6 +76,17 @@ venn.diagram(x = down,
 
 ```
 
+
+<p align="center">
+<img src="../img/venn_up.png" height="300">
+</p>
+
+
+<p align="center">
+<img src="../img/venn_down.png" height="300">
+</p>
+
+
 Now we can explore `pheatmap` for our heatmap figure.
 
 ```r
@@ -103,7 +114,12 @@ heatmap_meta <- heatmap_meta %>%
   select(genotype)
 
 heatmap_meta$genotype <- factor(heatmap_meta$genotype, levels = c("WT", "KO"))
+```
+<p align="center">
+<img src="../img/meta_heatmap.png" height="300">
+</p>
 
+```r
 heatmap_colors <- colorRampPalette(c("blue", "white", "red"))(6)
 
 # Plot heatmap
@@ -146,7 +162,14 @@ heatmap <- as.ggplot(pheatmap(heatmap_normCounts,
                               fontsize = 9,
                               annotation_names_col = F,
                               annotation_legend = F))
+```
 
+<p align="center">
+<img src="../img/heatmap.png" height="300">
+</p>
+
+
+```r
 heatmap <- heatmap + 
   ggtitle("Radial glia") +
   theme(plot.title = element_text(hjust=0.5))
@@ -192,8 +215,13 @@ heatmap_figure <- ggdraw(heatmap) +
 png(file = "results/heatmap_figure.png", units = "in", width = 4, height = 5.15, res = 500)
 heatmap_figure
 dev.off()
-
 ```
+
+<p align="center">
+<img src="../img/heatmap_figure.png" height="300">
+</p>
+
+
 
 Add the rest of the figure (bar plots) and complete the full figure after aligning with cowplot. If adding bar plots as images, then we could do this here.
 

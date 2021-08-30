@@ -64,6 +64,7 @@ Running the examples output in the help page can be quite illuminating when expl
 
 ***
 **Exercise?**
+
 Customize some of these options to output a figure similar to that in the paper.
 
 ```r

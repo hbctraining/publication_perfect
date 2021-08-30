@@ -1,29 +1,72 @@
-We have discovered that `ggplot2` has incredible functionality and versatility; however, it is not always the best choice for all graphics. It can be helpful to use a different package that specializes in the figures of interest. We will explore some additional graphing packages to create the heatmap (Fig4F) and the Venn diagram (Fig4H). While ggplot2 can easily create a heatmap with `geom_tile()`, it cannot easily provide the heirarchical clustering. We can use two packages that specialize in these plots to create these graphics, `pheatmap` and `VennDiagram`. Let's start wth the Venn diagram.
+We have discovered that `ggplot2` has incredible functionality and versatility; however, it is not always the best choice for all graphics. There are a plethora of different packages that specialize in particular types of figures. The [Data to Viz resource](https://www.data-to-viz.com) provides popular packages for specialized plots along with the code to create them. 
+
+Let's start by exploring how to create a Venn diagram in figure 4H. A venn diagram compares two or more lists, and by nature is categoric. If we use the [Data to Viz resource](https://www.data-to-viz.com), we can navigate to the `Categoric` data, and under 'Two independent lists' we find the Venn diagram. Click on this icon, and explore the dedicated page.
+
+<Screen shot of 'dedicated page' link.>
+
+This page has a lot of nice information about Venn diagrams, as well as, suggestions for when to use them (e.g. generally not recommended for comparison of more than 3 sets - use [upset plots](https://jku-vds-lab.at/tools/upset/) instead). Since we are comparing two sets of data for each visualization (e.g. Pax6 and Tbr2-expressing samples), a Venn diagram is a fine method.
+
+Let's expand the 'Code', and note the package used to create the Venn diagrams is `VennDiagram`. We will use this package, as well. To generate the Venn diagram, the sets need to be given as a list. We can subset our data for the `Pax6`- and `Tbr2`-expressing samples to only include those genes that are significant with `threshold` equal to `TRUE` and that are up-regulated using the `log2FoldChange` values > 0.
 
 ```r
 library(VennDiagram)
 
-#Up-regulated
+# Up-regulated
 up1 <- results[which(results$pax6_threshold & results$pax6_log2FoldChange > 0),]
 up2 <- results[which(results$tbr2_threshold & results$tbr2_log2FoldChange > 0),]
+```
 
+We can do a similar subset for the down-regulated genes, but with `log2FoldChange` < 0.
+
+```r
 # Down-regulated
 down1 <- results[which(results$pax6_threshold & results$pax6_log2FoldChange < 0),]
 down2 <- results[which(results$tbr2_threshold & results$tbr2_log2FoldChange < 0),]
+```
 
+Now that we have our sets of genes that are up- and down-regulated in the respective conditions, we can check how many overlap between the conditions. This is a good check to perform to make sure the packages report the correct interaction numbers.
+
+```r
+# Check overlap for each of the different sets
 length(which(row.names(up1) %in% row.names(up2)))
-length(which(row.names(up1) %in% row.names(down2)))
 length(which(row.names(down1) %in% row.names(down2)))
-length(which(row.names(down1) %in% row.names(up2)))
+```
 
+To create the figures we first need to change the plots into lists. 
+
+```r
+# Create lists for comparison
 up <- list(
-  A = rownames(up1),
-  B = rownames(up2))
+  PAX6 = rownames(up1),
+  TBR2 = rownames(up2))
 
 down <- list(
-  A = rownames(down1),
-  B = rownames(down2))
+  PAX6 = rownames(down1),
+  TBR2 = rownames(down2))
+```
 
+Now to create a simple Venn diagram, we can use the `venn.diagram()` function from the `VennDiagram` package to create the graphics.
+
+```r
+venn.diagram(x = up, 
+             filename = "results/venn_up.png",
+             output = TRUE)
+```
+
+This has successfully created a Venn diagram, but this is not exactly a publication-quality figure. A nice feature of the VennDiagram package is the ability for extensive customization of the graphic. Let's explore all of the different arguments available for our Venn diagram.
+
+```r
+# Check customizable options for diagram
+?venn.diagram
+```
+
+Running the examples output in the help page can be quite illuminating when exploring the range of possibilities.
+
+***
+**Exercise?**
+Customize some of these options to output a figure similar to that in the paper.
+
+```r
 # Up-regulated genes
 venn.diagram(x = up, 
              filename = "results/venn_up.png",
@@ -76,18 +119,10 @@ venn.diagram(x = down,
 
 ```
 
-
-<p align="center">
-<img src="../img/venn_up.png" height="300">
-</p>
+***
 
 
-<p align="center">
-<img src="../img/venn_down.png" height="300">
-</p>
-
-
-Now we can explore `pheatmap` for our heatmap figure.
+We will explore some additional graphing packages to create the heatmap (Fig4F) and the Venn diagram (Fig4H). While ggplot2 can easily create a heatmap with `geom_tile()`, it cannot easily provide the heirarchical clustering. We can use two packages that specialize in these plots to create these graphics, `pheatmap` and `VennDiagram`. Let's start wth the Venn diagram.Now we can explore `pheatmap` for our heatmap figure.
 
 ```r
 # Get Pax6 sig genes
@@ -114,12 +149,7 @@ heatmap_meta <- heatmap_meta %>%
   select(genotype)
 
 heatmap_meta$genotype <- factor(heatmap_meta$genotype, levels = c("WT", "KO"))
-```
-<p align="center">
-<img src="../img/meta_heatmap.png" height="300">
-</p>
 
-```r
 heatmap_colors <- colorRampPalette(c("blue", "white", "red"))(6)
 
 # Plot heatmap
@@ -162,14 +192,7 @@ heatmap <- as.ggplot(pheatmap(heatmap_normCounts,
                               fontsize = 9,
                               annotation_names_col = F,
                               annotation_legend = F))
-```
 
-<p align="center">
-<img src="../img/heatmap.png" height="300">
-</p>
-
-
-```r
 heatmap <- heatmap + 
   ggtitle("Radial glia") +
   theme(plot.title = element_text(hjust=0.5))
@@ -215,13 +238,8 @@ heatmap_figure <- ggdraw(heatmap) +
 png(file = "results/heatmap_figure.png", units = "in", width = 4, height = 5.15, res = 500)
 heatmap_figure
 dev.off()
+
 ```
-
-<p align="center">
-<img src="../img/heatmap_figure.png" height="300">
-</p>
-
-
 
 Add the rest of the figure (bar plots) and complete the full figure after aligning with cowplot. If adding bar plots as images, then we could do this here.
 

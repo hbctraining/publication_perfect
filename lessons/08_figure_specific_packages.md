@@ -92,7 +92,13 @@ venn.diagram(x = up,
              cat.dist = c(0.05,0.097),
              cat.fontfamily = "sans",
              cat.col = c("salmon", "lightblue"))
+```
 
+<p align="center">
+<img src="../img/venn_up.png" height="300">
+</p>
+
+```r
 # Down-regulated genes
 venn.diagram(x = down, 
              filename = "results/venn_down.png",
@@ -119,11 +125,6 @@ venn.diagram(x = down,
              cat.col = c("salmon", "lightblue"))
 
 ```
-
-<p align="center">
-<img src="../img/venn_up.png" height="300">
-</p>
-
 
 <p align="center">
 <img src="../img/venn_down.png" height="300">

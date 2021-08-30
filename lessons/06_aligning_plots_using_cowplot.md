@@ -1,6 +1,9 @@
 In this lesson we will introduce the cowplot package, which is very useful for aligning and arranging images into publication-quality figures. It's a versatile package with a lot of functionality to ease in the assembly of figures. Our goal in this lesson is to create the boxplot figures (4D & 4E) as they appear in the publication.
 
-figure image
+<p align="center">
+<img src="../img/Fig4d_E.jpeg" height="300">
+</p>
+
 
 We have already the Pax6 boxplot to match the publication, while providing some enhancements for the color palettes. However, if we want to create the figures above, we need to create the other three boxplots for Tbr2, Tubb3, and Pdrm16. Let's create these plots using code similar to the Pax6 boxplot, but changing the aesthetics to correspond to the appropriate gene data and the title to reflect the correct genes. Also, to incorporate all boxplot images into a figure, we need to save them to variables/objects in our environment.
 
@@ -100,7 +103,9 @@ boxplot_grid <- plot_grid(boxplot_pax6,
 boxplot_grid
 ```
 
-image boxplot grid
+<p align="center">
+<img src="../img/3_boxplots.png" height="300">
+</p>
 
 We completed our first figure. Now how do we save it to file?
 
@@ -148,6 +153,10 @@ We can see that reading in the image allowed proper rendering:
 ```r
 fig4a
 ```
+
+<p align="center">
+<img src="../img/PP_fig4A.png " height="300">
+</p>
 
 Now we can use the `align_plots()` function again to combine all of our finished figures. We would like our images to be vertically aligned (we will align by the left axis, but should be similar for any axis chosen), so before we arrange our image, we use the `align_plots()` function. This function will create a list of vertically aligned images.
 
@@ -202,6 +211,8 @@ top_half <- plot_grid(first_row, second_row,
                       ncol = 1)
 ```
 
-top half image
+<p align="center">
+<img src="../img/top_half.png " height="300">
+</p>
 
 > _**NOTE:** Another type of plot alignment is referred to as facetting, that is when you use data from the same data frame to create separate plots based on the values from one of the columns in the data frame. If we had wrangled our data to have the Pax6, Tbr2/Eomes, Tubb3 expression data all together in a single data frame, we could have used the facetting to create separate plots. Code to do this below? or just link out to ggplot2 book facetting._

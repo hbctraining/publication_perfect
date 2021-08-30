@@ -32,6 +32,10 @@ ggplot(pax6_exp) +
                      begin = 0.2 )
 ```
 
+<p align="center">
+<img src="../img/bad-label_boxplot.png" height="300">
+</p>
+
 The `ggrepel` package is a useful ggplot2 extension package that is helpful to prevent the overlap of labels. It can be added as a layer, similar to `geom_text`.
 
 ```r
@@ -58,7 +62,13 @@ ggplot(pax6_exp) +
                      option = "viridis",
                      begin = 0.2 )
 ```                     
-       
+
+
+<p align="center">
+<img src="../img/better-label_boxplot.png" height="300">
+</p>
+
+
 ## Adding custom text
 
 Let's explore adding custom text to our plot by finishing up our volcano plots we created previously. We are trying to create the figure below, but we still need to add the text to the image. Let's explore the current volcano plot for Pax6 results.
@@ -67,6 +77,11 @@ Let's explore adding custom text to our plot by finishing up our volcano plots w
 # Pax6 volcano plot
 volcano_RG
 ```
+
+<p align="center">
+<img src="../img/ggscatter-6_alt.png" height="300">
+</p> 
+
 
 We have previously used `cowplot` to align plots and draw images, and we can use additional functionality from the `cowplot` package to add custom text to our figures. We will use `draw_label()` function. The `ggdraw()` function draws the ggplot2 image to the canvas, then the `draw_label()` functions adds the text on top. 
 
@@ -92,6 +107,7 @@ ggdraw(volcano_RG) +
              angle = 45)
 ```
 
+
 ***
 
 The trick to adding the text to figures is a lot of trial and error, since you need to specify the x- and y-coordinates for where you would like the labels to appear on the image. The coordinates span from 0 to 1 with (0,0) at the lower left-hand corner.
@@ -110,6 +126,12 @@ ggdraw(volcano_RG) +
              hjust = 0,
              vjust = 0)
 ```
+
+
+<p align="center">
+<img src="../img/draft_volcano_RG.png" height="300">
+</p>
+
 
 Now that we know how to add text to an image, let's add the annotations to our volcano plot to match the published figure below.
 
@@ -141,6 +163,10 @@ ggdraw(volcano_RG) +
              hjust = 0,
              vjust = 0)  
 ```
+
+<p align="center">
+<img src="../img/labeled_volcano.png" height="300">
+</p>
 
 To finish up the figure, we need to save each of the annotated volcano plots to variables and align with `cowplot` using `plot_grid()`.
 
@@ -223,6 +249,11 @@ volcano_grid
 dev.off()
 ```
 
+<p align="center">
+<img src="../img/vocano_grid.png">
+</p>
+
+
 ## Adding statistical comparisons
 
 We could add statistical comparisons similar to annotating custom text as above. Let's take our Pax6 boxplot (`boxplot_pax6`) as an example. We could add statistical annotations by using the `ggdraw()` and `draw_label()` functions:
@@ -237,6 +268,11 @@ ggdraw(boxplot_pax6) +
              x = 0.56,
              y = 0.62)
 ```
+
+<p align="center">
+<img src="../img/asterisk_boxplot.png" height="300">
+</p>
+
 
 This achieves our purpose, but the `ggpubr` package can allow a quicker and easier method to add our statistical annotations to a plot. The `ggpubr` package extends ggplot2's functionality by providing easy-to-use functions to create ggplot2-based plots, while providing statistical comparisons between groups and customizable annotations.
 
@@ -296,10 +332,14 @@ p_labeling <- list(cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1),
 
 It would be nice to show some additional ways of showing the statistics: 
 
-```r
 # Such as:
 p_labeling <- list(cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
                    symbols = c("****", "***", "**", "*", "ns"))
 ```                   
+
+<p align="center">
+<img src="../img/stats_boxplot.png" height="300">
+</p>
+
 
 This can be a short lesson - should have a shout out to additional functionality of ggpubr, especially the ease of creating ggplot plots with a bit more intuitive framework: https://jtr13.github.io/cc20/brief-introduction-and-tutorial-of-ggpubr-package.html and https://cran.r-project.org/web/packages/ggpubr/readme/README.html.

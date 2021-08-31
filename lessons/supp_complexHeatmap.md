@@ -1,14 +1,17 @@
 # Complex Heatmap
 
-There is no row scaling argument in complexHeatmap, so we need to perform the scaling manually prior to creating the heatmap.
+In this supplemental material, we are creating the same published figure, shown below, using `ComplexHeatmap`. 
+
+The first action we need to perform is a scaling of our counts data. There is no row scaling argument in `ComplexHeatmap`, so we need to perform the scaling manually prior to creating the heatmap.
 
 ```r
 # Manually scale and center the data
 mat <- heatmap_normCounts
 mat_scaled = t(apply(mat, 1, scale))
 colnames(mat_scaled) <- colnames(heatmap_normCounts)
+```
 
-Make sure the metadata contains the same columns as the counts data (in the same order).
+Then we need to make sure the metadata contains the same columns as the counts data (in the same order).
 
 ```r
 # Reorder metadata to match counts
@@ -45,6 +48,8 @@ hp <- Heatmap(mat_scaled,
 heatmap <- draw(hp,
      column_title_gp = gpar(fontsize = 16))
 ```
+
+Now to add additional annotations, we can change the image into a `ggplot2` object using `ggplotify` and then use `cowplot` to add the annotations.
 
 ```r
 # Change into ggplot object

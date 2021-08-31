@@ -146,6 +146,8 @@ The creation of the hierarchical heatmap figure in the publication also benefits
 Generally, people use heatmaps to look at how numeric values compare between groups. These comparisons range across different fields of study; for instance, a heatmap could be used to explore how temperatures have increased across the months of the year over the past 100 years or it could be used to explore the monthly earnings for all fortune 500 companies. We will use a heatmap to explore our biological data and look at the genes that have significantly different expression between mice with or without the *Prdm16* gene. The hierarchical clustering will add information to the figure about which mice are most similar to each other in the expression of these genes.
 
 To create this figure, we first need to subset our gene expression data to the significant genes for the radial glia cells (Pax6). To get the names of our significant genes we can filter to only include those with significance (p-adjusted) values less than 0.05.
+
+  
 ```r
 # Get Pax6 sig genes
 pax6_sig_genes <- results %>%
@@ -154,15 +156,14 @@ pax6_sig_genes <- results %>%
   pull(ensembl_id)
 ```
 
-  We are only interested in the radial glia, so we will extract only the `Pax6` samples.
+We are only interested in the radial glia, so we will extract only the `Pax6` samples.
   
 ```r
 # Filter heatmap for only the radial glia (Pax6 samples)
 heatmap_normCounts <- normalized_counts[ , colnames(normalized_counts)[str_detect(colnames(normalized_counts), "Pax6")]]
 ```
   
-  
-Then we can extract those significant genes from our `Pax6` expression matrix. 
+Then we can extract only the significant genes from our `Pax6` expression matrix. 
 
 ```r
 # Filter for the sig genes
@@ -171,45 +172,117 @@ heatmap_normCounts <- heatmap_normCounts[which(rownames(heatmap_normCounts) %in%
   
 Now we have the values to be included in the heatmap, but we also need to color it by group, `Prdm16` knockout or wildtype. To get that information, we need to use our metadata. We will extract the same mice samples from our metadata that we have the counts for, which is the `Pax6` samples.
 
+<p align="center">
+<img src="../img/meta_heatmap.png" height="300">
+</p>
+
+  
+We'll start by copying our full metadata table to a new variable to ensure we don't accidently alter our original metadata.
+  
 ```r
-# Get annotations for samples
+# Copy metadata to new variable
 heatmap_meta <- meta
+```
+ 
+Now to create the heatmap using the `pheatmap` package, the row names of our metadata need to be the sample names and match the column names of our counts (numeric) data.
 
+```r
+# Assign the sample names to be the row names
 rownames(heatmap_meta) <- heatmap_meta$samples
-
+```
+  
+Now we can subset the metadata to only include those samples present in the `Pax6` counts data.
+  
+```r
+# Subset metadata to match samples in count data
 heatmap_meta <- heatmap_meta[which(rownames(heatmap_meta) %in% colnames(heatmap_normCounts)), ]
-
+```
+  
+We are only interested in using the genotype annotations, so we will keep only that column. All columns given to `pheatmap` for annotations will be included as separate bars.
+  
+```r
+# Select only the genotype column for annotations
 heatmap_meta <- heatmap_meta %>%
   select(genotype)
-
+```
+  
+The factor levels for the genotype will determine the color automatically assigned to the group. We can manually specify the levels using the `factor()` function.
+  
+```r
+# Re-level factors
 heatmap_meta$genotype <- factor(heatmap_meta$genotype, levels = c("WT", "KO"))
-
+```
+  
+Now that we have the metadata with information for annotating the groups and the count data to be visually transformed into the heatmap, we only need to provide any customized colors to use in the heatmap and to denote the groups. We can specify the colors to use for the gradient in the numeric expression values:
+  
+```r
+# Colors for heatmap
 heatmap_colors <- colorRampPalette(c("blue", "white", "red"))(6)
+```
+ 
+Also, we can specify the colors to use to denote the annotations. The colors for the annotations need to be provided as a list:
 
-# Plot heatmap
+```r
+# Colors for denoting annotations
+ann_colors <- list(genotype = c(KO = "#F8766D", WT = "#00BFC4"))
+
+Now we can load the `pheatmap` library, using the `pheatmap()` function to create the heatmap.
+
+```r
+# Load library
 library(pheatmap)
-library(ggplotify)
-ann_colors <- list(
-  genotype = c(KO = "#F8766D",
-               WT = "#00BFC4"))
 
+# Plot heatmap  
 pheatmap(heatmap_normCounts, 
          color = heatmap_colors,
-         cluster_rows = T, 
          annotation_col = heatmap_meta,
          annotation_colors = ann_colors,
-         border_color="white", 
-         cluster_cols = T, 
          show_colnames = F, 
-         show_rownames = F,  
+         show_rownames = F)
+```
+
+We are have created a basic heatmap, but it's not very informative as it is. It looks like the expression of a lot of the genes is much lower than some of the others, so we can't see the differences very easily for the genes that don't have the highest values. There is a helpful argument called `scale` that allows us to scale the colors by the values in each row or column. Since each gene is a row, we will add this argument to be `scale = "row"`, which centers and scales the values.
+  
+```r
+# Plot heatmap scaled by row
+pheatmap(heatmap_normCounts, 
+         color = heatmap_colors,
+         annotation_col = heatmap_meta,
+         annotation_colors = ann_colors,
+         show_colnames = F, 
+         show_rownames = F,
+         scale="row")
+```
+
+<Add image>
+  
+Now that looks a lot better! We can see clustering between the different groups, which is good since these genes are supposed to have different expression between the groups. We can add a few more arguments to make it look more like the figure, like deleting the annotation name and legend. We will also adjust the width and heigth of the tiles.
+
+```r 
+# Scaled heatmap with adjustments for figure
+pheatmap(heatmap_normCounts, 
+         color = heatmap_colors,
+         annotation_col = heatmap_meta,
+         annotation_colors = ann_colors,
+         show_colnames = F, 
+         show_rownames = F,
          scale="row",
          treeheight_col = 25,
          cellwidth = 20,
-         cellheight = 0.45,
-         fontsize = 9,
+         cellheight = 0.4,
          annotation_names_col = F,
          annotation_legend = F)
+```
+  
+<p align="center">
+<img src="../img/heatmap.png" height="300">
+</p>
 
+  
+Now we are only missing the text annotations, and we can add using the `cowplot` package we learned about earlier. However, the pheatmap image is stored as a list rather than a graphics object. The `ggplotify` package allows us to manipulate this list object into a ggplot object with the `as.ggplot()` function, faciliatating further modifications with `ggplot2` or `cowplot`.
+
+```r
+# Turn into a ggplot object
 heatmap <- as.ggplot(pheatmap(heatmap_normCounts, 
                               color = heatmap_colors,
                               cluster_rows = T, 
@@ -226,14 +299,28 @@ heatmap <- as.ggplot(pheatmap(heatmap_normCounts,
                               fontsize = 9,
                               annotation_names_col = F,
                               annotation_legend = F))
+```
 
+To add the annotations at the top and left sides of the plot, we will use the `theme()` function from `ggplot2` to add whitespace. With the `plot.margin` argument we can specify the amount of space to add to the top, right, bottom and left margins (in that order).           
+
+```r          
+# Adding white space to add annotations to the top, right, bottom, and left margins
 heatmap <- heatmap + 
-  ggtitle("Radial glia") +
-  theme(plot.title = element_text(hjust=0.5))
-
-
+  theme(plot.margin = unit(c(1,0.5,0.5,0.5), "cm"))           
+```
+  
+Now we can use `cowplot to add in our desired annotations to match the published figure below.
+  
+```r  
+# Adding in annotations with cowplot 
 heatmap_figure <- ggdraw(heatmap) +  
- draw_label("Prdm16 cKO", 
+  draw_label("Radial glia", 
+             x = 0.4, 
+             y = 0.97,
+             size = 14,
+             hjust = 0,
+             vjust = 0) +
+  draw_label("Prdm16 cKO", 
              x = 0.24, 
              y = 0.91,
              size = 12,
@@ -267,13 +354,25 @@ heatmap_figure <- ggdraw(heatmap) +
              y = 0.8,
              hjust = 0,
              vjust = 0)
-             
-# Export as png
-png(file = "results/heatmap_figure.png", units = "in", width = 4, height = 5.15, res = 500)
-heatmap_figure
-dev.off()
 
+heatmap_figure
 ```
+
+Finally, we want to export the image so that it will display properly in our final figure.
+
+```r                  
+# Export as a tiff
+ggsave(filename = "results/heatmap_figure_ggsave.tiff", 
+       units = "in", 
+       width = 4, 
+       height = 5.15, 
+       dpi = 500)                  
+```
+
+<p align="center">
+<img src="../img/heatmap_figure.png" height="300">
+</p>
+
 
 Add the rest of the figure (bar plots) and complete the full figure after aligning with cowplot. If adding bar plots as images, then we could do this here.
 

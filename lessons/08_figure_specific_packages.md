@@ -176,11 +176,6 @@ heatmap_normCounts <- heatmap_normCounts[which(rownames(heatmap_normCounts) %in%
   
 Now we have the values to be included in the heatmap, but we also need to color it by group, `Prdm16` knockout or wildtype. To get that information, we need to use our metadata. We will extract the same mice samples from our metadata that we have the counts for, which is the `Pax6` samples.
 
-<p align="center">
-<img src="../img/meta_heatmap.png" height="300">
-</p>
-
-  
 We'll start by copying our full metadata table to a new variable to ensure we don't accidently alter our original metadata.
   
 ```r
@@ -216,7 +211,11 @@ The factor levels for the genotype will determine the color automatically assign
 # Re-level factors
 heatmap_meta$genotype <- factor(heatmap_meta$genotype, levels = c("WT", "KO"))
 ```
-  
+
+<p align="center">
+<img src="../img/meta_heatmap.png" height="200">
+</p>
+
 Now that we have the metadata with information for annotating the groups and the count data to be visually transformed into the heatmap, we only need to provide any customized colors to use in the heatmap and to denote the groups. We can specify the colors to use for the gradient in the numeric expression values:
   
 ```r

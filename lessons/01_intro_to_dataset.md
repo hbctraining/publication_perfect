@@ -8,7 +8,7 @@ Approximate time: 20 minutes
 
 ## Learning objectives
 * Explain the goals of this workshop
-* Understand the dataset being used for the workshop
+* Describe the dataset being used for the workshop
 
 # Introduction to the dataset
 

@@ -4,7 +4,7 @@ We have discovered that `ggplot2` has incredible functionality and versatility; 
 
 ## Visualizing overlaps of sets using Venn diagrams
 
-Let's start by exploring how to create a Venn diagram in figure 4H. 
+Let's start by exploring how to create the Venn diagram in figure 4H. 
 
 <Image of Venn diagrams from figure>
   
@@ -14,7 +14,7 @@ A Venn diagram compares two or more lists, and by nature is categoric. If we use
 
 This page has a lot of nice information about Venn diagrams, as well as, suggestions for when to use them (e.g. generally not recommended for comparison of more than 3 sets - use [upset plots](https://jku-vds-lab.at/tools/upset/) instead). Since we are comparing two sets of data for each visualization (e.g. Pax6 and Tbr2-expressing samples), a Venn diagram is a recommended method.
 
-Let's expand the 'Code', and note the package used to create the Venn diagrams is `VennDiagram`. We will use this package, as well. To generate the Venn diagram, the sets need to be given as a list. We can subset our data for the `Pax6`- and `Tbr2`-expressing samples to only include those genes that are significant with `threshold` equal to `TRUE` and that are up-regulated using the `log2FoldChange` values > 0.
+Let's expand the 'Code', and note the package used to create the Venn diagrams is `VennDiagram`. We will use this package, as well. To generate the Venn diagram, we need togenerate our sets. We can subset our data for the `Pax6`- and `Tbr2`-expressing samples to only include those genes that are significant with `threshold` equal to `TRUE` and that are up-regulated using the `log2FoldChange` values > 0.
 
 ```r
 library(VennDiagram)
@@ -68,7 +68,7 @@ This has successfully created a Venn diagram, but this is not exactly a publicat
 ?venn.diagram
 ```
 
-Running the examples output in the help page can be quite illuminating when exploring the range of possibilities.
+Running the examples from the help page can be quite illuminating when exploring the range of possibilities.
 
 ***
 **Exercise?**
@@ -143,20 +143,35 @@ venn.diagram(x = down,
 
 The creation of the hierarchical heatmap figure in the publication also benefits from specialized packages to incorporate statistical information providing the dendrograms and clustering of rows and/or columns. While ggplot2 can easily create a heatmap with `geom_tile()`, it cannot easily provide the hierarchical clustering allowed by these more customized packages. There are a few popular packages specializing in the generation of hierarchical heatmaps, including `pheatmap`, `d3heatmap`, and `ComplexHeatmap`, among others. We will explore the `pheatmap` package for our hierarchical clustering figure.
 
+Generally, people use heatmaps to look at how numeric values compare between groups. These comparisons range across different fields of study; for instance, a heatmap could be used to explore how temperatures have increased across the months of the year over the past 100 years or it could be used to explore the monthly earnings for all fortune 500 companies. We will use a heatmap to explore our biological data and look at the genes that have significantly different expression between mice with or without the *Prdm16* gene. The hierarchical clustering will add information to the figure about which mice are most similar to each other in the expression of these genes.
+
+To create this figure, we first need to subset our gene expression data to the significant genes for the radial glia cells (Pax6). To get the names of our significant genes we can filter to only include those with significance (p-adjusted) values less than 0.05.
 ```r
 # Get Pax6 sig genes
 pax6_sig_genes <- results %>%
   rownames_to_column("ensembl_id") %>%
   filter(pax6_padj < 0.05) %>%
   pull(ensembl_id)
+```
 
+  We are only interested in the radial glia, so we will extract only the `Pax6` samples.
+  
+```r
 # Filter heatmap for only the radial glia (Pax6 samples)
 heatmap_normCounts <- normalized_counts[ , colnames(normalized_counts)[str_detect(colnames(normalized_counts), "Pax6")]]
+```
+  
+  
+Then we can extract those significant genes from our `Pax6` expression matrix. 
 
+```r
 # Filter for the sig genes
 heatmap_normCounts <- heatmap_normCounts[which(rownames(heatmap_normCounts) %in% pax6_sig_genes), ]
+```
+  
+Now we have the values to be included in the heatmap, but we also need to color it by group, `Prdm16` knockout or wildtype. To get that information, we need to use our metadata. We will extract the same mice samples from our metadata that we have the counts for, which is the `Pax6` samples.
 
-
+```r
 # Get annotations for samples
 heatmap_meta <- meta
 

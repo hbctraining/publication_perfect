@@ -364,6 +364,11 @@ heatmap_figure <- ggdraw(heatmap) +
 heatmap_figure
 ```
 
+                  
+<p align="center">
+<img src="../img/heatmap_figure.png" height="500">
+</p>
+
 Finally, we want to export the image so that it will display properly in our final figure.
 
 ```r                  
@@ -375,9 +380,6 @@ ggsave(filename = "results/heatmap_figure_ggsave.tiff",
        dpi = 500)                  
 ```
 
-<p align="center">
-<img src="../img/heatmap_figure.png" height="300">
-</p>
 
 
 Now we have created all figures present in our published figure. We can use cowplot to add them to the top half created earlier.

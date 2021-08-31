@@ -6,7 +6,7 @@ We have discovered that `ggplot2` has incredible functionality and versatility; 
 
 Let's start by exploring how to create the Venn diagram in figure 4H. 
 
-<Image of Venn diagrams from figure>
+< Image of Venn diagrams from figure >
   
 A Venn diagram compares two or more lists, and by nature is categoric. If we use the [Data to Viz resource](https://www.data-to-viz.com), we can navigate to the `Categoric` data, and under 'Two independent lists' we find the Venn diagram. Click on this icon, and explore the dedicated page.
 
@@ -140,14 +140,18 @@ venn.diagram(x = down,
 
 ***
 
-
-The creation of the hierarchical heatmap figure in the publication also benefits from specialized packages to incorporate statistical information providing the dendrograms and clustering of rows and/or columns. While ggplot2 can easily create a heatmap with `geom_tile()`, it cannot easily provide the hierarchical clustering allowed by these more customized packages. There are a few popular packages specializing in the generation of hierarchical heatmaps, including `pheatmap`, `d3heatmap`, and `ComplexHeatmap`, among others. We will explore the `pheatmap` package for our hierarchical clustering figure.
-
-Generally, people use heatmaps to look at how numeric values compare between groups. These comparisons range across different fields of study; for instance, a heatmap could be used to explore how temperatures have increased across the months of the year over the past 100 years or it could be used to explore the monthly earnings for all fortune 500 companies. We will use a heatmap to explore our biological data and look at the genes that have significantly different expression between mice with or without the *Prdm16* gene. The hierarchical clustering will add information to the figure about which mice are most similar to each other in the expression of these genes.
-
-To create this figure, we first need to subset our gene expression data to the significant genes for the radial glia cells (Pax6). To get the names of our significant genes we can filter to only include those with significance (p-adjusted) values less than 0.05.
-
+## Visualizing numeric data from different conditions or groups
   
+Specialized packages are also useful for the creation of the hierarchical heatmap figure in the publication. 
+  
+< published heatmap figure >
+  
+The benefits gained from these specialized packages for the heatmap help by incorporating statistical information, such as providing the dendrograms and clustering of rows and/or columns. While ggplot2 can easily create a heatmap with `geom_tile()`, it cannot easily provide the hierarchical clustering allowed by these more customized packages. There are a few popular packages specializing in the generation of hierarchical heatmaps, including `pheatmap`, `d3heatmap`, and `ComplexHeatmap`, among others. We will explore the `pheatmap` package for our hierarchical clustering figure; however, additional information can be found for `d3heatmap` from [Data to viz](https://www.data-to-viz.com/graph/heatmap.html) and we have [additional materials]() highlighting the code to  create the same plot using `ComplexHeatmap`. ComplexHeatmap definitely embraces its name, and there is a [whole book](https://jokergoo.github.io/ComplexHeatmap-reference/book/) dedicated to creating custom heatmaps using this package.
+
+Generally, people use heatmaps to look compare numeric data from different conditions or groups. These comparisons range across different fields of study; for instance, a heatmap could be used to explore how temperatures have increased across the months of the year over the past 100 years or it could be used to explore the monthly earnings for all fortune 500 companies. We will use a heatmap to explore our biological data and look at the genes that have significantly different expression between mice with or without the *Prdm16* gene. The hierarchical clustering will add information to the figure about which mice are most similar to each other in the expression of these genes.
+
+To create this figure, we first need to subset our gene expression data to the significant genes for the radial glia cells (_Pax6_-expressers). To get the names of our significant genes we can filter to only include those with significance (p-adjusted) values less than 0.05.
+ 
 ```r
 # Get Pax6 sig genes
 pax6_sig_genes <- results %>%
@@ -282,6 +286,9 @@ pheatmap(heatmap_normCounts,
 Now we are only missing the text annotations, and we can add using the `cowplot` package we learned about earlier. However, the pheatmap image is stored as a list rather than a graphics object. The `ggplotify` package allows us to manipulate this list object into a ggplot object with the `as.ggplot()` function, faciliatating further modifications with `ggplot2` or `cowplot`.
 
 ```r
+# Load library
+library(ggplotify)
+  
 # Turn into a ggplot object
 heatmap <- as.ggplot(pheatmap(heatmap_normCounts, 
                               color = heatmap_colors,
@@ -374,5 +381,5 @@ ggsave(filename = "results/heatmap_figure_ggsave.tiff",
 </p>
 
 
-Add the rest of the figure (bar plots) and complete the full figure after aligning with cowplot. If adding bar plots as images, then we could do this here.
+Now we have created all figures present in our published figure. We can use cowplot to add them to the top half created earlier.
 

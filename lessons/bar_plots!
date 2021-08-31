@@ -1,0 +1,6 @@
+Now that we have learned the basics of ggplot2 and how to combine different images using `cowplot`, let's create the bar plot figures in the publication (Figs 4I and 4J). We will complete this as an exercise and go through it together.
+
+1. Let's read in our gene ontology data.
+
+  ```r
+  

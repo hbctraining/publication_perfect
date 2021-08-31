@@ -278,7 +278,7 @@ pheatmap(heatmap_normCounts,
 ```
   
 <p align="center">
-<img src="../img/heatmap.png" height="300">
+<img src="../img/heatmap.png" height="600">
 </p>
 
   
@@ -366,7 +366,7 @@ heatmap_figure
 
                   
 <p align="center">
-<img src="../img/heatmap_figure.png" height="500">
+<img src="../img/heatmap_figure.png" height="600">
 </p>
 
 Finally, we want to export the image so that it will display properly in our final figure.

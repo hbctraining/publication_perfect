@@ -127,19 +127,7 @@ We completed our first figure. Now how do we save it to file?
 # dev.off()
 ```
 
-Now that we have the figures for 4D and 4E, we can use cowplot to bring in the outside images to re-create the entire top half of the image displayed below. We can use the `png` package to read in png images (there are corresponding packages for tiff, pdf, and svg, eps?), then utilize a couple of additional cowplot functions to add the image as part of a larger image, while allowing for extensive customization. 
-
-```r
-#### REMOVE CODE
-
-# Reading in png images from outside analyses (e.g. microscopy, FACS, cartoons)
-fig4a <- readPNG("data/PP_fig4A.png")
-fig4b <- readPNG("data/PP_fig4B.png")
-fig4c <- readPNG("data/PP_fig4C.png")
-```
-***PLEASE READ*** *** draw_image is working without having to read in figure ****
-
-Now that we have the images read into R, we can render them properly using the cowplot functions `ggdraw()` and `draw_image()`. The `ggdraw()` function creates a canvas to 'draw' on, while the `draw_image()` function draws the image onto some location on the canvas. 
+Now that we have the figures for 4D and 4E, we can use cowplot to bring in the outside images, and re-create the entire top half of the image displayed above. We will first render the outside images properly using the cowplot functions `ggdraw()` and `draw_image()`. The `ggdraw()` function creates a canvas to 'draw' on, while the `draw_image()` function draws the image onto some location on the canvas. 
 
 > _**NOTE:** For more extensive image processing, the [`magick` package](https://cran.r-project.org/web/packages/magick/vignettes/intro.html) provides extensive functionality, and is called by the cowplot package for reading in the images._
 
@@ -165,7 +153,7 @@ fig4a
 <img src="../img/PP_fig4A.png " height="300">
 </p>
 
-Now we can use the `align_plots()` function again to combine all of our finished figures. We would like our images to be vertically aligned (we will align by the left axis, but should be similar for any axis chosen), so before we arrange our image, we use the `align_plots()` function. This function will create a list of vertically aligned images.
+Now we can use the `align_plots()` function again to combine all of our finished figures. We would like our images to be vertically aligned (`v` option), and to be aligned by the left axis (`l` option). This function will create a list of vertically aligned images.
 
 ```r
 # Align all images vertically for the top half of the figure
@@ -180,7 +168,7 @@ Let's give the list components intuitive names for when we align our plot.
 names(top_half) <- c("fig4a", "fig4b", "fig4c", "fig4d", "fig4e")
 ```
 
-To create the figure, we can use the `plot_grid() function again. However, we have to have the same number of rows or columns in the data to combine. Since the first row has three images (columns) and the second has two, we will create the figure row by row, then combine those rows into the full top half. 
+To create the figure, we can use the `plot_grid() function again. However, we have to have the same number of rows or columns in the data to combine. Since the first row has three images (columns) and the second row has two, we will create the figure row by row, and then combine those rows into the full top half. 
 
 Let's create the top row with the three equally-sized images that we just read in and provide figure labels.
 
@@ -222,4 +210,4 @@ top_half <- plot_grid(first_row, second_row,
 <img src="../img/top_half.png " height="300">
 </p>
 
-> _**NOTE:** Another type of plot alignment is referred to as facetting, that is when you use data from the same data frame to create separate plots based on the values from one of the columns in the data frame. If we had wrangled our data to have the Pax6, Tbr2/Eomes, Tubb3 expression data all together in a single data frame, we could have used the facetting to create separate plots. Code to do this below? or just link out to ggplot2 book facetting._
+> _**NOTE:** Another type of plot alignment is referred to as facetting, that is when you use data from the same data frame to create separate plots based on the values from one of the columns in the data frame. If we had wrangled our data to have the Pax6, Tbr2/Eomes, Tubb3 expression data all together in a single data frame, we could have used the facetting to create separate plots. Here are some examples of [facetting](https://ggplot2.tidyverse.org/reference/facet_grid.html)._

@@ -73,6 +73,8 @@ Running the examples from the help page can be quite illuminating when exploring
 ***
 **Exercise?**
 
+Was thinking the below code could be a possible answer key and for the exercise provided with empty arguments - we maybe don't need to include all of these options as its a bit overwhelming, but ask to fill in some of the arguments and add any additional ones that they choose?
+
 Customize some of these options to output a figure similar to that in the paper.
 
 ```r

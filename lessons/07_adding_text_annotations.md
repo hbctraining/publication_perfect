@@ -70,7 +70,7 @@ ggplot(pax6_exp) +
 
 ## Adding custom text
 
-Let's explore adding custom text to our plot by finishing up our volcano plots we created previously. We are trying to create the figure below, but we still need to add the text to the image. Let's explore the current volcano plot for Pax6 results.
+Let's adding some custom text to our plot by finishing up the volcano plots we created previously. Here is the current volcano plot for Pax6.
 
 ```r
 # Pax6 volcano plot
@@ -82,7 +82,7 @@ volcano_RG
 </p> 
 
 
-We have previously used `cowplot` to align plots and draw images, and we can use additional functionality from the `cowplot` package to add custom text to our figures. We will use `draw_label()` function. The `ggdraw()` function draws the ggplot2 image to the canvas, then the `draw_label()` functions adds the text on top. 
+Previously, we used `cowplot` to align plots and draw images. We can also use additional functionality from the `cowplot` package, `draw_label()` function, to add custom text to our figures. We will use the `ggdraw()` function to draw the ggplot2 image to the canvas, and then the `draw_label()` function to add the text on top. 
 
 Let's practice by adding 'Draft' on top of our volcano plot. We can customize the appearance of the text within the `draw_label()` function. 
 
@@ -109,7 +109,7 @@ ggdraw(volcano_RG) +
 
 ***
 
-The trick to adding the text to figures is a lot of trial and error, since you need to specify the x- and y-coordinates for where you would like the labels to appear on the image. The coordinates span from 0 to 1 with (0,0) at the lower left-hand corner.
+The trick to adding the text to figures is a lot of trial and error, since you need to specify the x- and y-coordinates for where you would like the labels to appear on the image. The coordinates span from 0 to 1, with (0,0) at the lower left-hand corner.
 
 Center the 'Draft' in the middle of the image. **The x- and y-coordinates appropriate may be different, depending on the size of your plotting window.** 
 
@@ -132,9 +132,8 @@ ggdraw(volcano_RG) +
 </p>
 
 
-Now that we know how to add text to an image, let's add the annotations to our volcano plot to match the published figure below.
+Now that we know how to add text to an image, let's add the annotations to our volcano plot to match the published figure.
 
-published radial glia volcano plot
 
 ```r
 # Add annotations to the RG volcano plot
@@ -167,10 +166,12 @@ ggdraw(volcano_RG) +
 <img src="../img/labeled_volcano.png" height="300">
 </p>
 
-To finish up the figure, we need to save each of the annotated volcano plots to variables and align with `cowplot` using `plot_grid()`.
+To compile the whole figure, we first save each of the annotated volcano plots to variables.
 
 ```r
-# Create annotations for all of the volcano plots and save to variables
+# Create annotations for all desired volcano plots, and save them to variables
+
+## 1st plot
 volcano_panel1 <- ggdraw(volcano_RG) + 
   draw_label("664 genes", 
              x = 0.15, 
@@ -192,6 +193,7 @@ volcano_panel1 <- ggdraw(volcano_RG) +
              hjust = 0,
              vjust = 0)  
 
+## 2nd plot
 volcano_panel2 <- ggdraw(volcano_IP) + 
   draw_label("405 genes", 
              x = 0.15, 
@@ -213,6 +215,7 @@ volcano_panel2 <- ggdraw(volcano_IP) +
              hjust = 0,
              vjust = 0)  
 
+## 3rd plot
 volcano_panel3 <- ggdraw(volcano_neu) + 
   draw_label("33 genes", 
              x = 0.15, 
@@ -233,7 +236,11 @@ volcano_panel3 <- ggdraw(volcano_neu) +
              size = 12,
              hjust = 0,
              vjust = 0)  
+```
 
+We then align these variables using `plot_grid()` from the `cowplot` package.
+
+```r
 # Align volcano plots
 volcano_grid <- plot_grid(volcano_panel1,
                           volcano_panel2,

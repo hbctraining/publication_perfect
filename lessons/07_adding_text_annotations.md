@@ -6,16 +6,16 @@ In this lesson, we will learn how to add text annotations to a plot. There are a
 2. Adding custom text
 3. Adding statistical comparison results
 
-## Labeling all values (maybe find a better plot to show this if time permits)
+## Labeling all values
 
 If you would like to label all values on the plot, this can easily be done by adding another layer to the ggplot with `geom_text()` or `geom_label()`. The ggplot2 book provides a [nice resource](https://ggplot2.tidyverse.org/reference/geom_text.html) for exploring the functionality of these geoms.
 
 ```r
 # Adding labels to all values with geom_text
 ggplot(pax6_exp) +
-  geom_boxplot(aes(x=group, 
+  geom_point(aes(x=group, 
                    y=normalized_counts, 
-                   fill=group)) +
+                   color=group)) +
   geom_text(aes(x=group, 
                 y=normalized_counts,
                 label=samples)) +
@@ -28,23 +28,20 @@ ggplot(pax6_exp) +
                    labels=c("Pax6:WT" = "Radial glia",
                             "neg:WT" = "Neurons", 
                             "Tbr2:WT" = "Progenitors")) +
-  scale_y_continuous(name = "Normalized counts") +
-  scale_fill_viridis(discrete = TRUE,
-                     option = "viridis",
-                     begin = 0.2 )
+  scale_y_continuous(name = "Normalized counts")
 ```
 
 <p align="center">
-<img src="../img/bad-label_boxplot.png" height="300">
+<img src="../img/label.png" height="300">
 </p>
 
-The `ggrepel` package is a useful ggplot2 extension package that is helpful to prevent the overlap of labels. It can be added as a layer, similar to `geom_text`.
+We notice that labels overlap with the data points, making it hard to visualize. To solve the issue, we could use the `ggrepel`, a ggplot2 extension package that is helpful to prevent the overlap of labels. It can be added as a layer, similar to `geom_text`.
 
 ```r
 library(ggrepel)
 
 ggplot(pax6_exp) +
-  geom_boxplot(aes(x=group, 
+  geom_point(aes(x=group, 
                    y=normalized_counts, 
                    fill=group)) +
   geom_text_repel(aes(x=group, 
@@ -67,7 +64,7 @@ ggplot(pax6_exp) +
 
 
 <p align="center">
-<img src="../img/better-label_boxplot.png" height="300">
+<img src="../img/label_repel.png" height="300">
 </p>
 
 

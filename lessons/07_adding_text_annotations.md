@@ -238,7 +238,7 @@ volcano_panel3 <- ggdraw(volcano_neu) +
              vjust = 0)  
 ```
 
-We then align these variables using `plot_grid()` from the `cowplot` package.
+We then align these variables using `plot_grid()` from the `cowplot` package, and save the image.
 
 ```r
 # Align volcano plots

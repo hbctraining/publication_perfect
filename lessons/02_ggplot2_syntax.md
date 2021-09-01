@@ -141,7 +141,7 @@ ggplot(results) +
 
 [**Exercise**](../answer_keys/ggplot2_syntax_Q1.md)
 
-Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in ther "Aes" section on the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). 
+Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in the "Aes" section of the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). 
 
 1. Change all of the points in the plot to squares.
 2. Change the transparency of the points (`alpha`) to change with the base mean of `Pax6`.

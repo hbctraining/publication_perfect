@@ -141,7 +141,7 @@ ggplot(results) +
 
 [**Exercise**](../answer_keys/ggplot2_syntax_Q1.md)
 
-Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). 
+Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in the "Aes" section of the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). 
 
 1. Change all of the points in the plot to squares.
 2. Change the transparency of the points (`alpha`) to change with the base mean of `Pax6`.
@@ -162,7 +162,7 @@ The ggplot2 `theme` system handles non-data plot elements such as:
 
 * Axis label aesthetics
 * Plot background
-* Facet label backround
+* Facet label background
 * Legend appearance
 
 There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the background/foreground colors, by adding it as an additional layer. A nice resource for exploring pre-set themes is [available](https://ggplot2.tidyverse.org/reference/ggtheme.html) from Tidyverse. 

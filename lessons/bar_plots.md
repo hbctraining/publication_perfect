@@ -95,6 +95,7 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
     - Remove the y-axis text and ticks
 10. Add the term names to the bars by adding a `geom_text()` layer with the same `x` and `y` aesthetics as the `geom_col()` layer. The `label` aesthetics should map to `term.name`.
   
+  ```r
   ggplot(pax6_up_go) +
   geom_col(aes(x = term.name, 
                y = -log10(p.value)), 
@@ -115,7 +116,8 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
                 y = -log10(p.value),
                 label = term.name,
                 size = 4))
-
+  ```
+  
   < image of altered plot >
   
 11. Notice the terms are centered at the value we give to `y` in the `geom_text()` function. We can provide a different value to center the terms inside the bars. Let's instead make `y = -log10(p.value) / 2`.
@@ -232,5 +234,7 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
               vjust = 0.5,
               size = 4)
   ```
+  
+  < image of all plots >
   
 16. The last step is to use `cowplot` to put the remaining annotations into the images and align them into a single row in the figure.

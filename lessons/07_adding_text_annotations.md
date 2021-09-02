@@ -95,16 +95,25 @@ Let's practice by adding 'Draft' on top of our volcano plot. We can customize th
 
 ## Exercise
 
-Customize the 'Draft' text appearance using the different `draw_label()` arguments.
+Customize the 'Draft' text appearance, so that the figure looks like below. Hint: you will need the below arguments from `draw_label()`: `color`, `size`, `angle`.
 
-```r
-# Practicing adding custom text to images
-ggdraw(volcano_RG) + 
-  draw_label("Draft", 
-             color = "#FF0000", 
-             size = 100, 
-             angle = 45)
-```
+<p align="center">
+<img src="../img/draft_1st.png" height="300">
+</p>
+
+<details>
+  <summary>Solution</summary>
+  
+  ```r
+  # Practicing adding custom text to images
+  ggdraw(volcano_RG) + 
+    draw_label("Draft", 
+               color = "#FF0000", 
+               size = 100, 
+               angle = 45)
+  ```
+  
+</details>
 
 
 ***

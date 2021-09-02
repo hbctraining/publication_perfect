@@ -230,6 +230,7 @@ Also, we can specify the colors to use to denote the annotations. The colors for
 ```r
 # Colors for denoting annotations
 ann_colors <- list(genotype = c(KO = "#F8766D", WT = "#00BFC4"))
+```
 
 Now we can load the `pheatmap` library, using the `pheatmap()` function to create the heatmap.
 

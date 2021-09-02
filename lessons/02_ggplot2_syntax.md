@@ -1,6 +1,6 @@
 ---
 title: "Plotting and data visualization in R"
-author: "Mary Piper, Meeta Mistry, Radhika Khetani"
+author: "Mary Piper, Meeta Mistry, Radhika Khetani, Will Gammerdinger"
 date: "Friday, July 16th, 2021"
 ---
 
@@ -62,7 +62,9 @@ The **geom (geometric) object** is the layer that specifies what kind of plot we
 * boxplot (`geom_boxplot`, for, well, boxplots!)
 * [many others](https://ggplot2.tidyverse.org/reference/#section-geoms)
 
-The [RStudio cheatsheet for ggplot2](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) is a bit overwhelming at first, but it can help with choosing the best 'geom' for our data. With two continuous variables as points, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
+When attempting to select the appropriate visualization for your data, it can be helpful to use [this website](https://www.data-to-viz.com). It provides nice decision trees for visualization methods depending on your data along with examples and code for the examples.
+
+Once you have decided how you would like to visualize your data, the [RStudio cheatsheet for ggplot2](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) can be a good starting place for figuring out which `geom` to use. With two continuous variables as points, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
 
 ```r
 # Initializing plot
@@ -76,13 +78,12 @@ We get an error because each type of `geom` usually has a **required set of aest
 
 The `aes()` function has many different arguments, and all of those arguments take columns from the original data frame as input. It can be used to specify many plot elements including the following:
 
-* position (i.e., on the x and y axes)
-* color ("outside" color)
-* fill ("inside" color) 
-* shape (of points)
-* linetype
-* size
-* alpha (level of transparency)
+* [Position (i.e., on the x and y axes)](https://ggplot2.tidyverse.org/reference/aes.html)
+* [Color ("outside" color) and Fill ("inside" color)](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#colour-and-fill-1) 
+* [Shape (of points)](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html?q=shape#sec:shape-spec)
+* [Line type](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html?q=shape#sec:line-type-spec)
+* [Size](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#size)
+* [Alpha (level of transparency)](https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html?q=alpha#alpha)
 
 To start, we will specify x- and y-axis since `geom_point` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the other plot elements mentioned above are optional.
 
@@ -141,10 +142,10 @@ ggplot(results) +
 
 [**Exercise**](../answer_keys/ggplot2_syntax_Q1.md)
 
-Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in the "Aes" section of the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). 
+Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in the "Aes" section of the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) or [here](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html?q=shape#sec:shape-spec). 
 
-1. Change all of the points in the plot to squares.
-2. Change the transparency of the points (`alpha`) to change with the base mean of `Pax6`.
+1. Change the geom argument `shape` to "square" to alter the shape of ***all*** points to squares.
+2. Change the aesthetic transparency of the points (`alpha`) to change with the base mean of `Pax6`.
 
 ***
 

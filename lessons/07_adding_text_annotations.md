@@ -118,9 +118,9 @@ Customize the 'Draft' text appearance, so that the figure looks like below. Hint
 
 ***
 
-The trick to adding the text to figures is a lot of trial and error, since you need to specify the x- and y-coordinates for where you would like the labels to appear on the image. The coordinates span from 0 to 1, with (0,0) at the lower left-hand corner.
+We could also specify the x- and y-coordinates for where we would like the labels to appear on the image. The coordinates span from 0 to 1, with (0,0) located at the lower left-hand corner. We would need some trial and error to put the label to the desired position.
 
-Center the 'Draft' in the middle of the image. **The x- and y-coordinates appropriate may be different, depending on the size of your plotting window.** 
+Center the 'Draft' in the mid-bottom of the image. **The x- and y-coordinates appropriate may be different, depending on the size of your plotting window.** 
 
 ```r
 # Use the x, y, hjust and vjust arguments to center the text
@@ -128,8 +128,8 @@ ggdraw(volcano_RG) +
   draw_label("Draft", 
              color = "#FF0000", 
              size = 100, 
-             angle = 45,
-             x = 0.35,
+             angle = 0,
+             x = 0.25,
              y = 0.15,
              hjust = 0,
              vjust = 0)
@@ -137,7 +137,7 @@ ggdraw(volcano_RG) +
 
 
 <p align="center">
-<img src="../img/draft_volcano_RG.png" height="300">
+<img src="../img/draft_2nd.png" height="300">
 </p>
 
 

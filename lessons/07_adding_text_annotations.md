@@ -146,8 +146,6 @@ Now that we know how to add text to an image, let's add the annotations to our v
 
 ```r
 # Add annotations to the RG volcano plot
-## x and y need to be adjusted for the desired resolution
-# We could also try writing to file then adding annotations after reading in with ggdraw()
 
 ggdraw(volcano_RG) + 
   draw_label("664 genes", 
@@ -289,36 +287,31 @@ ggdraw(boxplot_pax6) +
 </p>
 
 
-This achieves our purpose, but the `ggpubr` package can allow a quicker and easier method to add our statistical annotations to a plot. The `ggpubr` package extends ggplot2's functionality by providing easy-to-use functions to create ggplot2-based plots, while providing statistical comparisons between groups and customizable annotations.
+The above code achieves our goal, but it requires some trial and error with x- and y-coordinates. Alternatively, the `ggpubr` package allows a quicker and easier method to add statistical annotations to a plot. The `ggpubr` package extends ggplot2's functionality and provides statistical comparisons between groups and customizable annotations.
 
-Let's explore how we could use `ggpubr` to add signficance to our boxplot. The main function we will be utilizing from `ggpubr` is `stat_pvalue_manual()` to add pre-computed statistical information to our plot. The `stat_pvalue_manual()` function can be added to a ggplot2 figure as a layer. However, this function requires the aesthetics (`aes()`) to be specified in the `ggplot()` layer, which applies the aesthetics to all mappings in the plot. Therefore, we will move our `aes()` function from our `geom_boxplot()` layer to the `ggplot()` layer.
+Let's explore how we could use `ggpubr`, `stat_pvalue_manual()` function specifically, to add pre-computed statistical annotations to our boxplot. The `stat_pvalue_manual()` function can be added to a ggplot2 figure as a layer. This function requires the `x` and `y` arguments of the aesthetics (`aes()`) to be specified in the `ggplot()` layer, which applies to all mappings (including `stat_pvalue_manual()`) in the plot. However, we cannot include `fill` argument in the `ggplot()` layer (otherwise it will raise error message). So we will leave the `fill` argument within the `geom_boxplot` layer.
 
-First let's create the 'stats' to add to the figure. The table needs the columns `group1`, `group2`, and `p.adj` at the minimum. [This resource](https://www.datanovia.com/en/blog/ggpubr-how-to-add-p-values-generated-elsewhere-to-a-ggplot/) has additional information about other columns that can be added.
-
-**I am following this [tutorial](https://www.datanovia.com/en/blog/ggpubr-how-to-add-p-values-generated-elsewhere-to-a-ggplot/), but it is not working for me. I need someone else to troubleshoot this and I will work on the other lessons.
-**
+First, let's create the 'stat.test' to add to the figure. The table requires the columns `group1`, `group2`, and `p.adj` at the minimum. We will also include `p.adj.signif` for later use. [This resource](https://www.datanovia.com/en/blog/ggpubr-how-to-add-p-values-generated-elsewhere-to-a-ggplot/) has additional information about other columns that can be added.
 
 
 ```r
 # Create ggpubr stat table
 stat.test <- tibble::tribble(
-  ~group1, ~group2,   ~p.adj,    
-  "Pax6:WT",     "Tbr2:WT", 0.003,
-  "Pax6:WT",     "neg:WT", 0.0007,
-  "Tbr2:WT",     "neg:WT", 0.01)
+  ~group1, ~group2,   ~p.adj, ~p.adj.signif,   
+  "Pax6:WT",     "Tbr2:WT", 0.003, "**",
+  "Pax6:WT",     "neg:WT", 0.0007, "**",
+  "Tbr2:WT",     "neg:WT", 0.01, "*")
 
 ```
 
-Now we can add the statistical annotations to the plot by adding the `stat_pvalue_manual()` function as a layer, and specifying the stats table as the input. We also need to denote the name of the column to use as the source of annotations.
+Now we can add the statistical annotations to the plot by adding the `stat_pvalue_manual()` function as a layer and specifying the stats table as the input. We also need to denote the name of the column to use as the source of annotations.
 
 ```r
-# DON'T KNOW WHY THIS WHOLE CHUNK DOESN'T WORK
 # Add stats to plot
 ggplot(pax6_exp, 
        aes(x=group,
-           y=normalized_counts,
-           fill=group)) +
-  geom_boxplot() +
+           y=normalized_counts)) +
+  geom_boxplot(aes(fill=group)) +
   ggtitle("Pax6") +
   personal_theme() +
   theme(axis.text.x = element_text(angle = 45, 
@@ -335,22 +328,18 @@ ggplot(pax6_exp,
   stat_pvalue_manual(
     stat.test,
     label = "p.adj",
-    y.position = c(60, 30, 70))
+    y.position = 55,
+    step.increase = 0.15)
+```
 
+<p align="center">
+<img src="../img/stats.png" height="300">
+</p>
 
+> Note: In the above figure, we use the `y.position` argument to specify the absolute position of the first label, and then the `step.increase` argument to indicate the increase of height for every additional comparisons (to avoid annotation overlap). Alternatively, we could just specify the absolute positions of each label using a numeric vector. For example, check what you get if specifying `y.position = c(60, 30, 70)` (no `step.increase` argument is needed).
  
 # Add p-values comparing groups
 
-
-p_labeling <- list(cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
-                   symbols = c("****", "***", "**", "*", "ns"))
-
-It would be nice to show some additional ways of showing the statistics: 
-
-# Such as:
-p_labeling <- list(cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
-                   symbols = c("****", "***", "**", "*", "ns"))
-```                   
 
 <p align="center">
 <img src="../img/stats_boxplot.png" height="300">

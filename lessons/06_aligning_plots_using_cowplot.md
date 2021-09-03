@@ -128,7 +128,7 @@ ggsave(plot = boxplot_grid,
        dpi = 300)
 ```
 
-> _**NOTE:** There are output specific functions, such as `png()` and `pdf()`, which can be used to output the corresponding plots by writing directly to a graphics device. This can be much easier for saving more than a single image to the output file, and we have [materials available](https://hbctraining.github.io/Intro-to-R-flipped/lessons/13_exporting_data_and_plots.html#exporting-figures-to-file) for using these methods.
+> _**NOTE:** There are output specific functions, such as `png()` and `pdf()`, which can be used to output the corresponding plots by writing directly to a graphics device. This can be much easier for saving more than a single image to the output file, and we have [materials available](https://hbctraining.github.io/Intro-to-R-flipped/lessons/13_exporting_data_and_plots.html#exporting-figures-to-file) for using these methods._
 
 Now that we have the figures for 4D and 4E, we can use cowplot to bring in the outside images, and re-create the entire top half of the image displayed above. We will first render the outside images properly using the cowplot functions `ggdraw()` and `draw_image()`. The `ggdraw()` function creates a canvas to 'draw' on, while the `draw_image()` function draws the image onto some location on the canvas. 
 

@@ -12,7 +12,7 @@ Now we have created all graphics present in our published figure. We can use `co
 The published figure below is what we are trying to reconstruct. 
 
 <p align="center">
-<img src="../img/figure_to_create.jpg">
+<img src="../img/figure_to_create.jpg", width = "600">
 </p>
 
 We have already created the first two rows, let's take a quick look at these and save them to file using a standard width of x. **We should change the materials to 'mm' since in Europe - check journal reqs.**

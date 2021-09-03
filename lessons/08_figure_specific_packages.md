@@ -20,7 +20,7 @@ A Venn diagram compares two or more lists, and by nature is categoric. If we use
 
 This page has a lot of nice information about Venn diagrams, as well as, suggestions for when to use them (e.g. generally not recommended for comparison of more than 3 sets - use [upset plots](https://jku-vds-lab.at/tools/upset/) instead). Since we are comparing two sets of data for each visualization (e.g. Pax6 and Tbr2-expressing samples), a Venn diagram is a recommended method.
 
-Let's expand the 'Code', and note the package used to create the Venn diagrams is `VennDiagram`. We will use this package, as well. To generate the Venn diagram, we need togenerate our sets. We can subset our data for the `Pax6`- and `Tbr2`-expressing samples to only include those genes that are significant with `threshold` equal to `TRUE` and that are up-regulated using the `log2FoldChange` values > 0.
+Let's expand the 'Code', and note the package used to create the Venn diagrams is `VennDiagram`. We will use this package, as well. To create the Venn diagram, we need to generate our sets. We can subset our data for the `Pax6`- and `Tbr2`-expressing samples to only include those genes that are significant with `threshold` equal to `TRUE` and that are up-regulated using the `log2FoldChange` values > 0.
 
 ```r
 library(VennDiagram)

@@ -211,6 +211,8 @@ ggplot(results) +
 <img src="../img/ggscatter-5.png" height="300">
 </p> 
 
+In the above codeblock, you can see that we used a theme element, `element_text`. [This page](https://ggplot2.tidyverse.org/reference/element.html) discusses `element_text` along with other theme elements like `element_line`, `element_rect` and `element_blank`. Each of these has their own parameters that you can explore, but they can control things like size, color and, in the case of text, how the text is aligned. Also, the theme element `element_blank()` will remove the corresponding element from the figure.  
+
 > *NOTE:* You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 
 
 > *NOTE:* RStudio provide this very [useful cheatsheet](https://github.com/hbctraining/Intro-to-R-flipped/blob/master/cheatsheets/data-visualization-2.1.pdf) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.) We also encourage you to persuse through this useful [online reference](https://ggplot2.tidyverse.org/reference/) for working with ggplot2.
@@ -221,13 +223,13 @@ ggplot(results) +
 [**Exercise**](../answer_keys/ggplot2_syntax_Q2.md)
 
 
-1. Use the `ggtitle` layer to add the plot title. 
-2. Increase the size of the plot title to be 1.5 times the default value.
-3. Remove the legend by adding a `theme()` layer with the argument `legend.position`. 
-4. Remove the gridlines by adding another `theme()` layer with the argument `panel.grid`.
-5. Add the following new layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
+1. Add a `ggtitle` layer in order to add a title to the plot. Don't worry about the alignment quite yet.
+2. After adding a title, add the following new theme layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
     * What does it change?
     * How many `theme()` layers can be added to a ggplot code chunk, in your estimation?
+3. Using a theme element, increase the size of the plot title to be 1.5 times the default value.
+4. Using a theme element, remove the gridlines by adding another `theme()` layer with the argument `panel.grid`.
+5. Remove the legend by adding a `theme()` layer with the argument `legend.position`. You can look up which values `legend.position`  accepts [here](https://ggplot2.tidyverse.org/reference/theme.html).
 
 ***
 

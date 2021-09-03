@@ -116,15 +116,16 @@ boxplot_grid
 
 We completed our first figure. Now how do we save it to file?
 
-<Add material from our 'Exporting images' lesson. Should add `ggsave()` information - nice that you can specify figure output type and resolution in single function [https://ggplot2.tidyverse.org/reference/ggsave.html](https://ggplot2.tidyverse.org/reference/ggsave.html) >
+The `ggplot2` package has a nice function called [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html), which will, by default, save the last plot created. The function allows you to specify the resolution and the type of graphics output desired, with choices "eps", "ps", "tex" (pictex), "pdf", "jpeg", "tiff", "png", "bmp", "svg" or "wmf". Also handy are the options to choose the width, height, and the units for those specifications. Let's use `ggsave()` to save our boxplot figure to a pdf file.
 
 ```r
-# # Export to size width = 1200, height = 290
-# pdf(file = "results/boxplot_figure.pdf",
-#     width = 6,
-#     height = 3)
-# boxplot_grid
-# dev.off()
+# Save plot to pdf
+ggsave(plot = boxplot_grid,
+       filename = "results/boxplot_figure.pdf",
+       device = "pdf",
+       width = 6,
+       units = "in",
+       dpi = 300)
 ```
 
 Now that we have the figures for 4D and 4E, we can use cowplot to bring in the outside images, and re-create the entire top half of the image displayed above. We will first render the outside images properly using the cowplot functions `ggdraw()` and `draw_image()`. The `ggdraw()` function creates a canvas to 'draw' on, while the `draw_image()` function draws the image onto some location on the canvas. 
@@ -197,13 +198,6 @@ Now we can combine the first and second rows to create the full top half.
 # Create top half of figure
 plot_grid(first_row, second_row, 
           ncol = 1)
-```
-
-We need to save this to a variable for us to combine later with the bottom half.
-
-```r
-top_half <- plot_grid(first_row, second_row, 
-                      ncol = 1)
 ```
 
 <p align="center">

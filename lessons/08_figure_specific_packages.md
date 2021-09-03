@@ -6,11 +6,17 @@ We have discovered that `ggplot2` has incredible functionality and versatility; 
 
 Let's start by exploring how to create the Venn diagram in figure 4H. 
 
-< Image of Venn diagrams from figure >
-  
-A Venn diagram compares two or more lists, and by nature is categoric. If we use the [Data to Viz resource](https://www.data-to-viz.com), we can navigate to the `Categoric` data, and under 'Two independent lists' we find the Venn diagram. Click on this icon, and explore the dedicated page.
+<p align="center">
+<img src="../img/fig-H.jpeg">
+</p>
 
-<Screen shot of 'dedicated page' link.>
+  
+A Venn diagram compares two or more lists, and by nature is categoric. If we use the [Data to Viz resource](https://www.data-to-viz.com), we can navigate to the `Categoric` data, and under 'Two independent lists' we find the Venn diagram. Clicking on the Venn diagram icon will open up a pop up window with a breif description of Venn diagrams. At the bottom of the pop up page, find the link to the "dedicated page"; explore the [dedicated page](https://www.data-to-viz.com/graph/venn.html).
+
+<p align="center">
+<img src="../img/dedicated_page.png" , height="400">
+</p>
+
 
 This page has a lot of nice information about Venn diagrams, as well as, suggestions for when to use them (e.g. generally not recommended for comparison of more than 3 sets - use [upset plots](https://jku-vds-lab.at/tools/upset/) instead). Since we are comparing two sets of data for each visualization (e.g. Pax6 and Tbr2-expressing samples), a Venn diagram is a recommended method.
 
@@ -133,7 +139,6 @@ venn.diagram(x = down,
              cat.dist = c(0.06,0.097),
              cat.fontfamily = "sans",
              cat.col = c("salmon", "lightblue"))
-
 ```
 
 <p align="center">
@@ -146,7 +151,10 @@ venn.diagram(x = down,
   
 Specialized packages are also useful for the creation of the hierarchical heatmap figure in the publication. 
   
-< published heatmap figure >
+<p align="center">
+<img src="../img/fig-F.png" height="500">
+</p>
+
   
 The benefits gained from these specialized packages for the heatmap help by incorporating statistical information, such as providing the dendrograms and clustering of rows and/or columns. While ggplot2 can easily create a heatmap with `geom_tile()`, it cannot easily provide the hierarchical clustering allowed by these more customized packages. There are a few popular packages specializing in the generation of hierarchical heatmaps, including `pheatmap`, `d3heatmap`, and `ComplexHeatmap`, among others. We will explore the `pheatmap` package for our hierarchical clustering figure; however, additional information can be found for `d3heatmap` from [Data to viz](https://www.data-to-viz.com/graph/heatmap.html) and we have [additional materials](supp_complexHeatmap.md) highlighting the code to create the same plot using `ComplexHeatmap`. ComplexHeatmap definitely embraces its name, and there is a [whole book](https://jokergoo.github.io/ComplexHeatmap-reference/book/) dedicated to creating custom heatmaps using this package.
 
@@ -247,6 +255,10 @@ pheatmap(heatmap_normCounts,
          show_rownames = F)
 ```
 
+<p align="center">
+<img src="../img/unscaled_heatmap.png" height="500">
+</p>
+
 We are have created a basic heatmap, but it's not very informative as it is. It looks like the expression of a lot of the genes is much lower than some of the others, so we can't see the differences very easily for the genes that don't have the highest values. There is a helpful argument called `scale` that allows us to scale the colors by the values in each row or column. Since each gene is a row, we will add this argument to be `scale = "row"`, which centers and scales the values.
   
 ```r
@@ -260,7 +272,10 @@ pheatmap(heatmap_normCounts,
          scale="row")
 ```
 
-<Add image>
+<p align="center">
+<img src="../img/scaled_heatmap.png" height="500">
+</p>
+
   
 Now that looks a lot better! We can see clustering between the different groups, which is good since these genes are supposed to have different expression between the groups. We can add a few more arguments to make it look more like the figure, like deleting the annotation name and legend. We will also adjust the width and heigth of the tiles.
 

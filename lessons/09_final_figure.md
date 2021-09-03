@@ -32,7 +32,7 @@ ggsave(filename = "results/fig4ABC.png",
 ```
 
 <p align="center">
-<img src="../img/fig4ABC.png", width = "600">
+<img src="../img/fig4ABC.png", width = "800">
 </p>
 
 This row of figures looks good, and we saved it to a standard size. Let's move on to the second row.
@@ -49,7 +49,10 @@ ggsave(filename = "results/fig4DE.png",
        dpi = 500)
 ```
 
-< image of second row >
+<p align="center">
+<img src="../img/figDE.png", width = "800">
+</p>
+
 
 This row similarly is ready to go and saved to file. Now, we need to create the next row with parts F (heatmap), G (volcano plots), and H (Venn diagrams). To do this, we must first join the Venn diagrams into a single graphic. To join the Venn diagrams, we can read in the images that were output and plot them together in a single row with two columns. 
 
@@ -66,7 +69,9 @@ fig4h <- plot_grid(fig4h_down,
                    ncol = 2)
 ```
 
-< image of venn figure >
+<p align="center">
+<img src="../img/fig4h.png", width = "800">
+</p>
 
 Now that we have the Venn diagrams as a single figure, we need to combine it with the volcano plot figure, which we saved to file to preserve the annotations in the correct locations. Let's read in the volcano figure and join in the Venn diagrams.
 
@@ -87,7 +92,9 @@ fig4gh <- plot_grid(fig4g,
 fig4gh
 ```
 
-< image of combined GH >
+<p align="center">
+<img src="../img/fig4gh.png", width = "800">
+</p>
 
 Now to finish the row, we need to add the heatmap. We also saved this image to file to preserve the annotation locations. Let's read it in and add it to the rest of the row.
 
@@ -114,7 +121,9 @@ ggsave(filename = "results/fig4FGH.png",
        dpi = 500)
 ```
 
-< image of third row >
+<p align="center">
+<img src="../img/fig4fgh.png", width = "800">
+</p>
 
 The last row contains the bar plots of the gene ontology terms, which we left as a take-home exercise. Therefore, we have provided the images as part of your project to read in (however, you are welcome to work through the exercise and try this over with your own plots later).
 
@@ -141,7 +150,9 @@ ggsave(filename = "results/fig4IJ.png",
        dpi = 500)                       
 ```
 
-< image of last row >
+<p align="center">
+<img src="../img/fig4IJ.png", width = "800">
+</p>
 
 Now we have all of our rows saved to the same width, let's read them in and add combine them into a figure.
 
@@ -177,7 +188,9 @@ ggsave(filename = "results/figure4_completed.png",
        dpi = 500)
 ```
 
-< final image >
+<p align="center">
+<img src="../img/figure4_completed.png", width = "800">
+</p>
 
 Congratulations, you have completed the full figure!! 
 

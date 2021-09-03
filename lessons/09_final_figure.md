@@ -31,7 +31,9 @@ ggsave(filename = "results/fig4ABC.png",
        dpi = 500)
 ```
 
-< image of first row >
+<p align="center">
+<img src="../img/fig4ABC.png", width = "600">
+</p>
 
 This row of figures looks good, and we saved it to a standard size. Let's move on to the second row.
 
@@ -127,10 +129,9 @@ fig4j <- ggdraw() +
   draw_image("results/PP_fig4J.png")
 
 # Combine images into the last row
-fig4ij <- <- plot_grid(fig4i,
+fig4ij <- plot_grid(fig4i,
                        fig4j,
-                       nrow = 1,
-                       labels = c("I", "J"))
+                       nrow = 1)
                        
 # Save image to file
 ggsave(filename = "results/fig4IJ.png", 

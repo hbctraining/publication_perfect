@@ -1,6 +1,6 @@
 ---
 title: "Creating consistent plots with custom themes"
-author: "Mary Piper, Meeta Mistry, Radhika Khetani, Jihe Liu"
+author: "Mary Piper, Meeta Mistry, Radhika Khetani, Jihe Liu, Will Gammerdinger"
 date: "Friday, July 16th, 2021"
 ---
 
@@ -120,6 +120,8 @@ volcano_RG <- ggplot(results) +
 [**Exercise**](../answer_keys/custom_themes_Q1.md)
 
 Using your `personal_theme()`, create volcano plots for the **'Intermediate progenitors'** and the **'Cortical neurons'** by using the `tbr2_` and `neg_` columns from the `results` data frame, respectively. Save the plots to the variables `volcano_IP` and `volcano_neu`.
+
+<Add the corresponding figures here as an example of what the students are working towards>
 
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

@@ -1,13 +1,13 @@
-# Aligning plots using cowplots
+# Aligning plots using cowplot
 
-In this lesson, we will introduce cowplot, a powerful package for aligning and arranging images into publication-quality figures. It's a versatile package with a lot of functionality to ease in the assembly of figures. Our goal in this lesson is to create the boxplot figures (4D & 4E) as they appear in the [publication](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg).
+In this lesson, we will introduce `cowplot`, a powerful package for aligning and arranging images into publication-quality figures. It's a versatile package with a lot of functionality to ease in the assembly of figures. Our goal in this lesson is to create the boxplot figures (4D & 4E) as they appear in the [publication](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg).
 
 <p align="center">
 <img src="../img/fig4D_E.jpeg">
 </p>
 
 
-We have already plotted the Pax6 boxplot to match the publication, while providing some enhancements for the color palettes. However, if we want to create the figures above, we need to create the other three boxplots for Tbr2, Tubb3, and Pdrm16. Let's create these plots using similar code as to the Pax6 boxplot, but modifying the aesthetics to match the corresponding gene data and title. Also, to incorporate all boxplot images into a figure, we need to save them to variables/objects in our environment.
+We have already plotted the *Pax6* boxplot to match the publication, while providing some enhancements for the color palettes. However, if we want to create the figures above, we need to create the other three boxplots for *Tbr2*, *Tubb3*, and *Pdrm16*. Let's create these plots using similar code as to the *Pax6* boxplot, but modifying the aesthetics to match the corresponding gene data and title. Also, to incorporate all boxplot images into a figure, we need to save them to variables/objects in our environment.
 
 ```r
 # Re-factor the levels to correspond to the same order as the Pax6 plot
@@ -97,7 +97,7 @@ boxplot_prdm16 <- ggplot(prdm16_exp) +
                      begin = 0.2 )
 ```
 
-Now that we saved all boxplots as ggplot2 objects, we can specify how to order them into a figure using cowplot's `plot_grid()` function. This function has many arguments that could customize the arrangement of the plots. We will specify that we would like the Pax6, Tbr2, and Tubb3 plots displayed as an image in a single row with three columns.
+Now that we saved all boxplots as `ggplot2` objects, we can specify how to order them into a figure using cowplot's `plot_grid()` function. This function has many arguments that could customize the arrangement of the plots. We will specify that we would like the *Pax6*, *Tbr2*, and *Tubb3* plots displayed as an image in a single row with three columns.
 
 ```r
 library(cowplot)

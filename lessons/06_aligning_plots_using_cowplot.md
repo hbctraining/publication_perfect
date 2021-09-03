@@ -171,7 +171,7 @@ Let's give the list components intuitive names for when we align our plot.
 names(top_half) <- c("fig4a", "fig4b", "fig4c", "fig4d", "fig4e")
 ```
 
-To create the figure, we can use the `plot_grid() function again. However, we have to have the same number of rows or columns in the data to combine. Since the first row has three images (columns) and the second row has two, we will create the figure row by row, and then combine those rows into the full top half. 
+To create the figure, we can use the `plot_grid()` function again. However, we have to have the same number of rows or columns in the data to combine. Since the first row has three images (columns) and the second row has two, we will create the figure row by row, and then combine those rows into the full top half. 
 
 Let's create the top row with the three equally-sized images that we just read in and provide figure labels.
 

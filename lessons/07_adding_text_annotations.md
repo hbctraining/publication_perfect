@@ -2,9 +2,9 @@
 
 In this lesson, we will learn how to add text annotations to a plot. There are a few popular types of annotations to add to plots. These include:
 
-1. Labeling all values
-2. Adding custom text
-3. Adding statistical comparison results
+- Labeling all values
+- Adding custom text
+- Adding statistical comparison results
 
 ## Labeling all values
 

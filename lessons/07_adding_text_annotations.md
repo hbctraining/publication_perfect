@@ -337,13 +337,38 @@ ggplot(pax6_exp,
 </p>
 
 > Note: In the above figure, we use the `y.position` argument to specify the absolute position of the first label, and then the `step.increase` argument to indicate the increase of height for every additional comparisons (to avoid annotation overlap). Alternatively, we could just specify the absolute positions of each label using a numeric vector. For example, check what you get if specifying `y.position = c(60, 30, 70)` (no `step.increase` argument is needed).
- 
-# Add p-values comparing groups
 
+
+In the above figure, we annotated the absolute p-values. Alternatively, we could annotate the significance level, using the `p.adj.signif` column. We just need to specify the `label` argument as `p.adj.signif`, and keep everything else the same.
+
+```r
+# Add significance level to plot
+ggplot(pax6_exp, 
+       aes(x=group,
+           y=normalized_counts)) +
+  geom_boxplot(aes(fill=group)) +
+  ggtitle("Pax6") +
+  personal_theme() +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1)) +
+  scale_x_discrete(name = "",
+                   labels=c("Pax6:WT" = "Radial glia",
+                            "neg:WT" = "Neurons", 
+                            "Tbr2:WT" = "Progenitors")) +
+  scale_y_continuous(name = "Normalized counts") +
+  scale_fill_viridis(discrete = TRUE,
+                     option = "viridis",
+                     begin = 0.2 ) +
+  stat_pvalue_manual(
+    stat.test,
+    label = "p.adj.signif",
+    y.position = 55,
+    step.increase = 0.15)
+```
 
 <p align="center">
-<img src="../img/stats_boxplot.png" height="300">
+<img src="../img/stats_signif.png" height="300">
 </p>
 
-
-This can be a short lesson - should have a shout out to additional functionality of ggpubr, especially the ease of creating ggplot plots with a bit more intuitive framework: https://jtr13.github.io/cc20/brief-introduction-and-tutorial-of-ggpubr-package.html and https://cran.r-project.org/web/packages/ggpubr/readme/README.html.
+> Note: `ggpubr` has many more functionalities than what we covered here. If you are interested in learning more, please check this [tutorial](https://jtr13.github.io/cc20/brief-introduction-and-tutorial-of-ggpubr-package.html), as well as the [package webpage](https://rpkgs.datanovia.com/ggpubr/index.html).

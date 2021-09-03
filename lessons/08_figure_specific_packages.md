@@ -77,11 +77,9 @@ This has successfully created a Venn diagram, but this is not exactly a publicat
 Running the examples from the help page can be quite illuminating when exploring the range of possibilities.
 
 ***
-**Exercise?**
+**Exercise**
 
-Was thinking the below code could be a possible answer key and for the exercise provided with empty arguments - we maybe don't need to include all of these options as its a bit overwhelming, but ask to fill in some of the arguments and add any additional ones that they choose?
-
-Customize some of these options to output a figure similar to that in the paper.
+Below we provide a skeleton of the publication-quality `venn.diagram` code. The value of these arguments - `col`, `fill`, `cat.pos`, `cat.col` - are left empty. Please fill in those values so that the final figure looks similar to that in the paper (see below).
 
 ```r
 # Up-regulated genes
@@ -97,49 +95,57 @@ venn.diagram(x = up,
              resolution = 300,
              compression = "lzw",
              lwd = 2,
-             col= "gray",
-             fill = c("salmon", "lightblue"),
+             col= ,
+             fill = ,
              cex = 0.5,
              fontfamily = "sans",
              cat.cex = 0.7,
              cat.fontface = "bold",
              cat.default.pos = "outer",
-             cat.pos = 0,
+             cat.pos = ,
              cat.dist = c(0.05,0.097),
              cat.fontfamily = "sans",
-             cat.col = c("salmon", "lightblue"))
+             cat.col = )
 ```
 
 <p align="center">
 <img src="../img/venn_up.png" height="300">
 </p>
 
-```r
-# Down-regulated genes
-venn.diagram(x = down, 
-             filename = "results/venn_down.png",
-             category.names = c("PAX6" , "TBR2"),
-             output = TRUE,
-             main = "Overlap of down-regulated genes",
-             main.fontfamily = "sans",
-             main.cex = 0.75,
-             height = 600 , 
-             width = 600 , 
-             resolution = 300,
-             compression = "lzw",
-             lwd = 2,
-             col= "gray",
-             fill = c("salmon", "lightblue"),
-             cex = 0.5,
-             fontfamily = "sans",
-             cat.cex = 0.7,
-             cat.fontface = "bold",
-             cat.default.pos = "outer",
-             cat.pos = 0,
-             cat.dist = c(0.06,0.097),
-             cat.fontfamily = "sans",
-             cat.col = c("salmon", "lightblue"))
-```
+***
+Similarly, we could plot the venn diagram for the down-regulated genes.
+
+<details>
+  <summary>Code</summary>
+  
+    ```r
+    # Down-regulated genes
+    venn.diagram(x = down, 
+                 filename = "results/venn_down.png",
+                 category.names = c("PAX6" , "TBR2"),
+                 output = TRUE,
+                 main = "Overlap of down-regulated genes",
+                 main.fontfamily = "sans",
+                 main.cex = 0.75,
+                 height = 600 , 
+                 width = 600 , 
+                 resolution = 300,
+                 compression = "lzw",
+                 lwd = 2,
+                 col= "gray",
+                 fill = c("salmon", "lightblue"),
+                 cex = 0.5,
+                 fontfamily = "sans",
+                 cat.cex = 0.7,
+                 cat.fontface = "bold",
+                 cat.default.pos = "outer",
+                 cat.pos = 0,
+                 cat.dist = c(0.06,0.097),
+                 cat.fontfamily = "sans",
+                 cat.col = c("salmon", "lightblue"))
+    ```
+
+</details>
 
 <p align="center">
 <img src="../img/venn_down.png" height="300">

@@ -125,7 +125,7 @@ If we wanted to modify the **size of the data points** we can use the `size` arg
 
 We have decided that we want to change the size of all the data points to a uniform size instead of mapping it to a numeric column in the input tibble. Add in the `size` argument by specifying a number for the size of the data point:
 
-```
+```r
 # Changing size to a constant (do not change with columns in data frame)
 ggplot(results) +
   geom_point(aes(x = pax6_log2FoldChange, 

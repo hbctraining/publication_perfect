@@ -255,11 +255,10 @@ volcano_grid <- plot_grid(volcano_panel1,
                           ncol = 3)
 
 # Save as image
-png(file = "results/volcano_figure.png",
-    width = 1200,
-    height = 290)
-volcano_grid
-dev.off()
+ggsave(plot = volcano_grid,
+       filename = "results/fig4G.png",
+       width = 8.5/3*2,
+       dpi = 500)
 ```
 
 <p align="center">
@@ -278,7 +277,7 @@ ggdraw(boxplot_pax6) +
              x = 0.82,
              y = 0.44) +
   draw_label("*",
-             x = 0.56,
+             x = 0.58,
              y = 0.62)
 ```
 
@@ -307,6 +306,9 @@ stat.test <- tibble::tribble(
 Now we can add the statistical annotations to the plot by adding the `stat_pvalue_manual()` function as a layer and specifying the stats table as the input. We also need to denote the name of the column to use as the source of annotations.
 
 ```r
+# Load library for ggpubr
+library(ggpubr)
+
 # Add stats to plot
 ggplot(pax6_exp, 
        aes(x=group,

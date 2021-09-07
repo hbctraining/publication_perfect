@@ -56,7 +56,7 @@ First though we need to bring the data into R!
 
 > [Here is the link](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE111660) to the GEO submission for these data.
 
-1. We will start by downloading a basic project folder with the data by right-clicking on [this link](https://www.dropbox.com/s/hu5i8ueziuhmwg6/publication_perfect.zip?dl=1). We recommend that you place this zipped folder on your Desktop for the duration of the workshop. 
+1. We will start by downloading a basic project folder with the data by right-clicking on [this link](https://github.com/hbctraining/Training-modules/raw/master/data/publication_perfect.zip). We recommend that you place this zipped folder on your Desktop for the duration of the workshop. 
 1. Unzip the folder, and navigate into the `publication_perfect` folder. Inside this folder you will find a .Rproj file. **Double-click on this to open the project in RStudio.**
 1. From the menu bar select 'File' --> 'New File' --> 'Rscript'. This will open up the script editor, so you have a place to write and save your code. 
 1. Copy and paste the following code into your script. Run the code in the console to read in the data and create three data frames.

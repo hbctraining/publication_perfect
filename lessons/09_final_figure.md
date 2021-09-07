@@ -15,46 +15,35 @@ The published figure below is what we are trying to reconstruct.
 <img src="../img/figure_to_create.jpg", width = "600">
 </p>
 
-We have already created the first two rows, let's take a quick look at these and save them to file using a standard width of x. **We should change the materials to 'mm' since in Europe - check journal reqs.**
+We have already created the first two rows, let's take a quick look at these and save them to file using a standard width of x.
 
 Let's start by looking at the first row image.
 
 ```r
-# Check top row with A, B, and C parts
+# Check first row figure
+fig4abc <- ggdraw() +
+  draw_image("results/fig4ABC.png")
+  
 fig4abc
-
-# Save image to file
-ggsave(filename = "results/fig4ABC.png", 
-       plot = top_row,
-       units = "in", 
-       width = 8.5,
-       dpi = 500)
-```
+```  
 
 <p align="center">
 <img src="../img/fig4ABC.png", width = "800">
 </p>
 
-This row of figures looks good, and we saved it to a standard size. Let's move on to the second row.
-
 ```r
-# Check second row with D and E parts
+# Check second row figure
+fig4de <- ggdraw() +
+  draw_image("results/fig4DE.png")  
+  
 fig4de
-
-# Save image to file
-ggsave(filename = "results/fig4DE.png", 
-       plot = bottom_row,
-       units = "in", 
-       width = 8.5,
-       dpi = 500)
 ```
 
 <p align="center">
 <img src="../img/figDE.png", width = "800">
 </p>
 
-
-This row similarly is ready to go and saved to file. Now, we need to create the next row with parts F (heatmap), G (volcano plots), and H (Venn diagrams). To do this, we must first join the Venn diagrams into a single graphic. To join the Venn diagrams, we can read in the images that were output and plot them together in a single row with two columns. 
+These rows look good and are both saved to our specified width. Now, we need to create the next row with parts F (heatmap), G (volcano plots), and H (Venn diagrams). To do this, we must first join the Venn diagrams into a single graphic. To join the Venn diagrams, we can read in the images that were output and plot them together in a single row with two columns. 
 
 ```r
 # Create Figure 4H
@@ -67,6 +56,9 @@ fig4h_up <- ggdraw() +
 fig4h <- plot_grid(fig4h_down,
                    fig4h_up,
                    ncol = 2)
+
+# Check the figure
+fig4h                   
 ```
 
 <p align="center">
@@ -78,7 +70,7 @@ Now that we have the Venn diagrams as a single figure, we need to combine it wit
 ```r
 # Read in Figure 4G
 fig4g <- ggdraw() +
-  draw_image("results/volcano_figure.png")
+  draw_image("results/volcano_grid.png")
 
 # Join with Figure 4H (Venn diagrams)
 fig4gh <- plot_grid(fig4g,
@@ -139,8 +131,9 @@ fig4j <- ggdraw() +
 
 # Combine images into the last row
 fig4ij <- plot_grid(fig4i,
-                       fig4j,
-                       nrow = 1)
+                    fig4j,
+                    labels = c("I", "J"),
+                    nrow = 1)
                        
 # Save image to file
 ggsave(filename = "results/fig4IJ.png", 
@@ -163,12 +156,12 @@ fig4abc <- ggdraw() +
 
 fig4de <- ggdraw() +
   draw_image("results/fig4DE.png")
-  
+
 fig4fgh <- ggdraw() +
-  draw_image("results/fig4DEfgh.png")  
+  draw_image("results/fig4FGH.png")  
 
 fig4ij <- ggdraw() +
-  draw_image("results/fig4DEij.png")
+  draw_image("results/fig4IJ.png")
 
 # Combine images into the full figure
 fig4complete <- plot_grid(fig4abc,

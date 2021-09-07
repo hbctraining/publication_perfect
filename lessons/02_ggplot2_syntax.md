@@ -62,7 +62,7 @@ The **geom (geometric) object** is the layer that specifies what kind of plot we
 * boxplot (`geom_boxplot`, for, well, boxplots!)
 * [many others](https://ggplot2.tidyverse.org/reference/#section-geoms)
 
-When attempting to select the appropriate visualization for your data, it can be helpful to use [this website](https://www.data-to-viz.com). It provides nice decision trees for visualization methods depending on your data along with examples and code for the examples. With two continuous numeric variables, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
+When attempting to select the appropriate visualization for your data, it can be helpful to use [the Data to Viz website](https://www.data-to-viz.com). It provides nice decision trees for visualization methods depending on your data along with examples and code for the examples. With two continuous numeric variables, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
 
 ```r
 # Initializing plot

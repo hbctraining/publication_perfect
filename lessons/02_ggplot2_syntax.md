@@ -27,7 +27,7 @@ library(tidyverse)
 
 > _**NOTE:** Don't be alarmed by any conflict statements when loading this library, these statements are just informing you of packages that are currently loaded that have functions with the same name._
 
-The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create figure 4 from the Baizabal et al. (2018) paper. We will build the figure below using the layering approach employed by `ggplot2`. We will highlight the purpose and utility of each layer we add, while highlighting it's flexibility and customization options.
+The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create the figure 4 scatterplot from the Baizabal et al. (2018) paper. We will build the figure below using the layering approach employed by `ggplot2`. We will highlight the purpose and utility of each layer we add, while highlighting it's flexibility and customization options.
 
 <p align="center">
 <img src="../img/radial_glia.jpeg" width="300">

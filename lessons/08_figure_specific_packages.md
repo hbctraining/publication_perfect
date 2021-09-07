@@ -280,7 +280,7 @@ pheatmap(heatmap_normCounts,
 </p>
 
   
-Now that looks a lot better! We can see clustering between the different groups, which is good since these genes are supposed to have different expression between the groups. We can add a few more arguments to make it look more like the figure, like deleting the annotation name and legend. We will also adjust the width and heigth of the tiles.
+Now that looks a lot better! We can see clustering between the different groups, which is good since these genes are supposed to be significantly different in their expression between the groups. We can add a few more arguments to make it look more like the figure, like deleting the annotation name and legend. We will also adjust the width and height of the tiles.
 
 ```r 
 # Scaled heatmap with adjustments for figure

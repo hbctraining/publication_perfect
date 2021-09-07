@@ -393,10 +393,11 @@ heatmap_figure
 Finally, we want to export the image so that it will display properly in our final figure.
 
 ```r                  
-# Export as a tiff
-ggsave(filename = "results/heatmap_figure_ggsave.tiff", 
+# Save image
+ggsave(filename = "results/heatmap_figure.png",
+       plot = heatmap_figure,
        units = "in", 
        width = 4, 
        height = 5.15, 
-       dpi = 500)                  
+       dpi = 500)                    
 ```

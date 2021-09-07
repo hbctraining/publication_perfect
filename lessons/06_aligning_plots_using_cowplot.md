@@ -173,6 +173,8 @@ names(top_half) <- c("fig4a", "fig4b", "fig4c", "fig4d", "fig4e")
 
 To create the figure, we can use the `plot_grid()` function again. However, we have to have the same number of rows or columns in the data to combine. Since the first row has three images (columns) and the second row has two, we will create the figure row by row, and then combine those rows into the full top half. 
 
+In this exercise we are combining our figures to complete a full page. To ensure proper rendering of our image, it is helpful to save it to the final width and and height desired in the final figure. To ensure proper rendering, we will save each of our rows to file with a consistent width of '8.5', but different journals will have different requirements. 
+
 Let's create the top row with the three equally-sized images that we just read in and provide figure labels.
 
 ```r
@@ -181,6 +183,13 @@ first_row <- plot_grid(
   top_half$fig4a, top_half$fig4b, top_half$fig4c,
   labels = c("A", "B", "C"),
   nrow = 1)
+  
+# Save first row to file with constant width
+ggsave(filename = "results/fig4ABC.png", 
+       plot = first_row,
+       units = "in", 
+       width = 8.5,
+       dpi = 500)
 ```
 
 Now we can finish the second row with our boxplots; however, 4E is about a third of the size of 4D. Luckily, within the `plot_grid()` function, we can specify the relative sizes of our figures; we will use the `rel_widths` argument.
@@ -192,9 +201,16 @@ second_row <- plot_grid(
   labels = c("D", "E"),
   rel_widths = c(1, .3),
   nrow = 1)
+
+# Save second row to file with constant width
+ggsave(filename = "results/fig4DE.png", 
+       plot = second_row,
+       units = "in", 
+       width = 8.5,
+       dpi = 500)  
 ```
 
-Now we can combine the first and second rows to create the full top half.
+Now we can see how the full top half appears after combining the first and second rows.
 
 ```r
 # Create top half of figure

@@ -140,13 +140,13 @@ library(magick)
 
 # Generate image variables for each of the image files
 fig4a <- ggdraw() +
-  draw_image("data/PP_fig4A.png")
+  draw_image("results/PP_fig4A.png")
 
 fig4b <- ggdraw() +
-  draw_image("data/PP_fig4B.png")
+  draw_image("results/PP_fig4B.png")
 
 fig4c <- ggdraw() +
-  draw_image("data/PP_fig4C.png")
+  draw_image("results/PP_fig4C.png")
 ```
 
 We can see that reading in the image allowed proper rendering:

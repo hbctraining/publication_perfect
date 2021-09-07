@@ -116,7 +116,7 @@ boxplot_grid
 
 We completed our first figure. Now how do we save it to file?
 
-The `ggplot2` package has a nice function called [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html), which will, by default, save the last plot created. The function allows you to specify the resolution and the type of graphics output desired, with choices "eps", "ps", "tex" (pictex), "pdf", "jpeg", "tiff", "png", "bmp", "svg" or "wmf". Also handy are the options to choose the width, height, and the units for those specifications. Let's use `ggsave()` to save our boxplot figure to a pdf file.
+The `ggplot2` package has a nice function called [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html), which will, by default, save the last plot created. The function allows you to specify the resolution and the type of graphics output desired, with choices "eps", "ps", "tex" (pictex), "pdf", "jpeg", "tiff", "png", "bmp", "svg" or "wmf". Resolution for printed figures should usually be at least `dpi` of 300. Also handy are the options to choose the width, height, and the units for those specifications. Let's use `ggsave()` to save our boxplot figure to a pdf file.
 
 ```r
 # Save plot to pdf

@@ -62,9 +62,7 @@ The **geom (geometric) object** is the layer that specifies what kind of plot we
 * boxplot (`geom_boxplot`, for, well, boxplots!)
 * [many others](https://ggplot2.tidyverse.org/reference/#section-geoms)
 
-When attempting to select the appropriate visualization for your data, it can be helpful to use [this website](https://www.data-to-viz.com). It provides nice decision trees for visualization methods depending on your data along with examples and code for the examples.
-
-Once you have decided how you would like to visualize your data, the [RStudio cheatsheet for ggplot2](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) can be a good starting place for figuring out which `geom` to use. With two continuous variables as points, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
+When attempting to select the appropriate visualization for your data, it can be helpful to use [this website](https://www.data-to-viz.com). It provides nice decision trees for visualization methods depending on your data along with examples and code for the examples. With two continuous numeric variables, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
 
 ```r
 # Initializing plot
@@ -142,7 +140,7 @@ ggplot(results) +
 
 [**Exercise**](../answer_keys/ggplot2_syntax_Q1.md)
 
-Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in the "Aes" section of the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) or [here](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html?q=shape#sec:shape-spec). 
+Let's explore how to change the aesthetics of the data points. We can find the aesthetics associated with any geometric object using the [Tidyverse ggplot2 reference](https://ggplot2.tidyverse.org/reference/index.html) and clicking on a the desired geometric object. To gain more detailed information about some of the aesthetics, there is a [vignette](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html), which provides rich information about the different colors, lines, and shapes that are available. 
 
 1. Change the geom argument `shape` to "square" to alter the shape of ***all*** points to squares.
 2. Change the aesthetic transparency of the points (`alpha`) to change with the base mean of `Pax6`.
@@ -166,7 +164,7 @@ The ggplot2 `theme` system handles non-data plot elements such as:
 * Facet label background
 * Legend appearance
 
-There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the background/foreground colors, by adding it as an additional layer. A nice resource for exploring pre-set themes is [available](https://ggplot2.tidyverse.org/reference/ggtheme.html) from Tidyverse. 
+There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the background/foreground colors, by adding it as an additional layer. A nice resource for exploring pre-set themes is [available](https://ggplot2.tidyverse.org/reference/ggtheme.html) from Tidyverse ggplot2 reference. 
 
 Let's add a layer `theme_bw()`. 
 

@@ -135,6 +135,9 @@ Now that we have the figures for 4D and 4E, we can use cowplot to bring in the o
 > _**NOTE:** For more extensive image processing, the [`magick` package](https://cran.r-project.org/web/packages/magick/vignettes/intro.html) provides extensive functionality, and is called by the cowplot package for reading in the images._
 
 ```r
+# Load magick library for reading in images
+library(magick)
+
 # Generate image variables for each of the image files
 fig4a <- ggdraw() +
   draw_image("data/PP_fig4A.png")

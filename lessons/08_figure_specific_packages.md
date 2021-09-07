@@ -67,7 +67,7 @@ venn.diagram(x = up,
              output = TRUE)
 ```
 
-This has successfully created a Venn diagram, but this is not exactly a publication-quality figure. A nice feature of the VennDiagram package is the ability for extensive customization of the graphic. Let's explore all of the different arguments available for our Venn diagram.
+This has successfully created a Venn diagram, but this is not exactly a publication-quality figure. A nice feature of the `VennDiagram` package is the ability for extensive customization of the graphic. Let's explore all of the different arguments available for our Venn diagram.
 
 ```r
 # Check customizable options for diagram
@@ -336,7 +336,7 @@ heatmap <- heatmap +
   theme(plot.margin = unit(c(1,0.5,0.5,0.5), "cm"))           
 ```
   
-Now we can use `cowplot to add in our desired annotations to match the published figure below.
+Now we can use `cowplot` to add in our desired annotations to match the published figure below.
   
 ```r  
 # Adding in annotations with cowplot 

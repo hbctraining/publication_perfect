@@ -118,6 +118,7 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
 <details>
   <summary>Code</summary>
 
+  <p><pre>
     # Down-regulated genes
     venn.diagram(x = down, 
                  filename = "results/venn_down.png",
@@ -142,7 +143,7 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
                  cat.dist = c(0.06,0.097),
                  cat.fontfamily = "sans",
                  cat.col = c("salmon", "lightblue"))
-
+  </pre></p>
 </details>
 
 <p align="center">

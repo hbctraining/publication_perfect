@@ -257,7 +257,8 @@ volcano_grid <- plot_grid(volcano_panel1,
 # Save as image
 ggsave(plot = volcano_grid,
        filename = "results/fig4G.png",
-       width = 8.5/3*2,
+       width = 14,
+       height = 3,
        dpi = 500)
 ```
 

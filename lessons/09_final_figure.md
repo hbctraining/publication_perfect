@@ -12,7 +12,7 @@ Now we have created all graphics present in our published figure. We can use `co
 The published figure below is what we are trying to reconstruct. 
 
 <p align="center">
-<img src="../img/figure_to_create.jpg", width="600">
+<img src="../img/figure_to_create.jpg" width="600">
 </p>
 
 We have already created the first two rows, let's take a quick look at these and save them to file using a standard width of x.
@@ -28,7 +28,7 @@ fig4abc
 ```  
 
 <p align="center">
-<img src="../img/fig4ABC.png", width = "800">
+<img src="../img/fig4ABC.png" width = "800">
 </p>
 
 ```r
@@ -40,7 +40,7 @@ fig4de
 ```
 
 <p align="center">
-<img src="../img/figDE.png", width = "800">
+<img src="../img/figDE.png" width = "800">
 </p>
 
 These rows look good and are both saved to our specified width. Now, we need to create the next row with parts F (heatmap), G (volcano plots), and H (Venn diagrams). To do this, we must first join the Venn diagrams into a single graphic. To join the Venn diagrams, we can read in the images that were output and plot them together in a single row with two columns. 
@@ -62,7 +62,7 @@ fig4h
 ```
 
 <p align="center">
-<img src="../img/fig4h.png", width = "600">
+<img src="../img/fig4h.png" width = "600">
 </p>
 
 Now that we have the Venn diagrams as a single figure, we need to combine it with the volcano plot figure, which we saved to file to preserve the annotations in the correct locations. Let's read in the volcano figure and join in the Venn diagrams.
@@ -91,7 +91,7 @@ fig4gh
 ```
 
 <p align="center">
-<img src="../img/fig4gh.png", width = "700">
+<img src="../img/fig4gh.png" width = "700">
 </p>
 
 Now to finish the row, we need to add the heatmap. We also saved this image to file to preserve the annotation locations. Let's read it in and add it to the rest of the row.
@@ -121,7 +121,7 @@ ggsave(filename = "results/fig4FGH.png",
 ```
 
 <p align="center">
-<img src="../img/fig4fgh.png", width = "700">
+<img src="../img/fig4fgh.png" width = "700">
 </p>
 
 The last row contains the bar plots of the gene ontology terms, which we left as a take-home exercise. Therefore, we have provided the images as part of your project to read in (however, you are welcome to work through the exercise and try this over with your own plots later).
@@ -151,7 +151,7 @@ ggsave(filename = "results/fig4IJ.png",
 ```
 
 <p align="center">
-<img src="../img/fig4IJ.png", height = "300">
+<img src="../img/fig4IJ.png" height = "300">
 </p>
 
 Now we have all of our rows saved to the same width, let's read them in and add combine them into a figure.
@@ -220,7 +220,7 @@ ggsave(filename = "results/figure4_completed.png",
 ```
 
 <p align="center">
-<img src="../img/figure4_completed.png", width = "700">
+<img src="../img/figure4_completed.png" width = "700">
 </p>
 
 Congratulations, you have completed the full figure!! 

@@ -62,7 +62,7 @@ fig4h
 ```
 
 <p align="center">
-<img src="../img/fig4h.png", width = "800">
+<img src="../img/fig4h.png", width = "600">
 </p>
 
 Now that we have the Venn diagrams as a single figure, we need to combine it with the volcano plot figure, which we saved to file to preserve the annotations in the correct locations. Let's read in the volcano figure and join in the Venn diagrams.
@@ -220,7 +220,7 @@ ggsave(filename = "results/figure4_completed.png",
 ```
 
 <p align="center">
-<img src="../img/figure4_completed.png", width = "800">
+<img src="../img/figure4_completed.png", width = "700">
 </p>
 
 Congratulations, you have completed the full figure!! 

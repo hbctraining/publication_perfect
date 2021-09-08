@@ -114,11 +114,11 @@ ggplot(pax6_exp) +
 
 We can address some of the features likely to change within the personal theme, such as font type, style and size. However, not included within the theme elements are features such as figure labels, resolution, size and output file type. For these elements, it can be helpful to create variables to specify their values so that we can easily change. 
 
-For instance, *Science* requires a low resolution for initial submission, then a high resolution for the publication-ready manuscript. You could easily pivot your figure if you have the resolution stored as a variable which is used for all of your plots. We show below how we can define variables for selected plot features likely to change between journals, then explore how they can be incorporated into the code.
+For instance, *Science* requires a low resolution for initial submission, then a high resolution for the publication-ready manuscript. You could easily pivot your figure if you have the resolution stored as a variable which is used for all of your plots. We show below how we can define variables for selected plot features likely to change between journals, then explore how these variables can be incorporated into the code.
 
 
 ```r
-# Define likely to change variables at beginning of plotting script
+# Define likely to change features as variables at beginning of the plotting script
 # Theme elements
 font <- "Helvetica"
 text_size <- 6

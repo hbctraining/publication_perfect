@@ -121,7 +121,7 @@ ggsave(filename = "results/fig4FGH.png",
 ```
 
 <p align="center">
-<img src="../img/fig4fgh.png", width = "800">
+<img src="../img/fig4fgh.png", width = "600">
 </p>
 
 The last row contains the bar plots of the gene ontology terms, which we left as a take-home exercise. Therefore, we have provided the images as part of your project to read in (however, you are welcome to work through the exercise and try this over with your own plots later).

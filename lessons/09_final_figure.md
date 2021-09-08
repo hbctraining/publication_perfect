@@ -3,7 +3,7 @@
 Now we have created all graphics present in our published figure. We can use `cowplot` to add them together. Sometimes it is helpful to save the images for each of the rows to file with each being the same width so that the sizes in the figure are all the same. Therefore, our workflow will be:
 
   - Create each of the rows in the figure
-  - Save each row to file with a standard width ()
+  - Save each row to file with a standard width
   - Read each row image into R
   - Combine row graphics into full image
 

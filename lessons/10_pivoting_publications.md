@@ -128,6 +128,7 @@ line_size <- 0.5
 res <- 300
 full_width <- 8.5
 full_height <- 13
+meas_units <- "in"
 output_filetype <- "svg"
 fig_lab_size <- 9
 fig_lab_pos_x <- 0
@@ -138,26 +139,39 @@ label_type <- "AUTO"
 We can then incorporate these variables throughout the manuscript.
 
 ```r
-# Previous theme changes incorporated into the figure generation
-ggplot(pax6_exp) +
-  geom_boxplot(aes(x=group, 
-                   y=normalized_counts, 
-                   fill=group)) +
-  ggtitle("Pax6") +
-  personal_theme() +
-  theme(axis.text.x = element_text(angle = 45, 
-                                   vjust = 1, 
-                                   hjust = 1)) +
-  scale_x_discrete(name = "",
-                   labels=c("Pax6:WT" = "Radial glia",
-                            "neg:WT" = "Neurons", 
-                            "Tbr2:WT" = "Progenitors")) +
-  scale_y_continuous(name = "Normalized counts") +
-  scale_fill_manual(values = personal_boxplot_palette)
+# Example code using pre-defined variables
 
-# Same changes to fonts and sizes applied to plot annotations
-boxplot_grid <- plot_grid(boxplot_pax6,
-                          boxplot_tbr2,
-                          boxplot_tubb3,
-                          ncol = 3)
+# Create annotations for all desired volcano plots, and save them to variables
+volcano_panel1 <- ggdraw(volcano_RG) + 
+  draw_label("664 genes", 
+             x = 0.15, 
+             y = 0.82,
+             hjust = 0,
+             vjust = 0,
+             fontface = "bold",
+             size = text_size,
+             fontfamily = font)
+
+# other panels...
+
+# Align volcano plots and label with A, B, C
+volcano_grid <- plot_grid(volcano_panel1,
+                          volcano_panel2,
+                          volcano_panel3,
+                          ncol = 3,
+                          labels = label_type,
+                          label_size = fig_lab_size,
+                          label_x = fig_lab_pos_x,
+                          label_y = fig_lab_pos_y)
+
+# Save image
+ggsave(plot = volcano_grid,
+       filename = "results/volcano_figure.png",
+       width = full_width,
+       height = full_height/2.5,
+       units = meas_units,
+       dpi = res)
+             
 ```
+
+Using these three techniques can make pivoting publications much less labor intensive. Although we can't easily code for all possible changes reviewers might desire, these basic alterations can at least ease the pain. 

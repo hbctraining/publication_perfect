@@ -194,7 +194,11 @@ third_row <- plot_grid(
 fourth_row <- plot_grid(
   all_figs$fig4ij,
   nrow = 1)
+```
 
+To combine the rows into a figure can be tricky. It's much easier if you have saved them at the desired width and height previously. We didn't save at the desired height for all images, so we may need to play around with the parameters, particularly the `rel_width` and `rel_height`. We have played around with these values to choose those most appropriate.
+
+```r
 # Combine images into the full figure
 fig4complete <- plot_grid(first_row,
                           second_row,
@@ -203,7 +207,7 @@ fig4complete <- plot_grid(first_row,
                           ncol = 1,
                           align = 'v',
                           axis = 'lr',
-                          rel_heights = c(1.06,0.64,1.28,0.98),
+                          rel_heights = c(0.8,0.64,1.27,0.88),
                           rel_widths = c(1,1,1,1))
                           
 # Save final image

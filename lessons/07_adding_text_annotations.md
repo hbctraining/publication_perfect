@@ -105,12 +105,12 @@ Customize the 'Draft' text appearance, so that the figure looks like below. Hint
   <summary>Solution</summary>
   
   <code>
-  # Practicing adding custom text to images
-  ggdraw(volcano_RG) + 
-    draw_label("Draft", 
-               color = "#FF0000", 
-               size = 100, 
-               angle = 45)
+  # Practicing adding custom text to images <br>
+  ggdraw(volcano_RG) + <br>
+    draw_label("Draft", <br>
+               color = "#FF0000", <br>
+               size = 100, <br>
+               angle = 45) <br>
   </code>
   
 </details>

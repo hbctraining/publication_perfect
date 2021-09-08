@@ -151,7 +151,7 @@ ggsave(filename = "results/fig4IJ.png",
 ```
 
 <p align="center">
-<img src="../img/fig4IJ.png", height = "500">
+<img src="../img/fig4IJ.png", height = "300">
 </p>
 
 Now we have all of our rows saved to the same width, let's read them in and add combine them into a figure.

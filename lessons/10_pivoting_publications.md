@@ -1,45 +1,18 @@
-Pivoting to Science
-
-[Science submission instructions](https://www.sciencemag.org/authors/instructions-preparing-initial-manuscript)
-
-- The figure’s title should be at the beginning of the figure legend, not in the figure itself
-- **Panels should be set close to each other, and common axis labels should not be repeated.**
-- Use scale bars in place of, or in addition to, magnifications. Do not use minor tick marks in scales or grid lines. Avoid using y-axis labels on the right that repeat those on the left.
-- Avoid using red and green together. Color blind individuals will not be able read the figure.
-- **Please do not use colors that are close in hue to identify different parts of a figure.**
-- Avoid using grayscale.
-- Use white type and scale bars over darker areas of images.
-- Units should be metric and follow SI convention.
-- **Use a sans-serif font whenever possible (we prefer Helvetica).**
-- Capitalize the first letter in a label only, not every word (and proper nouns, of course).
-- **Variables are always set in italics or as plain Greek letters (e.g., P, T, m). The rest of the text in the figure should be plain or bold text.**
-- Type on top of color in a color figure should be in bold face. Avoid using color type
-- **Use capital letters for part labels in multipart figures – A, B, C, etc. These should be 9 pt and bold in the final figure. When possible, place part labels at the upper left-hand corner of each figure part; if a part is an image, set labels inside the perimeter so as not to waste space. (not exactly sure how to do this)**
-
-## Talk about altering personal_template() and personal_palette() to adhere to the requirements of the journal. 
-  - We can change the personal_theme() to:
-    - change all font to Helvetica
-  - Change palette to be color-blind friendly and of different hues (which we already did, so we could just discuss this)
-  - Show how we could do the other bold changes above - plain text adheres to our current figures, I think, but should double-check
-
-
-***************
+# Pivoting Publications
 
 When submitting a manuscript for publication, we often aim for the highest impact journal to which we feel there is a decent probability of acceptance. However, often our manuscripts are not accepted at the first choice journal, and we need to pivot the format and figures to meet the guidelines of the next chosen journal. We will discuss coding features which can ease the resubmission process, many of which we have introduced previously, including:
 
 - Creating a personal theme
 - Creating a personal color palette
-- Incorporating variables for plot features likely to change during the resubmission process
+- Incorporating variables for plot features likely to change during the resubmission process. Plotting features likely to change between journals include:
 
-Some of the plotting features likely to change between journals include:
-
-- text font type
-- text font style
-- text size
-- figure labels (A, B, C, etc.)
-- figure resolution
-- figure size
-- output file type (tiff, svg, eps, etc.)
+  - text font type
+  - text font style
+  - text size
+  - figure labels (A, B, C, etc.)
+  - figure resolution
+  - figure size
+  - output file type (tiff, svg, eps, etc.)
 
 ## Altering the theme
 
@@ -137,5 +110,54 @@ ggplot(pax6_exp) +
   scale_fill_manual(values = personal_boxplot_palette)
 ```
  
-  - Use capital letters for part labels in multipart figures – A, B, C, etc. These should be 9 pt and bold in the he upper left-hand corner of each figure part
-  - place part labels at the upper left-hand corner of each figure part
+## Incorporating variables for plot features likely to change
+
+We can address some of the features likely to change within the personal theme, such as font type, style and size. However, not included within the theme elements are features such as figure labels, resolution, size and output file type. For these elements, it can be helpful to create variables to specify their values so that we can easily change. 
+
+For instance, *Science* requires a low resolution for initial submission, then a high resolution for the publication-ready manuscript. You could easily pivot your figure if you have the resolution stored as a variable which is used for all of your plots.
+
+
+```r
+# Define likely to change variables at beginning of plotting script
+# Theme elements
+font <- "Helvetica"
+text_size <- 6
+line_size <- 0.5
+
+# Figure elements
+res <- 300
+full_width <- 8.5
+full_height <- 13
+output_filetype <- "svg"
+fig_lab_size <- 9
+fig_lab_pos_x <- 0
+fig_lab_pos_y <- 1
+label_type <- "AUTO"
+```
+
+We can then incorporate these variables throughout the manuscript.
+
+```r
+# Previous theme changes incorporated into the figure generation
+ggplot(pax6_exp) +
+  geom_boxplot(aes(x=group, 
+                   y=normalized_counts, 
+                   fill=group)) +
+  ggtitle("Pax6") +
+  personal_theme() +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1)) +
+  scale_x_discrete(name = "",
+                   labels=c("Pax6:WT" = "Radial glia",
+                            "neg:WT" = "Neurons", 
+                            "Tbr2:WT" = "Progenitors")) +
+  scale_y_continuous(name = "Normalized counts") +
+  scale_fill_manual(values = personal_boxplot_palette)
+
+# Same changes to fonts and sizes applied to plot annotations
+boxplot_grid <- plot_grid(boxplot_pax6,
+                          boxplot_tbr2,
+                          boxplot_tubb3,
+                          ncol = 3)
+```

@@ -70,7 +70,7 @@ Now that we have the Venn diagrams as a single figure, we need to combine it wit
 ```r
 # Read in Figure 4G
 fig4g <- ggdraw() +
-  draw_image("results/volcano_grid.png")
+  draw_image("results/fig4G.png")
 
 # Join with Figure 4H (Venn diagrams)
 fig4gh_aligned <- align_plots(fig4g, fig4h,

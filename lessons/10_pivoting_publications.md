@@ -9,7 +9,7 @@ When submitting a manuscript for publication, we often aim for the highest impac
   - text font type
   - text font style
   - text size
-  - figure label designation (A, Figure B, FigC, etc.)
+  - figure label designation (A, Figure B, FigC, d., etc.)
   - figure resolution
   - figure size
   - output file type (tiff, svg, eps, etc.)

@@ -73,6 +73,12 @@ fig4g <- ggdraw() +
   draw_image("results/volcano_grid.png")
 
 # Join with Figure 4H (Venn diagrams)
+fig4gh_aligned <- align_plots(fig4g, fig4h,
+                              align = 'h',
+                              axis = 't')
+                              
+names(fig4gh_aligned) <- c("fig4g", "fig4h")
+
 fig4gh <- plot_grid(fig4g,
                     fig4h,
                     ncol=1,
@@ -110,6 +116,7 @@ ggsave(filename = "results/fig4FGH.png",
        plot = fig4fgh,
        units = "in", 
        width = 8.5,
+       height = 13/2.5,
        dpi = 500)
 ```
 
@@ -151,25 +158,52 @@ Now we have all of our rows saved to the same width, let's read them in and add 
 
 ```r
 # Read in rows
-fig4abc <- ggdraw() +
+fig4ABC <- ggdraw() +
   draw_image("results/fig4ABC.png")
 
-fig4de <- ggdraw() +
+fig4DE <- ggdraw() +
   draw_image("results/fig4DE.png")
 
-fig4fgh <- ggdraw() +
+fig4FGH <- ggdraw() +
   draw_image("results/fig4FGH.png")  
 
-fig4ij <- ggdraw() +
+fig4IJ <- ggdraw() +
   draw_image("results/fig4IJ.png")
 
+
+# Align rows
+all_figs <- align_plots(fig4ABC, fig4DE, fig4FGH, fig4IJ,
+            align = 'v', 
+            axis = 'lr')
+
+names(all_figs) <- c("fig4abc", "fig4de", "fig4fgh", "fig4ij")
+
+# Arrange the rows of the figure
+first_row <- plot_grid(
+  all_figs$fig4abc,
+  nrow = 1)
+
+second_row <- plot_grid(
+  all_figs$fig4de,
+  nrow = 1)
+
+third_row <- plot_grid(
+  all_figs$fig4fgh,
+  nrow = 1)
+
+fourth_row <- plot_grid(
+  all_figs$fig4ij,
+  nrow = 1)
+
 # Combine images into the full figure
-fig4complete <- plot_grid(fig4abc,
-                          fig4de,
-                          fig4fgh,
-                          fig4ij,
+fig4complete <- plot_grid(first_row,
+                          second_row,
+                          third_row,
+                          fourth_row,
                           ncol = 1,
-                          rel_heights = c(1.2, 1.2, 2.2, 1.4),
+                          align = 'v',
+                          axis = 'lr',
+                          rel_heights = c(1.06,0.64,1.28,0.98),
                           rel_widths = c(1,1,1,1))
                           
 # Save final image

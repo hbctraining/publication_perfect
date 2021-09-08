@@ -91,7 +91,7 @@ fig4gh
 ```
 
 <p align="center">
-<img src="../img/fig4gh.png", width = "800">
+<img src="../img/fig4gh.png", width = "700">
 </p>
 
 Now to finish the row, we need to add the heatmap. We also saved this image to file to preserve the annotation locations. Let's read it in and add it to the rest of the row.
@@ -121,7 +121,7 @@ ggsave(filename = "results/fig4FGH.png",
 ```
 
 <p align="center">
-<img src="../img/fig4fgh.png", width = "600">
+<img src="../img/fig4fgh.png", width = "700">
 </p>
 
 The last row contains the bar plots of the gene ontology terms, which we left as a take-home exercise. Therefore, we have provided the images as part of your project to read in (however, you are welcome to work through the exercise and try this over with your own plots later).

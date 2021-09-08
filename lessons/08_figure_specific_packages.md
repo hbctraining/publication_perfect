@@ -14,7 +14,7 @@ Let's start by exploring how to create the Venn diagram in figure 4H.
 A Venn diagram compares two or more lists, and by nature is categoric. If we use the [Data to Viz resource](https://www.data-to-viz.com), we can navigate to the `Categoric` data, and under 'Two independent lists' we find the Venn diagram. Clicking on the Venn diagram icon will open up a pop up window with a breif description of Venn diagrams. At the bottom of the pop up page, find the link to the "dedicated page"; explore the [dedicated page](https://www.data-to-viz.com/graph/venn.html).
 
 <p align="center">
-<img src="../img/dedicated_page.png" , height="400">
+<img src="../img/dedicated_page.png" height="400">
 </p>
 
 

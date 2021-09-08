@@ -189,6 +189,7 @@ ggsave(filename = "results/fig4ABC.png",
        plot = first_row,
        units = "in", 
        width = 8.5,
+       height = 13/4,
        dpi = 500)
 ```
 
@@ -207,6 +208,7 @@ ggsave(filename = "results/fig4DE.png",
        plot = second_row,
        units = "in", 
        width = 8.5,
+       height = 13/5,
        dpi = 500)  
 ```
 

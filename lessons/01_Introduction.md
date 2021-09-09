@@ -26,7 +26,7 @@ Recently, a fabulous website was released, [from Data to Viz](https://www.data-t
  - Time series
 
 <p align="center">
-<img src="../img/dedicated_page.png" height="400">
+<img src="../img/data_to_viz.png" height="400">
 </p>
 
 Let's navigate to the [website](https://www.data-to-viz.com) and **explore**. Let's assume we have **categoric data** with **one variable**:

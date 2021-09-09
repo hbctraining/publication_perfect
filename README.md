@@ -37,17 +37,17 @@ Researchers with an intermediate background in R who interested in using R to cr
 | Time | Topic | Instructor
 :-----------------------|:-------------|:-------------|
 | 09:00 - 09:10	| Introduce the instructors and scope of the workshop | Mary | 
-| 09:10 - 09:30	| [Introduction to data visualization and dataset](lessons/01_Introduction.md) | Mary | 
+| 09:10 - 09:30	| [Introduction to data visualization and dataset](lessons/01_introduction.md) | Mary | 
 | 09:30 - 10:15 | [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | Mary | 
 | 10:15 - 10:45	| Coffee break | |
 | 10:45 - 11:05	| [Consistent plots with custom themes](lessons/03_custom_themes.md) | Radhika | 
 | 11:05 - 11:45 | [Application of plotting basics](lessons/04_boxplot_application_of_basic_plotting.md) | Meeta/Radhika | 
 | 11:45 - 12:15	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | Mary | 
 | 12:15 - 13:30	| Lunch | 
-| 13:10 - 14:00	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | Mary |
-| 14:00 - 14:30	| [Aligning and labeling plots with cowplot](lessons/06_aligning_plots_using_cowplot.md) | Radhika |
-| 14:30 - 14:35	| Break
-| 14:35 - 15:15	| [Adding annotations and including statistical comparisons with ggpubr](lessons/07_adding_text_annotations.md) | Jihe |
+| 13:30 - 14:00	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | Mary |
+| 14:00 - 14:35	| [Aligning and labeling plots with cowplot](lessons/06_aligning_plots_using_cowplot.md) | Radhika |
+| 14:35 - 14:40	| Break
+| 14:40 - 15:15	| [Adding annotations and including statistical comparisons with ggpubr](lessons/07_adding_text_annotations.md) | Jihe |
 | 15:15 - 15:45	| [Incorporating external packages to extend plotting functionality](lessons/08_figure_specific_packages.md) | Meeta |
 | 15:45 - 15:50	| [Creating final figure](lessons/09_final_figure.md) | Mary |
 | 15:50 - 15:55	| [Pivoting publications](lessons/10_pivoting_publications.md) | Mary |

@@ -104,17 +104,20 @@ The data we have downloaded and read into R above represents the following 3 fil
 
 * **pp_all_meta.csv** - The metadata for the experiment. This experiment has **24 samples**, with each row as a sample.
   
-  <expand>
-  Additional metadata information
+  <details>
+    <summary>More details</summary>
+ 
+  Additional metadata information:
   * 4 replicates for each sample group
   * 6 sample groups (3 pairs) - `"Pax6:WT", "Pax6:KO"`, `"Tbr2:WT", "Tbr2:KO"`, `"neg:WT", "neg:KO"`
   * The *Pax6+* samples correspond to **Radial Glia**
   * The *Tbr2+* samples correspond to **Intermediate Progenitors**
   * The *neg (Pax6- Tbr2-)* samples correspond to **post-mitotic neurons**
-
-<p align="center">
-<img src="../img/metadata.png" width="370">
-</p>
+  </details>
+  
+  <p align="center">
+  <img src="../img/metadata.png" width="370">
+  </p>
 
 * **pp_all_normalized_counts.csv** - The normalized counts for all the samples. This data frame has 25 columns - in addition to the gene name column, there is a column for each sample.
 

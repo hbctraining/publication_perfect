@@ -131,13 +131,14 @@ The data we have downloaded and read into R above represents the following 3 fil
 
 <details>
   <summary>More details</summary>
+ 
 This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results as described below.
 
-T1. `_baseMean` - Mean of the normalized counts for all samples in the comparison, for a given gene
-T1. `_log2FoldChange` - log2 fold change between WT and PRDM16 KO
-T1. `_pvalue` - Wald test *P* value
-T1. `_padj` - Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction)
-T1. `_threshold` - Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color.
+ - `_baseMean`: Mean of the normalized counts for all samples in the comparison, for a given gene
+ - `_log2FoldChange`: log2 fold change between WT and PRDM16 KO
+ - `_pvalue`: Wald test *P* value
+ - `_padj`: Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction)
+ - `_threshold`: Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color.
 </details>
 
 One main aspect of the paper to emphasize is the three different cell types explored are identified using marker genes:

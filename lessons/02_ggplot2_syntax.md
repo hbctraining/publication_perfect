@@ -209,6 +209,7 @@ ggplot(results) +
 <img src="../img/ggscatter-5.png" height="300">
 </p> 
 
+
 > *NOTE:* You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! Additional examples are given in the [ggplot2 reference](https://ggplot2.tidyverse.org/reference/ggtheme.html#examples).
 
 
@@ -217,13 +218,13 @@ ggplot(results) +
 [**Exercise**](../answer_keys/ggplot2_syntax_Q2.md)
 
 
-1. Use the `ggtitle` layer to add the plot title. 
-2. Increase the size of the plot title to be 1.5 times the default value.
-3. Remove the legend by adding a `theme()` layer with the argument `legend.position`. 
-4. Remove the gridlines by adding another `theme()` layer with the argument `panel.grid`.
-5. Add the following new layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
+1. Add a `ggtitle` layer in order to add a title to the plot. Don't worry about the alignment quite yet.
+2. After adding a title, add the following new theme layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
     * What does it change?
     * How many `theme()` layers can be added to a ggplot code chunk, in your estimation?
+3. Using a theme element, increase the size of the plot title to be 1.5 times the default value.
+4. Using a theme element, remove the gridlines by adding another `theme()` layer with the argument `panel.grid`.
+5. Remove the legend by adding a `theme()` layer with the argument `legend.position`. You can look up which values `legend.position`  accepts [here](https://ggplot2.tidyverse.org/reference/theme.html).
 
 ***
 

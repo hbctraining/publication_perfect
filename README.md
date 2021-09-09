@@ -38,10 +38,10 @@ Researchers with an intermediate background in R who interested in using R to cr
 :-----------------------|:-------------|:-------------|
 | 09:00 - 09:10	| Introduce the instructors and scope of the workshop | Mary | 
 | 09:10 - 09:30	| [Introduction to data visualization and dataset](lessons/01_introduction.md) | Mary | 
-| 09:30 - 10:15 	| [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | Mary | 
+| 09:30 - 10:15 | [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | Mary | 
 | 10:15 - 10:45	| Coffee break | |
-| 10:45 - 11:05	| [Consistent plots with custom themes](lessons/03_custom_themes.md) | Mary | 
-| 11:05 - 11:45 | [Application of plotting basics](lessons/04_boxplot_application_of_basic_plotting.md) | Mary | 
+| 10:45 - 11:05	| [Consistent plots with custom themes](lessons/03_custom_themes.md) | Radhika | 
+| 11:05 - 11:45 | [Application of plotting basics](lessons/04_boxplot_application_of_basic_plotting.md) | Meeta | 
 | 11:45 - 12:15	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | Mary | 
 | 12:15 - 13:30	| Lunch | 
 | 13:10 - 14:00	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | Mary |

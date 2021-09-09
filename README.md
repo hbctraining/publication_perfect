@@ -34,8 +34,8 @@ Researchers with an intermediate background in R who interested in using R to cr
 
 ## Schedule
 
-| Time | Topic |
-:-----------------------|:-------------|
+| Time | Topic | Instructor
+:-----------------------|:-------------|:-------------|
 | 09:00 - 09:10	| Introduce the instructors and scope of the workshop | Mary | 
 | 09:10 - 09:30	| [Introduction to data visualization and dataset](lessons/01_introduction.md) | Mary | 
 | 09:30 - 10:15 	| [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | Mary | 

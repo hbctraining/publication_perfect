@@ -130,16 +130,16 @@ The data we have downloaded and read into R above represents the following 3 fil
 </p>
 
 <details>
-  <summary>Code</summary>
+  <summary>More details</summary>
 
   <p><pre>
- This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results as described below.
+This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results as described below.
 
-  1. `_baseMean` - Mean of the normalized counts for all samples in the comparison, for a given gene
-  1. `_log2FoldChange` - log2 fold change between WT and PRDM16 KO
-  1. `_pvalue` - Wald test *P* value
-  1. `_padj` - Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction)
-  1. `_threshold` - Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color.
+T1. `_baseMean` - Mean of the normalized counts for all samples in the comparison, for a given gene
+T1. `_log2FoldChange` - log2 fold change between WT and PRDM16 KO
+T1. `_pvalue` - Wald test *P* value
+T1. `_padj` - Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction)
+T1. `_threshold` - Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color.
   </pre></p>
 </details>
 

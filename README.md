@@ -34,20 +34,70 @@ Researchers with an intermediate background in R who interested in using R to cr
 
 ## Schedule
 
-| Time | Topic |
-:-----------------------|:-------------|
-| 09:00 - 09:10	| Introduce the instructors and scope of the workshop | 
-| 09:10 - 09:30	| [Introduction to the dataset and plotting options](lessons/01_intro_to_dataset.md) | 
-| 09:30 - 10:15 	| [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | 
-| 10:15 - 10:45	| Coffee break | 
-| 10:45 - 11:05	| [Consistent plots with custom themes](lessons/03_custom_themes.md) | 
-| 11:05 - 11:45 | [Application of plotting basics](lessons/04_boxplot_application_of_basic_plotting.md) | 
-| 11:45 - 12:15	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | 
+| Time | Topic | Instructor
+:-----------------------|:-------------|:-------------|
+| 09:00 - 09:10	| Introduce the instructors and scope of the workshop | Mary | 
+| 09:10 - 09:30	| [Introduction to data visualization and dataset](lessons/01_introduction.md) | Mary | 
+| 09:30 - 10:15 | [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | Mary | 
+| 10:15 - 10:45	| Coffee break | |
+| 10:45 - 11:05	| [Consistent plots with custom themes](lessons/03_custom_themes.md) | Radhika | 
+| 11:05 - 11:45 | [Application of plotting basics](lessons/04_boxplot_application_of_basic_plotting.md) | Meeta/Radhika | 
+| 11:45 - 12:15	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | Mary | 
 | 12:15 - 13:30	| Lunch | 
-| 11:45 - 12:15	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | 
-| 11:45 - 12:15	| Introduce features of ggpubr for adding statistical comparisons and ordering of plots | 
-| 13:30 - 14:15	| Introduce features of cowplot for aligning/facetting and labeling plots |
-|               | Incorporate external packages to extend plotting functionality |
-| 15:10 - 15:50	| Change code to adhere to a journal’s figure requirements | 
-| 15:50 - 16:00	| Wrap-up and exit survey (lecture) | 
+| 13:10 - 14:00	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | Mary |
+| 14:00 - 14:30	| [Aligning and labeling plots with cowplot](lessons/06_aligning_plots_using_cowplot.md) | Radhika |
+| 14:30 - 14:35	| Break
+| 14:35 - 15:15	| [Adding annotations and including statistical comparisons with ggpubr](lessons/07_adding_text_annotations.md) | Jihe |
+| 15:15 - 15:45	| [Incorporating external packages to extend plotting functionality](lessons/08_figure_specific_packages.md) | Meeta |
+| 15:45 - 15:50	| [Creating final figure](lessons/09_final_figure.md) | Mary |
+| 15:50 - 15:55	| [Pivoting publications](lessons/10_pivoting_publications.md) | Mary |
+| 15:55 - 16:00	| [Wrap-up and exit survey]() | Mary |
 
+### Dataset
+
+Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/raw/master/data/publication_perfect.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
+
+### Installation Requirements
+
+Download the most recent versions of R and RStudio for your laptop:
+
+ - [R](http://lib.stat.cmu.edu/R/CRAN/) (Version 4.0 or higher)
+ - [RStudio](https://www.rstudio.com/products/rstudio/download/#download)
+ 
+Install the required R packages by running the following code in RStudio:
+
+```r
+# Install CRAN packages
+install.packages("tidyverse")
+install.packages("cowplot")
+install.packages("ggpubr")
+install.packages("RColorBrewer")
+install.packages("viridis")
+install.packages("scales")
+install.packages("VennDiagram")
+install.packages("pheatmap")
+install.packages("png")
+install.packages("ggrepel")
+install.packages("ggplotify")
+install.packages("magick")
+```
+
+Load the libraries to make sure the packages installed properly:
+
+```r
+# Load R libraries
+library(cowplot)
+library(ggpubr)
+library(RColorBrewer)
+library(viridis)
+library(scales)
+library(tidyverse)
+library(VennDiagram)
+library(pheatmap)
+library(png)
+library(ggrepel)
+library(ggplotify)
+library(magick)
+```
+
+*These materials have been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

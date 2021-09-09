@@ -1,23 +1,177 @@
-Pivoting to Science
+# Pivoting Publications
 
-[Science submission instructions](https://www.sciencemag.org/authors/instructions-preparing-initial-manuscript)
+When submitting a manuscript for publication, we often aim for the highest impact journal to which we feel there is a decent probability of acceptance. However, often our manuscripts are not accepted at the first choice journal, and we need to pivot the format and figures to meet the guidelines of the next chosen journal. We will discuss coding features which can ease the resubmission process, many of which we have introduced previously, including:
 
-- The figure’s title should be at the beginning of the figure legend, not in the figure itself
-- **Panels should be set close to each other, and common axis labels should not be repeated.**
-- Use scale bars in place of, or in addition to, magnifications. Do not use minor tick marks in scales or grid lines. Avoid using y-axis labels on the right that repeat those on the left.
-- Avoid using red and green together. Color blind individuals will not be able read the figure.
-- **Please do not use colors that are close in hue to identify different parts of a figure.**
-- Avoid using grayscale.
-- Use white type and scale bars over darker areas of images.
-- Units should be metric and follow SI convention.
-- **Use a sans-serif font whenever possible (we prefer Helvetica).**
-- Capitalize the first letter in a label only, not every word (and proper nouns, of course).
-- **Variables are always set in italics or as plain Greek letters (e.g., P, T, m). The rest of the text in the figure should be plain or bold text.**
-- Type on top of color in a color figure should be in bold face. Avoid using color type
-- **Use capital letters for part labels in multipart figures – A, B, C, etc. These should be 9 pt and bold in the final figure. When possible, place part labels at the upper left-hand corner of each figure part; if a part is an image, set labels inside the perimeter so as not to waste space. (not exactly sure how to do this)**
+- Creating a personal theme
+- Creating a personal color palette
+- Incorporating variables for plot features likely to change during the resubmission process. Plotting features likely to change between journals include:
 
-## Talk about altering personal_template() and personal_palette() to adhere to the requirements of the journal. 
-  - We can change the personal_theme() to:
-    - change all font to Helvetica
-  - Change palette to be color-blind friendly and of different hues (which we already did, so we could just discuss this)
-  - Show how we could do the other bold changes above - plain text adheres to our current figures, I think, but should double-check
+  - text font type
+  - text font style
+  - text size
+  - figure label designation (A, Figure B, FigC, d., etc.)
+  - figure resolution
+  - figure size
+  - output file type (tiff, svg, eps, etc.)
+
+## Altering the theme
+
+Often different journals will have differing stylistic requirements pertaining the the thematic elements of the plot. We recommend creating a personal theme function to allow easy transitioning to a different set of requirements. Let's explore this a bit more. We'll start by viewing our current `personal_theme()`.
+
+```r
+View(personal_theme)
+
+function(){ 
+  theme_bw() +
+    theme(axis.title = element_text(size = rel(1.25)),
+          axis.text = element_text(size = rel(1.15)),
+          plot.title = element_text(size = rel(1.5),
+                                    hjust = 0.5),
+          panel.grid = element_blank(),
+          legend.position = "none")
+}
+```
+
+We can add to this personal theme to ensure we are meeting the requirements for the journals. For instance, if we wanted to apply to the journal _Science_, we would need:
+  - sans-serif font with Helvectica if possible
+  - font size not smaller than 5 points
+  - line width minimum of 0.5 pt
+
+We could add our preferred text font and size (greater than the minimum listed in the journal's requirements) to our personal theme.
+
+```r
+# Adding journal requirements to theme
+personal_theme <- function(){ 
+  theme_bw() +
+    theme(text = element_text(family = "Helvetica",
+                              size = 6),
+          line = element_line(size = 0.5),
+          axis.title = element_text(size = rel(1.25)),
+          axis.text = element_text(size = rel(1.15)),
+          plot.title = element_text(size = rel(1.5),
+                                    hjust = 0.5),
+          panel.grid = element_blank(),
+          legend.position = "none")
+}
+```
+
+Alternatively, if we knew these were variables likely to change for resubmission, we could code for them as variables, such as:
+
+```r
+# Adding journal requirements to theme with variables
+# Define likely to change variables at beginning of plotting script
+font <- "Helvetica"
+text_size <- 6
+line_size <- 0.5
+
+# Create personal theme with variables
+personal_theme <- function(){ 
+  theme_bw() +
+    theme(text = element_text(family = font,
+                              size = text_size),
+          line = element_line(size = line_size),
+          axis.title = element_text(size = rel(1.25)),
+          axis.text = element_text(size = rel(1.15)),
+          plot.title = element_text(size = rel(1.5),
+                                    hjust = 0.5),
+          panel.grid = element_blank(),
+          legend.position = "none")
+}
+```
+
+## Altering personal color palettes
+
+Usually, a color-blind friendly palette comprised of differing hues should be acceptable to most journals. However, if we had followed the manuscript and not changed to a color-blind friendly palette, there are many journals that would not have accepted our color choices. For instance, the journal _Science_ among others has the following requirements:
+
+  - Avoid using red and green together
+  - Do not use colors that are close in hue 
+ 
+ Luckily we have achieved both of these requirements by following best practices for color choices; however this is something to be aware of. We could easily pivot to a different color palette if we had created a personal palette containing our colors for each type of plot. Even though we used a ggplot2 layer for the viridis colors, it may be easier to pivot if you defined your personal palette to use. For instance, if we wanted to change our color palette we could easily change the palette:
+ 
+```r
+# Define new palette
+personal_boxplot_palette <- c("#440154FF", "#228C8DFF", "#FDE725FF")
+
+# ggplot2 code to remain the same
+ggplot(pax6_exp) +
+  geom_boxplot(aes(x=group, 
+                   y=normalized_counts, 
+                   fill=group)) +
+  ggtitle("Pax6") +
+  personal_theme() +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 1, 
+                                   hjust = 1)) +
+  scale_x_discrete(name = "",
+                   labels=c("Pax6:WT" = "Radial glia",
+                            "neg:WT" = "Neurons", 
+                            "Tbr2:WT" = "Progenitors")) +
+  scale_y_continuous(name = "Normalized counts") +
+  scale_fill_manual(values = personal_boxplot_palette)
+```
+ 
+## Incorporating variables for plot features likely to change
+
+We can address some of the features likely to change within the personal theme, such as font type, style and size. However, not included within the theme elements are features such as figure labels, resolution, size and output file type. For these elements, it can be helpful to create variables to specify their values so that we can easily change. 
+
+For instance, *Science* requires a low resolution for initial submission, then a high resolution for the publication-ready manuscript. You could easily pivot your figure if you have the resolution stored as a variable which is used for all of your plots. We show below how we can define variables for selected plot features likely to change between journals, then explore how these variables can be incorporated into the code.
+
+
+```r
+# Define likely to change features as variables at beginning of the plotting script
+# Theme elements
+font <- "Helvetica"
+text_size <- 6
+line_size <- 0.5
+
+# Figure elements
+res <- 300
+full_width <- 8.5
+full_height <- 13
+meas_units <- "in"
+output_filetype <- "svg"
+fig_lab_size <- 9
+fig_lab_pos_x <- 0
+fig_lab_pos_y <- 1
+label_type <- "AUTO"
+```
+
+We can then incorporate these variables throughout the manuscript.
+
+```r
+# Example code using pre-defined variables
+
+# Create annotations for all desired volcano plots, and save them to variables
+volcano_panel1 <- ggdraw(volcano_RG) + 
+  draw_label("664 genes", 
+             x = 0.15, 
+             y = 0.82,
+             hjust = 0,
+             vjust = 0,
+             fontface = "bold",
+             size = text_size,
+             fontfamily = font)
+
+# other panels...
+
+# Align volcano plots and label with A, B, C
+volcano_grid <- plot_grid(volcano_panel1,
+                          volcano_panel2,
+                          volcano_panel3,
+                          ncol = 3,
+                          labels = label_type,
+                          label_size = fig_lab_size,
+                          label_x = fig_lab_pos_x,
+                          label_y = fig_lab_pos_y)
+
+# Save image
+ggsave(plot = volcano_grid,
+       filename = "results/volcano_figure.png",
+       width = full_width,
+       height = full_height/2.5,
+       units = meas_units,
+       dpi = res)
+             
+```
+
+Using these three techniques can make pivoting publications much less labor intensive. Although we can't easily code for all possible changes reviewers might desire, these basic alterations can at least ease the pain. 

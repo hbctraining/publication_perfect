@@ -27,7 +27,7 @@ library(tidyverse)
 
 > _**NOTE:** Don't be alarmed by any conflict statements when loading this library, these statements are just informing you of packages that are currently loaded that have functions with the same name._
 
-The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create figure 4 from the Baizabal et al. (2018) paper. We will build the figure below using the layering approach employed by `ggplot2`. We will highlight the purpose and utility of each layer we add, while highlighting it's flexibility and customization options.
+The `ggplot2` syntax takes some getting used to, but once you become comfortable with it, you will find it's extremely powerful and flexible. To start learning about `ggplot2` syntax we are going to re-create the figure 4 scatterplot from the Baizabal et al. (2018) paper. We will build the figure below using the layering approach employed by `ggplot2`. We will highlight the purpose and utility of each layer we add, while highlighting it's flexibility and customization options.
 
 <p align="center">
 <img src="../img/radial_glia.jpeg" width="300">
@@ -62,9 +62,7 @@ The **geom (geometric) object** is the layer that specifies what kind of plot we
 * boxplot (`geom_boxplot`, for, well, boxplots!)
 * [many others](https://ggplot2.tidyverse.org/reference/#section-geoms)
 
-When attempting to select the appropriate visualization for your data, it can be helpful to use [this website](https://www.data-to-viz.com). It provides nice decision trees for visualization methods depending on your data along with examples and code for the examples.
-
-Once you have decided how you would like to visualize your data, the [RStudio cheatsheet for ggplot2](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) can be a good starting place for figuring out which `geom` to use. With two continuous variables as points, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
+When attempting to select the appropriate visualization for your data, it can be helpful to use [the Data to Viz website](https://www.data-to-viz.com). It provides nice decision trees for visualization methods depending on your data along with examples and code for the examples. With two continuous numeric variables, we will choose to use `geom_point()`. Let's add a "geom" layer to our plot using the `+` operator.
 
 ```r
 # Initializing plot
@@ -82,7 +80,7 @@ The `aes()` function has many different arguments, and all of those arguments ta
 * [Color ("outside" color) and Fill ("inside" color)](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#colour-and-fill-1) 
 * [Shape (of points)](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html?q=shape#sec:shape-spec)
 * [Line type](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html?q=shape#sec:line-type-spec)
-* [Size](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#size)
+* [Size  (measured in millimeters (mm))](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#size)
 * [Alpha (level of transparency)](https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html?q=alpha#alpha)
 
 To start, we will specify x- and y-axis since `geom_point` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the other plot elements mentioned above are optional.
@@ -125,9 +123,9 @@ If we wanted to modify the **size of the data points** we can use the `size` arg
 
 > **Note:** This is true for several arguments, including `color`, `shape`, `alpha`, etc. For example, we can change all shapes to square by adding this argument to be outside the `aes()` function; if we put the argument inside the `aes()` function we could change the shape according to a (categorical) variable in our data frame or tibble.
 
-We have decided that we want to change the size of all the data point to a uniform size instead of mapping it to a numeric column in the input tibble. Add in the `size` argument by specifying a number for the size of the data point:
+We have decided that we want to change the size of all the data points to a uniform size instead of mapping it to a numeric column in the input tibble. Add in the `size` argument by specifying a number for the size of the data point:
 
-```
+```r
 # Changing size to a constant (do not change with columns in data frame)
 ggplot(results) +
   geom_point(aes(x = pax6_log2FoldChange, 
@@ -142,7 +140,7 @@ ggplot(results) +
 
 [**Exercise**](../answer_keys/ggplot2_syntax_Q1.md)
 
-Let's explore how to change the aesthetics of the data points. Different shapes are available, as detailed in the "Aes" section of the [RStudio ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) or [here](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html?q=shape#sec:shape-spec). 
+Let's explore how to change the aesthetics of the data points. We can find the aesthetics associated with any geometric object using the [Tidyverse ggplot2 reference](https://ggplot2.tidyverse.org/reference/index.html) and clicking on a the desired geometric object. To gain more detailed information about some of the aesthetics, there is a [vignette](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html), which provides rich information about the different colors, lines, and shapes that are available. 
 
 1. Change the geom argument `shape` to "square" to alter the shape of ***all*** points to squares.
 2. Change the aesthetic transparency of the points (`alpha`) to change with the base mean of `Pax6`.
@@ -166,7 +164,7 @@ The ggplot2 `theme` system handles non-data plot elements such as:
 * Facet label background
 * Legend appearance
 
-There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the background/foreground colors, by adding it as an additional layer. A nice resource for exploring pre-set themes is [available](https://ggplot2.tidyverse.org/reference/ggtheme.html) from Tidyverse. 
+There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the background/foreground colors, by adding it as an additional layer. A nice resource for exploring pre-set themes is [available](https://ggplot2.tidyverse.org/reference/ggtheme.html) from Tidyverse ggplot2 reference. 
 
 Let's add a layer `theme_bw()`. 
 
@@ -211,11 +209,8 @@ ggplot(results) +
 <img src="../img/ggscatter-5.png" height="300">
 </p> 
 
-In the above codeblock, you can see that we used a theme element, `element_text`. [This page](https://ggplot2.tidyverse.org/reference/element.html) discusses `element_text` along with other theme elements like `element_line`, `element_rect` and `element_blank`. Each of these has their own parameters that you can explore, but they can control things like size, color and, in the case of text, how the text is aligned. Also, the theme element `element_blank()` will remove the corresponding element from the figure.  
 
-> *NOTE:* You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 
-
-> *NOTE:* RStudio provide this very [useful cheatsheet](https://github.com/hbctraining/Intro-to-R-flipped/blob/master/cheatsheets/data-visualization-2.1.pdf) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.) We also encourage you to persuse through this useful [online reference](https://ggplot2.tidyverse.org/reference/) for working with ggplot2.
+> *NOTE:* You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! Additional examples are given in the [ggplot2 reference](https://ggplot2.tidyverse.org/reference/ggtheme.html#examples).
 
 
 ***

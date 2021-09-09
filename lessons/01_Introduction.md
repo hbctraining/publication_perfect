@@ -129,7 +129,10 @@ The data we have downloaded and read into R above represents the following 3 fil
 <img src="../img/results.png" height="200">
 </p>
 
- <expand>
+<details>
+  <summary>Code</summary>
+
+  <p><pre>
  This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results as described below.
 
   1. `_baseMean` - Mean of the normalized counts for all samples in the comparison, for a given gene
@@ -137,7 +140,9 @@ The data we have downloaded and read into R above represents the following 3 fil
   1. `_pvalue` - Wald test *P* value
   1. `_padj` - Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction)
   1. `_threshold` - Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color.
-  
+  </pre></p>
+</details>
+
 One main aspect of the paper to emphasize is the three different cell types explored are identified using marker genes:
 
   * **Radial Glia:** Pax6+

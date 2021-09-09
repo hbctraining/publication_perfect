@@ -107,7 +107,6 @@ The data we have downloaded and read into R above represents the following 3 fil
   <details>
     <summary>More details</summary>
  
-  Additional metadata information:
   * 4 replicates for each sample group
   * 6 sample groups (3 pairs) - `"Pax6:WT", "Pax6:KO"`, `"Tbr2:WT", "Tbr2:KO"`, `"neg:WT", "neg:KO"`
   * The *Pax6+* samples correspond to **Radial Glia**
@@ -121,9 +120,9 @@ The data we have downloaded and read into R above represents the following 3 fil
 
 * **pp_all_normalized_counts.csv** - The normalized counts for all the samples. This data frame has 25 columns - in addition to the gene name column, there is a column for each sample.
 
-<p align="center">
-<img src="../img/norm_counts.png" height="200">
-</p>
+  <p align="center">
+  <img src="../img/norm_counts.png" height="200">
+  </p>
 
 
 * **pp_all_results.csv** - The results from DESeq2 for the comparisons between WT and PRDM16 knockout for the 3 cell types. We have combined the results from 3 separate comparisons into a single file. An excerpt is displayed below with the Pax6 results columns circled in green and the Tbr2 results columns circled in blue.

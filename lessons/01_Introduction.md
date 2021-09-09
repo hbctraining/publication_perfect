@@ -125,21 +125,21 @@ The data we have downloaded and read into R above represents the following 3 fil
 
 * **pp_all_results.csv** - The results from DESeq2 for the comparisons between WT and PRDM16 knockout for the 3 cell types. We have combined the results from 3 separate comparisons into a single file. An excerpt is displayed below with the Pax6 results columns circled in green and the Tbr2 results columns circled in blue.
 
-<p align="center">
-<img src="../img/results.png" height="200">
-</p>
-
-<details>
-  <summary>More details</summary>
+ <p align="center">
+ <img src="../img/results.png" height="200">
+ </p>
  
-This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results as described below.
-
- - `_baseMean`: Mean of the normalized counts for all samples in the comparison, for a given gene
- - `_log2FoldChange`: log2 fold change between WT and PRDM16 KO
- - `_pvalue`: Wald test *P* value
- - `_padj`: Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction)
- - `_threshold`: Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color.
-</details>
+ <details>
+   <summary>More details</summary>
+  
+ This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results as described below.
+ 
+  - `_baseMean`: Mean of the normalized counts for all samples in the comparison, for a given gene
+  - `_log2FoldChange`: log2 fold change between WT and PRDM16 KO
+  - `_pvalue`: Wald test *P* value
+  - `_padj`: Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction)
+  - `_threshold`: Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color.
+ </details>
 
 One main aspect of the paper to emphasize is the three different cell types explored are identified using marker genes:
 

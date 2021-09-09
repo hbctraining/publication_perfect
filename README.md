@@ -55,10 +55,7 @@ Researchers with an intermediate background in R who interested in using R to cr
 
 ### Dataset
 
-Download the R project and data for this workshop:
-
-- In preparation for Part I: [Part I R data and project](https://github.com/hbctraining/Training-modules/raw/master/data/publication_perfect.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
-- In preparation for Part II: [Part II R data and project](https://www.dropbox.com/s/x9y6f3wia3muv4i/publication_perfect_partII.zip?dl=1). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
+Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/raw/master/data/publication_perfect.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.
 
 ### Installation Requirements
 

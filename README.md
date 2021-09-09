@@ -36,22 +36,22 @@ Researchers with an intermediate background in R who interested in using R to cr
 
 | Time | Topic |
 :-----------------------|:-------------|
-| 09:00 - 09:10	| Introduce the instructors and scope of the workshop | 
-| 09:10 - 09:30	| [Introduction to data visualization and dataset](lessons/01_introduction.md) | 
-| 09:30 - 10:15 	| [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | 
+| 09:00 - 09:10	| Introduce the instructors and scope of the workshop | Mary | 
+| 09:10 - 09:30	| [Introduction to data visualization and dataset](lessons/01_introduction.md) | Mary | 
+| 09:30 - 10:15 	| [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | Mary | 
 | 10:15 - 10:45	| Coffee break | |
-| 10:45 - 11:05	| [Consistent plots with custom themes](lessons/03_custom_themes.md) | 
-| 11:05 - 11:45 | [Application of plotting basics](lessons/04_boxplot_application_of_basic_plotting.md) | 
-| 11:45 - 12:15	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | 
+| 10:45 - 11:05	| [Consistent plots with custom themes](lessons/03_custom_themes.md) | Mary | 
+| 11:05 - 11:45 | [Application of plotting basics](lessons/04_boxplot_application_of_basic_plotting.md) | Mary | 
+| 11:45 - 12:15	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | Mary | 
 | 12:15 - 13:30	| Lunch | 
 | 13:10 - 14:00	| [Customization of scales and color palettes](lessons/05_custom_plot_scales_colors.md) | Mary |
 | 14:00 - 14:30	| [Aligning and labeling plots with cowplot](lessons/06_aligning_plots_using_cowplot.md) | Radhika |
 | 14:30 - 14:35	| Break
-| 14:35 - 15:15	| [Adding annotations and including statistical comparisons with ggpubr](https://hbctraining.github.io/publication_perfect/lessons/07_adding_text_annotations.html) | Jihe |
-| 15:15 - 15:45	| [Incorporating external packages to extend plotting functionality](https://hbctraining.github.io/publication_perfect/lessons/08_figure_specific_packages.html) | Meeta |
-| 15:45 - 15:50	| [Creating final figure](https://hbctraining.github.io/publication_perfect/lessons/09_final_figure.html) | Mary |
-| 15:50 - 15:55	| [Pivoting publications](https://hbctraining.github.io/publication_perfect/lessons/10_pivoting_publications.html) | Mary |
-| 15:55 - 16:00	| [Wrap-up and exit survey](https://github.com/hbctraining/Training-modules/raw/master/Intro_current_topics_online_2021.pdf) | Mary |
+| 14:35 - 15:15	| [Adding annotations and including statistical comparisons with ggpubr](lessons/07_adding_text_annotations.md) | Jihe |
+| 15:15 - 15:45	| [Incorporating external packages to extend plotting functionality](lessons/08_figure_specific_packages.md) | Meeta |
+| 15:45 - 15:50	| [Creating final figure](lessons/09_final_figure.md) | Mary |
+| 15:50 - 15:55	| [Pivoting publications](lessons/10_pivoting_publications.md) | Mary |
+| 15:55 - 16:00	| [Wrap-up and exit survey]() | Mary |
 
 ### Dataset
 

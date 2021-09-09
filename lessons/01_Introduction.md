@@ -53,6 +53,12 @@ The authors in this paper discover an epigenetic mechanism that controls the num
 
 The authors use various techniques to identify and validate the targets and activities of PRDM16, including ChIP-seq, bulk RNA-seq, FACS, in-situ hybridization and immunofluorescent microscopy on brain samples from embryonic mice, generation of conditional knockout mice, etc. Majority of the figures in this publication are a combination of the evidence gathered from several of these techniques.
 
+One main aspect of the paper to emphasize is the three different cell types explored are identified using marker genes:
+
+  * **Radial Glia:** Pax6+
+  * **Intermediate Progenitors:** Tbr2+
+  * **Post-mitotic neurons:** Pax6- / Tbr2-
+
 ## The figure
 
 In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg). This figure demonstrates how knocking out PRDM16 impacts gene expression in three different cell populations in the developing brains of mouse enbryos.
@@ -143,11 +149,7 @@ The data we have downloaded and read into R above represents the following 3 fil
    - `_threshold`: Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color.
   </details>
 
-One main aspect of the paper to emphasize is the three different cell types explored are identified using marker genes:
 
-  * **Radial Glia:** Pax6+
-  * **Intermediate Progenitors:** Tbr2+
-  * **Post-mitotic neurons:** Pax6- / Tbr2-
 
 Now that we have a basic understanding of how to decide on the types of plots we would like to create and the data that we will be using, let's get started with `ggplot2`.
 

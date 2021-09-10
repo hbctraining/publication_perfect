@@ -163,12 +163,12 @@ Now that we know how to alter and customize the look of the data points on our p
 
 The ggplot2 `theme` system handles non-data plot elements such as:
 
-* Axis label aesthetics
+* Axis title and label style
 * Plot background
-* Facet label background
+* Presence of major or minor gridlines
 * Legend appearance
 
-There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the background/foreground colors, by adding it as an additional layer. A nice resource for exploring pre-set themes is [available](https://ggplot2.tidyverse.org/reference/ggtheme.html) from Tidyverse ggplot2 reference. 
+There are built-in themes we can use (i.e. `theme_bw()`) that mostly change the background/foreground colors, by adding it as an additional layer. A nice resource for exploring pre-set themes is [available](https://ggplot2.tidyverse.org/reference/ggtheme.html) from the Tidyverse ggplot2 reference. 
 
 Let's add a layer `theme_bw()`. 
 
@@ -190,7 +190,7 @@ Let's look at the paper figure again:
 How are these plots different? 
 
 
-We see the colors are different, but we will explore customizing those in the next lesson. All of the other changes are to the non-data elements of the plot, like legend and size of the axis titles. To explore the different non-data components customizable within the `theme()` function, let's look at the [documentation](https://ggplot2.tidyverse.org/reference/theme.html).
+We see the colors are different, but we will explore customizing those in the next lesson. Many of the other changes are to the non-data elements of the plot, like legend and size of the axis titles. To explore the different non-data components customizable within the `theme()` function, let's look at the [documentation](https://ggplot2.tidyverse.org/reference/theme.html).
 
 Notice the options for customizing the axes, titles, tick marks, and legends, among others. Everything is customizable, you just have to know what to customize. The examples given in the documentation can help determine what specifications might achieve your desired changes.
 

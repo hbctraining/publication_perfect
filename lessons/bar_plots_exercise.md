@@ -405,6 +405,10 @@ pax6_down_plot <- ggplot(pax6_down_go) +
   
 16. The last step is to use `cowplot` to put the remaining annotations into the images and align them into a single row in the figure.
   
+  <details>
+  <summary>Solution Radial glia (Fig4I)</summary>
+  
+ <p><pre>
   ```r
   # Pax 6 grid
   pax6 <- plot_grid(pax6_down_plot,
@@ -486,7 +490,10 @@ pax6_down_plot <- ggplot(pax6_down_go) +
          units = "in",
          dpi = 300)
   ```
+    </pre></p>
   
+   </details>
+
   <p align="center">
   <img src="../img/" width="700">
   </p>

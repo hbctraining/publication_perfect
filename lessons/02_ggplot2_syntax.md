@@ -83,6 +83,8 @@ The `aes()` function has many different arguments, and all of those arguments ta
 * [Size  (measured in millimeters (mm))](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#size)
 * [Alpha (level of transparency)](https://ggplot2.tidyverse.org/reference/aes_colour_fill_alpha.html?q=alpha#alpha)
 
+To determine the aesthetics available to us with `geom_point()`, we can explore the [ggplot2 reference documentation](https://ggplot2.tidyverse.org/reference/#section-geoms) and click on `geom_point`. As you scroll down, you will find the aesthetics available for this geom. The required aesthetics are bolded.
+
 To start, we will specify x- and y-axis since `geom_point` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the other plot elements mentioned above are optional.
 
 ```r

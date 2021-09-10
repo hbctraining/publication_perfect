@@ -109,7 +109,9 @@ results <- read.csv("data/pp_all_results.csv", row.names=1)
 The data we have downloaded and read into R above represents the following 3 files from the larger analysis described in the paper:
 
 * **pp_all_meta.csv** - The metadata for the experiment. This experiment has **24 samples**, with each row as a sample.
-  
+
+***Most of the values in this table are discrete or categorical.*** Even the `sort` column could be considered discrete, and can be factorized as such.
+
   <details>
     <summary>More details</summary>
  
@@ -118,6 +120,7 @@ The data we have downloaded and read into R above represents the following 3 fil
   * The *Pax6+* samples correspond to **Radial Glia**
   * The *Tbr2+* samples correspond to **Intermediate Progenitors**
   * The *neg (Pax6- Tbr2-)* samples correspond to **post-mitotic neurons**
+ 
   </details>
   
   <p align="center">
@@ -129,13 +132,16 @@ The data we have downloaded and read into R above represents the following 3 fil
   <p align="center">
   <img src="../img/norm_counts.png" height="200">
   </p>
-
+  
+***All the values in this table are continuous except for the gene symbols column.***
 
 * **pp_all_results.csv** - The results from DESeq2 for the comparisons between WT and PRDM16 knockout for the 3 cell types. We have combined the results from 3 separate comparisons into a single file. An excerpt is displayed below with the Pax6 results columns circled in green and the Tbr2 results columns circled in blue.
 
   <p align="center">
   <img src="../img/results.png" height="200">
   </p>
+  
+***Most of the values in this table are continuous, with one set of discrete values (_threshold) for each comparison***
   
   <details>
     <summary>More details</summary>
@@ -147,9 +153,8 @@ The data we have downloaded and read into R above represents the following 3 fil
    - `_pvalue`: Wald test *P* value
    - `_padj`: Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction)
    - `_threshold`: Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color.
+
   </details>
-
-
 
 Now that we have a basic understanding of how to decide on the types of plots we would like to create and the data that we will be using, let's get started with `ggplot2`.
 

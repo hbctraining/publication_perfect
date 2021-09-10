@@ -2,6 +2,7 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
 
 < image of figures 4I and 4J >
 
+## Set up
 1. Let's read in our gene ontology data.
 
   ```r
@@ -67,19 +68,29 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
   tbr2_down_go$term.name <- factor(tbr2_down_go$term.name, 
                                    levels = rev(tbr2_down_order_levels))                                  
   ```
-  
+
+## Basic plot
+
 4. Create a basic bar plot for the Pax6 up-regulated genes using `geom_col()`. Use the `coord_flip()` function as a layer to get the bars to go horizontally.
 
-  ```r
+  < image of basic plot >
+
+<details>
+  <summary>Solution</summary>
+  
+ <p><pre>
   # Create the base of the bar plot
   ggplot(pax6_up_go) +
     geom_col(aes(x = term.name, 
                  y = -log10(p.value))) + 
     coord_flip()
-  ```
+  </pre></p>
   
-  < image of basic plot >
+</details>
   
+
+## Add layers
+
 5. Alter the color of the bars to be green inside and black outside.
 6. Remove the title of the flipped x-axis
 7. For the flipped y-axis, do the following:
@@ -95,7 +106,12 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
     - Remove the y-axis text and ticks
 10. Add the term names to the bars by adding a `geom_text()` layer with the same `x` and `y` aesthetics as the `geom_col()` layer. The `label` aesthetics should map to `term.name`.
   
-  ```r
+  < image of altered plot >
+
+<details>
+  <summary>Solution</summary>
+  
+ <p><pre>
   ggplot(pax6_up_go) +
   geom_col(aes(x = term.name, 
                y = -log10(p.value)), 
@@ -116,10 +132,13 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
                 y = -log10(p.value),
                 label = term.name,
                 size = 4))
-  ```
+  </pre></p>
   
-  < image of altered plot >
+</details>
   
+
+## Refine plot
+
 11. Notice the terms are centered at the value we give to `y` in the `geom_text()` function. We can provide a different value to center the terms inside the bars. Let's instead make `y = -log10(p.value) / 2`.
 12. Change the appearance of the term names within the `geom_text()` layer by doing the following:
   - Change the terms to sentence case (capital letter at the beginning) by changing the `label` argument in aesthetics to `label = str_to_sentence(term.name)`. The `str_to_sentence()` function is from the `stringr` package from the Tidyverse.
@@ -128,7 +147,12 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
   - Create smaller bars using argument: `width = 0.6`
   - Add spacing between the bars using argument: `position = position_dodge(width=0.4)`
 
-  ```r
+  < image of refined plot >
+  
+<details>
+  <summary>Solution</summary>
+  
+ <p><pre>
   ggplot(pax6_up_go) +
     geom_col(aes(x = term.name, 
                  y = -log10(p.value)), 
@@ -151,11 +175,18 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
                   y = -log10(p.value)/2,
                   label = str_to_sentence(term.name),
                   size = 4))
-  ```  
+  </pre></p>
   
+</details>
+
+## Adapt for the other three plots
+
 15. Adapt the code from the Pax6 up-regulated genes to create the three other plots.
 
-  ```r
+<details>
+  <summary>Solution</summary>
+  
+ <p><pre>
   # Pax6 down-regulated
   ggplot(pax6_down_go) +
     geom_col(aes(x = term.name, 
@@ -233,7 +264,9 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
               hjust = 0.5,
               vjust = 0.5,
               size = 4)
-  ```
+  </pre></p>
+  
+</details>
   
   < image of all plots >
   

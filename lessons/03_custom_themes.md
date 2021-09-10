@@ -121,5 +121,14 @@ volcano_RG <- ggplot(results) +
 
 Using your `personal_theme()`, create volcano plots for the **'Intermediate progenitors'** and the **'Cortical neurons'** by using the `tbr2_` and `neg_` columns from the `results` data frame, respectively. Save the plots to the variables `volcano_IP` and `volcano_neu`.
 
+<p align="center">
+<img src="../img/volcano_IP.png" width="300">
+</p>
+
+
+<p align="center">
+<img src="../img/volcano_neu.png" width="300">
+</p>
+
 ---
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

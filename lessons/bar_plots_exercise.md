@@ -2,7 +2,7 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
 
 
 <p align="center">
-<img src="../img/fig4IJ.png" width="600">
+<img src="../img/fig4IJ.png" width="700">
 </p>
 
 ## Set up

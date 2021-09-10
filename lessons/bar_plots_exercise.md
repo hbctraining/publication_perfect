@@ -409,10 +409,12 @@ pax6_down_plot <- ggplot(pax6_down_go) +
   <summary>Solution Radial glia (Fig4I)</summary>
   
  <p><pre>
+  
   # Pax 6 grid
   pax6 <- plot_grid(pax6_down_plot,
           pax6_up_plot)
-
+  
+  # Adding annotations
   annotated_pax6 <- pax6 +
     draw_label(label = "Number of \n genes", 
                x = 0.5,
@@ -481,6 +483,7 @@ pax6_down_plot <- ggplot(pax6_down_go) +
                vjust = 1,
                size = 10) 
   
+  # Saving plot as figure
   ggsave(plot = annotated_pax6,
          device = "png",
          filename = "results/fig4I.png",

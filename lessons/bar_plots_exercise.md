@@ -94,7 +94,8 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
 5. Alter the color of the bars to be green inside and black outside.
 6. Remove the title of the flipped x-axis
 7. For the flipped y-axis, do the following:
-  - Change the title to be `"-log(P)"`.
+  - Change the title to be `"-Log(P)"`.
+  - Change the title to be in italics.
   - Set the limits to be 0 and 20.
   - Remove any expansion of the plot past the limits by adding the argument `expand(0,0)`.
 8. Add a plot title with an extra line of space beneath it using a `ggtitle("Up-regulated genes \n")` layer.
@@ -162,7 +163,7 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
              position = position_dodge(width=0.4)) + 
     coord_flip() +
     scale_x_discrete(name = "") +
-    scale_y_continuous(name = "-log(P)", 
+    scale_y_continuous(name = "-Log(P)", 
                        limits = c(0, 20),
                        expand = c(0, 0)) +
     ggtitle("Up-regulated genes \n") +
@@ -170,7 +171,8 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
     theme(panel.border = element_blank(),
           axis.line = element_line(color = 'black', size = 0.5),
           axis.text.y = element_blank(),
-          axis.ticks.y = element_blank()) +
+          axis.ticks.y = element_blank(),
+          axis.title.x = element_text(face = "italic")) +
     geom_text(aes(x = term.name,
                   y = -log10(p.value)/2,
                   label = str_to_sentence(term.name),

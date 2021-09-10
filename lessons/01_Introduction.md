@@ -48,7 +48,7 @@ Before we create any graphics, it is helpful to have a basic understanding of th
 The authors in this paper discover an epigenetic mechanism that controls the number and positioning of cortical neurons. They discover that the histone methyltransferase PRDM16 works with enhancer elements to either silence or activate expression of sets of genes that impact the organization of the cerebral cortex. 
 
 <p align="center">
-<img src="../img/graphical_abstract.png" width="350">
+<img src="../img/graphical_abstract.png" width="400">
 </p>
 
 The authors use various techniques to identify and validate the targets and activities of PRDM16, including ChIP-seq, bulk RNA-seq, FACS, in-situ hybridization and immunofluorescent microscopy on brain samples from embryonic mice, generation of conditional knockout mice, etc. Majority of the figures in this publication are a combination of the evidence gathered from several of these techniques.
@@ -64,11 +64,11 @@ One main aspect of the paper to emphasize is the three different cell types expl
 In this workshop, we will focus on recreating [Figure 4](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg). This figure demonstrates how knocking out PRDM16 impacts gene expression in three different cell populations in the developing brains of mouse enbryos.
 
 <p align="center">
-<img src="../img/figure_to_create.jpg" width="600">
+<img src="../img/figure_to_create.jpg" width="500">
 </p>
 
 <p align="center">
-<img src="../img/figure4_legend.png" width="800">
+<img src="../img/figure4_legend.png" width="700">
 </p>
 
 The different types of plots in this figure to re-create are:

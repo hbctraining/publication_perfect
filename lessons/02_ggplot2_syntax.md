@@ -14,7 +14,7 @@ Approximate time: 60 minutes
 
 In this lesson, we will be introducing the syntax for the popular package for visualization, [`ggplot2`](https://ggplot2.tidyverse.org/). The `ggplot2` package approaches visualization using principles from the [Grammar of Graphics](https://www.springer.com/gp/book/9780387245447), a pivotal book describing quantitative graphics. The developers of `ggplot2` describe their approach to the Grammer of Graphics in a free, [online book](https://ggplot2-book.org/index.html), which can be a helpful resource for understanding the theory and organization of the `ggplot2` package. 
 
-We will focus the majority of our this portion of the workshop on creating plots with `ggplot2` due to it's versatility and ease of customization. Once you learn the `ggplot2` syntax, you will have laid the foundation for creating a plethora of graphics.
+We will focus the majority of our this portion of the workshop on creating plots with `ggplot2` due to it's adherence to visualization theory, versatility and ease of customization. Once you learn the `ggplot2` syntax, you will have laid the foundation for creating a plethora of graphics.
 
 ## Set up 
 

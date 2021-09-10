@@ -33,7 +33,7 @@ The `ggplot2` syntax takes some getting used to, but once you become comfortable
 <img src="../img/radial_glia.jpeg" width="300">
 </p>
 
-Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's version of a data frame called a "tibble" (you can find out more about tibbles [here](https://r4ds.had.co.nz/tibbles.html)). To create this figure we will need the data present in our `results` data frame. This plot examines the magnitude (log2 fold changes) and significance (p-adjusted values) of the differences in gene expression between the *Prdm16* KO and WT samples for every gene in radial glia cells (*Pax6*+ cells). This plot is called a "volcano plot", but it is essentially a simple X-Y scatterplot with each data point representing a gene. Let's take a look at the `results` data frame and look for the columns we are interest in.
+Please note that `ggplot2` expects as input either a "data frame" or Tidyverse's version of a data frame called a "tibble" (you can find out more about tibbles [here](https://r4ds.had.co.nz/tibbles.html)). To create this figure we will need the data present in our `results` data frame. This plot examines the magnitude(log2 fold changes) on the x-axis and significance (p-adjusted values) on the y-axis of the differences in gene expression between the *Prdm16* KO and WT samples for every gene in radial glia cells (*Pax6*+ cells). This plot is called a "volcano plot", but it is essentially a simple X-Y scatterplot with each data point representing a gene. Let's take a look at the `results` data frame and look for the columns we are interest in.
 
 ```r
 # Inspect the results data frame

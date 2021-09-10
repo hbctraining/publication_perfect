@@ -214,21 +214,35 @@ ggplot(results) +
 </p> 
 
 
-> *NOTE:* You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! Additional examples are given in the [ggplot2 reference](https://ggplot2.tidyverse.org/reference/ggtheme.html#examples).
+In the above code, you can see that we used a theme element, `element_text()`. [The ggplot2 reference documentation](https://ggplot2.tidyverse.org/reference/element.html) discusses `element_text()` along with other theme elements like `element_line()`, `element_rect()` and `element_blank()`. Each of these has their own parameters that you can explore, but they can control things like size, font, angle, color, etc. In the case of `element_text()`, it controls size, font, angle, color, and how the text is aligned, among others. Also helpful to know, the theme element `element_blank()` will remove the corresponding element from the figure.  
+
+```r
+# Testing out element_blank()
+ggplot(results) +
+  geom_point(aes(x = pax6_log2FoldChange, 
+                 y = -log10(pax6_padj), 
+                 color = pax6_threshold))  +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank())
+```    
+
+> *NOTE:* You can use the `example("geom_point")` function here to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 
 
 
 ***
 
 [**Exercise**](../answer_keys/ggplot2_syntax_Q2.md)
 
+Complete the following exercise questions. Looking up help documentation using `?theme()` or the [online ggplot2 reference](https://ggplot2.tidyverse.org/reference/theme.html) may help.
 
-1. Add a `ggtitle` layer in order to add a title to the plot. Don't worry about the alignment quite yet.
-2. After adding a title, add the following new theme layer to the code chunk `theme(plot.title=element_text(hjust=0.5))`.
+1. Add a `ggtitle` layer to add a title to the plot. Don't worry about the alignment quite yet.
+2. After adding a title, add the following new theme layer to the code: `theme(plot.title=element_text(hjust=0.5))`.
     * What does it change?
     * How many `theme()` layers can be added to a ggplot code chunk, in your estimation?
 3. Using a theme element, increase the size of the plot title to be 1.5 times the default value.
 4. Using a theme element, remove the gridlines by adding another `theme()` layer with the argument `panel.grid`.
-5. Remove the legend by adding a `theme()` layer with the argument `legend.position`. You can look up which values `legend.position`  accepts [here](https://ggplot2.tidyverse.org/reference/theme.html).
+5. Remove the legend by adding a `theme()` layer with the argument `legend.position`.
 
 ***
 

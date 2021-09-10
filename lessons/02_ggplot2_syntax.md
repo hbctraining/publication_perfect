@@ -149,11 +149,11 @@ Let's explore how to change the aesthetics of the data points. We can find the a
 1. Change the geom argument `shape` to "square" to alter the shape of ***all*** points to squares.
 2. Change the aesthetic transparency of the points (`alpha`) to change with the base mean of `Pax6`.
 
-***
+  <p align="center">
+  <img src="../img/ggscatter-1alt.png" height="300">
+  </p>
 
-<p align="center">
-<img src="../img/ggscatter-1alt.png" height="300">
-</p>
+***
 
 We aren't interested in keeping the points as squares or altering their transparency, but it can be helpful to change shapes, size, transparency, etc. when visualizing different groups or conditions, similar to using the `color` argument. 
 

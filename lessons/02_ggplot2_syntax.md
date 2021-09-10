@@ -159,7 +159,7 @@ We aren't interested in keeping the points as squares or altering their transpar
 
 ## Customizing the appearance of the non-data points on the plot
 
-Now that we know how to alter and customize the look of the data points on our plot within the `geom` layer, let's explore how to change the look of the non-data plotting elements, such as the plotting grid and labels. Many of these non-data elements can be altered within a `theme()` layer. 
+Now that we know how to alter and customize the look of the data points on our plot within the `geom` layer, let's explore how to change the **look or style** of the non-data plotting elements, such as the plotting grid and labels. Many of these non-data elements can be altered within a `theme()` layer. 
 
 The ggplot2 `theme` system handles non-data plot elements such as:
 

@@ -408,7 +408,7 @@ pax6_down_plot <- ggplot(pax6_down_go) +
   <details>
   <summary>Solution Radial glia (Fig4I)</summary>
   
- <p><pre>
+  <p><pre>
   ```r
   # Pax 6 grid
   pax6 <- plot_grid(pax6_down_plot,

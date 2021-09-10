@@ -87,7 +87,7 @@ To determine the aesthetics available to us with `geom_point()`, we can explore 
 
 > _**NOTE:** Also, note the other information available on this reference page, including the code for the function with defaults, description of arguments, common plotting mistakes, and example code/plots._
 
-To start, we will specify x- and y-axis since `geom_point` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the other plot elements mentioned above are optional.
+To start, we will specify x- and y-axis since `geom_point()` requires the most basic information about a scatterplot, i.e. what you want to plot on the x and y axes. All of the other plot elements mentioned above are optional.
 
 ```r
 # Adding geom layer with required aesthetics mapping to columns in data frame
@@ -123,7 +123,7 @@ You will notice that there are a default set of colors that will be used so we d
 If we wanted to modify the **size of the data points** we can use the `size` argument. 
 
 * If we add `size` inside `aes()` we could assign a numeric column to it and the size of the data points would change according to that column. 
-* However, if we add `size` inside the `geom_point()` but outside `aes()` we can't assign a column to it, instead we have to give it a numeric value. This use of `size` will uniformly change the size of all the data points.
+* However, if we add `size` outside `aes()` (but still inside `geom_point()`) we can't assign a column to it, instead we have to give it a numeric value. This use of `size` will uniformly change the size of all the data points.
 
 > **Note:** This is true for several arguments, including `color`, `shape`, `alpha`, etc. For example, we can change all shapes to square by adding this argument to be outside the `aes()` function; if we put the argument inside the `aes()` function we could change the shape according to a (categorical) variable in our data frame or tibble.
 

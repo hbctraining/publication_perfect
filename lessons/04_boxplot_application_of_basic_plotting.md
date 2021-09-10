@@ -58,6 +58,11 @@ expression_plot <- pivot_longer(normalized_counts,
 
 We can look at what `pivot_longer` did a bit more closely. Instead of each gene taking a single row and having 24 columns of expression data in it. Our `pivot_longer` command gave us 24 rows of expression data in a single column for each gene.
 
+```r
+# Examine data frame
+View(expression_plot)
+```
+
 Finally, we want to color our plot with information about the cell types/groups of our samples. Currently we have only the expression data (normalized counts). We need to merge the expression data with the metadata information for each of our samples. We can use a `_join` function from the Tidyverse.
 
 ```r

@@ -496,5 +496,5 @@ pax6_down_plot <- ggplot(pax6_down_go) +
 </details>
 
   <p align="center">
-  <img src="../img/" width="700">
+  <img src="../img/fig4I.png" width="500">
   </p>

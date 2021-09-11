@@ -399,10 +399,7 @@ pax6_down_plot <- ggplot(pax6_down_go) +
   
 </details>
   
-  <p align="center">
-  <img src="../img/" width="700">
-  </p>
-  
+
 16. The last step is to use `cowplot` to put the remaining annotations into the images and align them into a single row in the figure.
   
 <details>
@@ -498,3 +495,95 @@ pax6_down_plot <- ggplot(pax6_down_go) +
   <p align="center">
   <img src="../img/fig4I.png" width="500">
   </p>
+
+17. Adapt the code for the Tbr2 up- and downregulated genes.
+
+<details>
+  <summary>Solution Radial glia (Fig4I)</summary>
+  
+ <p><pre>
+  
+  # Tbr2 grid
+  tbr2 <- plot_grid(tbr2_down_plot,
+          tbr2_up_plot)
+  
+  # Adding annotations
+  annotated_tbr2 <- tbr2 +
+    draw_label(label = "Number of \n genes", 
+               x = 0.5,
+               y = 0.86,
+               size = 6) +
+    draw_label(label = "55", 
+               x = 0.48,
+               y = 0.74,
+               size = 6) +
+    draw_label(label = "60", 
+               x = 0.48,
+               y = 0.65,
+               size = 6) +
+    draw_label(label = "39", 
+               x = 0.48,
+               y = 0.555,
+               size = 6) +
+    draw_label(label = "78", 
+               x = 0.48,
+               y = 0.46,
+               size = 6) +
+    draw_label(label = "51", 
+               x = 0.48,
+               y = 0.36,
+               size = 6) +
+    draw_label(label = "16", 
+               x = 0.48,
+               y = 0.27,
+               size = 6) +
+    draw_label(label = "79", 
+               x = 0.48,
+               y = 0.18,
+               size = 6)  +
+    draw_label(label = "55", 
+               x = 0.52,
+               y = 0.74,
+               size = 6) +
+    draw_label(label = "38", 
+               x = 0.52,
+               y = 0.65,
+               size = 6) +
+    draw_label(label = "60", 
+               x = 0.52,
+               y = 0.555,
+               size = 6) +
+    draw_label(label = "38", 
+               x = 0.52,
+               y = 0.46,
+               size = 6) +
+    draw_label(label = "33", 
+               x = 0.52,
+               y = 0.36,
+               size = 6) +
+    draw_label(label = "19", 
+               x = 0.52,
+               y = 0.27,
+               size = 6) +
+    draw_label(label = "32", 
+               x = 0.52,
+               y = 0.18,
+               size = 6)  +
+    draw_label(label = "Radial glia gene ontology", 
+               x = 0.5,
+               y = 1,
+               hjust = 0.5,
+               vjust = 1,
+               size = 10) 
+  
+  # Saving plot as figure
+  ggsave(plot = annotated_tbr2,
+         device = "png",
+         filename = "results/fig4J.png",
+         width = 3.5,
+         height = 2.25,
+         units = "in",
+         dpi = 300)
+   </pre></p>
+  
+</details>

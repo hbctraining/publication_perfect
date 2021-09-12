@@ -121,7 +121,7 @@ boxplot_grid
 <img src="../img/3_boxplots.png" height="300">
 </p>
 
-We completed the second row of the figure (Figure 4D and Figure 4E). Now how do we save it to file?
+We now have Figure 4D! What if we wanted to save this to file? 
 
 The `ggplot2` package has a nice function called [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html), which will, by default, save the last plot created. The function allows you to specify the resolution and the type of graphics output desired, with choices "eps", "ps", "tex" (pictex), "pdf", "jpeg", "tiff", "png", "bmp", "svg" or "wmf". Resolution for printed figures should usually be at least `dpi` of 300. Also handy are the options to choose the width, height, and the units for those specifications. Let's use `ggsave()` to save our boxplot figure to a pdf file.
 

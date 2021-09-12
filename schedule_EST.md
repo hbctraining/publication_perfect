@@ -15,7 +15,7 @@
 | 08:00 - 08:35	| [Aligning and labeling plots with cowplot](lessons/06_aligning_plots_using_cowplot.md) | Radhika |
 | 08:35 - 08:40	| Break | Will and Jihe to arrive or soon after |
 | 08:40 - 09:15	| [Adding annotations and including statistical comparisons with ggpubr](lessons/07_adding_text_annotations.md) | Jihe |
-| 09:15 - 09:45	| [Incorporating external packages to extend plotting functionality](lessons/08_figure_specific_packages.md) | Meeta |
+| 09:15 - 09:45	| [Incorporating external packages to extend plotting functionality](lessons/08_figure_specific_packages.md) | Will/Meeta |
 | 09:45 - 09:50	| [Creating final figure](lessons/09_final_figure.md) | Mary |
 | 09:50 - 09:55	| [Pivoting publications](lessons/10_pivoting_publications.md) | Mary |
 | 09:55 - 09:00	| [Wrap-up and exit survey]() | Mary |

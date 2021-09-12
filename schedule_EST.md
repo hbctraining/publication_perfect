@@ -5,7 +5,7 @@
 :-----------------------|:-------------|:-------------|
 | 03:00 - 03:10	| Introduce the instructors and scope of the workshop | Mary | 
 | 03:10 - 03:30	| [Introduction to data visualization and dataset](lessons/01_Introduction.md) | Mary | 
-| 03:30 - 04:15 | [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | Mary | 
+| 03:30 - 04:15 | [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | Radhika | 
 | 04:15 - 04:45	| Coffee break | Meeta to arrive or soon after |
 | 04:45 - 05:05	| [Consistent plots with custom themes](lessons/03_custom_themes.md) | Radhika | 
 | 05:05 - 05:45 | [Application of plotting basics](lessons/04_boxplot_application_of_basic_plotting.md) | Meeta | 

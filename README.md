@@ -48,7 +48,7 @@ Researchers with an intermediate background in R who interested in using R to cr
 | 14:00 - 14:35	| [Aligning and labeling plots with cowplot](lessons/06_aligning_plots_using_cowplot.md) | Radhika |
 | 14:35 - 14:40	| Break
 | 14:40 - 15:15	| [Adding annotations and including statistical comparisons with ggpubr](lessons/07_adding_text_annotations.md) | Jihe |
-| 15:15 - 15:45	| [Incorporating external packages to extend plotting functionality](lessons/08_figure_specific_packages.md) | Meeta |
+| 15:15 - 15:45	| [Incorporating external packages to extend plotting functionality](lessons/08_figure_specific_packages.md) | Will/Meeta |
 | 15:45 - 15:50	| [Creating final figure](lessons/09_final_figure.md) | Mary |
 | 15:50 - 15:55	| [Pivoting publications](lessons/10_pivoting_publications.md) | Mary |
 | 15:55 - 16:00	| [Wrap-up and exit survey]() | Mary |

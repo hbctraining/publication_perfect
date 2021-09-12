@@ -1,13 +1,20 @@
 # Aligning plots using cowplot
 
-In this lesson, we will introduce `cowplot`, a powerful package for aligning and arranging images into publication-quality figures. It's a versatile package with a lot of functionality to ease in the assembly of figures. Our goal in this lesson is to create the boxplot figures (4D & 4E) as they appear in the [publication](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg).
+In this lesson, we will introduce `cowplot`, a powerful package for aligning and arranging images into publication-quality figures. It's a versatile package with a lot of functionality to ease in the assembly of figures. Our goal in this lesson is to create the top half of the figure as is appears in the [publication](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg).
+
+<p align="center">
+<img src="../img/top_half.png">
+</p>
+
+## Boxplots
+
+We have already plotted the *Pax6* boxplot to match the publication, while providing some enhancements for the color palettes. However, if we want to create the second row of the figure above, we need to create the other three boxplots for *Tbr2*, *Tubb3*, and *Pdrm16*. 
 
 <p align="center">
 <img src="../img/fig4D_E.jpeg">
 </p>
 
-
-We have already plotted the *Pax6* boxplot to match the publication, while providing some enhancements for the color palettes. However, if we want to create the figures above, we need to create the other three boxplots for *Tbr2*, *Tubb3*, and *Pdrm16*. Let's create these plots using similar code as to the *Pax6* boxplot, but modifying the aesthetics to match the corresponding gene data and title. Also, to incorporate all boxplot images into a figure, we need to save them to variables/objects in our environment.
+Let's create these plots using similar code as to the *Pax6* boxplot, but modifying the aesthetics to match the corresponding gene data and title. Also, to incorporate all boxplot images into a figure, we need to save them to variables/objects in our environment.
 
 ```r
 # Re-factor the levels to correspond to the same order as the Pax6 plot
@@ -114,7 +121,7 @@ boxplot_grid
 <img src="../img/3_boxplots.png" height="300">
 </p>
 
-We completed our first figure. Now how do we save it to file?
+We completed the second row of the figure (Figure 4D and Figure 4E). Now how do we save it to file?
 
 The `ggplot2` package has a nice function called [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html), which will, by default, save the last plot created. The function allows you to specify the resolution and the type of graphics output desired, with choices "eps", "ps", "tex" (pictex), "pdf", "jpeg", "tiff", "png", "bmp", "svg" or "wmf". Resolution for printed figures should usually be at least `dpi` of 300. Also handy are the options to choose the width, height, and the units for those specifications. Let's use `ggsave()` to save our boxplot figure to a pdf file.
 
@@ -130,7 +137,11 @@ ggsave(plot = boxplot_grid,
 
 > _**NOTE:** There are output-specific functions, such as `png()` and `pdf()`, which can be used to output the corresponding plots by writing directly to a graphics device. This can be much easier for saving more than a single image to the output file, and we have [materials available](https://hbctraining.github.io/Intro-to-R-flipped/lessons/13_exporting_data_and_plots.html#exporting-figures-to-file) for using these methods._
 
-Now that we have the figures for 4D and 4E, we can use cowplot to bring in the outside images, and re-create the entire top half of the image displayed above. We will first render the outside images properly using the cowplot functions `ggdraw()` and `draw_image()`. The `ggdraw()` function creates a canvas to 'draw' on, while the `draw_image()` function draws the image onto some location on the canvas. 
+## Putting the top half of the figure together
+
+Now that we have the figures for 4D and 4E, we can use cowplot to bring in the images created outside R, and re-create the entire top half of the image displayed above. All the images you need to bring in are in your `results` directory.
+
+We will first render the these external images properly using the cowplot functions `ggdraw()` and `draw_image()`. The `ggdraw()` function creates a canvas to 'draw' on, while the `draw_image()` function draws the image onto some location on the canvas. 
 
 > _**NOTE:** For more extensive image processing, the [`magick` package](https://cran.r-project.org/web/packages/magick/vignettes/intro.html) provides extensive functionality, and is called by the cowplot package for reading in the images._
 
@@ -156,7 +167,7 @@ fig4a
 <img src="../img/PP_fig4A.png " height="300">
 </p>
 
-Now we can use the `align_plots()` function again to combine all of our finished figures. We would like our images to be vertically aligned (`v` option), and to be aligned by the left axis (`l` option). This function will create a list of vertically aligned images.
+Now we can use the `align_plots()` function to combine and align all of our finished figures into a list. We would like our images to be vertically aligned (`v` option), and to be aligned by the left axis (`l` option). This function will create a list of vertically aligned images.
 
 ```r
 # Align all images vertically for the top half of the figure
@@ -165,13 +176,13 @@ top_half <- align_plots(fig4a, fig4b, fig4c, boxplot_grid, boxplot_prdm16,
                         axis = 'l')
 ```
 
-Let's give the list components intuitive names for when we align our plot.
+Let's give the list components intuitive names to help in later steps.
 
 ```r
 names(top_half) <- c("fig4a", "fig4b", "fig4c", "fig4d", "fig4e")
 ```
 
-To create the figure, we can use the `plot_grid()` function again. However, we have to have the same number of rows or columns in the data to combine. Since the first row has three images (columns) and the second row has two, we will create the figure row by row, and then combine those rows into the full top half. 
+To create the final figure, we can use the `plot_grid()` function again. However, we have to have the same number of rows or columns in the data to combine. Since the first row has three images (columns) and the second row has two, we will create the figure row by row, and then combine those rows into the full top half. 
 
 In this exercise we are combining our figures to complete a full page. To ensure proper rendering of our image, it is helpful to save it to the final width and and height desired in the final figure. To ensure proper rendering, we will save each of our rows to file with a consistent width of '8.5', but different journals will have different requirements. 
 

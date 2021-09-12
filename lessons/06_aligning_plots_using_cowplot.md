@@ -3,7 +3,7 @@
 In this lesson, we will introduce `cowplot`, a powerful package for aligning and arranging images into publication-quality figures. It's a versatile package with a lot of functionality to ease in the assembly of figures. Our goal in this lesson is to create the top half of the figure as is appears in the [publication](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg).
 
 <p align="center">
-<img src="../img/top_half.png">
+<img src="../img/top_half.png" width = "800">
 </p>
 
 ## Boxplots
@@ -11,7 +11,7 @@ In this lesson, we will introduce `cowplot`, a powerful package for aligning and
 We have already plotted the *Pax6* boxplot to match the publication, while providing some enhancements for the color palettes. However, if we want to create the second row of the figure above, we need to create the other three boxplots for *Tbr2*, *Tubb3*, and *Pdrm16*. 
 
 <p align="center">
-<img src="../img/fig4D_E.jpeg">
+<img src="../img/fig4D_E.jpeg" width = "800">
 </p>
 
 Let's create these plots using similar code as to the *Pax6* boxplot, but modifying the aesthetics to match the corresponding gene data and title. Also, to incorporate all boxplot images into a figure, we need to save them to variables/objects in our environment.
@@ -118,7 +118,7 @@ boxplot_grid
 ```
 
 <p align="center">
-<img src="../img/3_boxplots.png" height="300">
+<img src="../img/3_boxplots.png" width="600">
 </p>
 
 We now have Figure 4D! What if we wanted to save this to file? 
@@ -164,7 +164,7 @@ fig4a
 ```
 
 <p align="center">
-<img src="../img/PP_fig4A.png " height="300">
+<img src="../img/PP_fig4A.png" height="300">
 </p>
 
 Now we can use the `align_plots()` function to combine and align all of our finished figures into a list. We would like our images to be vertically aligned (`v` option), and to be aligned by the left axis (`l` option). This function will create a list of vertically aligned images.
@@ -232,7 +232,7 @@ plot_grid(first_row, second_row,
 ```
 
 <p align="center">
-<img src="../img/top_half.png " height="300">
+<img src="../img/top_half.png" width = "800">
 </p>
 
 > _**NOTE:** Another type of plot alignment is referred to as facetting, that is when you use data from the same data frame to create separate plots based on the values from one of the columns in the data frame. If we had wrangled our data to have the Pax6, Tbr2/Eomes, Tubb3 expression data all together in a single data frame, we could have used the facetting to create separate plots. Here are some examples of [facetting](https://ggplot2.tidyverse.org/reference/facet_grid.html)._

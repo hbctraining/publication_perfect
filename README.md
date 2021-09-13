@@ -53,6 +53,8 @@ Researchers with an intermediate background in R who interested in using R to cr
 | 15:50 - 15:55	| [Pivoting publications](lessons/10_pivoting_publications.md) | Mary |
 | 15:55 - 16:00	| [Wrap-up and exit survey]() | Mary |
 
+[Take-home exercise to create the bar plot figures](lessons/bar_plots_exercise.md)
+
 ## Instructors
 
 * [Mary Piper, PhD](https://bioinformatics.sph.harvard.edu/people/mary-piper)

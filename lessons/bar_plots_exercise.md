@@ -118,9 +118,6 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
     - Change the plot title to be size 9.
 10. Add the term names to the bars by adding a `geom_text()` layer with the same `x` and `y` aesthetics as the `geom_col()` layer. The label aesthetics should map to `term.name`.
 
-
-  < image of altered plot >
-  
   <p align="center">
   <img src="../img/layered_boxplot.png" width="700">
   </p>
@@ -171,7 +168,7 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
     
     
   <p align="center">
-  <img src="../img/" width="700">
+  <img src="../img/refined_boxplot.png" width="700">
   </p>
   
 <details>
@@ -591,3 +588,8 @@ pax6_down_plot <- ggplot(pax6_down_go) +
    </pre></p>
   
 </details>
+
+  <p align="center">
+  <img src="../img/fig4J.png" width="500">
+  </p>
+  

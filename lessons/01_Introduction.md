@@ -115,11 +115,15 @@ The data we have downloaded and read into R above represents the following 3 fil
   <details>
     <summary>More details</summary>
  
-  * 4 replicates for each sample group <br>
-  * 6 sample groups (3 pairs) - `"Pax6:WT", "Pax6:KO"`, `"Tbr2:WT", "Tbr2:KO"`, `"neg:WT", "neg:KO"` <br>
-  * The *Pax6+* samples correspond to **Radial Glia** <br>
-  * The *Tbr2+* samples correspond to **Intermediate Progenitors** <br>
-  * The *neg (Pax6- Tbr2-)* samples correspond to **post-mitotic neurons** <br>
+  * 4 replicates for each sample group 
+ <br>
+  * 6 sample groups (3 pairs) - `"Pax6:WT", "Pax6:KO"`, `"Tbr2:WT", "Tbr2:KO"`, `"neg:WT", "neg:KO"` 
+ <br>
+  * The *Pax6+* samples correspond to **Radial Glia** 
+ <br>
+  * The *Tbr2+* samples correspond to **Intermediate Progenitors** 
+ <br>
+  * The *neg (Pax6- Tbr2-)* samples correspond to **post-mitotic neurons** 
  
   </details>
   

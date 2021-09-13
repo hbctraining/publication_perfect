@@ -499,7 +499,7 @@ pax6_down_plot <- ggplot(pax6_down_go) +
 17. Adapt the code for the Tbr2 up- and downregulated genes.
 
 <details>
-  <summary>Solution Radial glia (Fig4I)</summary>
+  <summary>Solution Intermediate Progenitors (Fig4I)</summary>
   
  <p><pre>
   

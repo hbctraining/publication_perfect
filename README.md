@@ -36,7 +36,7 @@ Researchers with an intermediate background in R who interested in using R to cr
 
 | Time | Topic | Instructor
 :-----------------------|:-------------|:-------------|
-| 09:00 - 09:10	| Introduce the instructors and scope of the workshop | Mary | 
+| 09:00 - 09:10	| [Introduce the instructors and scope of the workshop](https://github.com/hbctraining/publication_perfect/raw/main/BC2_Intro_to_workshop.pdf) | Mary | 
 | 09:10 - 09:30	| [Introduction to data visualization and dataset](lessons/01_Introduction.md) | Mary | 
 | 09:30 - 10:15 | [Basic ggplot2 syntax and creating a basic plot](lessons/02_ggplot2_syntax.md) | Mary | 
 | 10:15 - 10:45	| Coffee break | |

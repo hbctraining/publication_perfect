@@ -81,7 +81,7 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
 4. Create a basic bar plot for the Pax6 up-regulated genes using `geom_col()`. Use the `coord_flip()` function as a layer to get the bars to go horizontally.
 
   <p align="center">
-  <img src="../img/" width="700">
+  <img src="../img/basic_bar_plot.png" width="700">
   </p>
 
 <details>

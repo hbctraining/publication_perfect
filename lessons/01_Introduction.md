@@ -115,23 +115,23 @@ The data we have downloaded and read into R above represents the following 3 fil
   <details>
     <summary>More details</summary>
  
-  * 4 replicates for each sample group
-  * 6 sample groups (3 pairs) - `"Pax6:WT", "Pax6:KO"`, `"Tbr2:WT", "Tbr2:KO"`, `"neg:WT", "neg:KO"`
-  * The *Pax6+* samples correspond to **Radial Glia**
-  * The *Tbr2+* samples correspond to **Intermediate Progenitors**
-  * The *neg (Pax6- Tbr2-)* samples correspond to **post-mitotic neurons**
+  * 4 replicates for each sample group <br>
+  * 6 sample groups (3 pairs) - `"Pax6:WT", "Pax6:KO"`, `"Tbr2:WT", "Tbr2:KO"`, `"neg:WT", "neg:KO"` <br>
+  * The *Pax6+* samples correspond to **Radial Glia** <br>
+  * The *Tbr2+* samples correspond to **Intermediate Progenitors** <br>
+  * The *neg (Pax6- Tbr2-)* samples correspond to **post-mitotic neurons** <br>
  
   </details>
   
-  <p align="center">
-  <img src="../img/metadata.png" width="370">
-  </p>
+<p align="center">
+<img src="../img/metadata.png" width="370">
+</p>
 
 * **pp_all_normalized_counts.csv** - The normalized counts for all the samples. This data frame has 25 columns - in addition to the gene name column, there is a column for each sample.
 
-  <p align="center">
-  <img src="../img/norm_counts.png" height="200">
-  </p>
+<p align="center">
+<img src="../img/norm_counts.png" height="200">
+</p>
   
 ***All the values in this table are continuous except for the gene symbols column.***
 
@@ -148,11 +148,11 @@ The data we have downloaded and read into R above represents the following 3 fil
    
   This data frame has 16 columns - in addition to the gene name column, each of the comparisons have 5 columns of results as described below.
   
-   - `_baseMean`: Mean of the normalized counts for all samples in the comparison, for a given gene
-   - `_log2FoldChange`: log2 fold change between WT and PRDM16 KO
-   - `_pvalue`: Wald test *P* value
-   - `_padj`: Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction)
-   - `_threshold`: Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color.
+   - `_baseMean`: Mean of the normalized counts for all samples in the comparison, for a given gene <br>
+   - `_log2FoldChange`: log2 fold change between WT and PRDM16 KO <br>
+   - `_pvalue`: Wald test *P* value <br>
+   - `_padj`: Benjamini-Hochberg adjusted Wald test *P* value (P-value after multiple test correction) <br>
+   - `_threshold`: Logical vector with `TRUE` values for significantly differentially expressed (DE) genes, `FALSE` for not DE genes, `NA` for untested genes. We will be using this column in the next lecture to color the significant genes one color and the non-significant genes a different color. <br>
 
   </details>
 

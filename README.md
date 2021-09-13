@@ -53,6 +53,14 @@ Researchers with an intermediate background in R who interested in using R to cr
 | 15:50 - 15:55	| [Pivoting publications](lessons/10_pivoting_publications.md) | Mary |
 | 15:55 - 16:00	| [Wrap-up and exit survey]() | Mary |
 
+## Instructors
+
+* [Mary Piper, PhD](https://bioinformatics.sph.harvard.edu/people/mary-piper)
+* [Radhika Khetani, PhD](https://bioinformatics.sph.harvard.edu/people/radhika-khetani)
+* [Meeta Mistry, PhD](https://bioinformatics.sph.harvard.edu/people/meeta-mistry)
+* [Jihe Liu, PhD](https://bioinformatics.sph.harvard.edu/people/jihe-liu)
+* [Will Gammerdinger, PhD](https://bioinformatics.sph.harvard.edu/people/will-gammerdinger)
+
 ### Dataset
 
 Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/raw/master/data/publication_perfect.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.

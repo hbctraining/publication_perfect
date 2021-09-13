@@ -11,7 +11,7 @@ Let's start by exploring how to create the Venn diagram in figure 4H.
 </p>
 
   
-A Venn diagram compares two or more lists, and by nature is categoric. If we use the [Data to Viz resource](https://www.data-to-viz.com), we can navigate to the `Categoric` data, and under 'Two independent lists' we find the Venn diagram. Clicking on the Venn diagram icon will open up a pop up window with a breif description of Venn diagrams. At the bottom of the pop up page, find the link to the "dedicated page"; explore the [dedicated page](https://www.data-to-viz.com/graph/venn.html).
+A Venn diagram compares two or more lists, and by nature is categoric. If we use the [Data to Viz resource](https://www.data-to-viz.com), we can navigate to the `Categoric` data, and under 'Two independent lists' we find the Venn diagram. Clicking on the Venn diagram icon will open up a pop up window with a brief description of Venn diagrams. At the bottom of the pop up page, find the link to the "dedicated page"; explore the [dedicated page](https://www.data-to-viz.com/graph/venn.html).
 
 <p align="center">
 <img src="../img/dedicated_page.png" height="400">
@@ -85,7 +85,6 @@ Below we provide a skeleton of the publication-quality `venn.diagram` code. The 
 # Up-regulated genes
 venn.diagram(x = up, 
              filename = "results/venn_up.png",
-             category.names = c("PAX6" , "TBR2"),
              output = TRUE,
              main = "Overlap of up-regulated genes",
              main.fontfamily = "sans",
@@ -99,6 +98,7 @@ venn.diagram(x = up,
              fill = ,
              cex = 0.5,
              fontfamily = "sans",
+             category.names = c("PAX6" , "TBR2"),
              cat.cex = 0.7,
              cat.fontface = "bold",
              cat.default.pos = "outer",
@@ -122,7 +122,6 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
     # Down-regulated genes
     venn.diagram(x = down, 
                  filename = "results/venn_down.png",
-                 category.names = c("PAX6" , "TBR2"),
                  output = TRUE,
                  main = "Overlap of down-regulated genes",
                  main.fontfamily = "sans",
@@ -136,6 +135,7 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
                  fill = c("salmon", "lightblue"),
                  cex = 0.5,
                  fontfamily = "sans",
+                 category.names = c("PAX6" , "TBR2"),
                  cat.cex = 0.7,
                  cat.fontface = "bold",
                  cat.default.pos = "outer",

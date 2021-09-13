@@ -122,7 +122,7 @@ Now that we have learned the basics of ggplot2 and how to combine different imag
   < image of altered plot >
   
   <p align="center">
-  <img src="../img/" width="700">
+  <img src="../img/layered_boxplot.png" width="700">
   </p>
 
 <details>

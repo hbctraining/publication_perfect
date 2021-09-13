@@ -56,10 +56,10 @@ Researchers with an intermediate background in R who interested in using R to cr
 ## Instructors
 
 * [Mary Piper, PhD](https://bioinformatics.sph.harvard.edu/people/mary-piper)
-* [Radhika Khetani, PhD](https://bioinformatics.sph.harvard.edu/people/radhika-khetani)
 * [Meeta Mistry, PhD](https://bioinformatics.sph.harvard.edu/people/meeta-mistry)
 * [Jihe Liu, PhD](https://bioinformatics.sph.harvard.edu/people/jihe-liu)
 * [Will Gammerdinger, PhD](https://bioinformatics.sph.harvard.edu/people/will-gammerdinger)
+* [Radhika Khetani, PhD](https://bioinformatics.sph.harvard.edu/people/radhika-khetani)
 
 ### Dataset
 

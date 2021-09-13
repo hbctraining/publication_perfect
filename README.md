@@ -63,6 +63,12 @@ Researchers with an intermediate background in R who interested in using R to cr
 * [Will Gammerdinger, PhD](https://bioinformatics.sph.harvard.edu/people/will-gammerdinger)
 * [Radhika Khetani, PhD](https://bioinformatics.sph.harvard.edu/people/radhika-khetani)
 
+## Resources
+
+* [ggplot2 free online book](https://ggplot2-book.org/index.html)
+* [From Data to Viz online resource](https://www.data-to-viz.com)
+* [Tidyverse ggplot2 online reference](https://ggplot2.tidyverse.org/reference/index.html)
+
 ### Dataset
 
 Download the R project and data for this workshop [here](https://github.com/hbctraining/Training-modules/raw/master/data/publication_perfect.zip). Decompress and move the folder to the location on your computer where you would like to perform the analysis.

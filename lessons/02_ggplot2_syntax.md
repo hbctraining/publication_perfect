@@ -8,7 +8,7 @@ Approximate time: 60 minutes
 
 ## Learning Objectives 
 
-* Explain the syntax to utilize the "ggplot2" package to visualize data.
+- Customize a plot's attributes, such as colors, point size and axes labels using `ggplot2`  
 
 # Graphical syntax of `ggplot2`
 

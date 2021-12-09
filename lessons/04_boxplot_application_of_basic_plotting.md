@@ -6,6 +6,10 @@ date: "Friday, July 16, 2021"
 
 Approximate time: 60 minutes
 
+## Learning Objective
+
+- Create a custom boxplot using `ggplot2` 
+
 # Application of plotting basics
 
 We are going to use what we learned about `ggplot2` syntax and consistent themes to create the following boxplots from the paper:

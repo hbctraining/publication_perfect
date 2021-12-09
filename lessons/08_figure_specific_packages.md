@@ -1,3 +1,6 @@
+## Learning Objective
+- Implement external packages to create Venn diagrams and heatmaps 
+
 # External packages for figure creation
 
 We have discovered that `ggplot2` has incredible functionality and versatility; however, it is not always the best choice for all graphics. There are a plethora of different packages that specialize in particular types of figures. The [Data to Viz resource](https://www.data-to-viz.com) provides popular packages for specialized plots along with the code to create them. 

@@ -1,3 +1,7 @@
+## Learnign Objectives
+- Customize the scales and labels for a plot
+- Implement accessible color schemes using `RColorBrewer` and `Viridis` packages
+
 # Customizing plots using scales and colors
 
 Thus far, when plotting with `ggplot2`, we have observed default values incorporated in the aesthetic mappings. For example, by default in our boxplot,  the column values in our data frame become the x- and y-axis labels and the colors assigned default to a standard set used by `ggplot2`. 

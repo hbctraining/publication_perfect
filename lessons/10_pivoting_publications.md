@@ -1,3 +1,7 @@
+## Learning Objective
+
+- Create personal themes for figures to allow for flexible pivoting between journals
+
 # Pivoting Publications
 
 When submitting a manuscript for publication, we often aim for the highest impact journal to which we feel there is a decent probability of acceptance. However, often our manuscripts are not accepted at the first choice journal, and we need to pivot the format and figures to meet the guidelines of the next chosen journal. We will discuss coding features which can ease the resubmission process, many of which we have introduced previously, including:

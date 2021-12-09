@@ -8,7 +8,7 @@ Approximate time: 20 minutes
 
 ## Learning Objectives 
 
-* Explain how to create custom themes to facilitate consistency between plots.
+* Create custom themes to facilitate consistency between plots
 
 # Consistent formatting using custom themes
 

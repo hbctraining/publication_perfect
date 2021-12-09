@@ -1,3 +1,6 @@
+## Learning Objective
+- Merge figures together to create a final, multi-paneled figure
+
 ## Creating the final figure
 
 Now we have created all graphics present in our published figure. We can use `cowplot` to add them together. Sometimes it is helpful to save the images for each of the rows to file with each being the same width so that the sizes in the figure are all the same. Therefore, our workflow will be:

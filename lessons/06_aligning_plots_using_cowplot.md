@@ -1,3 +1,6 @@
+## Learning Objective
+- Merge figures together to create a multipanel figure using `cowplot`
+
 # Aligning plots using cowplot
 
 In this lesson, we will introduce `cowplot`, a powerful package for aligning and arranging images into publication-quality figures. It's a versatile package with a lot of functionality to ease in the assembly of figures. Our goal in this lesson is to create the top half of the figure as is appears in the [publication](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/728f6fe8-d0ac-4893-ac8d-535469a2a1d1/gr4.jpg).

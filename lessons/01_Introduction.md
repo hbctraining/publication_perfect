@@ -1,3 +1,7 @@
+## Learning objectives
+- Explain the goals of this workshop
+- Describe the dataset being used for the workshop
+
 ## Workshop overview
 
 Novel and exciting discoveries in scientific research require extensive labor and dedication, but even when we have made scientific revelations, it is not meaningful unless we can communicate those breakthroughs with other members of our community. A primary means of communicating our findings is through the visualization of our results. Yet, one of the biggest challenges in disseminating research findings is **visualizing the results in a way that is meaningful, easy to interpret, aesthetically pleasing, and reproducible**. In this workshop, we will provide the tools and resources to aid in **developing visualizations most appropriate for your data and the methods to combine those visualizations into publication figures**.

@@ -1,4 +1,4 @@
-## Learnign Objectives
+## Learning Objectives
 - Customize the scales and labels for a plot
 - Implement accessible color schemes using `RColorBrewer` and `Viridis` packages
 

@@ -87,38 +87,36 @@ This has successfully created a Venn diagram, but this is not exactly a publicat
 ?ggvenn
 ```
 
-Running the examples from the help page can be quite illuminating when exploring the range of possibilities.
+Running the examples from the help page can be quite illuminating when exploring the range of possibilities. Note that since ggvenn is based in ggplot we can add layers just like any other plot. Let's add the title that we want "Overlap of up-regulated genes"
+
+```r
+ggvenn(up) + ggtitle("Overlap of up-regulated genes")
+```
+
+To make it look nice we have to add hjust and vjust parameters as we have before.
+
+```r
+ggvenn(up) + ggtitle("Overlap of up-regulated genes") +
+  theme(plot.title = element_text(hjust = 0.5, vjust = 10))
+```
+
 
 ***
 **Exercise**
 
-Below we provide a skeleton of the publication-quality `venn.diagram` code. The value of these arguments - `col`, `fill`, `cat.pos`, `cat.col` - are left empty. Please fill in those values so that the final figure looks similar to that in the paper (see below).
+Below we provide a skeleton of the publication-quality `venn.diagram` code. The value of these arguments - `fill_color`, `set_name_color`, `set_name_size`, `text` - are left empty. Please fill in those values so that the final figure looks similar to that in the paper (see below).
 
 ```r
 # Up-regulated genes
-venn.diagram(x = up, 
-             filename = "results/venn_up.png",
-             output = TRUE,
-             main = "Overlap of up-regulated genes",
-             main.fontfamily = "sans",
-             main.cex = 0.75,
-             height = 600 , 
-             width = 600 , 
-             resolution = 300,
-             compression = "lzw",
-             lwd = 2,
-             col= ,
-             fill = ,
-             cex = 0.5,
-             fontfamily = "sans",
-             category.names = c("PAX6" , "TBR2"),
-             cat.cex = 0.7,
-             cat.fontface = "bold",
-             cat.default.pos = "outer",
-             cat.pos = ,
-             cat.dist = c(0.05,0.097),
-             cat.fontfamily = "sans",
-             cat.col = )
+ggvenn(up,
+stroke_color="grey",
+show_percentage = FALSE,
+fill_color=c("salmon", "lightblue"),
+set_name_color = c("salmon", "lightblue"),
+set_name_size = 8,
+text_size = 6) +
+ggtitle("Overlap of up-regulated genes") +
+theme(plot.title = element_text(hjust = 0.5, vjust = 10))
 ```
 
 <p align="center">
@@ -133,29 +131,14 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
 
   <p><pre>
     # Down-regulated genes
-    venn.diagram(x = down, 
-                 filename = "results/venn_down.png",
-                 output = TRUE,
-                 main = "Overlap of down-regulated genes",
-                 main.fontfamily = "sans",
-                 main.cex = 0.75,
-                 height = 600 , 
-                 width = 600 , 
-                 resolution = 300,
-                 compression = "lzw",
-                 lwd = 2,
-                 col= "gray",
-                 fill = c("salmon", "lightblue"),
-                 cex = 0.5,
-                 fontfamily = "sans",
-                 category.names = c("PAX6" , "TBR2"),
-                 cat.cex = 0.7,
-                 cat.fontface = "bold",
-                 cat.default.pos = "outer",
-                 cat.pos = 0,
-                 cat.dist = c(0.06,0.097),
-                 cat.fontfamily = "sans",
-                 cat.col = c("salmon", "lightblue"))
+    ggvenn(down,
+    stroke_color="grey" ,
+    show_percentage = FALSE, 
+    fill_color=c("salmon", "lightblue"),
+    set_name_color = c("salmon", "lightblue"), 
+    set_name_size = 8, text_size = 6) + 
+    ggtitle("Overlap of up-regulated genes") +
+    theme(plot.title = element_text(hjust = 0.5, vjust = 10))
   </pre></p>
 </details>
 

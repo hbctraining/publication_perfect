@@ -23,10 +23,22 @@ A Venn diagram compares two or more lists, and by nature is categoric. If we use
 
 This page has a lot of nice information about Venn diagrams, as well as, suggestions for when to use them (e.g. generally not recommended for comparison of more than 3 sets - use [upset plots](https://jku-vds-lab.at/tools/upset/) instead). Since we are comparing two sets of data for each visualization (e.g. Pax6 and Tbr2-expressing samples), a Venn diagram is a recommended method.
 
-Let's expand the 'Code', and note the package used to create the Venn diagrams is `VennDiagram`. We will use this package, as well. To create the Venn diagram, we need to generate our sets. We can subset our data for the `Pax6`- and `Tbr2`-expressing samples to only include those genes that are significant with `threshold` equal to `TRUE` and that are up-regulated using the `log2FoldChange` values > 0.
+Let's expand the 'Code', and note the package used to create the Venn diagrams is `VennDiagram`. Instead of using this package we will use the more user-friendly [ggvenn](https://github.com/yanlinlin82/ggvenn). Let's go ahead and intsall this package
 
 ```r
-library(VennDiagram)
+install.packages("ggvenn") # install via CRAN
+
+##OR
+
+if (!require(devtools)) install.packages("devtools")
+devtools::install_github("yanlinlin82/ggvenn") # install via GitHub (for latest version)
+```
+
+
+To create the Venn diagram, we need to generate our sets. We can subset our data for the `Pax6`- and `Tbr2`-expressing samples to only include those genes that are significant with `threshold` equal to `TRUE` and that are up-regulated using the `log2FoldChange` values > 0.
+
+```r
+library(ggvenn)
 
 # Up-regulated
 up1 <- results[which(results$pax6_threshold & results$pax6_log2FoldChange > 0),]
@@ -65,16 +77,14 @@ down <- list(
 Now to create a simple Venn diagram, we can use the `venn.diagram()` function from the `VennDiagram` package to create the graphics.
 
 ```r
-venn.diagram(x = up, 
-             filename = "results/venn_up.png",
-             output = TRUE)
+ggvenn(up)
 ```
 
-This has successfully created a Venn diagram, but this is not exactly a publication-quality figure. A nice feature of the `VennDiagram` package is the ability for extensive customization of the graphic. Let's explore all of the different arguments available for our Venn diagram.
+This has successfully created a Venn diagram, but this is not exactly a publication-quality figure. Most obviously, the original figure did not have these percentages. Note that these percentages are of the total combined list rather than each set. Let's see what we can do with ggvenn
 
 ```r
 # Check customizable options for diagram
-?venn.diagram
+?ggvenn
 ```
 
 Running the examples from the help page can be quite illuminating when exploring the range of possibilities.

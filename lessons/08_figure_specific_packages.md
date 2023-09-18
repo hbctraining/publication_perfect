@@ -64,63 +64,90 @@ length(which(row.names(down1) %in% row.names(down2)))
 To create the figures we first need to change the plots into lists. 
 
 ```r
-# Create lists for comparison
-up <- list(
-  PAX6 = rownames(up1),
-  TBR2 = rownames(up2))
+# combine results from datasets for full list of genes
+up <- union(up1, up2)
+down <- union(down1, down2)
 
-down <- list(
-  PAX6 = rownames(down1),
-  TBR2 = rownames(down2))
+# Create dfs for comparison
+
+data_up <- data.frame(value = rownames(up),
+                        PAX6 = FALSE,
+                        TBR2 = FALSE)
+data_up$PAX6 <- data_up$value %in% rownames(up1)
+data_up$TBR2 <- data_up$value %in% rownames(up2)
+
+
+data_down <- data.frame(value = rownames(down),
+                        PAX6 = FALSE,
+                        TBR2 = FALSE)
+data_down$PAX6 <- data_down$value %in% rownames(down1)
+data_down$TBR2 <- data_down$value %in% rownames(down2)
 ```
 
-Now to create a simple Venn diagram, we can use the `venn.diagram()` function from the `VennDiagram` package to create the graphics.
+Now to create a simple Venn diagram, we can use the `venn.diagram()` function from the `ggvenn` package to create the graphics.
 
 ```r
-ggvenn(up)
+ggvenn(data_up)
 ```
 
-This has successfully created a Venn diagram, but this is not exactly a publication-quality figure. Most obviously, the original figure did not have these percentages. Note that these percentages are of the total combined list rather than each set. Let's see what we can do with ggvenn
+This has successfully created a Venn diagram, but this is not exactly a publication-quality figure. Most obviously, the original figure did not have these percentages. Note that these percentages are of the total combined list rather than each set. Let's see what we can do with ggvenn.
 
 ```r
 # Check customizable options for diagram
 ?ggvenn
 ```
 
-Running the examples from the help page can be quite illuminating when exploring the range of possibilities. Note that since ggvenn is based in ggplot we can add layers just like any other plot. Let's add the title that we want "Overlap of up-regulated genes"
+Running the examples from the help page can be quite illuminating when exploring the range of possibilities. Note that since ggvenn is based in ggplot we can add layers just like any other plot. 
+However, to do this properly we have to add more traditional ggplot commands. Here is our above graph with full ggplot code:
 
 ```r
-ggvenn(up) + ggtitle("Overlap of up-regulated genes")
+ggplot(data_up, aes(A=PAX6, B=TBR2)) + geom_venn() + theme_void()
 ```
+
+`geom_venn()` comes from the `ggvenn` package. Note that for most uses the simple ggvenn() command should suffice but to add addition layers such as a title we need to use the more complex syntax.  
+
+**theme_void() is necessary here to remove all grids, axes, and coloring from the background.**
+
+Let's add the title that we want "Overlap of up-regulated genes"
+
+```r
+ggplot(data_up, aes(A=PAX6, B=TBR2)) + geom_venn() + theme_void() + ggtitle("Overlap of up-regulated genes")
+```
+
 
 To make it look nice we have to add hjust and vjust parameters as we have before.
 
 ```r
-ggvenn(up) + ggtitle("Overlap of up-regulated genes") +
-  theme(plot.title = element_text(hjust = 0.5, vjust = 10))
+ggplot(data_up, aes(A=PAX6, B=TBR2)) +
+geom_venn() +
+theme_void() +
+ggtitle("Overlap of up-regulated genes") +
+theme(plot.title = element_text(hjust = 0.5)) 
 ```
 
 
 ***
 **Exercise**
 
-Below we provide a skeleton of the publication-quality `venn.diagram` code. The value of these arguments - `fill_color`, `set_name_color`, `set_name_size`, `text` - are left empty. Please fill in those values so that the final figure looks similar to that in the paper (see below).
+Below we provide a skeleton of the publication-quality `venn.diagram` code. The value of these arguments - `fill_color`, `set_name_color`, `set_name_size`, `text_size` - are left empty. Please fill in those values so that the final figure looks similar to that in the paper (see below).
 
 ```r
 # Up-regulated genes
-ggvenn(up,
+ggplot(data_up, aes(A=PAX6, B=TBR2)) +
+geom_venn(
 stroke_color="grey",
 show_percentage = FALSE,
-fill_color=c("salmon", "lightblue"),
-set_name_color = c("salmon", "lightblue"),
-set_name_size = 8,
-text_size = 6) +
+fill_color= ,
+set_name_color =  ,
+set_name_size = ,
+text_size = ) +
+theme_void() + 
 ggtitle("Overlap of up-regulated genes") +
-theme(plot.title = element_text(hjust = 0.5, vjust = 10))
+theme(plot.title = element_text(hjust = 0.5))
 ```
 
 <p align="center">
-<img src="../img/venn_up.png" height="300">
+<img src="../img/up_regulated_genes.png" height="300">
 </p>
 
 ***
@@ -131,20 +158,47 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
 
   <p><pre>
     # Down-regulated genes
-    ggvenn(down,
-    stroke_color="grey" ,
-    show_percentage = FALSE, 
-    fill_color=c("salmon", "lightblue"),
-    set_name_color = c("salmon", "lightblue"), 
-    set_name_size = 8, text_size = 6) + 
-    ggtitle("Overlap of up-regulated genes") +
-    theme(plot.title = element_text(hjust = 0.5, vjust = 10))
+ggplot(data_down, aes(A=PAX6, B=TBR2)) +
+geom_venn(
+stroke_color="grey",
+show_percentage = FALSE,
+fill_color=c("salmon", "lightblue"),
+set_name_color = c("salmon", "lightblue"),
+set_name_size = 8,
+text_size = 6) +
+theme_void() + 
+ggtitle("Overlap of down-regulated genes") +
+theme(plot.title = element_text(hjust = 0.5))
   </pre></p>
 </details>
 
 <p align="center">
-<img src="../img/venn_down.png" height="300">
+<img src="../img/down_regulated_genes.png" height="300">
 </p>
+
+## Output as a pdf
+
+We may want to output our visualization as a pdf or png. This is very easy using the plotting device function in R. We simply open the plotting device, either `pdf()` or `png()` plot our figure and then close the plotting device with `dev.off()`
+
+Below is an example for our down-regulated genes with a png output
+
+```r
+png("down_regulated_genes.png")
+ggplot(data_down, aes(A=PAX6, B=TBR2)) +
+  geom_venn(
+    stroke_color="grey",
+    show_percentage = FALSE,
+    fill_color=c("salmon", "lightblue"),
+    set_name_color = c("salmon", "lightblue"),
+    set_name_size = 8,
+    text_size = 6) +
+  theme_void() + 
+  ggtitle("Overlap of down-regulated genes") +
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+```
+
+**Note that these outputs can be highly customized check `?pdf` and `?png` for details. Also note that other file types can be output.**
 
 ***
 

@@ -23,7 +23,7 @@ A Venn diagram compares two or more lists, and by nature is categoric. If we use
 
 This page has a lot of nice information about Venn diagrams, as well as, suggestions for when to use them (e.g. generally not recommended for comparison of more than 3 sets - use [upset plots](https://jku-vds-lab.at/tools/upset/) instead). Since we are comparing two sets of data for each visualization (e.g. Pax6 and Tbr2-expressing samples), a Venn diagram is a recommended method.
 
-Let's expand the 'Code', and note the package used to create the Venn diagrams is `VennDiagram`. Instead of using this package we will use the more user-friendly [ggvenn](https://github.com/yanlinlin82/ggvenn). Let's go ahead and intsall this package
+To make our Venn diagrams we will use [ggvenn](https://github.com/yanlinlin82/ggvenn). Let's go ahead and install this package.
 
 ```r
 install.packages("ggvenn") # install via CRAN
@@ -84,7 +84,7 @@ data_down$PAX6 <- data_down$value %in% rownames(down1)
 data_down$TBR2 <- data_down$value %in% rownames(down2)
 ```
 
-Now to create a simple Venn diagram, we can use the `venn.diagram()` function from the `ggvenn` package to create the graphics.
+Now to create a simple Venn diagram, we can use the `ggvenn()` function from the `ggvenn` package to create the graphics.
 
 ```r
 ggvenn(data_up)
@@ -98,13 +98,14 @@ This has successfully created a Venn diagram, but this is not exactly a publicat
 ```
 
 Running the examples from the help page can be quite illuminating when exploring the range of possibilities. Note that since ggvenn is based in ggplot we can add layers just like any other plot. 
+
 However, to do this properly we have to add more traditional ggplot commands. Here is our above graph with full ggplot code:
 
 ```r
 ggplot(data_up, aes(A=PAX6, B=TBR2)) + geom_venn() + theme_void()
 ```
 
-`geom_venn()` comes from the `ggvenn` package. Note that for most uses the simple ggvenn() command should suffice but to add addition layers such as a title we need to use the more complex syntax.  
+`geom_venn()` comes from the `ggvenn` package. Note that for most uses, the simple ggvenn() command should suffice but to add additional layers such as a title we need to use the more complex syntax.  
 
 **theme_void() is necessary here to remove all grids, axes, and coloring from the background.**
 
@@ -129,7 +130,7 @@ theme(plot.title = element_text(hjust = 0.5))
 ***
 **Exercise**
 
-Below we provide a skeleton of the publication-quality `venn.diagram` code. The value of these arguments - `fill_color`, `set_name_color`, `set_name_size`, `text_size` - are left empty. Please fill in those values so that the final figure looks similar to that in the paper (see below).
+Below we provide a skeleton of the publication-quality `geom_venn` code. The value of these arguments - `fill_color`, `set_name_color`, `set_name_size`, `text_size` - are left empty. Please fill in those values so that the final figure looks similar to that in the paper (see below).
 
 ```r
 # Up-regulated genes
@@ -178,7 +179,7 @@ theme(plot.title = element_text(hjust = 0.5))
 
 ## Output as a pdf
 
-We may want to output our visualization as a pdf or png. This is very easy using the plotting device function in R. We simply open the plotting device, either `pdf()` or `png()` plot our figure and then close the plotting device with `dev.off()`
+We may want to output our visualization as a pdf or png. This is very easy using the plotting device function in R. We simply open the plotting device, either `pdf()` or `png()`, plot our figure and then close the plotting device with `dev.off()`
 
 Below is an example for our down-regulated genes with a png output
 

@@ -3,7 +3,7 @@
 
 # External packages for figure creation
 
-We have discovered that `ggplot2` has incredible functionality and versatility; however, it is not always the best choice for all graphics. There are a plethora of different packages that specialize in particular types of figures. The [Data to Viz resource](https://www.data-to-viz.com) provides popular packages for specialized plots along with the code to create them. 
+We have discovered that `ggplot2` has incredible functionality and versatility; however, there are some examples of visualization that are either not possible at all or require some assistance from external packages. There are a plethora of different packages that specialize in particular types of figures. The [Data to Viz resource](https://www.data-to-viz.com) provides popular packages for specialized plots along with the code to create them. 
 
 ## Visualizing overlaps of sets using Venn diagrams
 
@@ -21,12 +21,27 @@ A Venn diagram compares two or more lists, and by nature is categoric. If we use
 </p>
 
 
-This page has a lot of nice information about Venn diagrams, as well as, suggestions for when to use them (e.g. generally not recommended for comparison of more than 3 sets - use [upset plots](https://jku-vds-lab.at/tools/upset/) instead). Since we are comparing two sets of data for each visualization (e.g. Pax6 and Tbr2-expressing samples), a Venn diagram is a recommended method.
+**This page has a lot of nice information about Venn diagrams**, as well as, suggestions for when to use them (e.g. generally not recommended for comparison of more than 3 sets - use [upset plots](https://jku-vds-lab.at/tools/upset/) instead). Since we are comparing two sets of data for each visualization (e.g. Pax6 and Tbr2-expressing samples), a Venn diagram is a recommended method.
 
-Let's expand the 'Code', and note the package used to create the Venn diagrams is `VennDiagram`. We will use this package, as well. To create the Venn diagram, we need to generate our sets. We can subset our data for the `Pax6`- and `Tbr2`-expressing samples to only include those genes that are significant with `threshold` equal to `TRUE` and that are up-regulated using the `log2FoldChange` values > 0.
+If we expand the 'Code', we see that the package used to create the Venn diagrams is `VennDiagram`. Since this is the package used to create the figure in the paper, we will provide code to demonstrate how it was done [later in the lesson](). However, in the lesson **we will focus on the `ggvenn` package.** The ggvenn package provides an **easy-to-use way to draw Venn diagrams using the standard ggplot2 syntax and layout**. The package hence makes it possible to match the design and style of Venn diagrams to other graphics created by the ggplot2 package. 
+
+First, we will need to install the package and load the library:
 
 ```r
-library(VennDiagram)
+install.packages("ggvenn") # install via CRAN
+
+##OR
+
+if (!require(devtools)) install.packages("devtools")
+devtools::install_github("yanlinlin82/ggvenn") # install via GitHub (for latest version)
+
+# Load library
+library(ggvenn)
+```
+
+To create the Venn diagram, we need to generate our sets. We can subset our data for the `Pax6`- and `Tbr2`-expressing samples to only include those genes that are significant with `threshold` equal to `TRUE` and that are up-regulated using the `log2FoldChange` values > 0.
+
+```r
 
 # Up-regulated
 up1 <- results[which(results$pax6_threshold & results$pax6_log2FoldChange > 0),]
@@ -49,73 +64,88 @@ length(which(row.names(up1) %in% row.names(up2)))
 length(which(row.names(down1) %in% row.names(down2)))
 ```
 
-To create the figures we first need to change the plots into lists. 
+Now, to create the figures we first need to take the union of genes for each direction of change and create dataframes. The row names correspond to gene identifiers, and we add two columns of logical values for PAX6 and TBR2.
 
 ```r
-# Create lists for comparison
-up <- list(
-  PAX6 = rownames(up1),
-  TBR2 = rownames(up2))
+# Combine results from datasets and remove duplicated values
+up <- union(up1, up2)
+down <- union(down1, down2)
 
-down <- list(
-  PAX6 = rownames(down1),
-  TBR2 = rownames(down2))
+# Create dataframe for comparison of up-regulated genes
+data_up <- data.frame(value = rownames(up),
+                        PAX6 = FALSE,
+                        TBR2 = FALSE)
+data_up$PAX6 <- data_up$value %in% rownames(up1)
+data_up$TBR2 <- data_up$value %in% rownames(up2)
+
+# Create dataframe for comparison of down-regulated genes
+data_down <- data.frame(value = rownames(down),
+                        PAX6 = FALSE,
+                        TBR2 = FALSE)
+data_down$PAX6 <- data_down$value %in% rownames(down1)
+data_down$TBR2 <- data_down$value %in% rownames(down2)
 ```
 
-Now to create a simple Venn diagram, we can use the `venn.diagram()` function from the `VennDiagram` package to create the graphics.
+Now to create a simple Venn diagram, we can use the ggvenn() function from the ggvenn package
 
 ```r
-venn.diagram(x = up, 
-             filename = "results/venn_up.png",
-             output = TRUE)
-```
-
-This has successfully created a Venn diagram, but this is not exactly a publication-quality figure. A nice feature of the `VennDiagram` package is the ability for extensive customization of the graphic. Let's explore all of the different arguments available for our Venn diagram.
-
-```r
-# Check customizable options for diagram
-?venn.diagram
-```
-
-Running the examples from the help page can be quite illuminating when exploring the range of possibilities.
-
-***
-**Exercise**
-
-Below we provide a skeleton of the publication-quality `venn.diagram` code. The value of these arguments - `col`, `fill`, `cat.pos`, `cat.col` - are left empty. Please fill in those values so that the final figure looks similar to that in the paper (see below).
-
-```r
-# Up-regulated genes
-venn.diagram(x = up, 
-             filename = "results/venn_up.png",
-             output = TRUE,
-             main = "Overlap of up-regulated genes",
-             main.fontfamily = "sans",
-             main.cex = 0.75,
-             height = 600 , 
-             width = 600 , 
-             resolution = 300,
-             compression = "lzw",
-             lwd = 2,
-             col= ,
-             fill = ,
-             cex = 0.5,
-             fontfamily = "sans",
-             category.names = c("PAX6" , "TBR2"),
-             cat.cex = 0.7,
-             cat.fontface = "bold",
-             cat.default.pos = "outer",
-             cat.pos = ,
-             cat.dist = c(0.05,0.097),
-             cat.fontfamily = "sans",
-             cat.col = )
+ggvenn(data_up)
 ```
 
 <p align="center">
-<img src="../img/venn_up.png" height="300">
+<img src="../img/ggvenn_vanilla.png" height="300">
+</p>
+
+
+This has successfully created a Venn diagram, but **this is not exactly a publication-quality figure**. Most obviously, there are changes required to make ot more closely resemble the original figure.  Let's explore what we can do with ggvenn.
+
+First, note that since ggvenn is based in ggplot we can add it as a layer just like any other plot. **The function `geom_venn()` comes from the ggvenn package**. Note that for most uses, the simple ggvenn() command should suffice but to add/modify from the default figure we plotted earlier we need to add arguments and/or additional layers.
+
+```r
+ggplot(data_up, aes(A=PAX6, B=TBR2)) +
+   geom_venn() +
+   theme_void() +
+   ggtitle("Overlap of up-regulated genes") +
+   theme(plot.title = element_text(hjust = 0.5))
+```
+
+_NOTE: theme_void() is necessary here to remove all grids, axes, and coloring from the background._
+
+***
+
+**Exercise**
+
+Below we provide a skeleton of the publication-quality `geom_venn` code. The value of the following arguments are left empty:
+
+* `fill_color`
+* `set_name_color`
+* `set_name_size`
+* `text_size`
+
+Please fill in those values so that the final figure looks similar to that in the paper (see below).
+
+```r
+# Up-regulated genes
+ggplot(data_up, aes(A=PAX6, B=TBR2)) +
+  geom_venn(
+        stroke_color="grey",
+        show_percentage = FALSE,
+        auto_scale = TRUE,
+        fill_color= ,
+        set_name_color =  ,
+        set_name_size = ,
+        text_size = ) +
+  theme_void() + 
+  ggtitle("Overlap of up-regulated genes") +
+  theme(plot.title = element_text(hjust = 0.5, size = rel(1.5)))
+```
+
+<p align="center">
+<img src="../img/ggvenn_up.png" height="300">
 </p>
 
 ***
+
 Similarly, we could plot the venn diagram for the down-regulated genes.
 
 <details>
@@ -123,34 +153,24 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
 
   <p><pre>
     # Down-regulated genes
-    venn.diagram(x = down, 
-                 filename = "results/venn_down.png",
-                 output = TRUE,
-                 main = "Overlap of down-regulated genes",
-                 main.fontfamily = "sans",
-                 main.cex = 0.75,
-                 height = 600 , 
-                 width = 600 , 
-                 resolution = 300,
-                 compression = "lzw",
-                 lwd = 2,
-                 col= "gray",
-                 fill = c("salmon", "lightblue"),
-                 cex = 0.5,
-                 fontfamily = "sans",
-                 category.names = c("PAX6" , "TBR2"),
-                 cat.cex = 0.7,
-                 cat.fontface = "bold",
-                 cat.default.pos = "outer",
-                 cat.pos = 0,
-                 cat.dist = c(0.06,0.097),
-                 cat.fontfamily = "sans",
-                 cat.col = c("salmon", "lightblue"))
+    ggplot(data_down, aes(A=PAX6, B=TBR2)) +
+     geom_venn(
+        stroke_color="grey",
+        show_percentage = FALSE,
+        auto_scale = TRUE,
+        fill_color = c("salmon", "lightblue"),
+        set_name_color = c("salmon", "lightblue"),
+        set_name_size = 5,
+        text_size = 4) +
+    theme_void() + 
+    ggtitle("Overlap of down-regulated genes") +
+    theme(plot.title = element_text(hjust = 0.5, size = rel(1.5)))
+                 
   </pre></p>
 </details>
 
 <p align="center">
-<img src="../img/venn_down.png" height="300">
+<img src="../img/ggvenn_down.png" height="300">
 </p>
 
 ***

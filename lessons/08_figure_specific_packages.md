@@ -23,9 +23,9 @@ A Venn diagram compares two or more lists, and by nature is categoric. If we use
 
 **This page has a lot of nice information about Venn diagrams**, as well as, suggestions for when to use them (e.g. generally not recommended for comparison of more than 3 sets - use [upset plots](https://jku-vds-lab.at/tools/upset/) instead). Since we are comparing two sets of data for each visualization (e.g. Pax6 and Tbr2-expressing samples), a Venn diagram is a recommended method.
 
-If we expand the 'Code', we see that the package used to create the Venn diagrams is `VennDiagram`. Since this is the package used to create the figure in the paper, we will provide code to demonstrate how it was done [later in the lesson](). 
+If we expand the 'Code', we see that the package used to create the Venn diagrams is `VennDiagram`. Since this is the package used to create the figure in the paper, we will provide code to demonstrate how it was done later in the lesson. 
 
-However, in the lesson **we will focus on the `ggvenn` package.** The `ggvenn` package provides an **easy-to-use way to draw Venn diagrams using the standard ggplot2 syntax and layout**. The package hence makes it possible to match the design and style of Venn diagrams to other graphics created by the ggplot2 package. 
+**We will focus on the `ggvenn` package**, which provides an easy-to-use way to draw Venn diagrams using the standard ggplot2 syntax and layout. The package hence makes it possible to **match the design and style of Venn diagrams to other graphics created by the ggplot2 package**. 
 
 First, we will need to install the package and load the library:
 
@@ -99,9 +99,9 @@ ggvenn(data_up)
 </p>
 
 
-This has successfully created a Venn diagram, but **this is not exactly a publication-quality figure**. Most obviously, there are changes required to make it more closely resemble the original figure.  Let's explore what we can do with ggvenn.
+This has successfully created a Venn diagram, but **this is not exactly a publication-quality figure**. Most obviously, there are **changes required** to make it more closely resemble the original figure.  Let's explore what we can do with ggvenn.
 
-First, note that since ggvenn is based in ggplot we can add it as a layer just like any other plot. **The function `geom_venn()` comes from the ggvenn package**. Note that for most uses, the simple ggvenn() command should suffice but since we have specific changes to replicate the image in the paper, we need to add arguments and/or additional layers.
+First, note that since ggvenn is based in ggplot we can add it as a layer just like any other plot. **The function `geom_venn()` comes from the ggvenn package**. Note that for most uses, the simple ggvenn() command should suffice but since we have specific changes to replicate the image in the paper, we need to add arguments and/or additional layers. An example of using `geom_venn()` is provided below:
 
 ```r
 ggplot(data_up, aes(A=PAX6, B=TBR2)) +

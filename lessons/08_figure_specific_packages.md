@@ -70,18 +70,18 @@ To create the figures using ggvenn we first take the union of genes for each dir
 
 ```r
 # Combine results from datasets and remove duplicated values
-up <- union(up1, up2)
-down <- union(down1, down2)
+up <- union(rownames(up1), rownames(up2))
+down <- union(rownames(down1), rownames(down2))
 
 # Create dataframe for comparison of up-regulated genes
-data_up <- data.frame(value = rownames(up),
-                        PAX6 = FALSE,
-                        TBR2 = FALSE)
+data_up <- data.frame(value = up,
+                      PAX6 = FALSE,
+                      TBR2 = FALSE)
 data_up$PAX6 <- data_up$value %in% rownames(up1)
 data_up$TBR2 <- data_up$value %in% rownames(up2)
 
 # Create dataframe for comparison of down-regulated genes
-data_down <- data.frame(value = rownames(down),
+data_down <- data.frame(value = down,
                         PAX6 = FALSE,
                         TBR2 = FALSE)
 data_down$PAX6 <- data_down$value %in% rownames(down1)

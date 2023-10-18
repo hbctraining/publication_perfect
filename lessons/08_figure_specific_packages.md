@@ -66,7 +66,7 @@ length(which(row.names(up1) %in% row.names(up2)))
 length(which(row.names(down1) %in% row.names(down2)))
 ```
 
-Now, to create the figures we first take the union of genes for each direction of change and use those gene identifiers to create dataframes. The row names correspond to gene identifiers, and we add two columns of logical values for PAX6 and TBR2.
+To create the figures using ggvenn we first take the union of genes for each direction of change and use those gene identifiers to create dataframes. The row names correspond to gene identifiers, and we add two columns of logical values for PAX6 and TBR2.
 
 ```r
 # Combine results from datasets and remove duplicated values
@@ -88,7 +88,7 @@ data_down$PAX6 <- data_down$value %in% rownames(down1)
 data_down$TBR2 <- data_down$value %in% rownames(down2)
 ```
 
-Now to create a simple Venn diagram, we can use the `ggvenn()` function from the ggvenn package:
+Next, we can use the `ggvenn()` function from the ggvenn package to create a simple Venn diagram:
 
 ```r
 ggvenn(data_up)

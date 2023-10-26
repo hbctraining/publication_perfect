@@ -96,6 +96,7 @@ install.packages("png")
 install.packages("ggrepel")
 install.packages("ggplotify")
 install.packages("magick")
+install.packages("ggvenn")
 ```
 
 Load the libraries to make sure the packages installed properly:
@@ -109,6 +110,7 @@ library(viridis)
 library(scales)
 library(tidyverse)
 library(VennDiagram)
+library(ggvenn)
 library(pheatmap)
 library(png)
 library(ggrepel)

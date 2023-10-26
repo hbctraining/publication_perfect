@@ -27,16 +27,9 @@ If we expand the 'Code', we see that the package used to create the Venn diagram
 
 **We will focus on the `ggvenn` package**, which provides an easy-to-use way to draw Venn diagrams using the standard ggplot2 syntax and layout. The package hence makes it possible to **match the design and style of Venn diagrams to other graphics created by the ggplot2 package**. 
 
-First, we will need to install the package and load the library:
+First, we will need to load the library:
 
 ```r
-install.packages("ggvenn") # install via CRAN
-
-##OR
-
-if (!require(devtools)) install.packages("devtools")
-devtools::install_github("yanlinlin82/ggvenn") # install via GitHub (for latest version)
-
 # Load library
 library(ggvenn)
 ```
@@ -178,9 +171,9 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
 
 ### Exporting the VennDiagram 
 
-We will need to output our visualization as a pdf or png so that we can later incorporate it into the final figure. This is very easy using the plotting device function in R. We simply open the plotting device, either `pdf()` or `png()`, plot our figure and then close the plotting device with `dev.off()`
+We will need to output our visualization as a pdf or png so that we can later incorporate it into the final figure. This is very easy using the plotting device function in R. We simply open the plotting device, either `pdf()` or `png()`, plot our figure and then close the plotting device with `dev.off()` Below is an example for our down-regulated genes with a png output. 
 
-Below is an example for our down-regulated genes with a png output. **Run this code and do a similar thing for the up-regulated genes (""results/venn_up.png").**
+**Run this code and do a similar thing for the up-regulated genes (""results/venn_up.png").**
 
 ```r
 png("results/venn_down.png")

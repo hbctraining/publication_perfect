@@ -175,9 +175,34 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
 <img src="../img/ggvenn_down.png" height="450">
 </p>
 
+
+### Exporting the VennDiagram 
+
+We will need to output our visualization as a pdf or png so that we can later incorporate it into the final figure. This is very easy using the plotting device function in R. We simply open the plotting device, either `pdf()` or `png()`, plot our figure and then close the plotting device with `dev.off()`
+
+Below is an example for our down-regulated genes with a png output. **Run this code and do a similar thing for the up-regulated genes (""results/venn_up.png").**
+
+```r
+png("results/venn_down.png")
+ggplot(data_down, aes(A=PAX6, B=TBR2)) +
+  geom_venn(
+    stroke_color="grey",
+    show_percentage = FALSE,
+    fill_color=c("salmon", "lightblue"),
+    set_name_color = c("salmon", "lightblue"),
+    set_name_size = 8,
+    text_size = 6) +
+  theme_void() + 
+  ggtitle("Overlap of down-regulated genes") +
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+```
+
+**Note that these outputs can be highly customized check `?pdf` and `?png` for details. Also note that other file types can be output.**
+
 ***
 
-Note that for the down-regulated genes, the overlap number is not placed within the overlapping region. Unfortunately, the placement of this number is not easy to change. To create an identical figure using the `VennDiagram` package you can check out the link below.
+> **NOTE:** For the down-regulated genes, the overlap number is not placed within the overlapping region. Unfortunately, the placement of this number is not easy to change. **To create an identical figure using the `VennDiagram` package you can check out the link below.**
 
 <details>
   <summary><b>Click here for code to create the figure using the VennDiagram package</b></summary>

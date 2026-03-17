@@ -210,6 +210,18 @@ volcano_panel1 <- ggdraw(volcano_RG) +
              hjust = 0,
              vjust = 0)  
 
+# Create IP volcano plot
+volcano_IP <- ggplot(results) +
+  geom_point(aes(x = tbr2_log2FoldChange, 
+                 y = -log10(tbr2_padj), 
+                 color = tbr2_threshold)) +
+  personal_theme() +
+  ggtitle("Intermediate Progenitors") +
+  scale_color_manual(values = c("grey", "purple")) +
+  scale_x_continuous(name = "Log2 fold change", 
+                     limits = c(-3, 3.5)) +
+  scale_y_continuous(name = "-Log10 p-value")
+
 ## 2nd plot
 volcano_panel2 <- ggdraw(volcano_IP) + 
   draw_label("405 genes", 
@@ -231,6 +243,18 @@ volcano_panel2 <- ggdraw(volcano_IP) +
              size = 12,
              hjust = 0,
              vjust = 0)  
+
+# Create neurons volcano plot
+volcano_neu <- ggplot(results) +
+  geom_point(aes(x = neg_log2FoldChange, 
+                 y = -log10(neg_padj), 
+                 color = neg_threshold)) +
+  personal_theme() +
+  ggtitle("Cortical neurons") +
+  scale_color_manual(values = c("grey", "purple")) +
+  scale_x_continuous(name = "Log2 fold change", 
+                     limits = c(-1.5, 1.5)) +
+  scale_y_continuous(name = "-Log10 p-value")
 
 ## 3rd plot
 volcano_panel3 <- ggdraw(volcano_neu) + 

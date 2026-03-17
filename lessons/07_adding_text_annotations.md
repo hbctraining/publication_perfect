@@ -71,6 +71,18 @@ ggplot(pax6_exp) +
 Let's adding some custom text to our plot by finishing up the volcano plots we created previously. Here is the current volcano plot for Pax6.
 
 ```r
+# Create volcano plot
+volcano_RG <- ggplot(results) +
+  geom_point(aes(x = pax6_log2FoldChange, 
+                 y = -log10(pax6_padj), 
+                 color = pax6_threshold)) +
+  personal_theme() +
+  ggtitle("Radial glia") +
+  scale_color_manual(values = c("grey", "purple")) +
+  scale_x_continuous(name = "Log2 fold change", 
+                     limits = c(-3, 3.5)) +
+  scale_y_continuous(name = "-Log10 p-value")
+
 # Pax6 volcano plot
 volcano_RG
 ```

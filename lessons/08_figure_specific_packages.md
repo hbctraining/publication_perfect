@@ -37,54 +37,51 @@ library(ggvenn)
 To create the Venn diagram, we need to generate our sets. We can subset our data for the `Pax6`- and `Tbr2`-expressing samples to only include those genes that are significant with `threshold` equal to `TRUE` and that are up-regulated using the `log2FoldChange` values > 0.
 
 ```r
-
-# Up-regulated
-up1 <- results[which(results$pax6_threshold & results$pax6_log2FoldChange > 0),]
-up2 <- results[which(results$tbr2_threshold & results$tbr2_log2FoldChange > 0),]
+# Up-regulated gene sets for Pax6 and Tbr2
+up_pax6 <- results[which(results$pax6_threshold & results$pax6_log2FoldChange > 0),]
+up_tbr2 <- results[which(results$tbr2_threshold & results$tbr2_log2FoldChange > 0),]
 ```
 
 We can do a similar subset for the down-regulated genes, but with `log2FoldChange` < 0.
 
 ```r
-# Down-regulated
-down1 <- results[which(results$pax6_threshold & results$pax6_log2FoldChange < 0),]
-down2 <- results[which(results$tbr2_threshold & results$tbr2_log2FoldChange < 0),]
-```
-
-Now that we have our sets of genes that are up- and down-regulated in the respective conditions, we can check how many overlap between the conditions. This is a good check to perform to make sure the packages report the correct interaction numbers.
-
-```r
-# Check overlap for each of the different sets
-length(which(row.names(up1) %in% row.names(up2)))
-length(which(row.names(down1) %in% row.names(down2)))
-```
-
-To create the figures using ggvenn we first take the union of genes for each direction of change and use those gene identifiers to create dataframes. The row names correspond to gene identifiers, and we add two columns of logical values for PAX6 and TBR2.
-
-```r
-# Combine results from datasets and remove duplicated values
-up <- union(rownames(up1), rownames(up2))
-down <- union(rownames(down1), rownames(down2))
-
-# Create dataframe for comparison of up-regulated genes
-data_up <- data.frame(value = up,
-                      PAX6 = FALSE,
-                      TBR2 = FALSE)
-data_up$PAX6 <- data_up$value %in% rownames(up1)
-data_up$TBR2 <- data_up$value %in% rownames(up2)
-
-# Create dataframe for comparison of down-regulated genes
-data_down <- data.frame(value = down,
-                        PAX6 = FALSE,
-                        TBR2 = FALSE)
-data_down$PAX6 <- data_down$value %in% rownames(down1)
-data_down$TBR2 <- data_down$value %in% rownames(down2)
+# Down-regulated gene sets for Pax6 and Tbr2
+down_pax6 <- results[which(results$pax6_threshold & results$pax6_log2FoldChange < 0),]
+down_tbr2 <- results[which(results$tbr2_threshold & results$tbr2_log2FoldChange < 0),]
 ```
 
 Next, we can use the `ggvenn()` function from the ggvenn package to create a simple Venn diagram:
 
 ```r
-ggvenn(data_up)
+# Create list of up-regulated genes
+up_list <- list(PAX6 = rownames(up_pax6),
+                TBR2 = rownames(up_tbr2))
+
+# Create list of down-regulated genes
+down_list <- list(PAX6 = rownames(down_pax6),
+                TBR2 = rownames(down_tbr2))
+```
+
+```r
+# Create up-regulated Venn diagram
+ggvenn(data = up_list)
+```
+
+```r
+# Create down-regulated Venn diagram
+ggvenn(data = down_list)
+```
+
+Now that we have our venn diagrams of genes that are up- and down-regulated in the respective conditions, we can check how many overlap between the conditions. This is a good check to perform to make sure the packages report the correct interaction numbers.
+
+```r
+# Check overlap for upregulated set
+length(which(row.names(up_pax6) %in% row.names(up_tbr2)))
+```
+
+```r
+# Check overlap for downregulated set
+length(which(row.names(down_pax6) %in% row.names(down_tbr2)))
 ```
 
 <p align="center">
@@ -97,14 +94,10 @@ This has successfully created a Venn diagram, but **this is not exactly a public
 First, note that since ggvenn is based in ggplot we can add it as a layer just like any other plot. **The function `geom_venn()` comes from the ggvenn package**. Note that for most uses, the simple ggvenn() command should suffice but since we have specific changes to replicate the image in the paper, we need to add arguments and/or additional layers. An example of using `geom_venn()` is provided below:
 
 ```r
-ggplot(data_up, aes(A=PAX6, B=TBR2)) +
-   geom_venn() +
-   theme_void() +
-   ggtitle("Overlap of up-regulated genes") +
-   theme(plot.title = element_text(hjust = 0.5))
+ggvenn(data = up_list) +
+  ggtitle("Overlap of up-regulated genes") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
-
-_NOTE: theme_void() is necessary here to remove all grids, axes, and coloring from the background._
 
 ***
 
@@ -121,16 +114,14 @@ Please fill in those values so that the final figure looks similar to that in th
 
 ```r
 # Up-regulated genes
-ggplot(data_up, aes(A=PAX6, B=TBR2)) +
-  geom_venn(
-        stroke_color="grey",
-        show_percentage = FALSE,
-        auto_scale = TRUE,
-        fill_color= ,
-        set_name_color =  ,
-        set_name_size = ,
-        text_size = ) +
-  theme_void() + 
+geom_venn(data = up_list,
+          stroke_color="grey",
+          show_percentage = FALSE,
+          auto_scale = TRUE,
+          fill_color= ,
+          set_name_color =  ,
+          set_name_size = ,
+          text_size = ) +
   ggtitle("Overlap of up-regulated genes") +
   theme(plot.title = element_text(hjust = 0.5, size = rel(1.5)))
 ```
@@ -147,19 +138,18 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
   <summary>Code</summary>
 
   <p><pre>
-    # Down-regulated genes
-    ggplot(data_down, aes(A=PAX6, B=TBR2)) +
-     geom_venn(
-        stroke_color="grey",
-        show_percentage = FALSE,
-        auto_scale = TRUE,
-        fill_color = c("salmon", "lightblue"),
-        set_name_color = c("salmon", "lightblue"),
-        set_name_size = 5,
-        text_size = 4) +
-    theme_void() + 
-    ggtitle("Overlap of down-regulated genes") +
-    theme(plot.title = element_text(hjust = 0.5, size = rel(1.5)))
+    # Create down-regulated venn diagram
+    ggvenn(data = down_list,
+           stroke_color="grey",
+           show_percentage = FALSE,
+           auto_scale = TRUE,
+           fill_color = c("salmon", "lightblue"),
+           set_name_color =  c("salmon", "lightblue"),
+           set_name_size = 5,
+           text_size = 4,
+           stroke_size = 0.01) +
+      ggtitle("Overlap of down-regulated genes") +
+      theme(plot.title = element_text(hjust = 0.5))
                  
   </pre></p>
 </details>
@@ -173,25 +163,37 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
 
 We will need to output our visualization as a pdf or png so that we can later incorporate it into the final figure. This is very easy using the plotting device function in R. We simply open the plotting device, either `pdf()` or `png()`, plot our figure and then close the plotting device with `dev.off()` Below is an example for our down-regulated genes with a png output. 
 
-**Run this code and do a similar thing for the up-regulated genes (""results/venn_up.png").**
-
 ```r
-png("results/venn_down.png")
-ggplot(data_down, aes(A=PAX6, B=TBR2)) +
-  geom_venn(
-    stroke_color="grey",
-    show_percentage = FALSE,
-    fill_color=c("salmon", "lightblue"),
-    set_name_color = c("salmon", "lightblue"),
-    set_name_size = 8,
-    text_size = 6) +
-  theme_void() + 
+# Create up-regulated venn diagram
+ggvenn(data = up_list,
+       stroke_color="grey",
+       show_percentage = FALSE,
+       auto_scale = TRUE,
+       fill_color = c("salmon", "lightblue"),
+       set_name_color =  c("salmon", "lightblue"),
+       set_name_size = 5,
+       text_size = 4) +
+  ggtitle("Overlap of up-regulated genes") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+# Export up-regulated venn diagram
+ggsave("results/venn_up.png")
+
+# Create down-regulated venn diagram
+ggvenn(data = down_list,
+       stroke_color="grey",
+       show_percentage = FALSE,
+       auto_scale = TRUE,
+       fill_color = c("salmon", "lightblue"),
+       set_name_color =  c("salmon", "lightblue"),
+       set_name_size = 5,
+       text_size = 4) +
   ggtitle("Overlap of down-regulated genes") +
   theme(plot.title = element_text(hjust = 0.5))
-dev.off()
-```
 
-**Note that these outputs can be highly customized check `?pdf` and `?png` for details. Also note that other file types can be output.**
+# Export down-regulated venn diagram
+ggsave("results/venn_down.png")
+```
 
 ***
 
@@ -204,14 +206,9 @@ dev.off()
     
     # Load library
     library(VennDiagram)
-    
-    # Create lists for comparison
-    up <- list(
-      PAX6 = rownames(up1),
-      TBR2 = rownames(up2))
 
     # Plot figure
-    venn.diagram(x = up, 
+    venn.diagram(x = up_list, 
                  filename = "results/venn_up.png",
                  output = TRUE,
                  main = "Overlap of up-regulated genes",

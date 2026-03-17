@@ -41,7 +41,7 @@ library(ggrepel)
 ggplot(pax6_exp) +
   geom_point(aes(x=group, 
                    y=normalized_counts, 
-                   fill=group)) +
+                   color=group)) +
   geom_text_repel(aes(x=group, 
                 y=normalized_counts,
                 label=samples)) +

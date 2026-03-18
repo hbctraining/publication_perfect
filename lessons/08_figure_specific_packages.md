@@ -161,7 +161,7 @@ Similarly, we could plot the venn diagram for the down-regulated genes.
 
 ### Exporting the VennDiagram 
 
-We will need to output our visualization as a pdf or png so that we can later incorporate it into the final figure. This is very easy using the plotting device function in R. We simply open the plotting device, either `pdf()` or `png()`, plot our figure and then close the plotting device with `dev.off()` Below is an example for our down-regulated genes with a png output. 
+We will need to output our visualization as a pdf or png so that we can later incorporate it into the final figure. We can plot our figure and then call `ggsave()` to save our plot. Below is an example for our down-regulated genes with a png output. 
 
 ```r
 # Create up-regulated venn diagram
